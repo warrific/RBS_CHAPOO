@@ -17,7 +17,6 @@ namespace Logica
 
 
         public int aantal { get; private set; }
-        public List<MenuItem> lijstMenuItems { get; private set; }
         public string commentaar { get; private set; }
 
         public BestelItem()
