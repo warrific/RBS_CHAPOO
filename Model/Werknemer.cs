@@ -1,4 +1,4 @@
-﻿namespace Logica
+﻿namespace Model
 {
     class Werknemer
     {
