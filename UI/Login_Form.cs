@@ -12,18 +12,14 @@ using System.Data.SqlClient;
 
 namespace UI
 {
-    public partial class Login_Form : Main_Form
+    public partial class Login_Form : UI.Main_Form
     {
         public Login_Form()
         {
-            InitializeComponent();
-
+            InitializeComponent(); 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btn_Submit_Click(object sender, EventArgs e)
         {

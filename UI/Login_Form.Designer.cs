@@ -28,16 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login_Form));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_wachtwoord = new System.Windows.Forms.TextBox();
-            this.btn_Submit = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btn_2 = new System.Windows.Forms.Button();
+            this.btn_3 = new System.Windows.Forms.Button();
+            this.btn_4 = new System.Windows.Forms.Button();
+            this.btn_5 = new System.Windows.Forms.Button();
+            this.btn_6 = new System.Windows.Forms.Button();
+            this.btn_7 = new System.Windows.Forms.Button();
+            this.btn_8 = new System.Windows.Forms.Button();
+            this.btn_9 = new System.Windows.Forms.Button();
+            this.btn_del = new System.Windows.Forms.Button();
+            this.btn_0 = new System.Windows.Forms.Button();
+            this.btn_enter = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(202, 87);
+            this.label2.Location = new System.Drawing.Point(335, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 1;
@@ -61,48 +68,40 @@
             // 
             // txt_wachtwoord
             // 
-            this.txt_wachtwoord.Location = new System.Drawing.Point(272, 84);
+            this.txt_wachtwoord.AcceptsReturn = true;
+            this.txt_wachtwoord.Location = new System.Drawing.Point(266, 35);
+            this.txt_wachtwoord.MaxLength = 8;
             this.txt_wachtwoord.Name = "txt_wachtwoord";
             this.txt_wachtwoord.PasswordChar = '*';
-            this.txt_wachtwoord.Size = new System.Drawing.Size(100, 20);
+            this.txt_wachtwoord.Size = new System.Drawing.Size(200, 20);
             this.txt_wachtwoord.TabIndex = 2;
+            this.txt_wachtwoord.UseSystemPasswordChar = true;
             this.txt_wachtwoord.TextChanged += new System.EventHandler(this.txt_wachtwoord_TextChanged);
-            // 
-            // btn_Submit
-            // 
-            this.btn_Submit.Location = new System.Drawing.Point(250, 126);
-            this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_Submit.TabIndex = 4;
-            this.btn_Submit.Text = "Submit";
-            this.btn_Submit.UseVisualStyleBackColor = true;
-            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(202, 169);
+            this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Log in om dit systeem te gebruiken";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(283, 185);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(289, 147);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 8;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(15, 66);
+            this.flowLayoutPanel1.Controls.Add(this.btn_2);
+            this.flowLayoutPanel1.Controls.Add(this.btn_3);
+            this.flowLayoutPanel1.Controls.Add(this.btn_4);
+            this.flowLayoutPanel1.Controls.Add(this.btn_5);
+            this.flowLayoutPanel1.Controls.Add(this.btn_6);
+            this.flowLayoutPanel1.Controls.Add(this.btn_7);
+            this.flowLayoutPanel1.Controls.Add(this.btn_8);
+            this.flowLayoutPanel1.Controls.Add(this.btn_9);
+            this.flowLayoutPanel1.Controls.Add(this.btn_del);
+            this.flowLayoutPanel1.Controls.Add(this.btn_0);
+            this.flowLayoutPanel1.Controls.Add(this.btn_enter);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(266, 66);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(273, 231);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 266);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // btn_1
@@ -110,21 +109,129 @@
             this.btn_1.Location = new System.Drawing.Point(3, 3);
             this.btn_1.Name = "btn_1";
             this.btn_1.Padding = new System.Windows.Forms.Padding(10);
-            this.btn_1.Size = new System.Drawing.Size(75, 75);
+            this.btn_1.Size = new System.Drawing.Size(60, 60);
             this.btn_1.TabIndex = 0;
             this.btn_1.Text = "1";
             this.btn_1.UseVisualStyleBackColor = true;
+            // 
+            // btn_2
+            // 
+            this.btn_2.Location = new System.Drawing.Point(69, 3);
+            this.btn_2.Name = "btn_2";
+            this.btn_2.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_2.Size = new System.Drawing.Size(60, 60);
+            this.btn_2.TabIndex = 1;
+            this.btn_2.Text = "2";
+            this.btn_2.UseVisualStyleBackColor = true;
+            // 
+            // btn_3
+            // 
+            this.btn_3.Location = new System.Drawing.Point(135, 3);
+            this.btn_3.Name = "btn_3";
+            this.btn_3.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_3.Size = new System.Drawing.Size(60, 60);
+            this.btn_3.TabIndex = 2;
+            this.btn_3.Text = "3";
+            this.btn_3.UseVisualStyleBackColor = true;
+            // 
+            // btn_4
+            // 
+            this.btn_4.Location = new System.Drawing.Point(3, 69);
+            this.btn_4.Name = "btn_4";
+            this.btn_4.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_4.Size = new System.Drawing.Size(60, 60);
+            this.btn_4.TabIndex = 3;
+            this.btn_4.Text = "4";
+            this.btn_4.UseVisualStyleBackColor = true;
+            // 
+            // btn_5
+            // 
+            this.btn_5.Location = new System.Drawing.Point(69, 69);
+            this.btn_5.Name = "btn_5";
+            this.btn_5.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_5.Size = new System.Drawing.Size(60, 60);
+            this.btn_5.TabIndex = 4;
+            this.btn_5.Text = "5";
+            this.btn_5.UseVisualStyleBackColor = true;
+            // 
+            // btn_6
+            // 
+            this.btn_6.Location = new System.Drawing.Point(135, 69);
+            this.btn_6.Name = "btn_6";
+            this.btn_6.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_6.Size = new System.Drawing.Size(60, 60);
+            this.btn_6.TabIndex = 5;
+            this.btn_6.Text = "6";
+            this.btn_6.UseVisualStyleBackColor = true;
+            // 
+            // btn_7
+            // 
+            this.btn_7.Location = new System.Drawing.Point(3, 135);
+            this.btn_7.Name = "btn_7";
+            this.btn_7.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_7.Size = new System.Drawing.Size(60, 60);
+            this.btn_7.TabIndex = 6;
+            this.btn_7.Text = "7";
+            this.btn_7.UseVisualStyleBackColor = true;
+            // 
+            // btn_8
+            // 
+            this.btn_8.Location = new System.Drawing.Point(69, 135);
+            this.btn_8.Name = "btn_8";
+            this.btn_8.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_8.Size = new System.Drawing.Size(60, 60);
+            this.btn_8.TabIndex = 7;
+            this.btn_8.Text = "8";
+            this.btn_8.UseVisualStyleBackColor = true;
+            // 
+            // btn_9
+            // 
+            this.btn_9.Location = new System.Drawing.Point(135, 135);
+            this.btn_9.Name = "btn_9";
+            this.btn_9.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_9.Size = new System.Drawing.Size(60, 60);
+            this.btn_9.TabIndex = 8;
+            this.btn_9.Text = "9";
+            this.btn_9.UseVisualStyleBackColor = true;
+            // 
+            // btn_del
+            // 
+            this.btn_del.Location = new System.Drawing.Point(3, 201);
+            this.btn_del.Name = "btn_del";
+            this.btn_del.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_del.Size = new System.Drawing.Size(60, 60);
+            this.btn_del.TabIndex = 9;
+            this.btn_del.Text = "DEL";
+            this.btn_del.UseVisualStyleBackColor = true;
+            // 
+            // btn_0
+            // 
+            this.btn_0.Location = new System.Drawing.Point(69, 201);
+            this.btn_0.Name = "btn_0";
+            this.btn_0.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_0.Size = new System.Drawing.Size(60, 60);
+            this.btn_0.TabIndex = 10;
+            this.btn_0.Text = "0";
+            this.btn_0.UseVisualStyleBackColor = true;
+            // 
+            // btn_enter
+            // 
+            this.btn_enter.Location = new System.Drawing.Point(135, 201);
+            this.btn_enter.Name = "btn_enter";
+            this.btn_enter.Padding = new System.Windows.Forms.Padding(10);
+            this.btn_enter.Size = new System.Drawing.Size(60, 60);
+            this.btn_enter.TabIndex = 11;
+            this.btn_enter.Text = "ENT";
+            this.btn_enter.UseVisualStyleBackColor = true;
             // 
             // Login_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(124, 0);
+            this.ClientSize = new System.Drawing.Size(752, 773);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btn_Submit);
             this.Controls.Add(this.txt_wachtwoord);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -134,11 +241,8 @@
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.txt_wachtwoord, 0);
-            this.Controls.SetChildIndex(this.btn_Submit, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,11 +254,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_wachtwoord;
-        private System.Windows.Forms.Button btn_Submit;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btn_1;
+        private System.Windows.Forms.Button btn_2;
+        private System.Windows.Forms.Button btn_3;
+        private System.Windows.Forms.Button btn_4;
+        private System.Windows.Forms.Button btn_5;
+        private System.Windows.Forms.Button btn_6;
+        private System.Windows.Forms.Button btn_7;
+        private System.Windows.Forms.Button btn_8;
+        private System.Windows.Forms.Button btn_9;
+        private System.Windows.Forms.Button btn_del;
+        private System.Windows.Forms.Button btn_0;
+        private System.Windows.Forms.Button btn_enter;
     }
 }
 
