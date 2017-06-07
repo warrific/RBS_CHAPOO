@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,7 @@
     <Compile Include="DALBestelItem.cs" />
     <Compile Include="DALBestelling.cs" />
     <Compile Include="DALConnection.cs" />
+    <Compile Include="DALLogin.cs" />
     <Compile Include="DALMenuItem.cs" />
     <Compile Include="DALTafel.cs" />
     <Compile Include="DALWerknemer.cs" />
@@ -53,6 +55,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagramDAL.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{4ee0096a-2166-49ec-afef-934c0e931e1f}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
