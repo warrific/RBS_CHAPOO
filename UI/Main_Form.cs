@@ -14,9 +14,8 @@ namespace UI
     {
         public Main_Form()
         {
-           
+            InitializeComponent();
             Size = new Size(768, 1024);
-            InitializeComponent();
         }
 
         private void btn_LogUit_Click(object sender, EventArgs e)
@@ -27,6 +26,16 @@ namespace UI
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
