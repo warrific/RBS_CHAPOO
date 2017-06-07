@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
+using Model;
 
 namespace DAL
 {
@@ -19,31 +20,31 @@ namespace DAL
 
             dbConnection = new SqlConnection(connString);
         }
-/*
+
         public List<Klant> GetAll()
         {
             // List
-            List<Klant> klanten = new List<Klant>();
+            List<Model.BestelItem> items = new List<Model.BestelItem>();
 
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Klanten", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM MenuItem", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
             // Klanten inlezen
             while (reader.Read())
             {
-                Klant klant = ReadKlant(reader);
-                klanten.Add(klant);
+                Model.BestelItem item = Readitem(reader);
+                items.Add(item);
             }
 
             reader.Close();
             dbConnection.Close();
 
-            return klanten;
+            return items;
         }
 
-        public Klant GetForID(int klantId)
+        public Model.BestelItem GetForID(int klantId)
         {
             // Connectie opzetten
             dbConnection.Open();
@@ -51,27 +52,29 @@ namespace DAL
             command.Parameters.AddWithValue("@Id", klantId);
             SqlDataReader reader = command.ExecuteReader();
 
-            Klant klant = null;
+            Model.BestelItem item = null;
 
             if (reader.Read())
             {
-                klant = ReadKlant(reader);
+                item = Readitem(reader);
             }
 
             reader.Close();
             dbConnection.Close();
 
-            return klant;
+            return item;
         }
 
-        private Klant ReadKlant(SqlDataReader reader)
+        private Model.BestelItem Readitem(SqlDataReader reader)
         {
             int id = (int)reader["id"];
-            string voornaam = (string)reader["Voornaam"];
-            string achternaam = (string)reader["Achternaam"];
-            string email = (string)reader["EmailAdres"];
+            string naam = (string)reader["Naam"];
+            int prijs = (int)reader["Prijs"];
+            int voorraad = (int)reader["Voorraad"];
+            Categorie categorie = (Categorie)(int)reader["Categorie"];
 
-            return new Klant(id, voornaam, achternaam, email);
+
+            return new Model.BestelItem(id, naam, prijs, voorraad, categorie);
         }
 */
     }
