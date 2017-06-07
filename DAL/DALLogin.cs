@@ -19,5 +19,38 @@ namespace DAL
          //   SqlDataAdapter sda = new SqlDataAdapter(sqlquery, conn);
          //   DataSet dtbl = new DataSet();
          //sda.Fill(dtbl);
+
+        protected SqlConnection dbConnection;
+
+        public DALLogin()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+
+            dbConnection = new SqlConnection(connString);
+        }
+
+       // string sqlquery = "SELECT Wachtwoord FROM Mederwerker WHERE password ='" + txt_wachtwoord.Text.Trim() + "'";
+       // SqlDataAdapter sda = new SqlDataAdapter(sqlquery, conn);
+
+        public int GetPassword(string invoer_wachtwoord)
+        {
+            // Connectie opzetten
+            
+            int code = 0;
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT code FROM Medewerker WHERE code = @code", dbConnection);
+            command.Parameters.AddWithValue("@code", invoer_wachtwoord);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+               code = (int)reader["code"];
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return code;
+        }
     }
 }

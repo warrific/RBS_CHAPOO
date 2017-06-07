@@ -19,7 +19,7 @@ namespace DAL
 
             dbConnection = new SqlConnection(connString);
         }
-
+/*
         public List<Klant> GetAll()
         {
             // List
@@ -73,6 +73,6 @@ namespace DAL
 
             return new Klant(id, voornaam, achternaam, email);
         }
-
+*/
     }
 }
