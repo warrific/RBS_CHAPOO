@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace UI
+{
+    public partial class Main_Form : Form
+    {
+        public Main_Form()
+        {
+           
+            Size = new Size(768, 1024);
+            InitializeComponent();
+        }
+
+        private void btn_LogUit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login_Form obj_loginform = new Login_Form();
+            obj_loginform.Show();
+        }
+
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
