@@ -57,15 +57,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(335, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Login code";
-            // 
+           
             // txt_wachtwoord
             // 
             this.txt_wachtwoord.AcceptsReturn = true;
@@ -76,15 +68,9 @@
             this.txt_wachtwoord.Size = new System.Drawing.Size(200, 20);
             this.txt_wachtwoord.TabIndex = 2;
             this.txt_wachtwoord.UseSystemPasswordChar = true;
-            this.txt_wachtwoord.TextChanged += new System.EventHandler(this.txt_wachtwoord_TextChanged);
+//            this.txt_wachtwoord.TextChanged += new System.EventHandler(this.txt_wachtwoord_TextChanged);
             // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 8;
-            // 
+     
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_1);
@@ -113,6 +99,7 @@
             this.btn_1.TabIndex = 0;
             this.btn_1.Text = "1";
             this.btn_1.UseVisualStyleBackColor = true;
+          //  this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
             // 
             // btn_2
             // 
@@ -223,6 +210,7 @@
             this.btn_enter.TabIndex = 11;
             this.btn_enter.Text = "ENT";
             this.btn_enter.UseVisualStyleBackColor = true;
+           // this.btn_enter.Click += new System.EventHandler(this.btn_enter_Click);
             // 
             // Login_Form
             // 
@@ -237,7 +225,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Login_Form";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.txt_wachtwoord, 0);
