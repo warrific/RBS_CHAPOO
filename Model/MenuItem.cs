@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class MenuItem
+    public class BestelItem
     {
 
         int id;
@@ -14,18 +14,20 @@ namespace Model
         double prijs;
         int voorraad;
         Categorie categorie;
+        string shortname;
 
 
         public int aantal { get; private set; }
         public string commentaar { get; private set; }
 
-        public MenuItem(int id_in, string naam_in, double prijs_in, int voorraad_in, Categorie categorie_in)
+        public BestelItem(int id_in, string naam_in, double prijs_in, int voorraad_in, Categorie categorie_in, string shortname_in)
         {
             id = id_in;
             naam = naam_in;
             prijs = prijs_in;
             voorraad = voorraad_in;
             categorie = categorie_in;
+            shortname = shortname_in;
         }
 
         public void ToonAlleMenuItems()

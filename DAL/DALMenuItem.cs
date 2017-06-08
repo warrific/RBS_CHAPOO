@@ -9,7 +9,7 @@ using Model;
 
 namespace DAL
 {
-    class DALMenuItem
+    public class DALMenuItem
     {
         // Standaard info uit mini project, aanpassen
         protected SqlConnection dbConnection;
@@ -21,10 +21,10 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Model.BestelItem> GetAll()
+        public List<Model.MenuItem> GetAll()
         {
             // List
-            List<Model.BestelItem> items = new List<Model.BestelItem>();
+            List<Model.MenuItem> items = new List<Model.MenuItem>();
 
             // Connectie opzetten
             dbConnection.Open();
@@ -34,7 +34,7 @@ namespace DAL
             // Klanten inlezen
             while (reader.Read())
             {
-                Model.BestelItem item = Readitem(reader);
+                Model.MenuItem item = Readitem(reader);
                 items.Add(item);
             }
 
@@ -44,7 +44,7 @@ namespace DAL
             return items;
         }
 
-        public Model.BestelItem GetForID(int klantId)
+        public Model.MenuItem GetForID(int klantId)
         {
             // Connectie opzetten
             dbConnection.Open();
@@ -52,7 +52,7 @@ namespace DAL
             command.Parameters.AddWithValue("@Id", klantId);
             SqlDataReader reader = command.ExecuteReader();
 
-            Model.BestelItem item = null;
+            Model.MenuItem item = null;
 
             if (reader.Read())
             {
@@ -65,16 +65,16 @@ namespace DAL
             return item;
         }
 
-        private Model.BestelItem Readitem(SqlDataReader reader)
+        private Model.MenuItem Readitem(SqlDataReader reader)
         {
             int id = (int)reader["id"];
             string naam = (string)reader["Naam"];
             int prijs = (int)reader["Prijs"];
             int voorraad = (int)reader["Voorraad"];
             Categorie categorie = (Categorie)(int)reader["Categorie"];
+            string shortname = (string)reader["shortname"];
 
-
-            return new Model.BestelItem(id, naam, prijs, voorraad, categorie);
+            return new Model.MenuItem(id, naam, prijs, voorraad, categorie);
         }
     }
 }
