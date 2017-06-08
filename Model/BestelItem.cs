@@ -10,10 +10,14 @@ namespace Model
     {
 
         int id;
-        string naam;
         double prijs;
         int voorraad;
         Categorie categorie;
+
+        public string naam
+        {
+            get; private set;
+        }
 
 
         public int aantal { get; private set; }

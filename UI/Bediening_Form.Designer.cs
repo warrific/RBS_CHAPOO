@@ -33,6 +33,7 @@
             this.btn_bestellingen = new System.Windows.Forms.Button();
             this.btn_diner = new System.Windows.Forms.Button();
             this.pnl_main = new System.Windows.Forms.Panel();
+            this.pnl_optiesbestelling = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // btn_dranken
@@ -72,18 +73,27 @@
             this.btn_diner.TabIndex = 9;
             this.btn_diner.Text = "Diner";
             this.btn_diner.UseVisualStyleBackColor = true;
+            this.btn_diner.Click += new System.EventHandler(this.btn_diner_Click);
             // 
             // pnl_main
             // 
-            this.pnl_main.Location = new System.Drawing.Point(0, 127);
+            this.pnl_main.Location = new System.Drawing.Point(0, 208);
             this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(751, 857);
+            this.pnl_main.Size = new System.Drawing.Size(751, 776);
             this.pnl_main.TabIndex = 10;
+            // 
+            // pnl_optiesbestelling
+            // 
+            this.pnl_optiesbestelling.Location = new System.Drawing.Point(0, 127);
+            this.pnl_optiesbestelling.Name = "pnl_optiesbestelling";
+            this.pnl_optiesbestelling.Size = new System.Drawing.Size(751, 75);
+            this.pnl_optiesbestelling.TabIndex = 11;
             // 
             // Bediening_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.pnl_optiesbestelling);
             this.Controls.Add(this.pnl_main);
             this.Controls.Add(this.btn_diner);
             this.Controls.Add(this.btn_bestellingen);
@@ -96,6 +106,7 @@
             this.Controls.SetChildIndex(this.btn_bestellingen, 0);
             this.Controls.SetChildIndex(this.btn_diner, 0);
             this.Controls.SetChildIndex(this.pnl_main, 0);
+            this.Controls.SetChildIndex(this.pnl_optiesbestelling, 0);
             this.ResumeLayout(false);
 
         }
@@ -107,5 +118,6 @@
         private System.Windows.Forms.Button btn_bestellingen;
         private System.Windows.Forms.Button btn_diner;
         private System.Windows.Forms.Panel pnl_main;
+        private System.Windows.Forms.Panel pnl_optiesbestelling;
     }
 }

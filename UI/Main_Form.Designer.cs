@@ -66,9 +66,9 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(11, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 15);
+            this.label1.Size = new System.Drawing.Size(99, 15);
             this.label1.TabIndex = 2;
-            this.label1.Text = "NAAM";
+            this.label1.Text = "NAAMBEDIENING";
             // 
             // label2
             // 
