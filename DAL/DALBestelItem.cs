@@ -21,7 +21,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Klant> GetAll()
+        public List<BestelItem> GetAll()
         {
             // List
             List<Model.BestelItem> items = new List<Model.BestelItem>();
@@ -76,6 +76,5 @@ namespace DAL
 
             return new Model.BestelItem(id, naam, prijs, voorraad, categorie);
         }
-*/
     }
 }
