@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,11 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bar_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bar_Form.Designer.cs">
+      <DependentUpon>Bar_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bediening_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Bediening_Form.Designer.cs">
       <DependentUpon>Bediening_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonMenuItem.Designer.cs">
+      <DependentUpon>ButtonMenuItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Login_Form.cs">
       <SubType>Form</SubType>
@@ -71,6 +86,9 @@
     <Compile Include="Eigenaar_Form.Designer.cs">
       <DependentUpon>Eigenaar_Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bar_Form.resx">
+      <DependentUpon>Bar_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bediening_Form.resx">
       <DependentUpon>Bediening_Form.cs</DependentUpon>
     </EmbeddedResource>
