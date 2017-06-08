@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bar_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bar_Form.Designer.cs">
+      <DependentUpon>Bar_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bediening_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bar_Form.resx">
+      <DependentUpon>Bar_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bediening_Form.resx">
       <DependentUpon>Bediening_Form.cs</DependentUpon>
     </EmbeddedResource>
