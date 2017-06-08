@@ -20,7 +20,7 @@ namespace DAL
 
             dbConnection = new SqlConnection(connString);
         }
-
+        /*
         public List<Klant> GetAll()
         {
             // List
