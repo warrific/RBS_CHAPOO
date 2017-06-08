@@ -74,7 +74,7 @@ namespace DAL
             Categorie categorie = (Categorie)(int)reader["Categorie"];
             string shortname = (string)reader["shortname"];
 
-            return new Model.MenuItem(id, naam, prijs, voorraad, categorie);
+            return new Model.MenuItem(id, naam, prijs, voorraad, categorie, shortname);
         }
     }
 }

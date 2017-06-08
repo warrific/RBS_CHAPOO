@@ -15,7 +15,7 @@ namespace Logica
             DALMenuItem DALitem = new DALMenuItem();
             foreach (Model.MenuItem item in DALitem.GetAll())
             {
-
+                Console.WriteLine("{0} {1} {2} {3}", item.naam, item.prijs, item.voorraad, item.shortname);
             }
         }
     }

@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class BestelItem
+    public class MenuItem
     {
 
-        int id;
-        string naam;
-        double prijs;
-        int voorraad;
-        Categorie categorie;
-        string shortname;
+        public int id { get; private set; }
+        public string naam { get; private set; }
+        public double prijs { get; private set; }
+        public int voorraad { get; private set; }
+        public Categorie categorie { get; private set; }
+        public string shortname { get; private set; }
 
-
-        public int aantal { get; private set; }
-        public string commentaar { get; private set; }
-
-        public BestelItem(int id_in, string naam_in, double prijs_in, int voorraad_in, Categorie categorie_in, string shortname_in)
+        public MenuItem(int id_in, string naam_in, double prijs_in, int voorraad_in, Categorie categorie_in, string shortname_in)
         {
             id = id_in;
             naam = naam_in;
