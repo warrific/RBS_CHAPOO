@@ -26,17 +26,6 @@ namespace Model
         private string wachtwoord;
         public string Wachtwoord { get { return this.wachtwoord; } set { if ((wachtwoord.Length == 4)) { this.wachtwoord = value; } } }
 
-       // public void CreateMyPasswordTextBox()
-      //  {
-            // Maakt een instance van de TextBox control.
-       //     TextBox textBox1 = new TextBox();
-            // Zet de maximum lengte van de text in de control op 4.
-       //     textBox1.MaxLength = 4;
-            // Maakt de asterisk tot de password character.
-      //      textBox1.PasswordChar = '*';
-      //  }
-
-
         //bool properties voor set-members
 
         public bool Setid(int in_id)
@@ -70,11 +59,12 @@ namespace Model
         }
 
         //constructor Werknemer
-        public Werknemer(int in_id, Functie in_functie, string in_naam)
-{
+        public Werknemer(int in_id, Functie in_functie, string in_naam, string in_wachtwoord)
+        {
             id = in_id;
             functie = in_functie;
             naam = in_naam;
+            wachtwoord = in_wachtwoord;
 
 
             // exceptions van de contructor Werknemer
@@ -85,12 +75,12 @@ namespace Model
                 errorMessage = errorMessage + "verkeerde id: " + in_id;
 
             if (Setfunctie(in_functie) == false)
-    {
+            {
                 errorMessage = errorMessage + "verkeerde functie: " + in_functie;
             }
 
             if (Setnaam(in_naam) == false)
-        {
+            {
                 errorMessage = errorMessage + "  " + in_naam;
             }
 

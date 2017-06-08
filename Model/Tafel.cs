@@ -8,12 +8,13 @@ namespace Model
 {
     class Tafel
     {
-        int id;
-        public bool status { get; private set; }
+        public int id;
+        public TafelStatus status { get; private set; }
 
-        public Tafel()
+        public Tafel(int in_id, TafelStatus in_status)
         {
-
+            id = in_id;
+            status = in_status;
         }
     }
 }

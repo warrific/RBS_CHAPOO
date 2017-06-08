@@ -21,7 +21,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Klant> GetAll()
+        public List<BestelItem> GetAll()
         {
             // List
             List<Model.BestelItem> items = new List<Model.BestelItem>();
@@ -48,7 +48,7 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Klanten WHERE Id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM BestelItem WHERE Id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", klantId);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -76,6 +76,5 @@ namespace DAL
 
             return new Model.BestelItem(id, naam, prijs, voorraad, categorie);
         }
-*/
     }
 }

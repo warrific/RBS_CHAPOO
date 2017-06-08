@@ -65,10 +65,10 @@ namespace DAL
             int id = (int)reader["id"];
             Functie functie = (Functie)reader["functie"];
             string naam = (string)reader["naam"];
+            string wachtwoord = (string)reader["code"];
 
             // return nieuw Werknemer-object
-            return new Werknemer(id, functie, naam);
-
+            return new Werknemer(id, functie, naam, wachtwoord);
         } 
     }
 }
