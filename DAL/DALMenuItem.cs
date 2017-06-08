@@ -46,12 +46,12 @@ namespace DAL
             return items;
         }
 
-        public Model.MenuItem GetForID(int klantId)
+        public Model.MenuItem GetForID(int itemId)
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Klanten WHERE Id = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", klantId);
+            SqlCommand command = new SqlCommand("SELECT * FROM MenuItem WHERE Id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", itemId);
             SqlDataReader reader = command.ExecuteReader();
 
             Model.MenuItem item = null;
@@ -69,11 +69,11 @@ namespace DAL
 
         private Model.MenuItem Readitem(SqlDataReader reader)
         {
-            int id = (int)reader["id"];
-            string naam = (string)reader["Naam"];
-            int prijs = (int)reader["Prijs"];
-            int voorraad = (int)reader["Voorraad"];
-            Categorie categorie = (Categorie)(int)reader["Categorie"];
+            int id = (int)reader["item_id"];
+            string naam = (string)reader["naam"];
+            int voorraad = (int)reader["voorraad"];
+            double prijs = (float)(double)reader["prijs"];
+            Categorie categorie = (Categorie)(int)reader["category"];
             string shortname = (string)reader["shortname"];
 
             return new Model.MenuItem(id, naam, prijs, voorraad, categorie, shortname);
