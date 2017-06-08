@@ -23,13 +23,17 @@ namespace UI
 
             foreach (Model.MenuItem list_item in lijst)
             {
-                ListViewItem item = new ListViewItem(list_item.id.ToString());
-                item.SubItems.Add(list_item.naam);
-                item.SubItems.Add(list_item.prijs.ToString());
-                item.SubItems.Add(list_item.voorraad.ToString());
-                item.SubItems.Add(list_item.shortname);
+                ListViewItem id = new ListViewItem(list_item.id.ToString());
+                ListViewItem naam = new ListViewItem(list_item.naam.ToString());
+                ListViewItem prijs = new ListViewItem(list_item.prijs.ToString());
+                ListViewItem voorraad = new ListViewItem(list_item.voorraad.ToString());
+                ListViewItem shortname = new ListViewItem(list_item.shortname.ToString());
 
-                list_drankorders.Items.Add(item);
+                list_drankorders.Items.Add(id);
+                list_drankorders.Items.Add(naam);
+                list_drankorders.Items.Add(prijs);
+                list_drankorders.Items.Add(voorraad);
+                list_drankorders.Items.Add(shortname);
             }
         }
     }
