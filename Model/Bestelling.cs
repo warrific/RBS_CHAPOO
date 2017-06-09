@@ -6,27 +6,34 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Bestelling
+    public class Bestelling
     {
-        int id;
-        public List<BestelItem> lijstBestelItem { get; private set; }
+        public int id { get; private set; }
+        public BestelItem items { get; private set; }
         public Tafel tafel { get; private set; }
+        public string status { get; private set; }
         public Werknemer werknemer { get; private set; }
-        DateTime opname;
+        public double totaalprijs { get; private set; }
+        public string betaalmethode { get; private set; }
+        public double fooi { get; private set; }
+        public DateTime opname { get; private set; }
 
-        public Bestelling()
+        public Bestelling(int id_in, BestelItem items_in, Tafel tafel_in, string status_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi, DateTime opname_in)
         {
-
+            id = id_in;
+            items = items_in;
+            tafel = tafel_in;
+            status = status_in;
+            werknemer = werknemer_in;
+            totaalprijs = totaalprijs_in;
+            betaalmethode = betaalmethode_in;
+            opname = opname_in;
         }
 
+        // Dit kan volgensmij ook in de property zelf?
         public int BerekenTotaalPrijs()
         {
             return 0;
-        }
-
-        public void ToonAlleBestelItems()
-        {
-
         }
     }
 }

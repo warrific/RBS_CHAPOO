@@ -22,10 +22,7 @@ namespace UI
 
             InitializeComponent();
 
-            this.Size = new Size(125, 50);
-            this.Text = bestelItem.naam;
-
-            this.Click += new EventHandler(btn_Click);
+            this.Size = new Size(125, 50);            // Uitgecomment omdat het een error gaf, dit word iets anders. bestelitem krijgt de klasse menu item in zich, dus het word iets van bestelItem.MenuItem.naam            //this.Text = bestelItem.naam;            this.Click += new EventHandler(btn_Click);
 
         }
 

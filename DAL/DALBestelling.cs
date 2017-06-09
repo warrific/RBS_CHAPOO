@@ -9,13 +9,89 @@ using Model;
 
 namespace DAL
 {
-    class DALBestelling
+    public class DALBestelling
     {
+        protected SqlConnection dbConnection;
+
+        public DALBestelling()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+
+            dbConnection = new SqlConnection(connString);
+        }
+
+        public List<Model.Bestelling> GetAll()
+        {
+            // List
+            List<Model.Bestelling> bestellingen = new List<Model.Bestelling>();
+
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling", dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            // Items inlezen
+            while (reader.Read())
+            {
+                Model.Bestelling item = Readitem(reader);
+                bestellingen.Add(item);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return bestellingen;
+        }
+
+        public Model.Bestelling GetForID(int bestelId)
+        {
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE order_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", bestelId);
+            SqlDataReader reader = command.ExecuteReader();
+
+            Model.Bestelling item = null;
+
+            if (reader.Read())
+            {
+                item = Readitem(reader);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return item;
+        }
+
+        private Model.Bestelling Readitem(SqlDataReader reader)
+        {
+            // Aanroepen wat nodig is
+            //DALBestelItem getitems = new DALBestelItem();
+            //DALTafel gettafel = new DALTafel();
+            //DALWerknemer getwerknemer = new DALWerknemer();
+
+            int order_id = (int)reader["order_id"];
+            BestelItem items = null;// getitems.GetForID(order_id);                                        // Vraagt aan DALBestelItem.GetForID alle informatie over het item aan de hand van order_id
+            int tafel_id = (int)reader["tafel_id"];
+            Tafel tafel = null;// gettafel.GetForID(tafel_id);                                              // Informatie ophalen aan de hand van DALTafel.GetForID("tafel_id")
+            string status = (string)reader["status"];
+            int werknemer_id = (int)reader["persoon_id"];
+            Werknemer persoon = null;// getwerknemer.GetForID(werknemer_id);                                      // zelfde verhaal als tafel "persoon_id"
+            double totaalprijs = (float)(double)reader["totaal_prijs"];
+            string betaalmethode = (string)reader["betaal_methode"];
+            double fooi = (float)(double)reader["fooi"];
+            DateTime opname = DateTime.Now;
+
+            return new Model.Bestelling(order_id, items, tafel, status, persoon, totaalprijs, betaalmethode, fooi, opname);
+        }
+        /*
         void GetId() { }
         void GetOpname() { }
         void GetBestelItems() { }
         void GetTafel() { }
         void GetWerknemer() { }
         public void GetAllBestellingen() { }
+        */
     }
 }

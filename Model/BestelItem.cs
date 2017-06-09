@@ -28,17 +28,17 @@ namespace Model
         }
 
 
+        public int id { get; private set; }
+        public MenuItem item { get; private set; }
         public int aantal { get; private set; }
-        public string commentaar { get; private set; }
+        public string opmerking { get; private set; }
 
-        public BestelItem()
+        public BestelItem(int id_in, MenuItem item_in, int aantal_in, string opmerking_in)
         {
-            //..
-        }
-
-        public void ToonAlleMenuItems()
-        {
-
+            id = id_in;
+            item = item_in;
+            aantal = aantal_in;
+            opmerking = opmerking_in;
         }
     }
 }
