@@ -74,7 +74,7 @@ namespace DAL
             Categorie categorie = (Categorie)(int)reader["Categorie"];
 
 
-            return new Model.BestelItem(id, naam, prijs, voorraad, categorie);
+            return null;//new Model.BestelItem();
         }
     }
 }

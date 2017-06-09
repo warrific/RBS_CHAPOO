@@ -13,7 +13,6 @@ namespace DAL
 {
     public class DALMenuItem
     {
-        // Standaard info uit mini project, aanpassen
         protected SqlConnection dbConnection;
 
         public DALMenuItem()
@@ -33,7 +32,7 @@ namespace DAL
             SqlCommand command = new SqlCommand("SELECT * FROM MenuItem", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            // Klanten inlezen
+            // Items inlezen
             while (reader.Read())
             {
                 Model.MenuItem item = Readitem(reader);

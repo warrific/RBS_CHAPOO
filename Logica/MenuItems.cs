@@ -16,13 +16,10 @@ namespace Logica
             return DALitem.GetAll();
         }
 
-        public void print_all()
+        public List<Bestelling> make_listbestelling()
         {
-            DALMenuItem DALitem = new DALMenuItem();
-            foreach (Model.MenuItem item in DALitem.GetAll())
-            {
-                //Console.WriteLine("{0} {1} {2} {3}", item.naam, item.prijs, item.voorraad, item.shortname);
-            }
+            DALBestelling DALitem = new DALBestelling();
+            return DALitem.GetAll();
         }
     }
 }

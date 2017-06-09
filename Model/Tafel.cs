@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Tafel
+    public class Tafel
     {
         int id;
         public bool status { get; private set; }
