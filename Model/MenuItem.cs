@@ -14,6 +14,12 @@ namespace Model
         public double prijs { get; private set; }
         public int voorraad { get; private set; }
         public Categorie categorie { get; private set; }
+
+        public string kaartType
+        {
+            get; private set;
+        }
+
         public string shortname { get; private set; }
 
         public MenuItem(int id_in, string naam_in, double prijs_in, int voorraad_in, Categorie categorie_in, string shortname_in)

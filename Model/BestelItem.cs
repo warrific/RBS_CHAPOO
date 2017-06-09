@@ -8,12 +8,19 @@ namespace Model
 {
     public class BestelItem
     {
-        //..
-
         int id;
         double prijs;
         int voorraad;
-        Categorie categorie;
+
+        public Categorie categorie
+        {
+            get; private set;
+        }
+
+        public string kaartType
+        {
+            get; private set;
+        }
 
         public string naam
         {

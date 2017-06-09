@@ -66,6 +66,12 @@
     <Compile Include="ButtonMenuItem.Designer.cs">
       <DependentUpon>ButtonMenuItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="ButtonSelectie.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonSelectie.Designer.cs">
+      <DependentUpon>ButtonSelectie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>

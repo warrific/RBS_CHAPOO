@@ -77,9 +77,9 @@
             // 
             // pnl_main
             // 
-            this.pnl_main.Location = new System.Drawing.Point(0, 208);
+            this.pnl_main.Location = new System.Drawing.Point(0, 392);
             this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(751, 776);
+            this.pnl_main.Size = new System.Drawing.Size(751, 592);
             this.pnl_main.TabIndex = 10;
             // 
             // pnl_optiesbestelling
