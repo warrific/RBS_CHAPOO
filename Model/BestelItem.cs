@@ -8,7 +8,7 @@ namespace Model
 {
     public class BestelItem
     {
-        int id;
+        //int id;
         double prijs;
         int voorraad;
 
