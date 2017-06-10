@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Login.cs" />
+    <Compile Include="Bestellingen.cs" />
     <Compile Include="MenuItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

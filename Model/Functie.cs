@@ -2,6 +2,6 @@
 {
     public enum Functie
     {
-        Bediende, Bar, Eigenaar, Kok
+        Bediening, Bar, Eigenaar, Kok, Sommelier
     }
 }

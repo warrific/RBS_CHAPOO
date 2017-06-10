@@ -33,27 +33,34 @@ namespace DAL
             SqlCommand command =
             new SqlCommand("SELECT * FROM Werknemers", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
+
             List<Werknemer> werknemers = new List<Werknemer>();
+
             while (reader.Read())
             {
                 Werknemer werknemer = ReadWerknemer(reader);
                 werknemers.Add(werknemer);
             }
+
             reader.Close();
             dbConnection.Close();
             return werknemers;
         }
 
-        public Werknemer GetForId(int Id)
+        public Werknemer GetForID(int Id)
         {
             dbConnection.Open();
-            SqlCommand command = new SqlCommand(
-            "SELECT * FROM Werknemers WHERE Id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Medewerker WHERE persoon_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", Id);
             SqlDataReader reader = command.ExecuteReader();
+
             Werknemer werknemer = null;
+
             if (reader.Read())
+            {
                 werknemer = ReadWerknemer(reader);
+            }
+
             reader.Close();
             dbConnection.Close();
             return werknemer;
@@ -62,10 +69,10 @@ namespace DAL
         private Werknemer ReadWerknemer(SqlDataReader reader)
         {
             // haal gegevens van alle velden op
-            int id = (int)reader["id"];
-            Functie functie = (Functie)reader["functie"];
+            int id = (int)reader["persoon_id"];
+            Functie functie = (Functie)Enum.Parse(typeof(Functie), (string)reader["functie"]);
             string naam = (string)reader["naam"];
-
+            
             // return nieuw Werknemer-object
             return new Werknemer(id, functie, naam);
 
