@@ -24,12 +24,12 @@ namespace UI
             panel2.Controls.Clear();
             lblTitel.Text = "Voorraad";
 
-            Button btnToevoegen = new Button();
+            /*Button btnToevoegen = new Button();
             btnToevoegen.Text = "... Toevoegen";
             btnToevoegen.Location = new Point(420, 0);
             btnToevoegen.AutoSize = true;
 
-            panel2.Controls.Add(btnToevoegen);
+            panel2.Controls.Add(btnToevoegen);*/
         }
 
         private void btnMedewerkers_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace UI
         private void btnMenuItems_Click(object sender, EventArgs e)
         {
             panel2.Controls.Clear();
-            lblTitel.Text = "Menu-items";
+            lblTitel.Text = "Menukaarten";
         }
     }
 }

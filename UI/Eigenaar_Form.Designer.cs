@@ -38,7 +38,7 @@
             // lblTitel
             // 
             this.lblTitel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitel.Location = new System.Drawing.Point(306, 116);
+            this.lblTitel.Location = new System.Drawing.Point(300, 122);
             this.lblTitel.Name = "lblTitel";
             this.lblTitel.Size = new System.Drawing.Size(150, 25);
             this.lblTitel.TabIndex = 7;
@@ -47,9 +47,9 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(22, 144);
+            this.panel2.Location = new System.Drawing.Point(22, 160);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(694, 480);
+            this.panel2.Size = new System.Drawing.Size(694, 569);
             this.panel2.TabIndex = 6;
             // 
             // btnVoorraad
@@ -57,7 +57,7 @@
             this.btnVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoorraad.Location = new System.Drawing.Point(22, 70);
             this.btnVoorraad.Name = "btnVoorraad";
-            this.btnVoorraad.Size = new System.Drawing.Size(178, 38);
+            this.btnVoorraad.Size = new System.Drawing.Size(174, 68);
             this.btnVoorraad.TabIndex = 8;
             this.btnVoorraad.Text = "Voorraad";
             this.btnVoorraad.UseVisualStyleBackColor = true;
@@ -79,9 +79,9 @@
             this.btnMenuItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuItems.Location = new System.Drawing.Point(538, 70);
             this.btnMenuItems.Name = "btnMenuItems";
-            this.btnMenuItems.Size = new System.Drawing.Size(178, 38);
+            this.btnMenuItems.Size = new System.Drawing.Size(178, 68);
             this.btnMenuItems.TabIndex = 10;
-            this.btnMenuItems.Text = "Menu-items";
+            this.btnMenuItems.Text = "Menukaarten";
             this.btnMenuItems.UseVisualStyleBackColor = true;
             this.btnMenuItems.Click += new System.EventHandler(this.btnMenuItems_Click);
             // 
