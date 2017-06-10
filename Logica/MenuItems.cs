@@ -15,11 +15,5 @@ namespace Logica
             DALMenuItem DALitem = new DALMenuItem();
             return DALitem.GetAll();
         }
-
-        public List<Bestelling> make_listbestelling()
-        {
-            DALBestelling DALitem = new DALBestelling();
-            return DALitem.GetAll();
-        }
     }
 }

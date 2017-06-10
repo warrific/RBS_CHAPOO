@@ -9,9 +9,8 @@ using Model;
 
 namespace DAL
 {
-    class DALBestelItem
+    public class DALBestelItem
     {
-        // Standaard info uit mini project, aanpassen
         protected SqlConnection dbConnection;
 
         public DALBestelItem()
@@ -28,7 +27,7 @@ namespace DAL
 
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM MenuItem", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling_item", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
             // Klanten inlezen
@@ -44,12 +43,12 @@ namespace DAL
             return items;
         }
 
-        public Model.BestelItem GetForID(int klantId)
+        public Model.BestelItem GetForID(int orderid)
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Klanten WHERE Id = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", klantId);
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling_item WHERE order_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", orderid);
             SqlDataReader reader = command.ExecuteReader();
 
             Model.BestelItem item = null;
@@ -67,14 +66,14 @@ namespace DAL
 
         private Model.BestelItem Readitem(SqlDataReader reader)
         {
-            int id = (int)reader["id"];
-            string naam = (string)reader["Naam"];
-            int prijs = (int)reader["Prijs"];
-            int voorraad = (int)reader["Voorraad"];
-            Categorie categorie = (Categorie)(int)reader["Categorie"];
+            DALMenuItem get_menu_item = new DALMenuItem();
 
+            int id = (int)reader["order_id"];
+            MenuItem menu_item = get_menu_item.GetForID((int)reader["item_id"]);            // Haal item id op uit database, geef deze aan DALMenuItem.GetForID en krijg return
+            int aantal = (int)reader["aantal"];
+            string opmerking = (string)reader["opmerking"];
 
-            return null;//new Model.BestelItem();
+            return new Model.BestelItem(id, menu_item, aantal, opmerking);
         }
     }
 }

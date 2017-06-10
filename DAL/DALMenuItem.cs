@@ -49,7 +49,7 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM MenuItem WHERE Id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM MenuItem WHERE item_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", itemId);
             SqlDataReader reader = command.ExecuteReader();
 

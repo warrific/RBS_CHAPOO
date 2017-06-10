@@ -51,7 +51,7 @@ namespace Model
 
         public bool Setfunctie(Functie in_functie)
         {
-            if ((in_functie == Functie.Bediende || in_functie == Functie.Bar || in_functie == Functie.Eigenaar || in_functie == Functie.Kok))
+            if ((in_functie == Functie.Bediening || in_functie == Functie.Bar || in_functie == Functie.Eigenaar || in_functie == Functie.Kok || in_functie == Functie.Sommelier))
             {
                 this.functie = in_functie;
                 return true;

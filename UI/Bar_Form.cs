@@ -38,23 +38,30 @@ namespace UI
             }
             */
 
-            MenuItems menuitems = new MenuItems();
+            Bestellingen bestellingen = new Bestellingen();
 
-            List<Model.Bestelling> lijst = new List<Model.Bestelling>();
-            lijst = menuitems.make_listbestelling();
+            List<Model.Bestelling> bestellingen_lijst = new List<Model.Bestelling>();
+            bestellingen_lijst = bestellingen.make_listbestelling();
 
-            foreach (Model.Bestelling list_item in lijst)
+            List<Model.Bestelling> dranken_lijst = new List<Model.Bestelling>();
+            dranken_lijst = bestellingen.make_listbestelling_dranken(bestellingen_lijst);
+
+            foreach (Model.Bestelling list_item in bestellingen_lijst)
             {
                 ListViewItem id = new ListViewItem(list_item.id.ToString());
+                ListViewItem itemnaam = new ListViewItem(list_item.bestel_items.item.naam.ToString());
                 ListViewItem status = new ListViewItem(list_item.status.ToString());
                 ListViewItem prijs = new ListViewItem(("€" + (list_item.totaalprijs)).ToString());
                 ListViewItem betaalmethode = new ListViewItem(list_item.betaalmethode.ToString());
                 ListViewItem fooi = new ListViewItem(list_item.fooi.ToString());
+                ListViewItem werknemer = new ListViewItem(list_item.werknemer.naam.ToString());
 
                 list_drankorders.Items.Add(id);
                 list_drankorders.Items.Add(prijs);
                 list_drankorders.Items.Add(betaalmethode);
                 list_drankorders.Items.Add(fooi);
+                list_drankorders.Items.Add(itemnaam);
+                list_drankorders.Items.Add(werknemer);
             }
         }
     }
