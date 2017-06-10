@@ -8,24 +8,30 @@ namespace Model
 {
     public class BestelItem
     {
+        //..
 
         int id;
-        string naam;
         double prijs;
         int voorraad;
         Categorie categorie;
+       
+
+        public string naam
+        {
+            get; private set;
+        }
 
 
         public int aantal { get; private set; }
         public string commentaar { get; private set; }
 
-        public BestelItem(int id_in, string naam_in, double prijs_in, int voorraad_in, Categorie categorie_in)
+        public BestelItem(int inid, string innaam, double inprijs, int invoorraad, Categorie incategorie)
         {
-            id = id_in;
-            naam = naam_in;
-            prijs = prijs_in;
-            voorraad = voorraad_in;
-            categorie = categorie_in;
+            id = inid;
+            naam = innaam;
+            prijs = inprijs;
+            voorraad = invoorraad;
+            categorie = incategorie;
         }
 
         public void ToonAlleMenuItems()

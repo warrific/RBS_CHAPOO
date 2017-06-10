@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Bestelling
+    public class Bestelling
     {
         int id;
         public List<BestelItem> lijstBestelItem { get; private set; }

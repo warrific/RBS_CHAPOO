@@ -9,10 +9,77 @@ using Model;
 
 namespace DAL
 {
-    class DALTafel
+    public class DALTafel
     {
-        void GetId() { }
-        void GetStatus() { }
-        public void GetAllTafels() { }
+       // void GetId() { }
+       // void GetStatus() { }
+       // public void GetAllTafels() { }
+
+
+        protected SqlConnection dbConnection;
+
+        public DALTafel()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+
+            dbConnection = new SqlConnection(connString);
+        }
+
+        public List<Tafel> GetAll()
+        {
+            // List
+            List<Tafel> restaurantoverzicht = new List<Tafel>();
+          
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT Tafel.tafel_id, Tafel.status AS tafelstatus, Bestelling.status AS bestellingstatus FROM Tafel JOIN Bestelling on Tafel.tafel_id = Bestelling.tafel_id", dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            //  inlezen
+            while (reader.Read())
+            {
+
+                Model.Tafel tafeloverzicht = new Model.Tafel();
+                Model.Bestelling bestellingsoverzicht = new Model.Bestelling();
+                tafeloverzicht.Id = reader.GetInt32(0);
+               // tafeloverzicht.Status = reader.GetString(1);
+
+                restaurantoverzicht.Add(tafeloverzicht);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return restaurantoverzicht;
+        }
+
+        public Model.Tafel GetForID(int Id)
+        {
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE Id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", Id);
+            SqlDataReader reader = command.ExecuteReader();
+
+            Model.Tafel item = null;
+
+            if (reader.Read())
+            {
+                item = Readitem(reader);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return item;
+        }
+
+        private Model.Tafel Readitem(SqlDataReader reader)
+        {
+            int Id = (int)reader["id"];
+            TafelStatus status = (TafelStatus)(int)reader["status"];
+
+            return new Tafel(Id, status);
+        }
     }
 }
