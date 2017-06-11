@@ -11,6 +11,9 @@ namespace DAL
 {
     public class DALBestelling
     {
+        // List
+        public List<Bestelling> bestellingen = new List<Bestelling>();
+
         protected SqlConnection dbConnection;
 
         public DALBestelling()
@@ -22,9 +25,6 @@ namespace DAL
 
         public List<Bestelling> GetAll()
         {
-            // List
-            List<Bestelling> bestellingen = new List<Bestelling>();
-
             // Connectie opzetten
             dbConnection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Bestelling", dbConnection);
@@ -72,9 +72,10 @@ namespace DAL
             DALBestelItem getitems = new DALBestelItem();
             DALTafel gettafel = new DALTafel();
             DALWerknemer getwerknemer = new DALWerknemer();
+            List<BestelItem> items_list = new List<BestelItem>();
 
             int order_id = (int)reader["order_id"];
-            BestelItem items = getitems.GetForID(order_id);                                        // Vraagt aan DALBestelItem.GetForID alle informatie over het item aan de hand van order_id
+            items_list = getitems.GetAllForID(order_id);                                        // Vraagt aan DALBestelItem.GetForID alle informatie over het item aan de hand van order_id
             int tafel_id = (int)reader["tafel_id"];
             Tafel tafel = gettafel.GetForID(tafel_id);                                              // Informatie ophalen aan de hand van DALTafel.GetForID("tafel_id")
             string status = (string)reader["status"];
@@ -85,7 +86,7 @@ namespace DAL
             double fooi = (float)(double)reader["fooi"];
             DateTime opname = DateTime.Now;
 
-            return new Bestelling(order_id, items, tafel, status, persoon, totaalprijs, betaalmethode, fooi, opname);
+            return new Bestelling(order_id, items_list, tafel, status, persoon, totaalprijs, betaalmethode, fooi, opname);
         }
         /*
         void GetId() { }

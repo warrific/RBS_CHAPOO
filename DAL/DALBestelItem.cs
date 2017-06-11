@@ -64,6 +64,30 @@ namespace DAL
             return item;
         }
 
+        public List<BestelItem> GetAllForID(int orderid)
+        {
+            // List
+            List<Model.BestelItem> items = new List<Model.BestelItem>();
+
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling_item WHERE order_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", orderid);
+            SqlDataReader reader = command.ExecuteReader();
+
+            // Klanten inlezen
+            while (reader.Read())
+            {
+                Model.BestelItem item = Readitem(reader);
+                items.Add(item);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return items;
+        }
+
         private Model.BestelItem Readitem(SqlDataReader reader)
         {
             DALMenuItem get_menu_item = new DALMenuItem();
