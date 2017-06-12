@@ -31,7 +31,7 @@ namespace DAL
         {
             dbConnection.Open();
             SqlCommand command =
-            new SqlCommand("SELECT * FROM Werknemers", dbConnection);
+            new SqlCommand("SELECT * FROM Medewerker", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
             List<Werknemer> werknemers = new List<Werknemer>();

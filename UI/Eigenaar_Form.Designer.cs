@@ -28,141 +28,246 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitel = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listViewOverzicht = new System.Windows.Forms.ListView();
-            this.btnVoorraad = new System.Windows.Forms.Button();
-            this.btnMedewerkers = new System.Windows.Forms.Button();
-            this.btnMenuKaarten = new System.Windows.Forms.Button();
-            this.panel2.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageVoorraad = new System.Windows.Forms.TabPage();
+            this.btnVerlaag = new System.Windows.Forms.Button();
+            this.btnVerhoog = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.listViewVoorraad = new System.Windows.Forms.ListView();
+            this.tabPageMedewerkers = new System.Windows.Forms.TabPage();
+            this.btnVerwMedw = new System.Windows.Forms.Button();
+            this.btnWijzMedw = new System.Windows.Forms.Button();
+            this.btnToevMedw = new System.Windows.Forms.Button();
+            this.listViewMedewerkers = new System.Windows.Forms.ListView();
+            this.tabPageMenukaarten = new System.Windows.Forms.TabPage();
+            this.btnVerwMenukaart = new System.Windows.Forms.Button();
+            this.btnWijzMenukaart = new System.Windows.Forms.Button();
+            this.btnToevMenukaart = new System.Windows.Forms.Button();
+            this.treeViewMenu = new System.Windows.Forms.TreeView();
+            this.tabControl1.SuspendLayout();
+            this.tabPageVoorraad.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabPageMedewerkers.SuspendLayout();
+            this.tabPageMenukaarten.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblTitel
+            // tabControl1
             // 
-            this.lblTitel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitel.Location = new System.Drawing.Point(302, 132);
-            this.lblTitel.Name = "lblTitel";
-            this.lblTitel.Size = new System.Drawing.Size(150, 25);
-            this.lblTitel.TabIndex = 7;
-            this.lblTitel.Text = "Overzicht";
-            this.lblTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tabControl1.Controls.Add(this.tabPageVoorraad);
+            this.tabControl1.Controls.Add(this.tabPageMedewerkers);
+            this.tabControl1.Controls.Add(this.tabPageMenukaarten);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.ItemSize = new System.Drawing.Size(100, 50);
+            this.tabControl1.Location = new System.Drawing.Point(0, 63);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(754, 678);
+            this.tabControl1.TabIndex = 6;
             // 
-            // panel2
+            // tabPageVoorraad
             // 
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.listViewOverzicht);
-            this.panel2.Location = new System.Drawing.Point(22, 160);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(694, 569);
-            this.panel2.TabIndex = 6;
+            this.tabPageVoorraad.Controls.Add(this.btnVerlaag);
+            this.tabPageVoorraad.Controls.Add(this.btnVerhoog);
+            this.tabPageVoorraad.Controls.Add(this.numericUpDown1);
+            this.tabPageVoorraad.Controls.Add(this.listViewVoorraad);
+            this.tabPageVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageVoorraad.Location = new System.Drawing.Point(4, 54);
+            this.tabPageVoorraad.Name = "tabPageVoorraad";
+            this.tabPageVoorraad.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageVoorraad.Size = new System.Drawing.Size(746, 620);
+            this.tabPageVoorraad.TabIndex = 0;
+            this.tabPageVoorraad.Text = "Voorraad";
+            this.tabPageVoorraad.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnVerlaag
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(513, 229);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 107);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Verwijderen";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnVerlaag.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerlaag.Location = new System.Drawing.Point(558, 155);
+            this.btnVerlaag.Name = "btnVerlaag";
+            this.btnVerlaag.Size = new System.Drawing.Size(178, 107);
+            this.btnVerlaag.TabIndex = 16;
+            this.btnVerlaag.Text = "Verlaag met aangegeven waarde";
+            this.btnVerlaag.UseVisualStyleBackColor = true;
+            this.btnVerlaag.Click += new System.EventHandler(this.btnVerlaag_Click);
             // 
-            // button2
+            // btnVerhoog
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(513, 116);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(178, 107);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Wijzigen";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnVerhoog.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerhoog.Location = new System.Drawing.Point(558, 42);
+            this.btnVerhoog.Name = "btnVerhoog";
+            this.btnVerhoog.Size = new System.Drawing.Size(178, 107);
+            this.btnVerhoog.TabIndex = 14;
+            this.btnVerhoog.Text = "Verhoog met aangegeven waarde";
+            this.btnVerhoog.UseVisualStyleBackColor = true;
+            this.btnVerhoog.Click += new System.EventHandler(this.btnVerhoog_Click);
             // 
-            // button1
+            // numericUpDown1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(513, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 107);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Toevoegen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(558, 6);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(178, 30);
+            this.numericUpDown1.TabIndex = 2;
             // 
-            // listViewOverzicht
+            // listViewVoorraad
             // 
-            this.listViewOverzicht.Location = new System.Drawing.Point(3, 3);
-            this.listViewOverzicht.Name = "listViewOverzicht";
-            this.listViewOverzicht.Size = new System.Drawing.Size(505, 563);
-            this.listViewOverzicht.TabIndex = 0;
-            this.listViewOverzicht.UseCompatibleStateImageBehavior = false;
+            this.listViewVoorraad.CheckBoxes = true;
+            this.listViewVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewVoorraad.Location = new System.Drawing.Point(0, 0);
+            this.listViewVoorraad.Name = "listViewVoorraad";
+            this.listViewVoorraad.Size = new System.Drawing.Size(552, 527);
+            this.listViewVoorraad.TabIndex = 1;
+            this.listViewVoorraad.UseCompatibleStateImageBehavior = false;
             // 
-            // btnVoorraad
+            // tabPageMedewerkers
             // 
-            this.btnVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoorraad.Location = new System.Drawing.Point(25, 70);
-            this.btnVoorraad.Name = "btnVoorraad";
-            this.btnVoorraad.Size = new System.Drawing.Size(174, 68);
-            this.btnVoorraad.TabIndex = 8;
-            this.btnVoorraad.Text = "Voorraad";
-            this.btnVoorraad.UseVisualStyleBackColor = true;
-            this.btnVoorraad.Click += new System.EventHandler(this.btnVoorraad_Click);
+            this.tabPageMedewerkers.Controls.Add(this.btnVerwMedw);
+            this.tabPageMedewerkers.Controls.Add(this.btnWijzMedw);
+            this.tabPageMedewerkers.Controls.Add(this.btnToevMedw);
+            this.tabPageMedewerkers.Controls.Add(this.listViewMedewerkers);
+            this.tabPageMedewerkers.Location = new System.Drawing.Point(4, 54);
+            this.tabPageMedewerkers.Name = "tabPageMedewerkers";
+            this.tabPageMedewerkers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMedewerkers.Size = new System.Drawing.Size(746, 620);
+            this.tabPageMedewerkers.TabIndex = 1;
+            this.tabPageMedewerkers.Text = "Medewerkers";
+            this.tabPageMedewerkers.UseVisualStyleBackColor = true;
             // 
-            // btnMedewerkers
+            // btnVerwMedw
             // 
-            this.btnMedewerkers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMedewerkers.Location = new System.Drawing.Point(287, 70);
-            this.btnMedewerkers.Name = "btnMedewerkers";
-            this.btnMedewerkers.Size = new System.Drawing.Size(178, 59);
-            this.btnMedewerkers.TabIndex = 9;
-            this.btnMedewerkers.Text = "Medewerkers";
-            this.btnMedewerkers.UseVisualStyleBackColor = true;
-            this.btnMedewerkers.Click += new System.EventHandler(this.btnMedewerkers_Click);
+            this.btnVerwMedw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerwMedw.Location = new System.Drawing.Point(558, 232);
+            this.btnVerwMedw.Name = "btnVerwMedw";
+            this.btnVerwMedw.Size = new System.Drawing.Size(178, 107);
+            this.btnVerwMedw.TabIndex = 15;
+            this.btnVerwMedw.Text = "Verwijderen";
+            this.btnVerwMedw.UseVisualStyleBackColor = true;
+            this.btnVerwMedw.Click += new System.EventHandler(this.btnVerwMedw_Click);
             // 
-            // btnMenuKaarten
+            // btnWijzMedw
             // 
-            this.btnMenuKaarten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuKaarten.Location = new System.Drawing.Point(535, 70);
-            this.btnMenuKaarten.Name = "btnMenuKaarten";
-            this.btnMenuKaarten.Size = new System.Drawing.Size(178, 68);
-            this.btnMenuKaarten.TabIndex = 10;
-            this.btnMenuKaarten.Text = "Menukaarten";
-            this.btnMenuKaarten.UseVisualStyleBackColor = true;
-            this.btnMenuKaarten.Click += new System.EventHandler(this.btnMenuKaarten_Click);
+            this.btnWijzMedw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWijzMedw.Location = new System.Drawing.Point(558, 119);
+            this.btnWijzMedw.Name = "btnWijzMedw";
+            this.btnWijzMedw.Size = new System.Drawing.Size(178, 107);
+            this.btnWijzMedw.TabIndex = 14;
+            this.btnWijzMedw.Text = "Wijzigen";
+            this.btnWijzMedw.UseVisualStyleBackColor = true;
+            this.btnWijzMedw.Click += new System.EventHandler(this.btnWijzMedw_Click);
             // 
-            // Eigenaar_Form
+            // btnToevMedw
+            // 
+            this.btnToevMedw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToevMedw.Location = new System.Drawing.Point(558, 6);
+            this.btnToevMedw.Name = "btnToevMedw";
+            this.btnToevMedw.Size = new System.Drawing.Size(178, 107);
+            this.btnToevMedw.TabIndex = 13;
+            this.btnToevMedw.Text = "Toevoegen";
+            this.btnToevMedw.UseVisualStyleBackColor = true;
+            this.btnToevMedw.Click += new System.EventHandler(this.btnToevMedw_Click);
+            // 
+            // listViewMedewerkers
+            // 
+            this.listViewMedewerkers.CheckBoxes = true;
+            this.listViewMedewerkers.Location = new System.Drawing.Point(0, 0);
+            this.listViewMedewerkers.Name = "listViewMedewerkers";
+            this.listViewMedewerkers.Size = new System.Drawing.Size(552, 506);
+            this.listViewMedewerkers.TabIndex = 2;
+            this.listViewMedewerkers.UseCompatibleStateImageBehavior = false;
+            // 
+            // tabPageMenukaarten
+            // 
+            this.tabPageMenukaarten.Controls.Add(this.btnVerwMenukaart);
+            this.tabPageMenukaarten.Controls.Add(this.btnWijzMenukaart);
+            this.tabPageMenukaarten.Controls.Add(this.btnToevMenukaart);
+            this.tabPageMenukaarten.Controls.Add(this.treeViewMenu);
+            this.tabPageMenukaarten.Location = new System.Drawing.Point(4, 54);
+            this.tabPageMenukaarten.Name = "tabPageMenukaarten";
+            this.tabPageMenukaarten.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMenukaarten.Size = new System.Drawing.Size(746, 620);
+            this.tabPageMenukaarten.TabIndex = 2;
+            this.tabPageMenukaarten.Text = "Menukaarten";
+            this.tabPageMenukaarten.UseVisualStyleBackColor = true;
+            // 
+            // btnVerwMenukaart
+            // 
+            this.btnVerwMenukaart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerwMenukaart.Location = new System.Drawing.Point(558, 232);
+            this.btnVerwMenukaart.Name = "btnVerwMenukaart";
+            this.btnVerwMenukaart.Size = new System.Drawing.Size(178, 107);
+            this.btnVerwMenukaart.TabIndex = 14;
+            this.btnVerwMenukaart.Text = "Verwijderen";
+            this.btnVerwMenukaart.UseVisualStyleBackColor = true;
+            this.btnVerwMenukaart.Click += new System.EventHandler(this.btnVerwMenukaart_Click);
+            // 
+            // btnWijzMenukaart
+            // 
+            this.btnWijzMenukaart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWijzMenukaart.Location = new System.Drawing.Point(558, 119);
+            this.btnWijzMenukaart.Name = "btnWijzMenukaart";
+            this.btnWijzMenukaart.Size = new System.Drawing.Size(178, 107);
+            this.btnWijzMenukaart.TabIndex = 13;
+            this.btnWijzMenukaart.Text = "Wijzigen";
+            this.btnWijzMenukaart.UseVisualStyleBackColor = true;
+            this.btnWijzMenukaart.Click += new System.EventHandler(this.btnWijzMenukaart_Click);
+            // 
+            // btnToevMenukaart
+            // 
+            this.btnToevMenukaart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToevMenukaart.Location = new System.Drawing.Point(558, 6);
+            this.btnToevMenukaart.Name = "btnToevMenukaart";
+            this.btnToevMenukaart.Size = new System.Drawing.Size(178, 107);
+            this.btnToevMenukaart.TabIndex = 12;
+            this.btnToevMenukaart.Text = "Toevoegen";
+            this.btnToevMenukaart.UseVisualStyleBackColor = true;
+            this.btnToevMenukaart.Click += new System.EventHandler(this.btnToevMenukaart_Click);
+            // 
+            // treeViewMenu
+            // 
+            this.treeViewMenu.CheckBoxes = true;
+            this.treeViewMenu.Location = new System.Drawing.Point(0, 0);
+            this.treeViewMenu.Name = "treeViewMenu";
+            this.treeViewMenu.Size = new System.Drawing.Size(552, 494);
+            this.treeViewMenu.TabIndex = 0;
+            // 
+            // Eigenaar_Form_v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 741);
-            this.Controls.Add(this.btnMenuKaarten);
-            this.Controls.Add(this.btnMedewerkers);
-            this.Controls.Add(this.btnVoorraad);
-            this.Controls.Add(this.lblTitel);
-            this.Controls.Add(this.panel2);
-            this.Name = "Eigenaar_Form";
-            this.Text = "Eigenaar_Form";
-            this.Controls.SetChildIndex(this.panel2, 0);
-            this.Controls.SetChildIndex(this.lblTitel, 0);
-            this.Controls.SetChildIndex(this.btnVoorraad, 0);
-            this.Controls.SetChildIndex(this.btnMedewerkers, 0);
-            this.Controls.SetChildIndex(this.btnMenuKaarten, 0);
-            this.panel2.ResumeLayout(false);
+            this.Controls.Add(this.tabControl1);
+            this.Name = "Eigenaar_Form_v2";
+            this.Controls.SetChildIndex(this.tabControl1, 0);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPageVoorraad.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabPageMedewerkers.ResumeLayout(false);
+            this.tabPageMenukaarten.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblTitel;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnVoorraad;
-        private System.Windows.Forms.Button btnMedewerkers;
-        private System.Windows.Forms.Button btnMenuKaarten;
-        private System.Windows.Forms.ListView listViewOverzicht;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageVoorraad;
+        private System.Windows.Forms.TabPage tabPageMedewerkers;
+        private System.Windows.Forms.TabPage tabPageMenukaarten;
+        private System.Windows.Forms.ListView listViewVoorraad;
+        private System.Windows.Forms.ListView listViewMedewerkers;
+        private System.Windows.Forms.TreeView treeViewMenu;
+        private System.Windows.Forms.Button btnToevMenukaart;
+        private System.Windows.Forms.Button btnWijzMenukaart;
+        private System.Windows.Forms.Button btnVerwMenukaart;
+        private System.Windows.Forms.Button btnVerwMedw;
+        private System.Windows.Forms.Button btnWijzMedw;
+        private System.Windows.Forms.Button btnToevMedw;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnVerlaag;
+        private System.Windows.Forms.Button btnVerhoog;
     }
 }
