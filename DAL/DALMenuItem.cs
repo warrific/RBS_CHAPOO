@@ -72,7 +72,7 @@ namespace DAL
             string naam = (string)reader["naam"];
             int voorraad = (int)reader["voorraad"];
             double prijs = (float)(double)reader["prijs"];
-            Categorie categorie = (Categorie)(int)reader["category"];
+            int categorie = (int)reader["category"];
             string shortname = (string)reader["shortname"];
 
             return new Model.MenuItem(id, naam, prijs, voorraad, categorie, shortname);

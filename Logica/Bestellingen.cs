@@ -10,28 +10,60 @@ namespace Logica
 {
     public class Bestellingen
     {
-        public List<Bestelling> make_listbestelling_dranken(List<Bestelling> bestellingen_lijst)
+        public List<Bestelling_dranken> dranken_lijst = new List<Bestelling_dranken>();
+
+        public List<Bestelling_dranken> make_listbestelling_dranken()
         {
-            List<Model.Bestelling> dranken_lijst = new List<Model.Bestelling>();
+            int id = 0;
+            int tafel_nummer = 0;
+            int aantal = 0;
+            string order = "";
+            string opmerking = "";
+            string bediening = "";
+
+            DALBestelling DALitem = new DALBestelling();
 
             int i = 0;
-            foreach (Model.Bestelling list_item in bestellingen_lijst)
+            foreach (Model.Bestelling list_item in make_listbestelling())
             {
-                if (list_item.bestel_items.categorie == Categorie.Drank)
+                for (int m = 0; m < list_item.bestel_items.Count; m++)
                 {
-                    dranken_lijst[i] = bestellingen_lijst[i];
+                    id = bestellingen_lijst[i].id;
+                    tafel_nummer = list_item.tafel.tafel_id;
+                    bediening = list_item.werknemer.naam;
+                    aantal = list_item.bestel_items[m].aantal;
+                    order = list_item.bestel_items[m].item.naam;
+                    opmerking = list_item.bestel_items[m].opmerking;
+
+                    if (list_item.bestel_items[m].item.categorie == Categorie.Drank || list_item.bestel_items[m].item.categorie == Categorie.Alcohol)
+                    {
+                        dranken_lijst.Add(new Bestelling_dranken(id, tafel_nummer, aantal, order, opmerking, bediening));
+                    }
                 }
+
+                
+                
                 i++;
             }
-
             return dranken_lijst;
         }
+
+        public List<Bestelling> bestellingen_lijst = new List<Bestelling>();
 
         public List<Bestelling> make_listbestelling()
         {
             // Roept DALitem.GetAll aan
             DALBestelling DALitem = new DALBestelling();
-            return DALitem.GetAll();
+
+            if(!DALitem.bestellingen.Any())
+            {
+                bestellingen_lijst = DALitem.GetAll();
+                return bestellingen_lijst;
+            }
+            else
+            {
+                return bestellingen_lijst;
+            }
         }
     }
 }

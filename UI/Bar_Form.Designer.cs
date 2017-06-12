@@ -30,7 +30,8 @@
         {
             this.btn_bestellingen = new System.Windows.Forms.Button();
             this.btn_afrekenen = new System.Windows.Forms.Button();
-            this.list_drankorders = new System.Windows.Forms.ListView();
+            this.data_dranken = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.data_dranken)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_bestellingen
@@ -51,26 +52,31 @@
             this.btn_afrekenen.Text = "Afrekenen";
             this.btn_afrekenen.UseVisualStyleBackColor = true;
             // 
-            // list_drankorders
+            // data_dranken
             // 
-            this.list_drankorders.Location = new System.Drawing.Point(12, 136);
-            this.list_drankorders.Name = "list_drankorders";
-            this.list_drankorders.Size = new System.Drawing.Size(725, 725);
-            this.list_drankorders.TabIndex = 8;
-            this.list_drankorders.UseCompatibleStateImageBehavior = false;
+            this.data_dranken.AllowUserToOrderColumns = true;
+            this.data_dranken.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_dranken.Location = new System.Drawing.Point(22, 144);
+            this.data_dranken.Margin = new System.Windows.Forms.Padding(2);
+            this.data_dranken.Name = "data_dranken";
+            this.data_dranken.RowTemplate.Height = 24;
+            this.data_dranken.Size = new System.Drawing.Size(700, 610);
+            this.data_dranken.TabIndex = 9;
             // 
             // Bar_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 873);
-            this.Controls.Add(this.list_drankorders);
+            this.Controls.Add(this.data_dranken);
             this.Controls.Add(this.btn_afrekenen);
             this.Controls.Add(this.btn_bestellingen);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Bar_Form";
             this.Text = "Bar";
             this.Controls.SetChildIndex(this.btn_bestellingen, 0);
             this.Controls.SetChildIndex(this.btn_afrekenen, 0);
-            this.Controls.SetChildIndex(this.list_drankorders, 0);
+            this.Controls.SetChildIndex(this.data_dranken, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.data_dranken)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -79,6 +85,6 @@
 
         private System.Windows.Forms.Button btn_bestellingen;
         private System.Windows.Forms.Button btn_afrekenen;
-        private System.Windows.Forms.ListView list_drankorders;
+        private System.Windows.Forms.DataGridView data_dranken;
     }
 }
