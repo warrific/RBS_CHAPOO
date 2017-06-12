@@ -9,11 +9,11 @@ namespace Model
     public class Bestelling_dranken
     {
         public int id { get; set; }
+        public int tafel_nummer { get; set; }
         public int aantal { get; set; }
         public string order { get; set; }
         public string opmerking { get; set; }
         public string bediening { get; set; }
-        public int tafel_nummer { get; set; }
 
         public Bestelling_dranken(int id_in, int tafel_nummer_in, int aantal_in, string order_in, string opmerking_in, string bediening_in)
         {

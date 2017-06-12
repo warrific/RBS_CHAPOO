@@ -14,42 +14,38 @@ namespace Logica
 
         public List<Bestelling_dranken> make_listbestelling_dranken()
         {
+            int id = 0;
+            int tafel_nummer = 0;
+            int aantal = 0;
+            string order = "";
+            string opmerking = "";
+            string bediening = "";
+
             DALBestelling DALitem = new DALBestelling();
 
             int i = 0;
             foreach (Model.Bestelling list_item in make_listbestelling())
             {
-                dranken_lijst[i].id = bestellingen_lijst[i].id;
-                dranken_lijst[i].tafel_nummer = list_item.tafel.tafel_id;
                 for (int m = 0; m < list_item.bestel_items.Count; m++)
                 {
-                    dranken_lijst[i].aantal = list_item.bestel_items[m].aantal;
-                    dranken_lijst[i].order = list_item.bestel_items[m].item.naam;
-                    dranken_lijst[i].opmerking = list_item.bestel_items[m].opmerking;
+                    id = bestellingen_lijst[i].id;
+                    tafel_nummer = list_item.tafel.tafel_id;
+                    bediening = list_item.werknemer.naam;
+                    aantal = list_item.bestel_items[m].aantal;
+                    order = list_item.bestel_items[m].item.naam;
+                    opmerking = list_item.bestel_items[m].opmerking;
+
+                    if (list_item.bestel_items[m].item.categorie == Categorie.Drank || list_item.bestel_items[m].item.categorie == Categorie.Alcohol)
+                    {
+                        dranken_lijst.Add(new Bestelling_dranken(id, tafel_nummer, aantal, order, opmerking, bediening));
+                    }
                 }
 
-                dranken_lijst[i].bediening = list_item.werknemer.naam;
+                
+                
                 i++;
             }
-
-                /*
-                int i = 0;
-                foreach (Model.Bestelling list_item in make_listbestelling())
-                {
-                    for (int m = 0; m < list_item.bestel_items.Count; m++)
-                    {
-                        if (list_item.bestel_items[m].item.categorie == Categorie.Drank)
-                        {
-                            dranken_lijst[i] = DALitem.bestellingen[i];
-                        }
-                    }
-
-
-                    i++;
-                }
-                */
-
-                return dranken_lijst;
+            return dranken_lijst;
         }
 
         public List<Bestelling> bestellingen_lijst = new List<Bestelling>();
