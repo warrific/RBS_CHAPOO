@@ -11,7 +11,7 @@ namespace Model
         public int id { get; private set; }
         public List<BestelItem> bestel_items { get; private set; }
         public Tafel tafel { get; private set; }
-        public string status { get; private set; }
+        public string status { get; private set; }                               // Word enum
         public Werknemer werknemer { get; private set; }
         public double totaalprijs { get; private set; }
         public string betaalmethode { get; private set; }

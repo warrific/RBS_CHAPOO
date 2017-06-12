@@ -12,13 +12,15 @@ namespace Model
         public MenuItem item { get; private set; }
         public int aantal { get; private set; }
         public string opmerking { get; private set; }
+        public string status { get; private set; }                       // Word enum
 
-        public BestelItem(int id_in, MenuItem item_in, int aantal_in, string opmerking_in)
+        public BestelItem(int id_in, MenuItem item_in, int aantal_in, string opmerking_in, string status_in)
         {
             id = id_in;
             item = item_in;
             aantal = aantal_in;
             opmerking = opmerking_in;
+            status = status_in;
         }
     }
 }

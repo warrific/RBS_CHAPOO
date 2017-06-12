@@ -14,8 +14,9 @@ namespace Model
         public string order { get; set; }
         public string opmerking { get; set; }
         public string bediening { get; set; }
+        public string status { get; set; }
 
-        public Bestelling_dranken(int id_in, int tafel_nummer_in, int aantal_in, string order_in, string opmerking_in, string bediening_in)
+        public Bestelling_dranken(int id_in, int tafel_nummer_in, int aantal_in, string order_in, string opmerking_in, string bediening_in, string status_in)
         {
             id = id_in;
             aantal = aantal_in;
@@ -23,6 +24,7 @@ namespace Model
             opmerking = opmerking_in;
             bediening = bediening_in;
             tafel_nummer = tafel_nummer_in;
+            status = status_in;
         }
 
         // Dit kan volgensmij ook in de property zelf?

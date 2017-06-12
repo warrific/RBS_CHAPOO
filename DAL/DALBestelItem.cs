@@ -23,7 +23,7 @@ namespace DAL
         public List<BestelItem> GetAll()
         {
             // List
-            List<Model.BestelItem> items = new List<Model.BestelItem>();
+            List<BestelItem> items = new List<BestelItem>();
 
             // Connectie opzetten
             dbConnection.Open();
@@ -33,7 +33,7 @@ namespace DAL
             // Klanten inlezen
             while (reader.Read())
             {
-                Model.BestelItem item = Readitem(reader);
+                BestelItem item = Readitem(reader);
                 items.Add(item);
             }
 
@@ -43,7 +43,7 @@ namespace DAL
             return items;
         }
 
-        public Model.BestelItem GetForID(int orderid)
+        public BestelItem GetForID(int orderid)
         {
             // Connectie opzetten
             dbConnection.Open();
@@ -51,7 +51,7 @@ namespace DAL
             command.Parameters.AddWithValue("@Id", orderid);
             SqlDataReader reader = command.ExecuteReader();
 
-            Model.BestelItem item = null;
+            BestelItem item = null;
 
             if (reader.Read())
             {
@@ -67,7 +67,7 @@ namespace DAL
         public List<BestelItem> GetAllForID(int orderid)
         {
             // List
-            List<Model.BestelItem> items = new List<Model.BestelItem>();
+            List<BestelItem> items = new List<BestelItem>();
 
             // Connectie opzetten
             dbConnection.Open();
@@ -88,7 +88,7 @@ namespace DAL
             return items;
         }
 
-        private Model.BestelItem Readitem(SqlDataReader reader)
+        private BestelItem Readitem(SqlDataReader reader)
         {
             DALMenuItem get_menu_item = new DALMenuItem();
 
@@ -96,8 +96,9 @@ namespace DAL
             MenuItem menu_item = get_menu_item.GetForID((int)reader["item_id"]);            // Haal item id op uit database, geef deze aan DALMenuItem.GetForID en krijg return
             int aantal = (int)reader["aantal"];
             string opmerking = (string)reader["opmerking"];
+            string status = (string)reader["status"];
 
-            return new Model.BestelItem(id, menu_item, aantal, opmerking);
+            return new BestelItem(id, menu_item, aantal, opmerking, status);
         }
     }
 }

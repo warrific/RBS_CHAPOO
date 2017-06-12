@@ -9,7 +9,7 @@ namespace Model
     public class Tafel
     {
         public int tafel_id { get; private set; }
-        public string status { get; private set; }
+        public string status { get; private set; }          // Word enum
 
         public Tafel(int tafel_id_in, string status_in)
         {
