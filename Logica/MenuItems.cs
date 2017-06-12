@@ -15,5 +15,10 @@ namespace Logica
             DALMenuItem DALitem = new DALMenuItem();
             return DALitem.GetAll();
         }
+        public void VerhoogVoorraad(int aantal)
+        {
+            DALMenuItem DALitem = new DALMenuItem();
+            
+        }
     }
 }
