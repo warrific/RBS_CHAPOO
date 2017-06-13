@@ -23,11 +23,8 @@ namespace UI
         int fntSize = 15;
         int width = 150;
 
-        public Eigenaar_Form()
+        private void RefreshVoorraad()
         {
-            InitializeComponent();
-
-            ///Tab1 Voorraad
             listViewVoorraad.Clear();
             List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); //maak list aan
             MenuItems menuItems = new MenuItems(); //maak object aan
@@ -48,6 +45,14 @@ namespace UI
 
                 listViewVoorraad.Items.Add(li);
             }
+        }
+
+        public Eigenaar_Form()
+        {
+            InitializeComponent();
+
+            ///Tab1 Voorraad
+            RefreshVoorraad();
 
             ///Tab2 Medewerkers
             listViewMedewerkers.Clear();
@@ -62,9 +67,9 @@ namespace UI
             listViewMedewerkers.Columns.Add("Naam", 300);
             listViewMedewerkers.Columns.Add("Functie", 100);
 
-            aantal = w_lijst.Count;
+            int aantal2 = w_lijst.Count;
 
-            for (int i = 0; i < aantal; i++)
+            for (int i = 0; i < aantal2; i++)
             {
                 ListViewItem li = new ListViewItem(w_lijst[i].Id.ToString());
                 li.SubItems.Add(w_lijst[i].naam.ToString());
@@ -96,28 +101,51 @@ namespace UI
             //}
         }
 
-        private void btnVerhoog_Click(object sender, EventArgs e)
-        {
-            foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
-            {
-                MenuItems menuitems = new MenuItems();
-
-                //checkedItem.SubItems[0].Text;
-
-                menuitems.VerhoogVoorraad((int)numericUpDown1.Value);
-            }
-        }
-
-        private void btnVerlaag_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void InitPopupForm()
         {
             popupForm.Width = 400;
             popupForm.Height = 400;
 
+        }
+
+        private void InitControl(Control lbl, int x, int y, string text, int fntSize, int width)
+        {
+            lbl.Location = new Point(x, y);
+            lbl.Text = text;
+            lbl.Font = new Font(lbl.Font.FontFamily, fntSize);
+            lbl.Width = width;
+        }
+
+        ///---UI STUFF---///
+
+        private void btnVerhoog_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
+            {
+                MenuItems menuitems = new MenuItems();
+
+                int id = int.Parse(checkedItem.SubItems[0].Text);
+
+                menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, true);
+
+                RefreshVoorraad();
+            }
+        }
+
+        private void btnVerlaag_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
+            {
+                MenuItems menuitems = new MenuItems();
+
+                int id = int.Parse(checkedItem.SubItems[0].Text);
+
+                menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, false);
+
+                RefreshVoorraad();
+            }
         }
 
         private void ToevMedwUI()
@@ -256,14 +284,6 @@ namespace UI
         private void WijzMenukaartUI()
         {
 
-        }
-
-        private void InitControl(Control lbl, int x, int y, string text, int fntSize, int width)
-        {
-            lbl.Location = new Point(x, y);
-            lbl.Text = text;
-            lbl.Font = new Font(lbl.Font.FontFamily, fntSize);
-            lbl.Width = width;
         }
 
         private void btnToevMedw_Click(object sender, EventArgs e)
