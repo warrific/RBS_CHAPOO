@@ -66,6 +66,24 @@ namespace DAL
             return item;
         }
 
+        public void WijzigVoorraad(int itemId, int aantal, bool optellen)
+        {
+
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command;
+            if (optellen)
+                command = new SqlCommand("UPDATE Menuitem SET voorraad += @Aantal WHERE item_id = @Id", dbConnection);
+            else
+                command = new SqlCommand("UPDATE Menuitem SET voorraad -= @Aantal WHERE item_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", itemId);
+            command.Parameters.AddWithValue("@Aantal", aantal);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
         private MenuItem Readitem(SqlDataReader reader)
         {
             DALMenuKaart getkaart = new DALMenuKaart();

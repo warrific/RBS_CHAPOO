@@ -142,9 +142,8 @@ namespace UI
                 int id = int.Parse(checkedItem.SubItems[0].Text);
 
                 menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, true);
-
-                RefreshVoorraad();
             }
+            RefreshVoorraad();
         }
 
         private void btnVerlaag_Click(object sender, EventArgs e)
@@ -156,9 +155,8 @@ namespace UI
                 int id = int.Parse(checkedItem.SubItems[0].Text);
 
                 menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, false);
-
-                RefreshVoorraad();
             }
+            RefreshVoorraad();
         }
 
         private void ToevMedwUI()
@@ -196,6 +194,7 @@ namespace UI
 
             InitControl(btnBevestig, 120, 300, "Bevestig", fntSize, 150);
             btnBevestig.Height = 60;
+            //btnBevestig.Click += btnBevestig_Click;
 
             popupForm.Controls.Add(lblTitel);
             popupForm.Controls.Add(lblVoornaam);
@@ -211,6 +210,13 @@ namespace UI
 
         private void WijzMedwUI()
         {
+            foreach (ListViewItem checkedItem in listViewMedewerkers.CheckedItems)
+            {
+                MenuItems menuitems = new MenuItems();
+
+                int id = int.Parse(checkedItem.SubItems[0].Text);
+
+            }
             Label lblTitel = new Label();
             InitControl(lblTitel, titelx, titely, "Medewerker Wijzigen", fntSize, 250);
             lblTitel.Height = 30;
@@ -240,7 +246,7 @@ namespace UI
 
             InitControl(btnBevestig, 120, 300, "Bevestig", fntSize, 150);
             btnBevestig.Height = 60;
-            //btnBevestig.Click += btnBevestig_Click;
+            
 
             popupForm.Controls.Add(lblTitel);
             popupForm.Controls.Add(lblVoornaam);
