@@ -120,7 +120,7 @@ namespace DAL
                 double prijs = (float)reader.GetDouble(3);
                 int category = reader.GetInt32(4);
                 string shortname = reader.GetString(5);
-                int subcategory = reader.GetInt32(8);
+                int subcategory = reader.GetInt32(7);
                 MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, (Categorie)category, shortname, (SubCategorie)subcategory);
                 lijstMenuItem.Add(menuItem);
             }

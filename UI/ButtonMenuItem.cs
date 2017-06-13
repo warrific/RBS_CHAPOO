@@ -13,12 +13,15 @@ namespace UI
 {
     public partial class ButtonMenuItem : Button
     {
-        Model.MenuItem bestelItem;
+        public Model.MenuItem menuItem
+        {
+            get; private set;
+        }
 
 
         public ButtonMenuItem(Model.MenuItem bestelItem)
         {
-            this.bestelItem = bestelItem;
+            this.menuItem = bestelItem;
 
             InitializeComponent();
 

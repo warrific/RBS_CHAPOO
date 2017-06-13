@@ -12,9 +12,13 @@ namespace UI
 {
     public partial class Bediening_Form : Main_Form
     {
+
+        BestelItem bestelItem;
+
         public Bediening_Form()
         {
             InitializeComponent();
+            
         }
          
         protected void btn_dranken_Click(object sender, EventArgs e)
@@ -108,7 +112,13 @@ namespace UI
                 ButtonMenuItem button = new ButtonMenuItem(item);
                 flowLP_MenuItems.Controls.Add(button);
                 button.Location = new Point(50, 0);
+                button.Click += new EventHandler(VoegMenuItemsToe);
             }
+        }
+
+        private void VoegMenuItemsToe(object sender, EventArgs e)
+        {
+            Model.MenuItem menuItem = ((ButtonMenuItem)sender).menuItem;
         }
     }
 }
