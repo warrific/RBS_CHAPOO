@@ -8,6 +8,9 @@ using System.Windows.Forms;
 using Logica;
 using Model;
 
+//Known issues: voorraad negatief maken, wat gebeurt er dan?
+//Extra toekomstige functionaliteiten: undo, waarschuwing niets geselecteerd
+
 namespace UI
 {
     public partial class Eigenaar_Form : UI.Main_Form

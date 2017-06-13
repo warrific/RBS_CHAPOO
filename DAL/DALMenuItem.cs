@@ -65,7 +65,7 @@ namespace DAL
 
             return item;
         }
-
+        //Wijzigt de voorraad aan de hand van opgegeven itemId, de verandering, en of het optellen/aftrekken is
         public void WijzigVoorraad(int itemId, int aantal, bool optellen)
         {
 
