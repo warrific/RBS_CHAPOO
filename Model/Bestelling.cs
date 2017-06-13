@@ -18,7 +18,7 @@ namespace Model
         public double fooi { get; private set; }
         public DateTime opname { get; private set; }
 
-        public Bestelling(int id_in, List<BestelItem> bestel_items_in, Tafel tafel_in, string status_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi, DateTime opname_in)
+        public Bestelling(int id_in, List<BestelItem> bestel_items_in, Tafel tafel_in, string status_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi_in, DateTime opname_in)
         {
             id = id_in;
             bestel_items = bestel_items_in;
@@ -27,6 +27,7 @@ namespace Model
             werknemer = werknemer_in;
             totaalprijs = totaalprijs_in;
             betaalmethode = betaalmethode_in;
+            fooi = fooi_in;
             opname = opname_in;
         }
 

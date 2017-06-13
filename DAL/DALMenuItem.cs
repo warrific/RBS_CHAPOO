@@ -65,37 +65,22 @@ namespace DAL
 
             return item;
         }
-        //Wijzigt de voorraad aan de hand van opgegeven itemId, de verandering, en of het optellen/aftrekken is
-        public void WijzigVoorraad(int itemId, int aantal, bool optellen)
-        {
 
-            // Connectie opzetten
-            dbConnection.Open();
-            SqlCommand command;
-            if (optellen)
-                command = new SqlCommand("UPDATE Menuitem SET voorraad += @Aantal WHERE item_id = @Id", dbConnection);
-            else
-                command = new SqlCommand("UPDATE Menuitem SET voorraad -= @Aantal WHERE item_id = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", itemId);
-            command.Parameters.AddWithValue("@Aantal", aantal);
-            SqlDataReader reader = command.ExecuteReader();
-
-            reader.Close();
-            dbConnection.Close();
-        }
-        
-        private Model.MenuItem Readitem(SqlDataReader reader)
+        private MenuItem Readitem(SqlDataReader reader)
         {
+            DALMenuKaart getkaart = new DALMenuKaart();
+
             int id = (int)reader["item_id"];
             string naam = (string)reader["naam"];
             int voorraad = (int)reader["voorraad"];
             double prijs = (float)(double)reader["prijs"];
             string shortname = (string)reader["shortname"];
             Categorie categorie = (Categorie)(int)reader["category"];
+            SubCategorie subcategorie = (SubCategorie)getkaart.GetTypeForID(id);
 
-            return new MenuItem(id, naam, prijs, voorraad, shortname, categorie);
+            return new MenuItem(id, naam, prijs, voorraad, shortname, categorie, subcategorie);
         }
-        
+
 
         // filtert de DB Menu items en stuurt een lijst terug met alle gefilterde menu items
         public List<MenuItem> FilterByCategories(Categorie categorie, SubCategorie subCategorie)
@@ -135,9 +120,13 @@ namespace DAL
                 double prijs = (float)reader.GetDouble(3);
                 int category = reader.GetInt32(4);
                 string shortname = reader.GetString(5);
-                int subcategory = reader.GetInt32(7);
-                MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, (Categorie)category, shortname, (SubCategorie)subcategory);
-                lijstMenuItem.Add(menuItem);
+                int subcategory = reader.GetInt32(8);
+
+                            // Uitgecomment ivm error
+                            // Waarom doe je alles opnieuw en niet met readitem?
+
+                //MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, shortname, (Categorie)category);
+                //lijstMenuItem.Add(menuItem);
             }
 
             dalConnect.sluitConnectieDB(connection);
