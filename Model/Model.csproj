@@ -52,6 +52,7 @@
     <Compile Include="Categorie.cs" />
     <Compile Include="Functie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubCategorie.cs" />
     <Compile Include="Tafel.cs" />
     <Compile Include="Werknemer.cs" />
   </ItemGroup>

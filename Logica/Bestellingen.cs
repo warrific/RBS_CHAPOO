@@ -20,6 +20,7 @@ namespace Logica
             string order = "";
             string opmerking = "";
             string bediening = "";
+            string status = "";
 
             DALBestelling DALitem = new DALBestelling();
 
@@ -34,10 +35,11 @@ namespace Logica
                     aantal = list_item.bestel_items[m].aantal;
                     order = list_item.bestel_items[m].item.naam;
                     opmerking = list_item.bestel_items[m].opmerking;
+                    status = list_item.bestel_items[m].status;
 
                     if (list_item.bestel_items[m].item.categorie == Categorie.Drank || list_item.bestel_items[m].item.categorie == Categorie.Alcohol)
                     {
-                        dranken_lijst.Add(new Bestelling_dranken(id, tafel_nummer, aantal, order, opmerking, bediening));
+                        dranken_lijst.Add(new Bestelling_dranken(id, tafel_nummer, aantal, order, opmerking, bediening, status));
                     }
                 }
 
@@ -64,6 +66,11 @@ namespace Logica
             {
                 return bestellingen_lijst;
             }
+        }
+
+        public void meld_gereed()
+        {
+
         }
     }
 }

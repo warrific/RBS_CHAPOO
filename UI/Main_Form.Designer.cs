@@ -112,10 +112,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(752, 873);
             this.Controls.Add(this.panel1);
             this.Name = "Main_Form";
-            this.Text = "Bar menu";
+            this.Text = "Main menu";
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
