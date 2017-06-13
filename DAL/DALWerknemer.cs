@@ -96,6 +96,32 @@ namespace DAL
             dbConnection.Close();
         }
 
+        public void WijzigenWerknemer(int id, string naam, string functie)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("UPDATE Medewerker SET naam = @Naam, functie = @Functie WHERE persoon_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Naam", naam);
+            command.Parameters.AddWithValue("@Functie", functie);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
+        public void VerwijderenWerknemer(int id)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("DELETE FROM Medewerker WHERE persoon_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
         private Werknemer ReadWerknemer(SqlDataReader reader)
         {
             // haal gegevens van alle velden op
