@@ -70,7 +70,6 @@ namespace UI
             {
                 // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id"
                 int order_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[0].Value));
-                lbl_test.Text = order_id.ToString();
             }
         }
     }

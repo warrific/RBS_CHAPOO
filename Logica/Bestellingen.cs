@@ -37,7 +37,7 @@ namespace Logica
                     opmerking = list_item.bestel_items[m].opmerking;
                     status = list_item.bestel_items[m].status;
 
-                    if (list_item.bestel_items[m].item.KaartType == Categorie.Drank || list_item.bestel_items[m].item.KaartType == Categorie.Alcohol)
+                    if (list_item.bestel_items[m].item.categorie == Categorie.Drank || list_item.bestel_items[m].item.categorie == Categorie.Alcohol)
                     {
                         dranken_lijst.Add(new Bestelling_dranken(id, tafel_nummer, aantal, order, opmerking, bediening, status));
                     }

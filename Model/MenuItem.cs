@@ -13,24 +13,18 @@ namespace Model
         public string naam { get; private set; }
         public double prijs { get; private set; }
         public int voorraad { get; private set; }
-        public Categorie KaartType { get; private set; }
+        public Categorie categorie { get; private set; }
 
         public string shortname { get; private set; }
 
-        public SubCategorie subCategorie
-        {
-            get; private set;
-        }
-
-        public MenuItem(int id_in, string naam_in, double prijs_in, int voorraad_in, Categorie kaartType, string shortname_in, SubCategorie subCategorie)
+        public MenuItem(int id_in, string naam_in, double prijs_in, int voorraad_in, string shortname_in, Categorie categorie_in)
         {
             id = id_in;
             naam = naam_in;
             prijs = prijs_in;
             voorraad = voorraad_in;
-            this.KaartType = KaartType;
+            categorie = categorie_in;
             shortname = shortname_in;
-            this.subCategorie = subCategorie;
         }
 
         public void ToonAlleMenuItems()

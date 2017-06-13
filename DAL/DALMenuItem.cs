@@ -22,10 +22,10 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Model.MenuItem> GetAll()
+        public List<MenuItem> GetAll()
         {
             // List
-            List<Model.MenuItem> items = new List<Model.MenuItem>();
+            List<MenuItem> items = new List<MenuItem>();
 
             // Connectie opzetten
             dbConnection.Open();
@@ -35,7 +35,7 @@ namespace DAL
             // Items inlezen
             while (reader.Read())
             {
-                Model.MenuItem item = Readitem(reader);
+                MenuItem item = Readitem(reader);
                 items.Add(item);
             }
 
@@ -45,7 +45,7 @@ namespace DAL
             return items;
         }
 
-        public Model.MenuItem GetForID(int itemId)
+        public MenuItem GetForID(int itemId)
         {
             // Connectie opzetten
             dbConnection.Open();
@@ -65,20 +65,35 @@ namespace DAL
 
             return item;
         }
+        //Wijzigt de voorraad aan de hand van opgegeven itemId, de verandering, en of het optellen/aftrekken is
+        public void WijzigVoorraad(int itemId, int aantal, bool optellen)
+        {
 
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command;
+            if (optellen)
+                command = new SqlCommand("UPDATE Menuitem SET voorraad += @Aantal WHERE item_id = @Id", dbConnection);
+            else
+                command = new SqlCommand("UPDATE Menuitem SET voorraad -= @Aantal WHERE item_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", itemId);
+            command.Parameters.AddWithValue("@Aantal", aantal);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+        
         private Model.MenuItem Readitem(SqlDataReader reader)
         {
             int id = (int)reader["item_id"];
             string naam = (string)reader["naam"];
             int voorraad = (int)reader["voorraad"];
             double prijs = (float)(double)reader["prijs"];
-            Categorie categorie = (Categorie)(int)reader["category"];
             string shortname = (string)reader["shortname"];
-            SubCategorie kaartType = (SubCategorie)(int)reader["subcategory"];
+            Categorie categorie = (Categorie)(int)reader["category"];
 
-            return new Model.MenuItem(id, naam, prijs, voorraad, categorie, shortname, kaartType);
-
-
+            return new MenuItem(id, naam, prijs, voorraad, shortname, categorie);
         }
 
 
