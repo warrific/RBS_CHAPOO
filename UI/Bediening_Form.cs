@@ -119,6 +119,11 @@ namespace UI
         private void VoegMenuItemsToe(object sender, EventArgs e)
         {
             Model.MenuItem menuItem = ((ButtonMenuItem)sender).menuItem;
+            Model.BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, "bestelt");
+            ListViewItem item = new ListViewItem(bestelItem.menuItem.shortname);
+            item.SubItems.Add(bestelItem.aantal.ToString());
+            item.SubItems.Add(bestelItem.menuItem.prijs.ToString());
+            listView_Bestelling.Items.Add(item);
         }
     }
 }

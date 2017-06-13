@@ -16,12 +16,13 @@ namespace Logica
             return DALitem.GetAll();
         }
 
+        //TODO: fix error
         public void WijzigVoorraad(int id, int aantal, bool optellen)
         {
             DALMenuItem DALitem = new DALMenuItem();
-            DALitem.WijzigVoorraad(id, aantal, optellen);
+            //DALitem.WijzigVoorraad(id, aantal, optellen);
         }
-
+        
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
         {
             DALMenuItem dalMenuItem = new DALMenuItem();
