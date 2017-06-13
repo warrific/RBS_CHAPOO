@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Categorie
+    public enum SubCategorie
     {
-        Diner = 1, Lunch, Drank
+        Voorgerecht = 1, HoofdGerecht, Nagerecht, Tussengerecht, Nonalcoholisch, Alcoholisch
     }
 }

@@ -21,5 +21,16 @@ namespace Logica
             DALBestelling DALitem = new DALBestelling();
             return DALitem.GetAll();
         }
+
+        public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
+        {
+            DALMenuItem dalMenuItem = new DALMenuItem();
+            List<MenuItem> lijstMenuItems = new List<MenuItem>();
+            foreach(MenuItem item in dalMenuItem.FilterByCategories(categorie, subcategorie))
+            {
+                lijstMenuItems.Add(item);
+            }
+            return lijstMenuItems;
+        }
     }
 }
