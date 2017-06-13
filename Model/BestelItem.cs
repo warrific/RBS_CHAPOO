@@ -10,7 +10,7 @@ namespace Model
     {
         public int id { get; private set; }
         public MenuItem menuItem { get; private set; }
-        public int aantal { get; private set; }
+        public int aantal { get; set; }
         public string opmerking { get; private set; }
         public string status { get; private set; }                       // Word enum
 
