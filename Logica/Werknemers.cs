@@ -21,5 +21,10 @@ namespace Logica
             int id = DALitem.GetLastId() + 1;
             DALitem.ToevoegenWerknemer(id, naam, functie, code);
         }
+        public void WijzigenWerknemer(int id, string naam, string functie)
+        {
+            DALWerknemer DALobject = new DALWerknemer();
+            DALobject.WijzigenWerknemer(id, naam, functie);
+        }
     }
 }
