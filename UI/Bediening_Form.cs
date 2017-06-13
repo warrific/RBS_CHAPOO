@@ -19,17 +19,20 @@ namespace UI
         {
             InitializeComponent();
             lijstBestelItem = new List<BestelItem>();
+            
         }
 
         private void UpdateListView()
         {
             listView_Bestelling.Items.Clear();
 
-            foreach(BestelItem item in lijstBestelItem)
+            MenuItems logMenuItems = new MenuItems();
+
+            foreach (BestelItem item in lijstBestelItem)
             {
                 ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
                 lvi.SubItems.Add(item.aantal.ToString());
-                lvi.SubItems.Add(item.menuItem.prijs.ToString());
+                lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
                 listView_Bestelling.Items.Add(lvi);
             }
         }
