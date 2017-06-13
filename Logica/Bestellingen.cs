@@ -33,11 +33,11 @@ namespace Logica
                     tafel_nummer = list_item.tafel.tafel_id;
                     bediening = list_item.werknemer.naam;
                     aantal = list_item.bestel_items[m].aantal;
-                    order = list_item.bestel_items[m].item.naam;
+                    order = list_item.bestel_items[m].menuItem.naam;
                     opmerking = list_item.bestel_items[m].opmerking;
                     status = list_item.bestel_items[m].status;
 
-                    if (list_item.bestel_items[m].item.categorie == Categorie.Drank || list_item.bestel_items[m].item.categorie == Categorie.Alcohol)
+                    if (list_item.bestel_items[m].menuItem.categorie == Categorie.Drank || list_item.bestel_items[m].menuItem.categorie == Categorie.Alcohol)
                     {
                         dranken_lijst.Add(new Bestelling_dranken(id, tafel_nummer, aantal, order, opmerking, bediening, status));
                     }

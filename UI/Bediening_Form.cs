@@ -13,12 +13,28 @@ namespace UI
     public partial class Bediening_Form : Main_Form
     {
 
-        BestelItem bestelItem;
+        List<BestelItem> lijstBestelItem;
 
         public Bediening_Form()
         {
             InitializeComponent();
+            lijstBestelItem = new List<BestelItem>();
             
+        }
+
+        private void UpdateListView()
+        {
+            listView_Bestelling.Items.Clear();
+
+            MenuItems logMenuItems = new MenuItems();
+
+            foreach (BestelItem item in lijstBestelItem)
+            {
+                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
+                lvi.SubItems.Add(item.aantal.ToString());
+                lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
+                listView_Bestelling.Items.Add(lvi);
+            }
         }
          
         protected void btn_dranken_Click(object sender, EventArgs e)
@@ -119,6 +135,26 @@ namespace UI
         private void VoegMenuItemsToe(object sender, EventArgs e)
         {
             Model.MenuItem menuItem = ((ButtonMenuItem)sender).menuItem;
+
+            bool bestaat = false;
+
+            for (int i = 0; i < lijstBestelItem.Count; i++)
+            {
+                if(lijstBestelItem[i].menuItem == menuItem)
+                {
+                    lijstBestelItem[i].aantal++;
+                    bestaat = true;
+                }
+            }
+
+            if (bestaat == false)
+            {
+                //TO DO: id van database halen
+                Model.BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, "bestelt");
+                lijstBestelItem.Add(bestelItem); 
+            }
+
+            UpdateListView();
         }
     }
 }

@@ -110,7 +110,7 @@ namespace DAL
             sb.Append("SELECT * ");
             sb.Append("FROM Menuitem ");
             sb.Append("JOIN Menukaart ON MenuItem.item_id = Menukaart.item ");
-            sb.Append("WHERE category = @dcategory AND kaart_type = @dsubcategory");
+            sb.Append("WHERE category = @dcategory AND subcategorie = @dsubcategory");
 
             String sql = sb.ToString();
 
@@ -139,12 +139,9 @@ namespace DAL
                 int category = reader.GetInt32(4);
                 string shortname = reader.GetString(5);
                 int subcategory = reader.GetInt32(8);
+                MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, shortname, (Categorie)category, (SubCategorie)subcategory);
 
-                            // Uitgecomment ivm error
-                            // Waarom doe je alles opnieuw en niet met readitem?
-
-                //MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, shortname, (Categorie)category);
-                //lijstMenuItem.Add(menuItem);
+                lijstMenuItem.Add(menuItem);
             }
 
             dalConnect.sluitConnectieDB(connection);

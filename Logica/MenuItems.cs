@@ -21,7 +21,7 @@ namespace Logica
             DALMenuItem DALitem = new DALMenuItem();
             DALitem.WijzigVoorraad(id, aantal, optellen);
         }
-
+        
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
         {
             DALMenuItem dalMenuItem = new DALMenuItem();
@@ -31,6 +31,11 @@ namespace Logica
                 lijstMenuItems.Add(item);
             }
             return lijstMenuItems;
+        }
+
+        public double BerekenTotaalBestelItem(BestelItem bestelItem)
+        {
+            return bestelItem.menuItem.prijs * bestelItem.aantal;
         }
     }
 }
