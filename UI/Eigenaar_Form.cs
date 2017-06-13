@@ -9,7 +9,7 @@ using Logica;
 using Model;
 
 //Known issues: voorraad negatief maken, wat gebeurt er dan?
-//Extra toekomstige functionaliteiten: undo, waarschuwing niets geselecteerd
+//Extra toekomstige functionaliteiten: refresh, undo, waarschuwing niets geselecteerd
 
 namespace UI
 {
@@ -35,7 +35,7 @@ namespace UI
 
             listViewVoorraad.View = View.Details;
             listViewVoorraad.Columns.Add("Id", 50);
-            listViewVoorraad.Columns.Add("Naam", 300);
+            listViewVoorraad.Columns.Add("Naam", 350);
             listViewVoorraad.Columns.Add("Voorraad", 100);
 
             int aantal = MI_lijst.Count;
@@ -50,14 +50,8 @@ namespace UI
             }
         }
 
-        public Eigenaar_Form()
+        private void RefreshMedewerkers()
         {
-            InitializeComponent();
-
-            ///Tab1 Voorraad
-            RefreshVoorraad();
-
-            ///Tab2 Medewerkers
             listViewMedewerkers.Clear();
             List<Werknemer> w_lijst = new List<Werknemer>();
             Werknemers werknemers = new Werknemers(); //maak object aan
@@ -67,7 +61,7 @@ namespace UI
             listViewMedewerkers.Columns.Add("Id", 50);
             //listViewMedewerkers.Columns.Add("Voornaam", 150);
             //listViewMedewerkers.Columns.Add("Achternaam", 150);
-            listViewMedewerkers.Columns.Add("Naam", 300);
+            listViewMedewerkers.Columns.Add("Naam", 350);
             listViewMedewerkers.Columns.Add("Functie", 100);
 
             int aantal2 = w_lijst.Count;
@@ -80,8 +74,10 @@ namespace UI
 
                 listViewMedewerkers.Items.Add(li);
             }
+        }
 
-            ///Tab3 Menukaarten
+        private void RefreshMenukaarten()
+        {
             treeViewMenu.Nodes.Clear();
 
             treeViewMenu.Nodes.Add("Lunch");
@@ -102,6 +98,20 @@ namespace UI
             //    TreeNode node = new TreeNode();
             //    treeViewMenu.Nodes.Add(item.id.ToString());
             //}
+        }
+
+        public Eigenaar_Form()
+        {
+            InitializeComponent();
+
+            ///Tab1 Voorraad
+            RefreshVoorraad();
+
+            ///Tab2 Medewerkers
+            RefreshMedewerkers();
+
+            ///Tab3 Menukaarten
+            RefreshMenukaarten();
         }
 
         
@@ -368,11 +378,7 @@ namespace UI
 
             if (result == DialogResult.Yes)
             {
-                //foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
-                //{
-
-                //checkedItem.Remove();
-                //}
+                
             }
         }
     }
