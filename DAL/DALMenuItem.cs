@@ -72,7 +72,7 @@ namespace DAL
             string naam = (string)reader["naam"];
             int voorraad = (int)reader["voorraad"];
             double prijs = (float)(double)reader["prijs"];
-            int categorie = (int)reader["category"];
+            Categorie categorie = (Categorie)(int)reader["category"];
             string shortname = (string)reader["shortname"];
             SubCategorie kaartType = (SubCategorie)(int)reader["subcategory"];
 
