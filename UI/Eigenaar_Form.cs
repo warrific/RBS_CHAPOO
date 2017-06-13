@@ -111,7 +111,7 @@ namespace UI
             ///Tab3 Menukaarten
             RefreshMenukaarten();
         }
-
+        //Hulpmethodes
         private void InitPopupForm()
         {
             popupForm.Width = 400;
@@ -131,10 +131,9 @@ namespace UI
 
         private void btnVerhoog_Click(object sender, EventArgs e)
         {
+            MenuItems menuitems = new MenuItems();
             foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
             {
-                MenuItems menuitems = new MenuItems();
-
                 int id = int.Parse(checkedItem.SubItems[0].Text);
 
                 menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, true);
@@ -144,17 +143,16 @@ namespace UI
 
         private void btnVerlaag_Click(object sender, EventArgs e)
         {
+            MenuItems menuitems = new MenuItems();
             foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
             {
-                MenuItems menuitems = new MenuItems();
-
                 int id = int.Parse(checkedItem.SubItems[0].Text);
 
                 menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, false);
             }
             RefreshVoorraad();
         }
-        ///PopupForm controls
+        ///PopupForm    controls
             //Medewerker controls
         Label lblNaam = new Label(); //Zit ook in menukaart
         Label lblAchternaam = new Label();
@@ -179,7 +177,7 @@ namespace UI
         {
             if (btnFunctie == "Toevoegen")
             {
-                Werknemers werknemers = new Werknemers();
+                Werknemers werknemers = new Werknemers(); //Dit buiten de if plaatsen voor minder ruimte, zorgt dat dingen meerdere keren worden toegevoegd
 
                 string naam = txtNaam.Text;
                 string functie = cmbFunctie.Text;
@@ -219,7 +217,7 @@ namespace UI
 
             InitControl(txtNaam, TBX, SPACING * 1, "", FNTSIZE, WIDTH);
             InitControl(cmbFunctie, TBX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
-            InitControl(txtCode, TBX, SPACING * 4, "", FNTSIZE, WIDTH);
+            InitControl(txtCode, TBX, SPACING * 4, "", FNTSIZE, 52);
 
             cmbFunctie.Items.Clear();
             cmbFunctie.Items.Add("Bediening");
@@ -362,17 +360,20 @@ namespace UI
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result;
 
-                // Displays the MessageBox.
-
                 result = MessageBox.Show(message, caption, buttons);
 
                 if (result == DialogResult.Yes)
                 {
+
                     foreach (ListViewItem checkedItem in listViewMedewerkers.CheckedItems)
                     {
+                        Werknemers werknemers = new Werknemers();
 
+                        int id = int.Parse(checkedItem.SubItems[0].Text);
 
-                        checkedItem.Remove();
+                        werknemers.VerwijderenWerknemer(id);
+
+                        RefreshMedewerkers();
                     }
                 }
             }

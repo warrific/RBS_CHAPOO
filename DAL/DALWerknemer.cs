@@ -110,6 +110,18 @@ namespace DAL
             dbConnection.Close();
         }
 
+        public void VerwijderenWerknemer(int id)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("DELETE FROM Medewerker WHERE persoon_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
         private Werknemer ReadWerknemer(SqlDataReader reader)
         {
             // haal gegevens van alle velden op
