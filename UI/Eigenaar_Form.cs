@@ -216,9 +216,7 @@ namespace UI
 
                 int id = int.Parse(checkedItem.SubItems[0].Text);
 
-                menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, false);
             }
-            RefreshVoorraad();
             Label lblTitel = new Label();
             InitControl(lblTitel, titelx, titely, "Medewerker Wijzigen", fntSize, 250);
             lblTitel.Height = 30;
