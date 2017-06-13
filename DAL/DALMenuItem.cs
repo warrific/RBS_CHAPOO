@@ -49,7 +49,7 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM MenuItem WHERE Id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM MenuItem WHERE item_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", itemId);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -72,7 +72,7 @@ namespace DAL
             string naam = (string)reader["naam"];
             int voorraad = (int)reader["voorraad"];
             double prijs = (float)(double)reader["prijs"];
-            Categorie categorie = (Categorie)(int)reader["category"];
+            int categorie = (int)reader["category"];
             string shortname = (string)reader["shortname"];
             SubCategorie kaartType = (SubCategorie)(int)reader["subcategory"];
 

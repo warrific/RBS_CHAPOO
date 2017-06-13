@@ -15,11 +15,10 @@ namespace Logica
             DALMenuItem DALitem = new DALMenuItem();
             return DALitem.GetAll();
         }
-
-        public List<Bestelling> make_listbestelling()
+        public void VerhoogVoorraad(int aantal)
         {
-            DALBestelling DALitem = new DALBestelling();
-            return DALitem.GetAll();
+            DALMenuItem DALitem = new DALMenuItem();
+            
         }
 
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)

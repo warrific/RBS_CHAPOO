@@ -8,12 +8,13 @@ namespace Model
 {
     public class Tafel
     {
-        int id;
-        public bool status { get; private set; }
+        public int tafel_id { get; private set; }
+        public string status { get; private set; }          // Word enum
 
-        public Tafel()
+        public Tafel(int tafel_id_in, string status_in)
         {
-
+            tafel_id = tafel_id_in;
+            status = status_in;
         }
     }
 }
