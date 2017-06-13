@@ -15,10 +15,22 @@ namespace Logica
             DALMenuItem DALitem = new DALMenuItem();
             return DALitem.GetAll();
         }
-        public void VerhoogVoorraad(int aantal)
+
+        public void WijzigVoorraad(int id, int aantal, bool optellen)
         {
             DALMenuItem DALitem = new DALMenuItem();
-            
+            DALitem.WijzigVoorraad(id, aantal, optellen);
+        }
+
+        public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
+        {
+            DALMenuItem dalMenuItem = new DALMenuItem();
+            List<MenuItem> lijstMenuItems = new List<MenuItem>();
+            foreach(MenuItem item in dalMenuItem.FilterByCategories(categorie, subcategorie))
+            {
+                lijstMenuItems.Add(item);
+            }
+            return lijstMenuItems;
         }
     }
 }

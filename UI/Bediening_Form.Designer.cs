@@ -34,6 +34,9 @@
             this.btn_diner = new System.Windows.Forms.Button();
             this.pnl_main = new System.Windows.Forms.Panel();
             this.pnl_optiesbestelling = new System.Windows.Forms.Panel();
+            this.flowLP_MenuItems = new System.Windows.Forms.FlowLayoutPanel();
+            this.listV_bestelling = new System.Windows.Forms.ListView();
+            this.pnl_main.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_dranken
@@ -42,6 +45,7 @@
             this.btn_dranken.Name = "btn_dranken";
             this.btn_dranken.Size = new System.Drawing.Size(125, 50);
             this.btn_dranken.TabIndex = 6;
+            this.btn_dranken.Tag = "dranken";
             this.btn_dranken.Text = "Dranken";
             this.btn_dranken.UseVisualStyleBackColor = true;
             this.btn_dranken.Click += new System.EventHandler(this.btn_dranken_Click);
@@ -52,6 +56,7 @@
             this.btn_lunch.Name = "btn_lunch";
             this.btn_lunch.Size = new System.Drawing.Size(125, 50);
             this.btn_lunch.TabIndex = 7;
+            this.btn_lunch.Tag = "lunch";
             this.btn_lunch.Text = "Lunch";
             this.btn_lunch.UseVisualStyleBackColor = true;
             this.btn_lunch.Click += new System.EventHandler(this.btn_lunch_Click);
@@ -71,12 +76,14 @@
             this.btn_diner.Name = "btn_diner";
             this.btn_diner.Size = new System.Drawing.Size(125, 50);
             this.btn_diner.TabIndex = 9;
+            this.btn_diner.Tag = "diner";
             this.btn_diner.Text = "Diner";
             this.btn_diner.UseVisualStyleBackColor = true;
             this.btn_diner.Click += new System.EventHandler(this.btn_diner_Click);
             // 
             // pnl_main
             // 
+            this.pnl_main.Controls.Add(this.listV_bestelling);
             this.pnl_main.Location = new System.Drawing.Point(0, 392);
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(751, 592);
@@ -89,10 +96,26 @@
             this.pnl_optiesbestelling.Size = new System.Drawing.Size(751, 75);
             this.pnl_optiesbestelling.TabIndex = 11;
             // 
+            // flowLP_MenuItems
+            // 
+            this.flowLP_MenuItems.Location = new System.Drawing.Point(0, 209);
+            this.flowLP_MenuItems.Name = "flowLP_MenuItems";
+            this.flowLP_MenuItems.Size = new System.Drawing.Size(751, 177);
+            this.flowLP_MenuItems.TabIndex = 12;
+            // 
+            // listV_bestelling
+            // 
+            this.listV_bestelling.Location = new System.Drawing.Point(0, 4);
+            this.listV_bestelling.Name = "listV_bestelling";
+            this.listV_bestelling.Size = new System.Drawing.Size(754, 531);
+            this.listV_bestelling.TabIndex = 0;
+            this.listV_bestelling.UseCompatibleStateImageBehavior = false;
+            // 
             // Bediening_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.flowLP_MenuItems);
             this.Controls.Add(this.pnl_optiesbestelling);
             this.Controls.Add(this.pnl_main);
             this.Controls.Add(this.btn_diner);
@@ -107,6 +130,8 @@
             this.Controls.SetChildIndex(this.btn_diner, 0);
             this.Controls.SetChildIndex(this.pnl_main, 0);
             this.Controls.SetChildIndex(this.pnl_optiesbestelling, 0);
+            this.Controls.SetChildIndex(this.flowLP_MenuItems, 0);
+            this.pnl_main.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -119,5 +144,7 @@
         private System.Windows.Forms.Button btn_diner;
         private System.Windows.Forms.Panel pnl_main;
         private System.Windows.Forms.Panel pnl_optiesbestelling;
+        private System.Windows.Forms.FlowLayoutPanel flowLP_MenuItems;
+        private System.Windows.Forms.ListView listV_bestelling;
     }
 }

@@ -30,15 +30,15 @@
         {
             this.btn_gereed = new System.Windows.Forms.Button();
             this.data_dranken = new System.Windows.Forms.DataGridView();
-            this.lbl_test = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data_dranken)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_gereed
             // 
-            this.btn_gereed.Location = new System.Drawing.Point(617, 77);
+            this.btn_gereed.Location = new System.Drawing.Point(823, 95);
+            this.btn_gereed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_gereed.Name = "btn_gereed";
-            this.btn_gereed.Size = new System.Drawing.Size(120, 50);
+            this.btn_gereed.Size = new System.Drawing.Size(160, 62);
             this.btn_gereed.TabIndex = 7;
             this.btn_gereed.Text = "Gereed";
             this.btn_gereed.UseVisualStyleBackColor = true;
@@ -48,44 +48,31 @@
             // 
             this.data_dranken.AllowUserToOrderColumns = true;
             this.data_dranken.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_dranken.Location = new System.Drawing.Point(22, 144);
-            this.data_dranken.Margin = new System.Windows.Forms.Padding(2);
+            this.data_dranken.Location = new System.Drawing.Point(29, 177);
+            this.data_dranken.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.data_dranken.Name = "data_dranken";
             this.data_dranken.RowTemplate.Height = 24;
-            this.data_dranken.Size = new System.Drawing.Size(700, 700);
+            this.data_dranken.Size = new System.Drawing.Size(933, 862);
             this.data_dranken.TabIndex = 9;
-            // 
-            // lbl_test
-            // 
-            this.lbl_test.AutoSize = true;
-            this.lbl_test.Location = new System.Drawing.Point(323, 96);
-            this.lbl_test.Name = "lbl_test";
-            this.lbl_test.Size = new System.Drawing.Size(35, 13);
-            this.lbl_test.TabIndex = 10;
-            this.lbl_test.Text = "label1";
             // 
             // Bar_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(752, 873);
-            this.Controls.Add(this.lbl_test);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1003, 1074);
             this.Controls.Add(this.data_dranken);
             this.Controls.Add(this.btn_gereed);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "Bar_Form";
             this.Text = "Bar";
             this.Controls.SetChildIndex(this.btn_gereed, 0);
             this.Controls.SetChildIndex(this.data_dranken, 0);
-            this.Controls.SetChildIndex(this.lbl_test, 0);
             ((System.ComponentModel.ISupportInitialize)(this.data_dranken)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button btn_gereed;
         private System.Windows.Forms.DataGridView data_dranken;
-        private System.Windows.Forms.Label lbl_test;
     }
 }
