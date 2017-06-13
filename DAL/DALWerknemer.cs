@@ -66,6 +66,36 @@ namespace DAL
             return werknemer;
         }
 
+        public int GetLastId()
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT MAX(persoon_id) FROM Medewerker", dbConnection);
+
+            int id = 0;
+
+            id = (int)command.ExecuteScalar();
+
+            dbConnection.Close();
+
+            return id;
+        }
+
+        public void ToevoegenWerknemer(int id, string naam, string functie, int code)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("INSERT INTO Medewerker VALUES (@Id, @Naam, @Functie, @Code)", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Naam", naam);
+            command.Parameters.AddWithValue("@Functie", functie);
+            command.Parameters.AddWithValue("@Code", code);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
         private Werknemer ReadWerknemer(SqlDataReader reader)
         {
             // haal gegevens van alle velden op

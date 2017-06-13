@@ -159,28 +159,27 @@ namespace UI
             RefreshVoorraad();
         }
 
+        TextBox txtNaam = new TextBox();
+        ComboBox cmbFunctie = new ComboBox();
+        TextBox txtCode = new TextBox();
+
         private void ToevMedwUI()
         {
             Label lblTitel = new Label();
             InitControl(lblTitel, titelx, titely, "Medewerker Toevoegen", fntSize, 250);
             lblTitel.Height = 30;
 
-            Label lblVoornaam = new Label();
+            Label lblNaam = new Label();
             Label lblAchternaam = new Label();
             Label lblFunctie = new Label();
             Label lblCode = new Label();
-            InitControl(lblVoornaam, lblx, spacing * 1, "Naam", fntSize, width);
-            InitControl(lblAchternaam, lblx, spacing * 2, "Achternaam", fntSize, width);
+            InitControl(lblNaam, lblx, spacing * 1, "Naam", fntSize, width);
             InitControl(lblFunctie, lblx, spacing * 3, "Functie", fntSize, width);
             InitControl(lblCode, lblx, spacing * 4, "Code", fntSize, width);
 
-            TextBox txtVoornaam = new TextBox();
-            TextBox txtAchternaam = new TextBox();
-            ComboBox cmbFunctie = new ComboBox();
-            TextBox txtCode = new TextBox();
+            //Original textbox creation
 
-            InitControl(txtVoornaam, tbx, spacing * 1, "", fntSize, width);
-            InitControl(txtAchternaam, tbx, spacing * 2, "", fntSize, width);
+            InitControl(txtNaam, tbx, spacing * 1, "", fntSize, width);
             InitControl(cmbFunctie, tbx, spacing * 3, "Functie", fntSize, width);
             InitControl(txtCode, tbx, spacing * 4, "", fntSize, width);
 
@@ -194,18 +193,30 @@ namespace UI
 
             InitControl(btnBevestig, 120, 300, "Bevestig", fntSize, 150);
             btnBevestig.Height = 60;
-            //btnBevestig.Click += btnBevestig_Click;
+            btnBevestig.Click += btnBevestig_Click;
 
             popupForm.Controls.Add(lblTitel);
-            popupForm.Controls.Add(lblVoornaam);
-            //popupForm.Controls.Add(lblAchternaam);
+            popupForm.Controls.Add(lblNaam);
             popupForm.Controls.Add(lblFunctie);
             popupForm.Controls.Add(lblCode);
-            popupForm.Controls.Add(txtVoornaam);
-            //popupForm.Controls.Add(txtAchternaam);
+            popupForm.Controls.Add(txtNaam);
             popupForm.Controls.Add(cmbFunctie);
             popupForm.Controls.Add(txtCode);
             popupForm.Controls.Add(btnBevestig);
+        }
+        private void btnBevestig_Click(object sender, EventArgs e)
+        {
+            Werknemers werknemers = new Werknemers();
+
+            string naam = txtNaam.Text;
+            string functie = cmbFunctie.Text;
+            int code = int.Parse(txtCode.Text);
+
+            werknemers.ToevoegenWerknemer(naam, functie, code);
+
+            RefreshMedewerkers();
+
+            popupForm.Close();
         }
 
         private void WijzMedwUI()
@@ -221,19 +232,12 @@ namespace UI
             InitControl(lblTitel, titelx, titely, "Medewerker Wijzigen", fntSize, 250);
             lblTitel.Height = 30;
 
-            Label lblVoornaam = new Label();
-            Label lblAchternaam = new Label();
+            Label lblNaam = new Label();
             Label lblFunctie = new Label();
-            InitControl(lblVoornaam, lblx, spacing * 1, "Naam", fntSize, width);
-            InitControl(lblAchternaam, lblx, spacing * 2, "Achternaam", fntSize, width);
+            InitControl(lblNaam, lblx, spacing * 1, "Naam", fntSize, width);
             InitControl(lblFunctie, lblx, spacing * 3, "Functie", fntSize, width);
 
-            TextBox txtVoornaam = new TextBox();
-            TextBox txtAchternaam = new TextBox();
-            ComboBox cmbFunctie = new ComboBox();
-
-            InitControl(txtVoornaam, tbx, spacing * 1, "", fntSize, width);
-            InitControl(txtAchternaam, tbx, spacing * 2, "", fntSize, width);
+            InitControl(txtNaam, tbx, spacing * 1, "", fntSize, width);
             InitControl(cmbFunctie, tbx, spacing * 3, "Functie", fntSize, width);
 
             cmbFunctie.Items.Add("Bediening");
@@ -249,9 +253,9 @@ namespace UI
             
 
             popupForm.Controls.Add(lblTitel);
-            popupForm.Controls.Add(lblVoornaam);
+            popupForm.Controls.Add(lblNaam);
             popupForm.Controls.Add(lblFunctie);
-            popupForm.Controls.Add(txtVoornaam);
+            popupForm.Controls.Add(txtNaam);
             popupForm.Controls.Add(cmbFunctie);
             popupForm.Controls.Add(btnBevestig);
         }
