@@ -50,6 +50,7 @@
     <Compile Include="DALBestelling.cs" />
     <Compile Include="DALConnection.cs" />
     <Compile Include="DALLogin.cs" />
+    <Compile Include="DALMenuKaart.cs" />
     <Compile Include="DALMenuItem.cs" />
     <Compile Include="DALTafel.cs" />
     <Compile Include="DALWerknemer.cs" />

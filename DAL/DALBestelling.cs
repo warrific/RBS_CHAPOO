@@ -43,7 +43,43 @@ namespace DAL
             return bestellingen;
         }
 
+        public int GetCount()
+        {
+            int count = 0;
+
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT COUNT(order_id) FROM Bestelling", dbConnection);
+
+            count = (int)command.ExecuteScalar();
+            
+            dbConnection.Close();
+
+            return count;
+        }
+
         public Bestelling GetForID(int bestelId)
+        {
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE order_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", bestelId);
+            SqlDataReader reader = command.ExecuteReader();
+
+            Bestelling item = null;
+
+            if (reader.Read())
+            {
+                item = Readitem(reader);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return item;
+        }
+
+        public Bestelling MeldGereed(int bestelId)
         {
             // Connectie opzetten
             dbConnection.Open();

@@ -66,11 +66,27 @@ namespace UI
 
         private void btn_gereed_Click(object sender, EventArgs e)
         {
-            if (data_dranken.SelectedCells.Count > 0)
+            // Als er een cell geselecteerd is
+            if (data_dranken.SelectedCells.Count == 1)
             {
                 // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id"
                 int order_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[0].Value));
+                Bestellingen bestellingen = new Bestellingen();
             }
+        }
+
+        private void btn_herlaad_Click(object sender, EventArgs e)
+        {
+            Bestellingen bestellingen = new Bestellingen();
+            // Bestellingen ophalen en in lijst zetten (in methode)
+            bestellingen.make_listbestelling_dranken();
+
+            // Datasource opnieuw vermelden
+            data_dranken.DataSource = bestellingen.dranken_lijst;
+
+            // Datagridview verversen met nieuwe waardes
+            data_dranken.Update();
+            data_dranken.Refresh();
         }
     }
 }

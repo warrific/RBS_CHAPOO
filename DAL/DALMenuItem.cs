@@ -68,14 +68,17 @@ namespace DAL
 
         private MenuItem Readitem(SqlDataReader reader)
         {
+            DALMenuKaart getkaart = new DALMenuKaart();
+
             int id = (int)reader["item_id"];
             string naam = (string)reader["naam"];
             int voorraad = (int)reader["voorraad"];
             double prijs = (float)(double)reader["prijs"];
             string shortname = (string)reader["shortname"];
             Categorie categorie = (Categorie)(int)reader["category"];
+            SubCategorie subcategorie = (SubCategorie)getkaart.GetTypeForID(id);
 
-            return new MenuItem(id, naam, prijs, voorraad, shortname, categorie);
+            return new MenuItem(id, naam, prijs, voorraad, shortname, categorie, subcategorie);
         }
 
 
@@ -118,8 +121,12 @@ namespace DAL
                 int category = reader.GetInt32(4);
                 string shortname = reader.GetString(5);
                 int subcategory = reader.GetInt32(8);
-                MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, shortname, (Categorie)category);
-                lijstMenuItem.Add(menuItem);
+
+                            // Uitgecomment ivm error
+                            // Waarom doe je alles opnieuw en niet met readitem?
+
+                //MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, shortname, (Categorie)category);
+                //lijstMenuItem.Add(menuItem);
             }
 
             dalConnect.sluitConnectieDB(connection);

@@ -57,7 +57,7 @@ namespace Logica
             // Roept DALitem.GetAll aan
             DALBestelling DALitem = new DALBestelling();
 
-            if(!DALitem.bestellingen.Any())
+            if(bestellingen_lijst.Count != DALitem.GetCount())
             {
                 bestellingen_lijst = DALitem.GetAll();
                 return bestellingen_lijst;
@@ -70,6 +70,8 @@ namespace Logica
 
         public void meld_gereed()
         {
+            DALBestelling DALitem = new DALBestelling();
+
 
         }
     }
