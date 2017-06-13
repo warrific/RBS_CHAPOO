@@ -32,6 +32,7 @@ namespace Model
         }
 
         // Dit kan volgensmij ook in de property zelf?
+        // TO DO: DIT MOET IN LOGICA
         public int BerekenTotaalPrijs()
         {
             return 0;

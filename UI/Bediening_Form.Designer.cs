@@ -35,6 +35,8 @@
             this.pnl_main = new System.Windows.Forms.Panel();
             this.pnl_optiesbestelling = new System.Windows.Forms.Panel();
             this.flowLP_MenuItems = new System.Windows.Forms.FlowLayoutPanel();
+            this.listV_bestelling = new System.Windows.Forms.ListView();
+            this.pnl_main.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_dranken
@@ -81,6 +83,7 @@
             // 
             // pnl_main
             // 
+            this.pnl_main.Controls.Add(this.listV_bestelling);
             this.pnl_main.Location = new System.Drawing.Point(0, 392);
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(751, 592);
@@ -99,6 +102,14 @@
             this.flowLP_MenuItems.Name = "flowLP_MenuItems";
             this.flowLP_MenuItems.Size = new System.Drawing.Size(751, 177);
             this.flowLP_MenuItems.TabIndex = 12;
+            // 
+            // listV_bestelling
+            // 
+            this.listV_bestelling.Location = new System.Drawing.Point(0, 4);
+            this.listV_bestelling.Name = "listV_bestelling";
+            this.listV_bestelling.Size = new System.Drawing.Size(754, 531);
+            this.listV_bestelling.TabIndex = 0;
+            this.listV_bestelling.UseCompatibleStateImageBehavior = false;
             // 
             // Bediening_Form
             // 
@@ -120,6 +131,7 @@
             this.Controls.SetChildIndex(this.pnl_main, 0);
             this.Controls.SetChildIndex(this.pnl_optiesbestelling, 0);
             this.Controls.SetChildIndex(this.flowLP_MenuItems, 0);
+            this.pnl_main.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -133,5 +145,6 @@
         private System.Windows.Forms.Panel pnl_main;
         private System.Windows.Forms.Panel pnl_optiesbestelling;
         private System.Windows.Forms.FlowLayoutPanel flowLP_MenuItems;
+        private System.Windows.Forms.ListView listV_bestelling;
     }
 }
