@@ -27,14 +27,6 @@ namespace UI
 
             this.Size = new Size(125, 50);
             this.Text = bestelItem.shortname;
-
-            this.Click += new EventHandler(btn_Click);
-
-        }
-
-        private void btn_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
