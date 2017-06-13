@@ -95,7 +95,7 @@ namespace DAL
 
             return new MenuItem(id, naam, prijs, voorraad, shortname, categorie);
         }
-
+        
 
         // filtert de DB Menu items en stuurt een lijst terug met alle gefilterde menu items
         public List<MenuItem> FilterByCategories(Categorie categorie, SubCategorie subCategorie)
