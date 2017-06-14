@@ -10,7 +10,19 @@ namespace Logica
 {
     public class Tafel
     {
+
+        // Haalt de benodigde gegevens uit de Database
+
+           
+            public List<Model.Tafel> GetAll()
+            {
+                DALTafel daltafel = new DALTafel();
+                return daltafel.GetAll();
+            }
+
        
+
+        // Als er op afrekenen gedrukt wordt dan kan een tafel vrij gegeven worden.
 
         public TafelStatus VeranderTafelStatus(int bedrag)
         {  
@@ -24,9 +36,23 @@ namespace Logica
             {
             TafelStatus tafel1 = TafelStatus.bezet;
             return tafel1;
-            }    
+            }  
         }
 
+
+        // Als een tafel vrij is dan is lopen er geen bestellingen en is er dus bediend.
+        
+        public BestelStatus  VeranderBestellingStatus (TafelStatus tafel)
+        {
+            BestelStatus verandering_status = BestelStatus.Gereed;
+
+            if(tafel == TafelStatus.vrij)
+            {
+              verandering_status = BestelStatus.Voltooid;
+            }
+
+            return verandering_status;
+        }
      
 
      //   public BestelStatus VeranderBestellingStatus(Functie functie, int druktBtn1, int druktBtn2 )

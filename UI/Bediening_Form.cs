@@ -1,12 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.ComponentModel;
-//using System.Data;
-//using System.Drawing;
-//using System.Text;
-//using System.Windows.Forms;
-//using Model;
-//using Logica;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +18,7 @@ namespace UI
         public Bediening_Form()
         {
             InitializeComponent();
+            Size = new Size(768, 1024);
         }
 
         private void btn_dranken_Click(object sender, EventArgs e)

@@ -56,6 +56,7 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
+            this.label1.UseWaitCursor = true;
             // 
             // label2
             // 
@@ -63,17 +64,19 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 23);
             this.label2.TabIndex = 9;
+            this.label2.UseWaitCursor = true;
             // 
             // txt_wachtwoord
             // 
             this.txt_wachtwoord.AcceptsReturn = true;
-            this.txt_wachtwoord.Location = new System.Drawing.Point(266, 35);
+            this.txt_wachtwoord.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.txt_wachtwoord.Location = new System.Drawing.Point(266, 81);
             this.txt_wachtwoord.MaxLength = 8;
             this.txt_wachtwoord.Name = "txt_wachtwoord";
             this.txt_wachtwoord.PasswordChar = '*';
             this.txt_wachtwoord.Size = new System.Drawing.Size(200, 20);
             this.txt_wachtwoord.TabIndex = 2;
-            this.txt_wachtwoord.UseSystemPasswordChar = true;
+            this.txt_wachtwoord.UseWaitCursor = true;
             // 
             // label3
             // 
@@ -81,6 +84,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 8;
+            this.label3.UseWaitCursor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -96,10 +100,11 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_del);
             this.flowLayoutPanel1.Controls.Add(this.btn_0);
             this.flowLayoutPanel1.Controls.Add(this.btn_enter);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(266, 66);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(266, 117);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 266);
             this.flowLayoutPanel1.TabIndex = 7;
+            this.flowLayoutPanel1.UseWaitCursor = true;
             // 
             // btn_1
             // 
@@ -110,6 +115,7 @@
             this.btn_1.TabIndex = 0;
             this.btn_1.Text = "1";
             this.btn_1.UseVisualStyleBackColor = true;
+            this.btn_1.UseWaitCursor = true;
             this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
             // 
             // btn_2
@@ -121,6 +127,7 @@
             this.btn_2.TabIndex = 1;
             this.btn_2.Text = "2";
             this.btn_2.UseVisualStyleBackColor = true;
+            this.btn_2.UseWaitCursor = true;
             this.btn_2.Click += new System.EventHandler(this.btn_2_Click);
             // 
             // btn_3
@@ -132,6 +139,7 @@
             this.btn_3.TabIndex = 2;
             this.btn_3.Text = "3";
             this.btn_3.UseVisualStyleBackColor = true;
+            this.btn_3.UseWaitCursor = true;
             this.btn_3.Click += new System.EventHandler(this.btn_3_Click);
             // 
             // btn_4
@@ -143,6 +151,7 @@
             this.btn_4.TabIndex = 3;
             this.btn_4.Text = "4";
             this.btn_4.UseVisualStyleBackColor = true;
+            this.btn_4.UseWaitCursor = true;
             this.btn_4.Click += new System.EventHandler(this.btn_4_Click);
             // 
             // btn_5
@@ -154,6 +163,7 @@
             this.btn_5.TabIndex = 4;
             this.btn_5.Text = "5";
             this.btn_5.UseVisualStyleBackColor = true;
+            this.btn_5.UseWaitCursor = true;
             this.btn_5.Click += new System.EventHandler(this.btn_5_Click);
             // 
             // btn_6
@@ -165,6 +175,7 @@
             this.btn_6.TabIndex = 5;
             this.btn_6.Text = "6";
             this.btn_6.UseVisualStyleBackColor = true;
+            this.btn_6.UseWaitCursor = true;
             this.btn_6.Click += new System.EventHandler(this.btn_6_Click);
             // 
             // btn_7
@@ -176,6 +187,7 @@
             this.btn_7.TabIndex = 6;
             this.btn_7.Text = "7";
             this.btn_7.UseVisualStyleBackColor = true;
+            this.btn_7.UseWaitCursor = true;
             this.btn_7.Click += new System.EventHandler(this.btn_7_Click);
             // 
             // btn_8
@@ -187,6 +199,7 @@
             this.btn_8.TabIndex = 7;
             this.btn_8.Text = "8";
             this.btn_8.UseVisualStyleBackColor = true;
+            this.btn_8.UseWaitCursor = true;
             this.btn_8.Click += new System.EventHandler(this.btn_8_Click);
             // 
             // btn_9
@@ -198,6 +211,7 @@
             this.btn_9.TabIndex = 8;
             this.btn_9.Text = "9";
             this.btn_9.UseVisualStyleBackColor = true;
+            this.btn_9.UseWaitCursor = true;
             this.btn_9.Click += new System.EventHandler(this.btn_9_Click);
             // 
             // btn_del
@@ -209,6 +223,7 @@
             this.btn_del.TabIndex = 9;
             this.btn_del.Text = "DEL";
             this.btn_del.UseVisualStyleBackColor = true;
+            this.btn_del.UseWaitCursor = true;
             this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
             // 
             // btn_0
@@ -220,6 +235,7 @@
             this.btn_0.TabIndex = 10;
             this.btn_0.Text = "0";
             this.btn_0.UseVisualStyleBackColor = true;
+            this.btn_0.UseWaitCursor = true;
             this.btn_0.Click += new System.EventHandler(this.btn_0_Click);
             // 
             // btn_enter
@@ -231,6 +247,7 @@
             this.btn_enter.TabIndex = 11;
             this.btn_enter.Text = "ENT";
             this.btn_enter.UseVisualStyleBackColor = true;
+            this.btn_enter.UseWaitCursor = true;
             this.btn_enter.Click += new System.EventHandler(this.btn_enter_Click);
             // 
             // Login_Form
@@ -246,6 +263,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Login_Form";
             this.Text = "Login";
+            this.UseWaitCursor = true;
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

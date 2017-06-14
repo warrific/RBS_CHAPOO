@@ -27,11 +27,11 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Werknemer> GetAll()
+        public List<Model.Werknemer> GetAll()
         {
             dbConnection.Open();
             SqlCommand command =
-            new SqlCommand("SELECT * FROM Werknemers", dbConnection);
+            new SqlCommand("SELECT * FROM Medewerker", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
             List<Werknemer> werknemers = new List<Werknemer>();
             while (reader.Read())
@@ -44,7 +44,7 @@ namespace DAL
             return werknemers;
         }
 
-        public Werknemer GetForId(int Id)
+        public Model.Werknemer GetForId(int Id)
         {
             dbConnection.Open();
             SqlCommand command = new SqlCommand(
@@ -59,14 +59,14 @@ namespace DAL
             return werknemer;
         }
 
-        private Werknemer ReadWerknemer(SqlDataReader reader)
+        private Model.Werknemer ReadWerknemer(SqlDataReader reader)
         {
             // haal gegevens van alle velden op
-            int id = (int)reader["id"];
-            Functie functie = (Functie)reader["functie"];
+            int id = (int)reader["persoon_id"];
+            Functie functie =(Functie) Enum.Parse(typeof(Functie),(string)reader["functie"], true);
             string naam = (string)reader["naam"];
-            string wachtwoord = (string)reader["code"];
-
+            string wachtwoord = ((int)reader["code"]).ToString();
+        
             // return nieuw Werknemer-object
             return new Werknemer(id, functie, naam, wachtwoord);
         } 

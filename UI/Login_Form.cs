@@ -20,25 +20,84 @@ namespace UI
         {
             InitializeComponent(); 
         }
+        
+        //Voeg een a property toe in form1 om  een retrieve value from textbox:
 
+         public string password
+        {
+           get { return txt_wachtwoord.Text; }
+        }
 
         private void btn_enter_Click(object sender, EventArgs e)
         {
-               
-                 string invoer_password = txt_wachtwoord.Text;
-                 Login login = new Login();
-                 Main_Form obj_main = new Main_Form ();
+                 string invoer_password = txt_wachtwoord.Text; 
+                 Logica.Login login = new Logica.Login();
+                 Logica.Werknemer l_werknmr = new Logica.Werknemer();
+                 Model.Werknemer m_werknmr = new Model.Werknemer();
+                 List<Model.Werknemer> lijst = new List<Model.Werknemer>();
+                 lijst = l_werknmr.GetAll();
+                 Main_Form obj_main = new Main_Form();
+                 OverzichtRestaurant_Form obj_overzicht_restaurant = new OverzichtRestaurant_Form();
+                 Bar_Form obj_bar = new Bar_Form();
+                 StatusChange_Form obj_statuschange = new StatusChange_Form();
                  login.check_wachtwoord(invoer_password);
-                 if(login.check_wachtwoord(invoer_password) == true)
+
+                 foreach (Model.Werknemer list_item in lijst)
                  {
-                    this.Hide();
-                    obj_main.Show();
+                         list_item.Id.ToString();
+                         list_item.functie.ToString();
+                        
+                     if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Eigenaar )
+                     {
+                        this.Hide();
+                        obj_main.Show();
+                        
+
+                        return;
+                     }
+
+                     if ( invoer_password== list_item.Wachtwoord && list_item.functie == Functie.Bediening)
+                      {
+                          this.Hide();
+                          obj_overzicht_restaurant.Show();
+                          
+
+                          return;
+                      }
+
+                      if (invoer_password== list_item.Wachtwoord && list_item.functie == Functie.Bar)
+                     {
+                         this.Hide();
+                         obj_bar.Show();
+
+                         return;
+                     }
+
+                     if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Kok)
+                     {
+                         this.Hide();
+                         obj_main.Show();
+
+                         return;
+                     }
+
+                     if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Sommelier)
+                      {
+                         this.Hide();
+                         obj_main.Show();
+
+                         return;
+                      }        
+                
                  }
 
-                 else
-                 {
-                     MessageBox.Show("wachtwoord onjuist");
-                 }
+                     if (login.check_wachtwoord(invoer_password) == false)
+                     {
+                        MessageBox.Show("wachtwoord onjuist");
+                     }
+                        
+                         
+                     
             
         }
 
@@ -104,12 +163,11 @@ namespace UI
 
         private void btn_del_Click(object sender, EventArgs e)
         {
-            if (this.txt_wachtwoord.Text.Length > 0)
+            if (this.txt_wachtwoord.Text.Length > 0 )
             {
                 this.txt_wachtwoord.Text = this.txt_wachtwoord.Text.Remove(this.txt_wachtwoord.Text.Length - 1);
             }
         }
-
       
     }
 }

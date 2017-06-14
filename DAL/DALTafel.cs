@@ -42,9 +42,13 @@ namespace DAL
                 Model.Tafel tafeloverzicht = new Model.Tafel();
                 Model.Bestelling bestellingsoverzicht = new Model.Bestelling();
                 tafeloverzicht.Id = reader.GetInt32(0);
-               // tafeloverzicht.Status = reader.GetString(1);
+                tafeloverzicht.Status = (TafelStatus)Enum.Parse(typeof(TafelStatus),reader.GetString(1));
+                //bestellingsoverzicht.id = reader.GetInt32(2);
+                //bestellingsoverzicht.Status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus),reader.GetString(3));
 
                 restaurantoverzicht.Add(tafeloverzicht);
+                //restaurantoverzicht.Add(bestellingsoverzicht);
+
             }
 
             reader.Close();
@@ -81,5 +85,7 @@ namespace DAL
 
             return new Tafel(Id, status);
         }
+
+
     }
 }

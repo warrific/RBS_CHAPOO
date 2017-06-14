@@ -31,8 +31,8 @@
             this.btn_LogUit = new System.Windows.Forms.Button();
             this.btn_Tafel = new System.Windows.Forms.Button();
             this.lbl_naam = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_functie = new System.Windows.Forms.Label();
+            this.lbl_tafelnr = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -70,30 +70,31 @@
             this.lbl_naam.Size = new System.Drawing.Size(150, 15);
             this.lbl_naam.TabIndex = 2;
             this.lbl_naam.Text = "NAAM";
+            this.lbl_naam.Click += new System.EventHandler(this.lbl_naam_Click);
             // 
-            // label2
+            // lbl_functie
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.DarkGray;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(12, 35);
-            this.label2.MinimumSize = new System.Drawing.Size(150, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "FUNCTIE";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.lbl_functie.AutoSize = true;
+            this.lbl_functie.BackColor = System.Drawing.Color.DarkGray;
+            this.lbl_functie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_functie.Location = new System.Drawing.Point(12, 35);
+            this.lbl_functie.MinimumSize = new System.Drawing.Size(150, 15);
+            this.lbl_functie.Name = "lbl_functie";
+            this.lbl_functie.Size = new System.Drawing.Size(150, 15);
+            this.lbl_functie.TabIndex = 3;
+            this.lbl_functie.Text = "FUNCTIE";
+            this.lbl_functie.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label3
+            // lbl_tafelnr
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.DarkGray;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(259, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Tafel Nummer: ";
+            this.lbl_tafelnr.AutoSize = true;
+            this.lbl_tafelnr.BackColor = System.Drawing.Color.DarkGray;
+            this.lbl_tafelnr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_tafelnr.Location = new System.Drawing.Point(259, 26);
+            this.lbl_tafelnr.Name = "lbl_tafelnr";
+            this.lbl_tafelnr.Size = new System.Drawing.Size(81, 15);
+            this.lbl_tafelnr.TabIndex = 4;
+            this.lbl_tafelnr.Text = "Tafel Nummer: ";
             // 
             // panel1
             // 
@@ -101,8 +102,8 @@
             this.panel1.Controls.Add(this.lbl_naam);
             this.panel1.Controls.Add(this.btn_LogUit);
             this.panel1.Controls.Add(this.btn_Tafel);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lbl_tafelnr);
+            this.panel1.Controls.Add(this.lbl_functie);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(754, 64);
@@ -115,8 +116,7 @@
             this.ClientSize = new System.Drawing.Size(752, 873);
             this.Controls.Add(this.panel1);
             this.Name = "Main_Form";
-            this.Text = "Bar menu";
-            this.Load += new System.EventHandler(this.Main_Form_Load);
+            this.Text = "Eigenaar";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -128,8 +128,8 @@
         private System.Windows.Forms.Button btn_LogUit;
         private System.Windows.Forms.Button btn_Tafel;
         private System.Windows.Forms.Label lbl_naam;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_functie;
+        private System.Windows.Forms.Label lbl_tafelnr;
         private System.Windows.Forms.Panel panel1;
     }
 }
