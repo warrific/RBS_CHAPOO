@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 using System.Drawing;
 using System.Text;
+using System.Media;
 using System.Windows.Forms;
+using System.IO;
 using Logica;
 using Model;
 
@@ -20,7 +24,7 @@ namespace UI
             //int tafel_nummer = 6;
             //Bestellingen bestelling = new Bestellingen();
             //int order_id = bestelling.GetId(tafel_nummer);
-            //Bestelitem logica = new Bestelitem();
+            //Bestelitems logica = new Bestelitems();
             //List<BestelItem> itemsList = logica.GetBestellingItems(order_id);
 
             //foreach (BestelItem item in itemsList)
@@ -31,7 +35,7 @@ namespace UI
             //    LVI.SubItems.Add(item.status.ToString());
             //    Rekening_lview.Items.Add(LVI);
             //}
-            
+
             InitializeComponent();
             Betaalwijze.Add(Betaalwijze_contant_btn);
             Betaalwijze.Add(Betaalwijze_pin_btn);
@@ -44,7 +48,6 @@ namespace UI
             {
                 btn.FlatAppearance.BorderSize = 0;
                 btn.BackColor = System.Drawing.SystemColors.Control;
-
             }
             
             Button button = (Button)sender;
@@ -57,6 +60,13 @@ namespace UI
         private void Fooi_Btn_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            //string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            //string FileName = string.Format(@"{0}Resources\WAV Sounds\dtmf-" + button.Text + ".wav", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+            ////string soundPath = RunningPath + @"\Resources\WAV Sounds\dtmf-" +button.Text.ToLower()+".wav";
+
+            //SoundPlayer SP = new SoundPlayer();
+            //SP.Play();   
+
             Fooi_textbox.Text += button.Text;
             Fooi_out_lbl.Text += button.Text;
         }
@@ -66,6 +76,7 @@ namespace UI
             if (Fooi_textbox.TextLength > 0)
             {
                 Fooi_textbox.Text = Fooi_textbox.Text.Substring(0, (Fooi_textbox.TextLength - 1));
+                Fooi_out_lbl.Text = Fooi_textbox.Text;
             }
         }
 

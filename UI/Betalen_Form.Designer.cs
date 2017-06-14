@@ -110,18 +110,18 @@
             this.Fooi_lbl.AutoSize = true;
             this.Fooi_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Fooi_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Fooi_lbl.Location = new System.Drawing.Point(66, 864);
+            this.Fooi_lbl.Location = new System.Drawing.Point(67, 890);
             this.Fooi_lbl.Name = "Fooi_lbl";
-            this.Fooi_lbl.Size = new System.Drawing.Size(44, 20);
+            this.Fooi_lbl.Size = new System.Drawing.Size(65, 20);
             this.Fooi_lbl.TabIndex = 10;
-            this.Fooi_lbl.Text = "Fooi:";
+            this.Fooi_lbl.Text = "Fooi:  € ";
             // 
             // Betaalwijze_lbl
             // 
             this.Betaalwijze_lbl.AutoSize = true;
             this.Betaalwijze_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Betaalwijze_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Betaalwijze_lbl.Location = new System.Drawing.Point(17, 890);
+            this.Betaalwijze_lbl.Location = new System.Drawing.Point(18, 862);
             this.Betaalwijze_lbl.Name = "Betaalwijze_lbl";
             this.Betaalwijze_lbl.Size = new System.Drawing.Size(93, 20);
             this.Betaalwijze_lbl.TabIndex = 11;
@@ -132,11 +132,11 @@
             this.Btw_lbl.AutoSize = true;
             this.Btw_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Btw_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Btw_lbl.Location = new System.Drawing.Point(70, 918);
+            this.Btw_lbl.Location = new System.Drawing.Point(71, 918);
             this.Btw_lbl.Name = "Btw_lbl";
-            this.Btw_lbl.Size = new System.Drawing.Size(40, 20);
+            this.Btw_lbl.Size = new System.Drawing.Size(61, 20);
             this.Btw_lbl.TabIndex = 12;
-            this.Btw_lbl.Text = "Btw:";
+            this.Btw_lbl.Text = "Btw:  € ";
             // 
             // label1
             // 
@@ -145,9 +145,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(1, 941);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 24);
+            this.label1.Size = new System.Drawing.Size(135, 24);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Totaalprijs:";
+            this.label1.Text = "Totaalprijs: € ";
             // 
             // Betaalwijze_pin_btn
             // 
@@ -399,18 +399,17 @@
             this.Fooi_out_lbl.AutoSize = true;
             this.Fooi_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fooi_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Fooi_out_lbl.Location = new System.Drawing.Point(120, 864);
+            this.Fooi_out_lbl.Location = new System.Drawing.Point(136, 890);
             this.Fooi_out_lbl.Name = "Fooi_out_lbl";
-            this.Fooi_out_lbl.Size = new System.Drawing.Size(22, 20);
+            this.Fooi_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.Fooi_out_lbl.TabIndex = 39;
-            this.Fooi_out_lbl.Text = "€ ";
             // 
             // Betaalwijze_out_lbl
             // 
             this.Betaalwijze_out_lbl.AutoSize = true;
             this.Betaalwijze_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Betaalwijze_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Betaalwijze_out_lbl.Location = new System.Drawing.Point(120, 890);
+            this.Betaalwijze_out_lbl.Location = new System.Drawing.Point(135, 858);
             this.Betaalwijze_out_lbl.Name = "Betaalwijze_out_lbl";
             this.Betaalwijze_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.Betaalwijze_out_lbl.TabIndex = 40;
@@ -420,22 +419,20 @@
             this.Btw_out_lbl.AutoSize = true;
             this.Btw_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btw_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Btw_out_lbl.Location = new System.Drawing.Point(120, 918);
+            this.Btw_out_lbl.Location = new System.Drawing.Point(136, 918);
             this.Btw_out_lbl.Name = "Btw_out_lbl";
-            this.Btw_out_lbl.Size = new System.Drawing.Size(22, 20);
+            this.Btw_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.Btw_out_lbl.TabIndex = 41;
-            this.Btw_out_lbl.Text = "€ ";
             // 
             // Totaal_out_lbl
             // 
             this.Totaal_out_lbl.AutoSize = true;
             this.Totaal_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Totaal_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Totaal_out_lbl.Location = new System.Drawing.Point(120, 942);
+            this.Totaal_out_lbl.Location = new System.Drawing.Point(135, 941);
             this.Totaal_out_lbl.Name = "Totaal_out_lbl";
-            this.Totaal_out_lbl.Size = new System.Drawing.Size(25, 24);
+            this.Totaal_out_lbl.Size = new System.Drawing.Size(0, 24);
             this.Totaal_out_lbl.TabIndex = 42;
-            this.Totaal_out_lbl.Text = "€ ";
             // 
             // Fooi_btn_1
             // 
