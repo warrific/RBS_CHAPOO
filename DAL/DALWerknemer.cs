@@ -27,7 +27,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Werknemer> GetAll()
+        public List<Model.Werknemer> GetAll()
         {
             dbConnection.Open();
             SqlCommand command =
@@ -128,10 +128,10 @@ namespace DAL
             int id = (int)reader["persoon_id"];
             Functie functie = (Functie)Enum.Parse(typeof(Functie), (string)reader["functie"]);
             string naam = (string)reader["naam"];
-            
-            // return nieuw Werknemer-object
-            return new Werknemer(id, functie, naam);
+            string wachtwoord = ((int)reader["code"]).ToString();
 
+            // return nieuw Werknemer-object
+            return new Werknemer(id, functie, naam, wachtwoord);
         } 
     }
 }

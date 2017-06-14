@@ -10,11 +10,12 @@ namespace Logica
 {
     public class Werknemers
     {
-        public List<Werknemer> make_list()
+        public List<Model.Werknemer> make_list()
         {
             DALWerknemer DAOWerknemer = new DALWerknemer();
             return DAOWerknemer.GetAll();
         }
+        
         public void ToevoegenWerknemer(string naam, string functie, int code)
         {
             DALWerknemer DAOWerknemer = new DALWerknemer();

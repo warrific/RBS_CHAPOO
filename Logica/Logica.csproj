@@ -45,6 +45,9 @@
     <Compile Include="Werknemers.cs" />
     <Compile Include="MenuItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestaurantOverzicht.cs" />
+    <Compile Include="Tafel.cs" />
+    <Compile Include="Werknemer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
