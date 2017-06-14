@@ -116,7 +116,6 @@ namespace UI
         {
             popupForm.Width = 400;
             popupForm.Height = 400;
-
         }
 
         private void InitControl(Control lbl, int x, int y, string text, int fntSize, int width)
@@ -126,6 +125,20 @@ namespace UI
             lbl.Font = new Font(lbl.Font.FontFamily, fntSize);
             lbl.Width = width;
         }
+
+        private void PopupFormStandardControls()
+        {
+            popupForm.Controls.Add(lblTitel);
+            popupForm.Controls.Add(lblNaam);
+            popupForm.Controls.Add(txtNaam);
+            popupForm.Controls.Add(btnBevestig);
+        }
+        private void PopupFormExtraControls(Control extraCtrl1, Control extraCtrl2)
+        {
+            popupForm.Controls.Add(extraCtrl1);
+            popupForm.Controls.Add(extraCtrl2);
+        }
+
 
         ///---UI STUFF---///
 
@@ -155,7 +168,6 @@ namespace UI
         ///PopupForm    controls
             //Medewerker controls
         Label lblNaam = new Label(); //Zit ook in menukaart
-        Label lblAchternaam = new Label();
         Label lblFunctie = new Label();
         Label lblCode = new Label();
         Label lblId = new Label();
@@ -166,16 +178,21 @@ namespace UI
             //Menukaart controls
         Label lblMenukaart = new Label();
         Label lblSubcategorie = new Label();
+        Label lblKorteNaam = new Label();
+        Label lblPrijs = new Label();
 
         ComboBox cmbMenukaart = new ComboBox();
         ComboBox cmbSubcategorie = new ComboBox();
-            //Algemeen
+        TextBox txtKorteNaam = new TextBox();
+        TextBox txtPrijs = new TextBox();
+        //Algemeen
+        Label lblTitel = new Label();
         Button btnBevestig = new Button();
         string btnFunctie = "";
 
         private void btnBevestig_Click(object sender, EventArgs e)
         {
-            if (btnFunctie == "Toevoegen")
+            if (btnFunctie == "ToevMedw")
             {
                 Werknemers werknemers = new Werknemers(); //Dit buiten de if plaatsen voor minder ruimte, zorgt dat dingen meerdere keren worden toegevoegd
 
@@ -189,7 +206,7 @@ namespace UI
 
                 popupForm.Close();
             }
-            else if (btnFunctie == "Wijzigen")
+            else if (btnFunctie == "WijzMedw")
             {
                 Werknemers werknemers = new Werknemers();
 
@@ -204,10 +221,19 @@ namespace UI
                 popupForm.Close();
             }
         }
+        
+        private void VulCmbFunctie()
+        {
+            cmbFunctie.Items.Clear();
+            cmbFunctie.Items.Add("Bediening");
+            cmbFunctie.Items.Add("Kok");
+            cmbFunctie.Items.Add("Bar");
+            cmbFunctie.Items.Add("Sommelier");
+            cmbFunctie.Items.Add("Eigenaar");
+        }
 
         private void ToevMedwUI()
         {
-            Label lblTitel = new Label();
             InitControl(lblTitel, TITELX, TITELY, "Medewerker Toevoegen", FNTSIZE, 250);
             lblTitel.Height = 30;
 
@@ -219,26 +245,16 @@ namespace UI
             InitControl(cmbFunctie, TBX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
             InitControl(txtCode, TBX, SPACING * 4, "", FNTSIZE, 52);
 
-            cmbFunctie.Items.Clear();
-            cmbFunctie.Items.Add("Bediening");
-            cmbFunctie.Items.Add("Kok");
-            cmbFunctie.Items.Add("Bar");
-            cmbFunctie.Items.Add("Sommelier");
-            cmbFunctie.Items.Add("Eigenaar");
+            VulCmbFunctie();
 
             InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150);
             btnBevestig.Height = 60;
             btnBevestig.Click += btnBevestig_Click;
-            btnFunctie = "Toevoegen";
+            btnFunctie = "ToevMedw";
 
-            popupForm.Controls.Add(lblTitel);
-            popupForm.Controls.Add(lblNaam);
-            popupForm.Controls.Add(lblFunctie);
-            popupForm.Controls.Add(lblCode);
-            popupForm.Controls.Add(txtNaam);
-            popupForm.Controls.Add(cmbFunctie);
-            popupForm.Controls.Add(txtCode);
-            popupForm.Controls.Add(btnBevestig);
+            PopupFormStandardControls();
+            PopupFormExtraControls(lblCode, txtCode);
+            PopupFormExtraControls(lblFunctie, cmbFunctie);
 
             popupForm.ShowDialog();
         }
@@ -253,7 +269,6 @@ namespace UI
                 string naam = checkedItem.SubItems[1].Text.Trim();
                 string functie = checkedItem.SubItems[2].Text;
 
-                Label lblTitel = new Label();
                 InitControl(lblTitel, TITELX, TITELY, "Medewerker Wijzigen", FNTSIZE, 250);
                 lblTitel.Height = 30;
 
@@ -264,24 +279,15 @@ namespace UI
                 InitControl(txtNaam, TBX, SPACING * 1, naam, FNTSIZE, WIDTH);
                 InitControl(cmbFunctie, TBX, SPACING * 3, functie, FNTSIZE, WIDTH);
 
-                cmbFunctie.Items.Clear();
-                cmbFunctie.Items.Add("Bediening");
-                cmbFunctie.Items.Add("Kok");
-                cmbFunctie.Items.Add("Bar");
-                cmbFunctie.Items.Add("Sommelier");
-                cmbFunctie.Items.Add("Eigenaar");
+                VulCmbFunctie();
 
                 InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150);
                 btnBevestig.Height = 60;
-                btnFunctie = "Wijzigen";
                 btnBevestig.Click += btnBevestig_Click;
+                btnFunctie = "WijzMedw";
 
-                popupForm.Controls.Add(lblTitel);
-                popupForm.Controls.Add(lblNaam);
-                popupForm.Controls.Add(lblFunctie);
-                popupForm.Controls.Add(txtNaam);
-                popupForm.Controls.Add(cmbFunctie);
-                popupForm.Controls.Add(btnBevestig);
+                PopupFormStandardControls();
+                PopupFormExtraControls(lblFunctie, cmbFunctie);
 
                 popupForm.ShowDialog();
             }
@@ -294,37 +300,39 @@ namespace UI
 
         private void ToevMenukaartUI()
         {
-            Label lblTitel = new Label();
             InitControl(lblTitel, TITELX, TITELY, "Aan menu toevoegen", FNTSIZE, 250);
             lblTitel.Height = 30;
 
             InitControl(lblMenukaart, LBLX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
             InitControl(lblSubcategorie, LBLX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
             InitControl(lblNaam, LBLX, SPACING * 3, "Naam", FNTSIZE, WIDTH);
+            InitControl(lblKorteNaam, LBLX, SPACING * 4, "Verkorte Naam", FNTSIZE, WIDTH);
+            InitControl(lblPrijs, LBLX, SPACING * 5, "Prijs (in euro's)", FNTSIZE, WIDTH);
+            lblPrijs.Height = lblSubcategorie.Height = 30;
 
             InitControl(cmbMenukaart, TBX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
             InitControl(cmbSubcategorie, TBX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
             InitControl(txtNaam, TBX, SPACING * 3, "", FNTSIZE, WIDTH);
+            InitControl(txtKorteNaam, TBX, SPACING * 4, "", FNTSIZE, WIDTH);
+            InitControl(txtPrijs, TBX, SPACING * 5, "", FNTSIZE, WIDTH);
 
             cmbMenukaart.Items.Add("Lunch");
             cmbMenukaart.Items.Add("Diner");
             cmbMenukaart.Items.Add("Dranken");
 
             cmbSubcategorie.Items.Add("Voorgerecht");
+            cmbSubcategorie.Items.Add("Tussengerecht");
             cmbSubcategorie.Items.Add("Hoofdgerecht");
             cmbSubcategorie.Items.Add("Nagerecht");
 
             InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150);
             btnBevestig.Height = 60;
 
-            popupForm.Controls.Add(lblTitel);
-            popupForm.Controls.Add(lblMenukaart);
-            popupForm.Controls.Add(lblSubcategorie);
-            popupForm.Controls.Add(lblNaam);
-            popupForm.Controls.Add(cmbMenukaart);
-            popupForm.Controls.Add(cmbSubcategorie);
-            popupForm.Controls.Add(txtNaam);
-            popupForm.Controls.Add(btnBevestig);
+            PopupFormStandardControls();
+            PopupFormExtraControls(lblMenukaart, cmbMenukaart);
+            PopupFormExtraControls(lblSubcategorie, cmbSubcategorie);
+            PopupFormExtraControls(lblKorteNaam, txtKorteNaam);
+            PopupFormExtraControls(lblPrijs, txtPrijs);
         }
 
         private void WijzMenukaartUI()
@@ -409,8 +417,6 @@ namespace UI
             string caption = "Waarschuwing";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
-
-            // Displays the MessageBox.
 
             result = MessageBox.Show(message, caption, buttons);
 
