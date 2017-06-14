@@ -31,7 +31,7 @@
             this.btn_LogUit = new System.Windows.Forms.Button();
             this.btn_Tafel = new System.Windows.Forms.Button();
             this.lbl_naam = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_functie = new System.Windows.Forms.Label();
             this.lbl_tafel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -41,7 +41,7 @@
             // 
             this.btn_LogUit.BackColor = System.Drawing.Color.Silver;
             this.btn_LogUit.Location = new System.Drawing.Point(849, 9);
-            this.btn_LogUit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_LogUit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_LogUit.Name = "btn_LogUit";
             this.btn_LogUit.Size = new System.Drawing.Size(137, 62);
             this.btn_LogUit.TabIndex = 0;
@@ -53,7 +53,7 @@
             // 
             this.btn_Tafel.BackColor = System.Drawing.Color.Silver;
             this.btn_Tafel.Location = new System.Drawing.Point(461, 2);
-            this.btn_Tafel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Tafel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Tafel.Name = "btn_Tafel";
             this.btn_Tafel.Size = new System.Drawing.Size(80, 74);
             this.btn_Tafel.TabIndex = 1;
@@ -74,19 +74,19 @@
             this.lbl_naam.TabIndex = 2;
             this.lbl_naam.Text = "NAAM";
             // 
-            // label2
+            // lbl_functie
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.DarkGray;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(16, 43);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.MinimumSize = new System.Drawing.Size(199, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "FUNCTIE";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.lbl_functie.AutoSize = true;
+            this.lbl_functie.BackColor = System.Drawing.Color.DarkGray;
+            this.lbl_functie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_functie.Location = new System.Drawing.Point(16, 43);
+            this.lbl_functie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_functie.MinimumSize = new System.Drawing.Size(199, 18);
+            this.lbl_functie.Name = "lbl_functie";
+            this.lbl_functie.Size = new System.Drawing.Size(199, 19);
+            this.lbl_functie.TabIndex = 3;
+            this.lbl_functie.Text = "FUNCTIE";
+            this.lbl_functie.Click += new System.EventHandler(this.label2_Click);
             // 
             // lbl_tafel
             // 
@@ -107,9 +107,9 @@
             this.panel1.Controls.Add(this.btn_LogUit);
             this.panel1.Controls.Add(this.btn_Tafel);
             this.panel1.Controls.Add(this.lbl_tafel);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lbl_functie);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1005, 79);
             this.panel1.TabIndex = 5;
@@ -122,10 +122,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1003, 1074);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Form";
             this.Text = "Main menu";
-            this.Load += new System.EventHandler(this.Main_Form_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -137,7 +136,7 @@
         private System.Windows.Forms.Button btn_LogUit;
         protected System.Windows.Forms.Button btn_Tafel;
         private System.Windows.Forms.Label lbl_naam;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_functie;
         protected System.Windows.Forms.Label lbl_tafel;
         private System.Windows.Forms.Panel panel1;
     }

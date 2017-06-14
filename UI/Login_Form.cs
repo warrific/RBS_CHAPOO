@@ -32,10 +32,10 @@ namespace UI
         {
                  string invoer_password = txt_wachtwoord.Text; 
                  Logica.Login login = new Logica.Login();
-                 Logica.Werknemer l_werknmr = new Logica.Werknemer();
+                 Logica.Werknemers l_werknmr = new Logica.Werknemers();
                  Model.Werknemer m_werknmr = new Model.Werknemer();
                  List<Model.Werknemer> lijst = new List<Model.Werknemer>();
-                 lijst = l_werknmr.GetAll();
+            lijst = l_werknmr.make_list();
                  Main_Form obj_main = new Main_Form();
                  OverzichtRestaurant_Form obj_overzicht_restaurant = new OverzichtRestaurant_Form();
                  Bar_Form obj_bar = new Bar_Form();

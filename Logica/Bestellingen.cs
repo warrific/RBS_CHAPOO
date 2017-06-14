@@ -34,7 +34,7 @@ namespace Logica
                 {
                     // Voor overzicht even los en nit in new Bestelling_weergave()
                     id = bestellingen_lijst[i].id;
-                    tafel_nummer = list_item.tafel.tafel_id;
+                    tafel_nummer = list_item.tafel.Id;
                     bediening = list_item.werknemer.naam;
                     aantal = list_item.bestel_items[m].aantal;
                     order = list_item.bestel_items[m].menuItem.naam;

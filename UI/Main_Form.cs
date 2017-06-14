@@ -21,11 +21,11 @@ namespace UI
             Size = new Size(768, 1024);
            
             // lijst halen van de Logica laag
-            Logica.Werknemer werknemer = new Logica.Werknemer();
+            Werknemers werknemer = new Werknemers();
             List<Model.Werknemer> lijst = new List<Model.Werknemer>();
-            lijst = werknemer.GetAll();
+            lijst = werknemer.make_list();
             
-            Logica.Login login = new Logica.Login();
+            Login login = new Login();
             
                  foreach (Model.Werknemer list_item in lijst)
                  {

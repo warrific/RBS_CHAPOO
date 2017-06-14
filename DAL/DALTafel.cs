@@ -39,10 +39,10 @@ namespace DAL
             while (reader.Read())
             {
 
-                Model.Tafel tafeloverzicht = new Model.Tafel();
-                Model.Bestelling bestellingsoverzicht = new Model.Bestelling();
+                Tafel tafeloverzicht = new Tafel();
+                //Bestelling bestellingsoverzicht = new Bestelling();
                 tafeloverzicht.Id = reader.GetInt32(0);
-                tafeloverzicht.Status = (TafelStatus)Enum.Parse(typeof(TafelStatus),reader.GetString(1));
+                tafeloverzicht.Status = (Status_tafel)Enum.Parse(typeof(Status_tafel),reader.GetString(1));
                 //bestellingsoverzicht.id = reader.GetInt32(2);
                 //bestellingsoverzicht.Status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus),reader.GetString(3));
 
@@ -57,15 +57,15 @@ namespace DAL
             return restaurantoverzicht;
         }
 
-        public Model.Tafel GetForID(int Id)
+        public Tafel GetForID(int Id)
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE Id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE tafel_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", Id);
             SqlDataReader reader = command.ExecuteReader();
 
-            Model.Tafel item = null;
+            Tafel item = null;
 
             if (reader.Read())
             {
@@ -81,7 +81,7 @@ namespace DAL
         private Model.Tafel Readitem(SqlDataReader reader)
     {
             int tafel_id = (int)reader["tafel_id"];
-            TafelStatus status = (TafelStatus)Enum.Parse(typeof(TafelStatus), (string)reader["status"]);
+            Status_tafel status = (Status_tafel)(int)reader["status"];
             return new Model.Tafel(tafel_id, status);
 
         }
