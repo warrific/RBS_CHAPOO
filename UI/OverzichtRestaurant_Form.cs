@@ -28,7 +28,7 @@ namespace UI
 
             
             // neemt de radiobuttons invullingen uit StatusChange_Form en beeld ze uit in deze (OverzichtRestaurant_Form)
-            using (var statuschange_form = new StatusChange_Form())
+            //using (var statuschange_form = new StatusChange_Form())
             {
                
                 //  statuschange_form.ShowDialog();
@@ -37,17 +37,18 @@ namespace UI
                // for (int index = 0; tafelid[index] < 10; index++)
                // {
                    
-                    string status_tafel = statuschange_form.TafelStatus;
-                    string status_bestelling = statuschange_form.BestellingsStatus;
-                    string categorie = statuschange_form.Categorie;
-                    List<string> ro_lijst = new List<string>();
-                    ro_lijst.Add(status_tafel);
-                    ro_lijst.Add(status_bestelling);
-                    ro_lijst.Add(categorie);
+             //       string status_tafel = statuschange_form.TafelStatus;
+              //      string status_bestelling = statuschange_form.BestellingsStatus;
+              //      string categorie = statuschange_form.Categorie;
+             //       List<string> ro_lijst = new List<string>();
+             //       ro_lijst.Add(status_tafel);
+             //       ro_lijst.Add(status_bestelling);
+             //       ro_lijst.Add(categorie);
 
-                    string[] rij = { status_tafel, status_bestelling, categorie };
-                    var listViewItem = new ListViewItem(rij);
-                    list_tafeloverzicht.Items.Add(listViewItem);
+             //       string[] rij = { status_tafel, status_bestelling, categorie };
+             //       var listViewItem = new ListViewItem(rij);
+            //        list_tafeloverzicht.Items.Add(listViewItem);
+
                    // foreach (string lijst_deel in ro_lijst)
                    // {
                    //     ListViewItem tafelstatus = new ListViewItem(lijst_deel.TafelStatus);
@@ -78,33 +79,33 @@ namespace UI
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
 
-            StatusChange_Form statuschange_form = new StatusChange_Form();
+         //   StatusChange_Form statuschange_form = new StatusChange_Form();
             
-            string status_tafel =statuschange_form.TafelStatus;
-            string status_bestelling = statuschange_form.BestellingsStatus;
-            string categorie = statuschange_form.Categorie;
-            List<string> ro_lijst = new List<string>();
-            ro_lijst.Add(status_tafel);
-            ro_lijst.Add(status_bestelling);
-            ro_lijst.Add(categorie);
+         //   string status_tafel =statuschange_form.TafelStatus;
+         //   string status_bestelling = statuschange_form.BestellingsStatus;
+         //   string categorie = statuschange_form.Categorie;
+         //   List<string> ro_lijst = new List<string>();
+         //   ro_lijst.Add(status_tafel);
+         //   ro_lijst.Add(status_bestelling);
+         //   ro_lijst.Add(categorie);
 
-            string[] rij = { status_tafel, status_bestelling, categorie };
+            /*string[] rij = { status_tafel, status_bestelling, categorie };
             var listViewItem = new ListViewItem(rij);
-            list_tafeloverzicht.Items.Add(listViewItem);
+            list_tafeloverzicht.Items.Add(listViewItem);*/
            
             
-            list_tafeloverzicht.Items.Add(listViewItem);
-            this.btn_Tafel1.Text  ="tafel_id 1";
+           // list_tafeloverzicht.Items.Add(listViewItem);
+           // this.btn_Tafel1.Text  ="tafel_id 1";
             
-           // aangeven welke records bij de tafel behoren
-            foreach (ListViewItem item in list_tafeloverzicht.Items)
-            {
-                if (item.Text == btn_Tafel1.Text)
-                {
-                    item.BackColor = Color.LightGray;
-                    return;
-                }
-            }
+           //// aangeven welke records bij de tafel behoren
+           // foreach (ListViewItem item in list_tafeloverzicht.Items)
+           // {
+           //     if (item.Text == btn_Tafel1.Text)
+           //     {
+           //         item.BackColor = Color.LightGray;
+           //         return;
+           //     }
+           // }
 
            // statussen updaten
 

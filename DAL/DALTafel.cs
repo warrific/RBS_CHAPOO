@@ -81,8 +81,7 @@ namespace DAL
         private Model.Tafel Readitem(SqlDataReader reader)
     {
             int tafel_id = (int)reader["tafel_id"];
-            string status = (string)reader["status"];
-
+            TafelStatus status = (TafelStatus)Enum.Parse(typeof(TafelStatus), (string)reader["status"]);
             return new Model.Tafel(tafel_id, status);
 
         }

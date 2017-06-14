@@ -53,7 +53,7 @@ namespace UI
         private void RefreshMedewerkers()
         {
             listViewMedewerkers.Clear();
-            List<Werknemer> w_lijst = new List<Werknemer>();
+            List<Model.Werknemer> w_lijst = new List<Model.Werknemer>();
             Werknemers werknemers = new Werknemers(); //maak object aan
             w_lijst = werknemers.make_list();
 

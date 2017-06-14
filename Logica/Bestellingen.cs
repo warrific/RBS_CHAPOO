@@ -30,12 +30,13 @@ namespace Logica
                 for (int m = 0; m < list_item.bestel_items.Count; m++)
                 {
                     id = bestellingen_lijst[i].id;
-                    tafel_nummer = list_item.tafel.tafel_id;
+                    tafel_nummer = list_item.tafel.Id;
                     bediening = list_item.werknemer.naam;
                     aantal = list_item.bestel_items[m].aantal;
                     order = list_item.bestel_items[m].menuItem.naam;
                     opmerking = list_item.bestel_items[m].opmerking;
                     status = list_item.bestel_items[m].status;
+                  //  Enum.GetName(typeof(status), 3)
 
                     if (list_item.bestel_items[m].menuItem.categorie == Categorie.Drank || list_item.bestel_items[m].menuItem.categorie == Categorie.Alcohol)
                     {

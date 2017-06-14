@@ -43,13 +43,13 @@ namespace Logica
 
         // Als een tafel vrij is dan is lopen er geen bestellingen en is er dus bediend.
         
-        public BestelStatus  VeranderBestellingStatus (TafelStatus tafel)
+        public Model.BestellingsStatus  VeranderBestellingStatus (TafelStatus tafel)
         {
-            BestelStatus verandering_status = BestelStatus.Gereed;
+            BestellingsStatus verandering_status = BestellingsStatus.Gereed;
 
             if(tafel == TafelStatus.vrij)
             {
-              verandering_status = BestelStatus.Voltooid;
+              verandering_status = BestellingsStatus.Voltooid;
             }
 
             return verandering_status;

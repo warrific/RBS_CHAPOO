@@ -39,7 +39,7 @@ namespace UI
                  Main_Form obj_main = new Main_Form();
                  OverzichtRestaurant_Form obj_overzicht_restaurant = new OverzichtRestaurant_Form();
                  Bar_Form obj_bar = new Bar_Form();
-                 StatusChange_Form obj_statuschange = new StatusChange_Form();
+                 //StatusChange_Form obj_statuschange = new StatusChange_Form();
                  login.check_wachtwoord(invoer_password);
 
                  foreach (Model.Werknemer list_item in lijst)

@@ -96,7 +96,7 @@ namespace DAL
             MenuItem menu_item = get_menu_item.GetForID((int)reader["item_id"]);            // Haal item id op uit database, geef deze aan DALMenuItem.GetForID en krijg return
             int aantal = (int)reader["aantal"];
             string opmerking = (string)reader["opmerking"];
-            string status = (string)reader["status"];
+            BestellingsStatus status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus),(string)reader["status"]);
 
             return new BestelItem(id, menu_item, aantal, opmerking, status);
         }

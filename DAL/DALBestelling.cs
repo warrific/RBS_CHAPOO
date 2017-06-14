@@ -114,7 +114,7 @@ namespace DAL
             items_list = getitems.GetAllForID(order_id);                                        // Vraagt aan DALBestelItem.GetForID alle informatie over het item aan de hand van order_id
             int tafel_id = (int)reader["tafel_id"];
             Tafel tafel = gettafel.GetForID(tafel_id);                                              // Informatie ophalen aan de hand van DALTafel.GetForID("tafel_id")
-            string status = (string)reader["status"];
+            BestellingsStatus status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus), (string)reader["status"]);
             int werknemer_id = (int)reader["persoon_id"];
             Werknemer persoon = getwerknemer.GetForID(werknemer_id);                                      // zelfde verhaal als tafel "persoon_id"
             double totaalprijs = (float)(double)reader["totaal_prijs"];
