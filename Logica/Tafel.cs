@@ -18,7 +18,8 @@ namespace Logica
             {
                 DALTafel daltafel = new DALTafel();
                 return daltafel.GetAll();
-            }
+            }
+
 
        
 

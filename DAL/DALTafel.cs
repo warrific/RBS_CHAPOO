@@ -79,13 +79,12 @@ namespace DAL
         }
 
         private Model.Tafel Readitem(SqlDataReader reader)
-        {
-            int Id = (int)reader["id"];
-            TafelStatus status = (TafelStatus)(int)reader["status"];
+    {
+            int tafel_id = (int)reader["tafel_id"];
+            string status = (string)reader["status"];
 
-            return new Tafel(Id, status);
+            return new Model.Tafel(tafel_id, status);
+
         }
-
-
     }
 }

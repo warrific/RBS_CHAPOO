@@ -33,28 +33,77 @@ namespace UI
         {
             InitializeComponent();
 
-            // dit is bedoeld voot restaurantovezicht
-          //  this.overzicht = overzicht;
+            Bestellingen bestellingen = new Bestellingen();
 
-            MenuItems menuitems = new MenuItems();
+            // Bestellingen ophalen en in lijst zetten (in methode)
+            bestellingen.make_listbestelling_dranken();
+            
+            // Niet automatisch kolomen genereren en de data bron vermelden
+            data_dranken.AutoGenerateColumns = false;
+            data_dranken.DataSource = bestellingen.dranken_lijst;
+            
+            // Rijen aanmaken en de waarde uit de lijst binden
+            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn();
+            id.Width = 30;
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            data_dranken.Columns.Add(id);
+            
+            DataGridViewTextBoxColumn tafel_nr = new DataGridViewTextBoxColumn();
+            tafel_nr.Width = 50;
+            tafel_nr.DataPropertyName = "tafel_nummer";
+            tafel_nr.HeaderText = "Tafel nummer";
+            data_dranken.Columns.Add(tafel_nr);
 
-            List<Model.MenuItem> lijst = new List<Model.MenuItem>();
-            lijst = menuitems.make_list();
+            DataGridViewTextBoxColumn aantal = new DataGridViewTextBoxColumn();
+            aantal.Width = 50;
+            aantal.DataPropertyName = "aantal";
+            aantal.HeaderText = "Aantal";
+            data_dranken.Columns.Add(aantal);
 
-            foreach (Model.MenuItem list_item in lijst)
+            DataGridViewTextBoxColumn order = new DataGridViewTextBoxColumn();
+            order.Width = 200;
+            order.DataPropertyName = "order";
+            order.HeaderText = "Order";
+            data_dranken.Columns.Add(order);
+            
+            DataGridViewTextBoxColumn opmerking = new DataGridViewTextBoxColumn();
+            opmerking.Width = 200;
+            opmerking.DataPropertyName = "opmerking";
+            opmerking.HeaderText = "Opmerking";
+            data_dranken.Columns.Add(opmerking);
+
+            DataGridViewTextBoxColumn bediening = new DataGridViewTextBoxColumn();
+            bediening.Width = 130;
+            bediening.DataPropertyName = "bediening";
+            bediening.HeaderText = "Bediening";
+            data_dranken.Columns.Add(bediening);
+            
+        }
+
+        private void btn_gereed_Click(object sender, EventArgs e)
+        {
+            // Als er een cell geselecteerd is
+            if (data_dranken.SelectedCells.Count == 1)
             {
-                ListViewItem id = new ListViewItem(list_item.id.ToString());
-                ListViewItem naam = new ListViewItem(list_item.naam.ToString());
-                ListViewItem prijs = new ListViewItem(list_item.prijs.ToString());
-                ListViewItem voorraad = new ListViewItem(list_item.voorraad.ToString());
-                ListViewItem shortname = new ListViewItem(list_item.shortname.ToString());
-
-                list_drankorders.Items.Add(id);
-                list_drankorders.Items.Add(naam);
-                list_drankorders.Items.Add(prijs);
-                list_drankorders.Items.Add(voorraad);
-                list_drankorders.Items.Add(shortname);
+                // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id"
+                int order_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[0].Value));
+                Bestellingen bestellingen = new Bestellingen();
             }
+        }
+
+        private void btn_herlaad_Click(object sender, EventArgs e)
+            {
+            Bestellingen bestellingen = new Bestellingen();
+            // Bestellingen ophalen en in lijst zetten (in methode)
+            bestellingen.make_listbestelling_dranken();
+
+            // Datasource opnieuw vermelden
+            data_dranken.DataSource = bestellingen.dranken_lijst;
+
+            // Datagridview verversen met nieuwe waardes
+            data_dranken.Update();
+            data_dranken.Refresh();
         }
     }
 

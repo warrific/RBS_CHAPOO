@@ -13,21 +13,20 @@ namespace UI
 {
     public partial class ButtonMenuItem : Button
     {
-        BestelItem bestelItem;
-
-
-        public ButtonMenuItem(BestelItem bestelItem)
+        public Model.MenuItem menuItem
         {
-            this.bestelItem = bestelItem;
+            get; private set;
+        }
+
+
+        public ButtonMenuItem(Model.MenuItem bestelItem)
+        {
+            this.menuItem = bestelItem;
 
             InitializeComponent();
 
-            this.Size = new Size(125, 50);            this.Text = bestelItem.naam;            this.Click += new EventHandler(btn_Click);
-        }
-
-        private void btn_Click(object sender, EventArgs e)
-        {
-            
+            this.Size = new Size(125, 50);
+            this.Text = bestelItem.shortname;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace UI
         public Main_Form()
         {
             InitializeComponent();
+            panel1.BackColor = Color.FromArgb(179, 179, 179);
             Size = new Size(768, 1024);
            
             // lijst halen van de Logica laag

@@ -65,7 +65,7 @@ namespace Model
          }
 
          public Werknemer(int in_id, Functie in_functie, string in_naam, string in_wachtwoord)
-         {
+{
             id = in_id;
             functie = in_functie;
             naam = in_naam;
@@ -80,12 +80,12 @@ namespace Model
                 errorMessage = errorMessage + "verkeerde id: " + in_id;
 
             if (Setfunctie(in_functie) == false)
-            {
+    {
                 errorMessage = errorMessage + "verkeerde functie: " + in_functie;
             }
 
             if (Setnaam(in_naam) == false)
-            {
+        {
                 errorMessage = errorMessage + "  " + in_naam;
             }
 

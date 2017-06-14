@@ -50,6 +50,7 @@
     <Compile Include="DALBestelling.cs" />
     <Compile Include="DALConnection.cs" />
     <Compile Include="DALLogin.cs" />
+    <Compile Include="DALMenuKaart.cs" />
     <Compile Include="DALMenuItem.cs" />
     <Compile Include="DALRestaurantOverzicht.cs" />
     <Compile Include="DALTafel.cs" />
@@ -57,7 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagramDAL.cd" />
   </ItemGroup>
   <ItemGroup>

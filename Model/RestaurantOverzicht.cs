@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Categorie
+    public class RestaurantOverzicht
     {
-        Diner = 1, Lunch, Drank, Alcohol
     }
 }

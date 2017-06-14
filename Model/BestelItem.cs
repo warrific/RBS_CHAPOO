@@ -8,35 +8,19 @@ namespace Model
 {
     public class BestelItem
     {
-        //..
+        public int id { get; private set; }
+        public MenuItem menuItem { get; private set; }
+        public int aantal { get; set; }
+        public string opmerking { get; private set; }
+        public string status { get; private set; }                       // Word enum
 
-        int id;
-        double prijs;
-        int voorraad;
-        Categorie categorie;
-       
-
-        public string naam
+        public BestelItem(int id_in, MenuItem item_in, int aantal_in, string opmerking_in, string status_in)
         {
-            get; private set;
-        }
-
-
-        public int aantal { get; private set; }
-        public string commentaar { get; private set; }
-
-        public BestelItem(int inid, string innaam, double inprijs, int invoorraad, Categorie incategorie)
-        {
-            id = inid;
-            naam = innaam;
-            prijs = inprijs;
-            voorraad = invoorraad;
-            categorie = incategorie;
-        }
-
-        public void ToonAlleMenuItems()
-        {
-
+            id = id_in;
+            menuItem = item_in;
+            aantal = aantal_in;
+            opmerking = opmerking_in;
+            status = status_in;
         }
     }
 }
