@@ -87,6 +87,19 @@ namespace DAL
 
             return items;
         }
+        
+        public void MeldGereed(int order_id, int item_id)
+        {
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE order_id = @Id AND WHERE item_id = @item_id", dbConnection);            // Moet nog update worden
+            command.Parameters.AddWithValue("@Id", order_id);
+            command.Parameters.AddWithValue("@item_id", item_id);
+
+            // Commando uitvoeren
+
+            dbConnection.Close();
+        }
 
         private BestelItem Readitem(SqlDataReader reader)
         {
@@ -96,9 +109,9 @@ namespace DAL
             MenuItem menu_item = get_menu_item.GetForID((int)reader["item_id"]);            // Haal item id op uit database, geef deze aan DALMenuItem.GetForID en krijg return
             int aantal = (int)reader["aantal"];
             string opmerking = (string)reader["opmerking"];
-            BestellingsStatus status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus),(string)reader["status"]);
+            Status status_item = (Status)(int)reader["status"];
 
-            return new BestelItem(id, menu_item, aantal, opmerking, status);
+            return new BestelItem(id, menu_item, aantal, opmerking, status_item);
         }
     }
 }
