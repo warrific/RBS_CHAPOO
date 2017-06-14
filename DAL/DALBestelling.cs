@@ -132,5 +132,27 @@ namespace DAL
         void GetWerknemer() { }
         public void GetAllBestellingen() { }
         */
+
+        //Mike
+        public int GetBestellingID(int tafel_nummer)
+        {
+            int order_id = 0;
+            dbConnection.Open();
+            //dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE tafel_id = @Tafel_Nr", dbConnection);
+            command.Parameters.AddWithValue("@Tafel_Nr", tafel_nummer);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                Bestelling bestelling = Readitem(reader);
+                order_id = bestelling.id;
+            }
+
+            reader.Close();
+            dbConnection.Close();
+            
+            return order_id;
+        }
     }
 }

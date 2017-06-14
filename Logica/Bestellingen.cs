@@ -71,8 +71,13 @@ namespace Logica
         public void meld_gereed()
         {
             DALBestelling DALitem = new DALBestelling();
+        }
 
-
+        public int GetId(int tafelNr)
+        {
+            DALBestelling DAL = new DALBestelling();
+            return DAL.GetBestellingID(tafelNr);
+            
         }
     }
 }

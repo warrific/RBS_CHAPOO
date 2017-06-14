@@ -20,10 +20,10 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Model.Tafel> GetAll()
+        public List<Tafel> GetAll()
         {
             // List
-            List<Model.Tafel> bestellingen = new List<Model.Tafel>();
+            List<Tafel> bestellingen = new List<Tafel>();
 
             // Connectie opzetten
             dbConnection.Open();
@@ -33,7 +33,7 @@ namespace DAL
             // Items inlezen
             while (reader.Read())
             {
-                Model.Tafel item = Readitem(reader);
+                Tafel item = Readitem(reader);
                 bestellingen.Add(item);
             }
 
@@ -43,7 +43,7 @@ namespace DAL
             return bestellingen;
         }
 
-        public Model.Tafel GetForID(int tafelId)
+        public Tafel GetForID(int tafelId)
         {
             // Connectie opzetten
             dbConnection.Open();
@@ -64,12 +64,12 @@ namespace DAL
             return item;
         }
 
-        private Model.Tafel Readitem(SqlDataReader reader)
+        private Tafel Readitem(SqlDataReader reader)
         {
             int tafel_id = (int)reader["tafel_id"];
             string status = (string)reader["status"];
 
-            return new Model.Tafel(tafel_id, status);
+            return new Tafel(tafel_id, status);
 
         }
     }
