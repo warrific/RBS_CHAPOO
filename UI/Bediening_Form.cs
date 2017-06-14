@@ -1,9 +1,12 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Logica;
@@ -97,7 +100,7 @@ namespace UI
             btn_LunchVoor.Text = "Voorgerecht";
             btn_LunchVoor.Location = new Point(100, 0);
             btn_LunchVoor.Click += new EventHandler(GenereerMenuItemButtons);
-
+            
             ButtonSelectie btn_LunchHoofd = new ButtonSelectie(Categorie.Lunch, SubCategorie.HoofdGerecht);
             pnl_optiesbestelling.Controls.Add(btn_LunchHoofd);
             btn_LunchHoofd.Text = "Hoofdgerecht";
@@ -108,7 +111,7 @@ namespace UI
             pnl_optiesbestelling.Controls.Add(btn_LunchNa);
             btn_LunchNa.Text = "Nagerecht";
             btn_lunch.Tag = 90;
-            btn_LunchNa.Location = new Point(300, 0);
+            btn_LunchNa.Location = new Point(300, 0); 
             btn_LunchNa.Click += new EventHandler(GenereerMenuItemButtons);
         }
 
@@ -129,6 +132,11 @@ namespace UI
                 flowLP_MenuItems.Controls.Add(button);
                 button.Location = new Point(50, 0);
                 button.Click += new EventHandler(VoegMenuItemsToe);
+
+                ButtonMenuItemVerlaag buttonVerlaag = new ButtonMenuItemVerlaag(item);
+                flowLP_MenuItems.Controls.Add(buttonVerlaag);
+                buttonVerlaag.Click += new EventHandler(VerlaagMenuItems);
+
             }
         }
 
@@ -150,8 +158,31 @@ namespace UI
             if (bestaat == false)
             {
                 //TO DO: id van database halen
-                Model.BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, "bestelt");
+                    // De huidige manier van status vermelden is via de enum status (open = besteld, gereed = gemaakt door bar / keuken en voltooid)
+                    // enum status in de database is nu een int (makkelijkere conversie naar enum)
+
+                BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, Status.Open);
                 lijstBestelItem.Add(bestelItem); 
+            }
+
+            UpdateListView();
+        }
+
+        private void VerlaagMenuItems(object sender, EventArgs e)
+        {
+            Model.MenuItem menuItem = ((ButtonMenuItemVerlaag)sender).menuItem;
+
+            for (int i = 0; i < lijstBestelItem.Count; i++)
+            {
+                if (lijstBestelItem[i].menuItem == menuItem)
+                {
+                    lijstBestelItem[i].aantal--;
+
+                    if (lijstBestelItem[i].aantal == 0)
+                    {
+                        lijstBestelItem.RemoveAt(i);
+                    }
+                }
             }
 
             UpdateListView();

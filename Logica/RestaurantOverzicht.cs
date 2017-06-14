@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
+using Model;
 
-namespace Model
+namespace Logica
 {
-    public enum Categorie
+    public class RestaurantOverzicht
     {
-        Diner = 1, Lunch, Drank, Alcohol
+
     }
 }

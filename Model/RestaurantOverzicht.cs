@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum SubCategorie
+    public class RestaurantOverzicht
     {
-        Voorgerecht = 1, HoofdGerecht, Nagerecht, Tussengerecht, Nonalcoholisch, Alcoholisch
     }
 }

@@ -11,6 +11,11 @@ namespace DAL
 {
     public class DALTafel
     {
+       // void GetId() { }
+       // void GetStatus() { }
+       // public void GetAllTafels() { }
+
+
         protected SqlConnection dbConnection;
 
         public DALTafel()
@@ -23,35 +28,44 @@ namespace DAL
         public List<Tafel> GetAll()
         {
             // List
-            List<Tafel> bestellingen = new List<Tafel>();
-
+            List<Tafel> restaurantoverzicht = new List<Tafel>();
+          
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling", dbConnection);
+            SqlCommand command = new SqlCommand("SELECT Tafel.tafel_id, Tafel.status AS tafelstatus, Bestelling.status AS bestellingstatus FROM Tafel JOIN Bestelling on Tafel.tafel_id = Bestelling.tafel_id", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
-            // Items inlezen
+            //  inlezen
             while (reader.Read())
             {
-                Tafel item = Readitem(reader);
-                bestellingen.Add(item);
+
+                Tafel tafeloverzicht = new Tafel();
+                //Bestelling bestellingsoverzicht = new Bestelling();
+                tafeloverzicht.Id = reader.GetInt32(0);
+                tafeloverzicht.Status = (Status_tafel)Enum.Parse(typeof(Status_tafel),reader.GetString(1));
+                //bestellingsoverzicht.id = reader.GetInt32(2);
+                //bestellingsoverzicht.Status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus),reader.GetString(3));
+
+                restaurantoverzicht.Add(tafeloverzicht);
+                //restaurantoverzicht.Add(bestellingsoverzicht);
+
             }
 
             reader.Close();
             dbConnection.Close();
 
-            return bestellingen;
+            return restaurantoverzicht;
         }
 
-        public Tafel GetForID(int tafelId)
+        public Tafel GetForID(int Id)
         {
             // Connectie opzetten
             dbConnection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE tafel_id = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", tafelId);
+            command.Parameters.AddWithValue("@Id", Id);
             SqlDataReader reader = command.ExecuteReader();
 
-            Model.Tafel item = null;
+            Tafel item = null;
 
             if (reader.Read())
             {
@@ -64,12 +78,11 @@ namespace DAL
             return item;
         }
 
-        private Tafel Readitem(SqlDataReader reader)
-        {
+        private Model.Tafel Readitem(SqlDataReader reader)
+    {
             int tafel_id = (int)reader["tafel_id"];
-            string status = (string)reader["status"];
-
-            return new Tafel(tafel_id, status);
+            Status_tafel status = (Status_tafel)(int)reader["status"];
+            return new Model.Tafel(tafel_id, status);
 
         }
     }

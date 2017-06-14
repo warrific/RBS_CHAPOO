@@ -10,14 +10,17 @@ using Model;
 
 namespace UI
 {
-    public partial class Bar_Form : UI.Main_Form
+    public partial class Keuken_Form : UI.Main_Form
     {
         private bool status_actueel = true;
-        private bool is_drinken = true;
+        private bool is_drinken = false;
 
-        public Bar_Form()
+        public Keuken_Form()
         {
             InitializeComponent();
+
+            lbl_tafel.Hide();
+            btn_Tafel.Hide();
 
             // Datasource vermelden en aanroepen
             data_source();
@@ -67,9 +70,13 @@ namespace UI
             // Als er een cell geselecteerd is
             if (data_dranken.SelectedCells.Count == 1)
             {
-                // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id"
+                // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id" en het item id
                 int order_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[0].Value));
+                int item_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[1].Value));
+
+                // Roep meld gereed aan en geef waardes door
                 Bestellingen bestellingen = new Bestellingen();
+                bestellingen.meld_gereed(order_id, item_id);
             }
         }
 
@@ -120,7 +127,7 @@ namespace UI
 
             // Niet automatisch kolomen genereren en de data bron vermelden
             data_dranken.AutoGenerateColumns = false;
-            data_dranken.DataSource = bestellingen.bar_lijst;
+            data_dranken.DataSource = bestellingen.keuken_lijst;
         }
     }
 }

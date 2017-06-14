@@ -10,16 +10,27 @@ namespace Logica
 {
     public class Werknemers
     {
-        public List<Werknemer> make_list()
+        public List<Model.Werknemer> make_list()
         {
-            DALWerknemer DALitem = new DALWerknemer();
-            return DALitem.GetAll();
+            DALWerknemer DAOWerknemer = new DALWerknemer();
+            return DAOWerknemer.GetAll();
         }
+        
         public void ToevoegenWerknemer(string naam, string functie, int code)
         {
-            DALWerknemer DALitem = new DALWerknemer();
-            int id = DALitem.GetLastId() + 1;
-            DALitem.ToevoegenWerknemer(id, naam, functie, code);
+            DALWerknemer DAOWerknemer = new DALWerknemer();
+            int id = DAOWerknemer.GetLastId() + 1;
+            DAOWerknemer.ToevoegenWerknemer(id, naam, functie, code);
+        }
+        public void WijzigenWerknemer(int id, string naam, string functie)
+        {
+            DALWerknemer DAOWerknemer = new DALWerknemer();
+            DAOWerknemer.WijzigenWerknemer(id, naam, functie);
+        }
+        public void VerwijderenWerknemer(int id)
+        {
+            DALWerknemer DAOWerknemer = new DALWerknemer();
+            DAOWerknemer.VerwijderenWerknemer(id);
         }
     }
 }
