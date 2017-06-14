@@ -18,7 +18,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Keuken_Form());
+            Application.Run(new Bediening_Form());
         }
     }
 }

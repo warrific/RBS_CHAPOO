@@ -86,14 +86,14 @@
             // 
             this.pnl_optiesbestelling.Location = new System.Drawing.Point(0, 127);
             this.pnl_optiesbestelling.Name = "pnl_optiesbestelling";
-            this.pnl_optiesbestelling.Size = new System.Drawing.Size(751, 75);
+            this.pnl_optiesbestelling.Size = new System.Drawing.Size(751, 62);
             this.pnl_optiesbestelling.TabIndex = 11;
             // 
             // flowLP_MenuItems
             // 
-            this.flowLP_MenuItems.Location = new System.Drawing.Point(0, 209);
+            this.flowLP_MenuItems.Location = new System.Drawing.Point(0, 195);
             this.flowLP_MenuItems.Name = "flowLP_MenuItems";
-            this.flowLP_MenuItems.Size = new System.Drawing.Size(751, 177);
+            this.flowLP_MenuItems.Size = new System.Drawing.Size(751, 191);
             this.flowLP_MenuItems.TabIndex = 12;
             // 
             // listView_Bestelling
@@ -106,7 +106,7 @@
             this.listView_Bestelling.GridLines = true;
             this.listView_Bestelling.Location = new System.Drawing.Point(0, 393);
             this.listView_Bestelling.Name = "listView_Bestelling";
-            this.listView_Bestelling.Size = new System.Drawing.Size(751, 229);
+            this.listView_Bestelling.Size = new System.Drawing.Size(751, 505);
             this.listView_Bestelling.TabIndex = 13;
             this.listView_Bestelling.UseCompatibleStateImageBehavior = false;
             this.listView_Bestelling.View = System.Windows.Forms.View.Details;

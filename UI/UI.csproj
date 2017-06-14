@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonMenuItemVerlaag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonMenuItemVerlaag.Designer.cs">
+      <DependentUpon>ButtonMenuItemVerlaag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Keuken_Form.cs">
       <SubType>Form</SubType>
     </Compile>
