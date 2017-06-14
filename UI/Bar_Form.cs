@@ -3,15 +3,32 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Logica;
 using Model;
+using Logica;
+
 
 namespace UI
 {
     public partial class Bar_Form : UI.Main_Form
     {
+        // bedoeld voor restaurantoverzicht
+        //public RestaurantOvz_Form overzicht;
+
+        
+      //  private void link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+       // {
+       //     if (Bar_Form.IsDisposed == true)
+        //    {
+        //        Bar_Form = new Bar_Form();
+        //    }
+
+        //    Bar_Form.Show();
+       // }   
+
         public Bar_Form()
         {
             InitializeComponent();
@@ -76,7 +93,7 @@ namespace UI
         }
 
         private void btn_herlaad_Click(object sender, EventArgs e)
-        {
+            {
             Bestellingen bestellingen = new Bestellingen();
             // Bestellingen ophalen en in lijst zetten (in methode)
             bestellingen.make_listbestelling_dranken();
@@ -89,4 +106,6 @@ namespace UI
             data_dranken.Refresh();
         }
     }
+
+
 }

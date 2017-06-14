@@ -1,9 +1,12 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Logica;
@@ -97,7 +100,7 @@ namespace UI
             btn_LunchVoor.Text = "Voorgerecht";
             btn_LunchVoor.Location = new Point(100, 0);
             btn_LunchVoor.Click += new EventHandler(GenereerMenuItemButtons);
-
+            
             ButtonSelectie btn_LunchHoofd = new ButtonSelectie(Categorie.Lunch, SubCategorie.HoofdGerecht);
             pnl_optiesbestelling.Controls.Add(btn_LunchHoofd);
             btn_LunchHoofd.Text = "Hoofdgerecht";
@@ -108,7 +111,7 @@ namespace UI
             pnl_optiesbestelling.Controls.Add(btn_LunchNa);
             btn_LunchNa.Text = "Nagerecht";
             btn_lunch.Tag = 90;
-            btn_LunchNa.Location = new Point(300, 0);
+            btn_LunchNa.Location = new Point(300, 0); 
             btn_LunchNa.Click += new EventHandler(GenereerMenuItemButtons);
         }
 

@@ -12,45 +12,34 @@ namespace DAL
 {
     public class DALLogin
     {
-         //verwijst naar ChapooDB en maakt connectie met database
-         //   SqlConnection conn = new SqlConnection(@"Data Source=194.171.20.101;Initial Catalog=RBS1617S_db06;Persist Security Info=True;User ID=RBS1617S_grp06;Password=NwawwcGBA7");
-         //Maakt queries voor in de database
-         //   string sqlquery = "SELECT * FROM login WHERE password ='" + txt_wachtwoord.Text.Trim() + "'";
-         //   SqlDataAdapter sda = new SqlDataAdapter(sqlquery, conn);
-         //   DataSet dtbl = new DataSet();
-         //sda.Fill(dtbl);
-
-        protected SqlConnection dbConnection;
-
+        protected SqlConnection dbConnection;    
+        
         public DALLogin()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-
             dbConnection = new SqlConnection(connString);
-        }
 
-       // string sqlquery = "SELECT Wachtwoord FROM Mederwerker WHERE password ='" + txt_wachtwoord.Text.Trim() + "'";
-       // SqlDataAdapter sda = new SqlDataAdapter(sqlquery, conn);
+        }
 
         public int GetPassword(string invoer_wachtwoord)
         {
-            // Connectie opzetten
-            
-            int code = 0;
-            dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT code FROM Medewerker WHERE code = @code", dbConnection);
-            command.Parameters.AddWithValue("@code", invoer_wachtwoord);
-            SqlDataReader reader = command.ExecuteReader();
+            //Connectie opzetten;
+             int code = 0;
+             dbConnection.Open();
+             SqlCommand command = new SqlCommand("SELECT code FROM Medewerker WHERE code = @code", dbConnection);
+             command.Parameters.AddWithValue("@code", invoer_wachtwoord);
+             SqlDataReader reader = command.ExecuteReader();
+             if (reader.Read())
+             {
+                code = (int)reader["code"];
+              }
 
-            if (reader.Read())
-            {
-               code = (int)reader["code"];
-            }
+              reader.Close();
+              dbConnection.Close();
 
-            reader.Close();
-            dbConnection.Close();
-
-            return code;
+              return code;
         }
+
+
     }
 }

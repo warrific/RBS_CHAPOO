@@ -3,8 +3,8 @@
   <Class Name="Model.MenuItem">
     <Position X="8.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgACAAAAAAIAAgAAQAAAAAAACAAAAAEgA=</HashCode>
-      <FileName>MenuItem.cs</FileName>
+      <HashCode>AAAAAAAAAAAAACAAAAAAIAAgCQQAAAAAAAIAAAAAEgA=</HashCode>
+      <FileName>BestelItem.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="categorie" />

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
@@ -18,7 +22,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Eigenaar_Form());
+            Application.Run(new Login_Form());
         }
     }
 }
