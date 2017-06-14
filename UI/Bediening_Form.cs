@@ -150,7 +150,10 @@ namespace UI
             if (bestaat == false)
             {
                 //TO DO: id van database halen
-                Model.BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, "bestelt");
+                    // De huidige manier van status vermelden is via de enum status (open = besteld, gereed = gemaakt door bar / keuken en voltooid)
+                    // enum status in de database is nu een int (makkelijkere conversie naar enum)
+
+                BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, Status.Open);
                 lijstBestelItem.Add(bestelItem); 
             }
 

@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Keuken_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Keuken_Form.Designer.cs">
+      <DependentUpon>Keuken_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bar_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Keuken_Form.resx">
+      <DependentUpon>Keuken_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bar_Form.resx">
       <DependentUpon>Bar_Form.cs</DependentUpon>
     </EmbeddedResource>

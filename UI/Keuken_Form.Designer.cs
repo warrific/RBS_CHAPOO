@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class Bar_Form
+    partial class Keuken_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -101,7 +101,7 @@
             this.lbl_historie.Text = "Orders";
             this.lbl_historie.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Bar_Form
+            // Keuken_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(1003, 1074);
@@ -112,8 +112,8 @@
             this.Controls.Add(this.data_dranken);
             this.Controls.Add(this.btn_afrekenen);
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "Bar_Form";
-            this.Text = "Bar";
+            this.Name = "Keuken_Form";
+            this.Text = "Keuken";
             this.Controls.SetChildIndex(this.btn_afrekenen, 0);
             this.Controls.SetChildIndex(this.data_dranken, 0);
             this.Controls.SetChildIndex(this.btn_herlaad, 0);

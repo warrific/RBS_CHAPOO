@@ -10,44 +10,61 @@ namespace Logica
 {
     public class Bestellingen
     {
-        public List<Bestelling_dranken> dranken_lijst = new List<Bestelling_dranken>();
+        // Public omdat de UI klassen er bij moeten kunnen
+        public List<Bestelling_weergave> bar_lijst = new List<Bestelling_weergave>();
+        public List<Bestelling_weergave> keuken_lijst = new List<Bestelling_weergave>();
 
-        public List<Bestelling_dranken> make_listbestelling_dranken()
+        public List<Bestelling_weergave> make_listbestelling_weergave(bool status_actueel, bool is_drinken)
         {
+            // Initialiseren
             int id = 0;
             int tafel_nummer = 0;
             int aantal = 0;
             string order = "";
             string opmerking = "";
             string bediening = "";
-            string status = "";
+            Status status;
 
             DALBestelling DALitem = new DALBestelling();
 
             int i = 0;
-            foreach (Model.Bestelling list_item in make_listbestelling())
+            foreach (Bestelling list_item in make_listbestelling())
             {
                 for (int m = 0; m < list_item.bestel_items.Count; m++)
                 {
+                    // Voor overzicht even los en nit in new Bestelling_weergave()
                     id = bestellingen_lijst[i].id;
                     tafel_nummer = list_item.tafel.tafel_id;
                     bediening = list_item.werknemer.naam;
                     aantal = list_item.bestel_items[m].aantal;
                     order = list_item.bestel_items[m].menuItem.naam;
                     opmerking = list_item.bestel_items[m].opmerking;
-                    status = list_item.bestel_items[m].status;
+                    status = list_item.bestel_items[m].status_item;
 
-                    if (list_item.bestel_items[m].menuItem.categorie == Categorie.Drank || list_item.bestel_items[m].menuItem.categorie == Categorie.Alcohol)
+                    
+                    // Check welke lijst gevuld moet worden en wat hier in moet (actueel of historie)
+                    if ((list_item.bestel_items[m].menuItem.categorie == Categorie.Drank || list_item.bestel_items[m].menuItem.categorie == Categorie.Alcohol)&& (list_item.bestel_items[m].status_item == Status.Open) == status_actueel)
                     {
-                        dranken_lijst.Add(new Bestelling_dranken(id, tafel_nummer, aantal, order, opmerking, bediening, status));
+                        bar_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status));
+                    }
+                    else if ((list_item.bestel_items[m].menuItem.categorie == Categorie.Diner || list_item.bestel_items[m].menuItem.categorie == Categorie.Lunch) && (list_item.bestel_items[m].status_item == Status.Open) == status_actueel)
+                    {
+                        keuken_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status));
                     }
                 }
 
-                
-                
                 i++;
             }
-            return dranken_lijst;
+            
+            // Check welke van de lijsten we moeten terug geven
+            if (is_drinken)
+            {
+                return bar_lijst;
+            }
+            else
+            {
+                return keuken_lijst;
+            }
         }
 
         public List<Bestelling> bestellingen_lijst = new List<Bestelling>();
@@ -68,11 +85,11 @@ namespace Logica
             }
         }
 
-        public void meld_gereed()
+        public void meld_gereed(int order_id, int item_id)
         {
-            DALBestelling DALitem = new DALBestelling();
+            DALBestelItem DALitem = new DALBestelItem();
 
-
+            DALitem.MeldGereed(order_id, item_id);
         }
     }
 }
