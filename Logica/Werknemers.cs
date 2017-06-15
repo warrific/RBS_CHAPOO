@@ -43,14 +43,23 @@ namespace Logica
                     }
                     else return "Code foute lengte"; 
                 }
-                else return "Functie onjuist";
+                else return "Functie niet ingevuld";
             }
             else return "Naam niet ingevuld";
         }
-        public void WijzigenWerknemer(int id, string naam, string functie)
+        public string WijzigenWerknemer(int id, string naam, string functie)
         {
-            DALWerknemer DAOWerknemer = new DALWerknemer();
-            DAOWerknemer.WijzigenWerknemer(id, naam, functie);
+            if (naam != "")
+            {
+                if (Enum.IsDefined(typeof(Functie), functie))
+                {
+                    DALWerknemer DAOWerknemer = new DALWerknemer();
+                    DAOWerknemer.WijzigenWerknemer(id, naam, functie);
+                    return "";
+                }
+                else return "Functie niet ingevuld";
+            }
+            else return "Naam niet ingevuld";
         }
         public void VerwijderenWerknemer(int id)
         {

@@ -198,7 +198,7 @@ namespace UI
         {
             if (btnFunctie == "ToevMedw")
             {
-                Werknemers werknemers = new Werknemers(); //Dit buiten de if plaatsen voor minder ruimte, zorgt dat dingen meerdere keren worden toegevoegd
+                Werknemers werknemers = new Werknemers(); 
 
                 string naam = txtNaam.Text;
                 string functie = cmbFunctie.Text;
@@ -224,11 +224,14 @@ namespace UI
                 string naam = txtNaam.Text;
                 string functie = cmbFunctie.Text;
 
-                werknemers.WijzigenWerknemer(id, naam, functie);
+                lblError.ForeColor = Color.Red;
+                lblError.Text = werknemers.WijzigenWerknemer(id, naam, functie);
 
-                RefreshMedewerkers();
-
-                popupForm.Close();
+                if (lblError.Text == "")
+                {
+                    RefreshMedewerkers();
+                    popupForm.Close();
+                }
             }
         }
         
@@ -247,12 +250,13 @@ namespace UI
             InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
             InitControl(lblFunctie, LBLX, SPACING * 2, "Functie", FNTSIZE, WIDTH);
             InitControl(lblCode, LBLX, SPACING * 3, "4-Cijferige Code", FNTSIZE, WIDTH+20);
+            InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 30, 25);
 
             InitControl(txtNaam, TBX, SPACING * 1, "", FNTSIZE, WIDTH);
             InitControl(cmbFunctie, TBX, SPACING * 2, "Functie", FNTSIZE, WIDTH);
+            cmbFunctie.DropDownStyle = ComboBoxStyle.DropDownList;
             InitControl(txtCode, TBX, SPACING * 3, "", FNTSIZE, 52);
             txtCode.MaxLength = MAXCODELENGTH;
-            InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH+30, 25);
 
             VulCmbFunctie();
 
@@ -317,15 +321,17 @@ namespace UI
             InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 30, 25);
 
             InitControl(cmbMenukaart, TBX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
+            cmbMenukaart.DropDownStyle = ComboBoxStyle.DropDownList;
             InitControl(cmbSubcategorie, TBX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
+            cmbSubcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
             InitControl(txtNaam, TBX, SPACING * 3, "", FNTSIZE, WIDTH);
             InitControl(txtKorteNaam, TBX, SPACING * 4, "", FNTSIZE, WIDTH);
             InitControl(txtPrijs, TBX, SPACING * 5, "", FNTSIZE, WIDTH);
 
-            foreach (Functie categorie in Enum.GetValues(typeof(Categorie)))
+            foreach (Categorie categorie in Enum.GetValues(typeof(Categorie)))
                 cmbMenukaart.Items.Add(categorie);
 
-            foreach (Functie subcategorie in Enum.GetValues(typeof(SubCategorie)))
+            foreach (SubCategorie subcategorie in Enum.GetValues(typeof(SubCategorie)))
                 cmbSubcategorie.Items.Add(subcategorie);
 
             InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);
