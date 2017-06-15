@@ -9,7 +9,7 @@ using Logica;
 using Model;
 
 //Known issues: voorraad negatief maken, wat gebeurt er dan?
-//Extra toekomstige functionaliteiten: refresh, undo, waarschuwing niets geselecteerd, feedback op: iets is gelukt
+//Extra toekomstige functionaliteiten: functie controleren, refresh, undo, waarschuwing niets geselecteerd, feedback op: iets is gelukt
 
 namespace UI
 {
@@ -202,7 +202,10 @@ namespace UI
 
                 string naam = txtNaam.Text;
                 string functie = cmbFunctie.Text;
-                int code = int.Parse(txtCode.Text);
+                int code;
+                bool ingevuld = int.TryParse(txtCode.Text, out code);
+                if (!ingevuld)
+                    lblError.Text = "Code niet ingevuld";
 
                 lblError.ForeColor = Color.Red;
                 lblError.Text = werknemers.ToevoegenWerknemer(naam, functie, code);
@@ -245,13 +248,13 @@ namespace UI
 
             InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
             InitControl(lblFunctie, LBLX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
-            InitControl(lblCode, LBLX, SPACING * 4, "Code", FNTSIZE, WIDTH);
+            InitControl(lblCode, LBLX, SPACING * 4, "4-Cijferige Code", FNTSIZE, WIDTH+20);
 
             InitControl(txtNaam, TBX, SPACING * 1, "", FNTSIZE, WIDTH);
             InitControl(cmbFunctie, TBX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
             InitControl(txtCode, TBX, SPACING * 4, "", FNTSIZE, 52);
             txtCode.MaxLength = MAXCODELENGTH;
-            InitControl(lblError, 100, SPACING * 5, "", FNTSIZE, WIDTH+20);
+            InitControl(lblError, 100, SPACING * 5, "", FNTSIZE, WIDTH+30);
 
             VulCmbFunctie();
 
@@ -427,6 +430,21 @@ namespace UI
 
             }
             //}
+        }
+
+        private void btnRefrVoorraad_Click(object sender, EventArgs e)
+        {
+            RefreshVoorraad();
+        }
+
+        private void btnRefrMedw_Click(object sender, EventArgs e)
+        {
+            RefreshMedewerkers();
+        }
+
+        private void btnRefrMenu_Click(object sender, EventArgs e)
+        {
+            RefreshMenukaarten();
         }
     }
 }

@@ -18,27 +18,34 @@ namespace Logica
         
         public string ToevoegenWerknemer(string naam, string functie, int code)
         {
-            if (code.ToString().Length == 4)
+            if (naam != "")
             {
-                DALWerknemer DAOWerknemer = new DALWerknemer();
-                List<int> codes = new List<int>();
-
-                codes = DAOWerknemer.GetCodes();
-
-                foreach (int DBCode in codes) //Check of code niet bestaat
+                if (Enum.IsDefined(typeof(Functie), functie))
                 {
-                    if (DBCode == code)
+                    if (code.ToString().Length == 4)
                     {
-                        return "Code bestaat al!";
-                    }
-                }
+                        DALWerknemer DAOWerknemer = new DALWerknemer();
+                        List<int> codes = new List<int>();
 
-                int id = DAOWerknemer.GetLastId() + 1;
-                DAOWerknemer.ToevoegenWerknemer(id, naam, functie, code);
-                return "";
+                        codes = DAOWerknemer.GetCodes();
+
+                        foreach (int DBCode in codes) //Check of code niet bestaat
+                        {
+                            if (DBCode == code)
+                            {
+                                return "Code bestaat al";
+                            }
+                        }
+
+                        int id = DAOWerknemer.GetLastId() + 1;
+                        DAOWerknemer.ToevoegenWerknemer(id, naam, functie, code);
+                        return "";
+                    }
+                    else return "Code foute lengte"; 
+                }
+                else return "Functie onjuist";
             }
-            else
-                return "Code foute lengte";
+            else return "Naam niet ingevuld";
         }
         public void WijzigenWerknemer(int id, string naam, string functie)
         {
