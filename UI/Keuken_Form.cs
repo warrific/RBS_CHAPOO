@@ -67,17 +67,15 @@ namespace UI
 
         private void btn_gereed_Click(object sender, EventArgs e)
         {
-            // Als er een cell geselecteerd is
-            if (data_dranken.SelectedCells.Count == 1)
-            {
-                // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id" en het item id
-                int order_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[0].Value));
-                int item_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[1].Value));
+            // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id" en de item naam
+            int order_id = int.Parse(Convert.ToString(data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)].Cells[0].Value));
+            string item_naam = (Convert.ToString(data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)].Cells[3].Value));
 
-                // Roep meld gereed aan en geef waardes door
-                Bestellingen bestellingen = new Bestellingen();
-                bestellingen.meld_gereed(order_id, item_id);
-            }
+            // Roep meld gereed aan en geef waardes door
+            Bestellingen bestellingen = new Bestellingen();
+            bestellingen.meld_gereed(order_id, item_naam);
+
+            reload();
         }
 
         private void btn_herlaad_Click(object sender, EventArgs e)

@@ -44,6 +44,9 @@
             this.btnWijzMenukaart = new System.Windows.Forms.Button();
             this.btnToevMenukaart = new System.Windows.Forms.Button();
             this.treeViewMenu = new System.Windows.Forms.TreeView();
+            this.btnRefrMedw = new System.Windows.Forms.Button();
+            this.btnRefrMenu = new System.Windows.Forms.Button();
+            this.btnRefrVoorraad = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageVoorraad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -66,6 +69,7 @@
             // 
             // tabPageVoorraad
             // 
+            this.tabPageVoorraad.Controls.Add(this.btnRefrVoorraad);
             this.tabPageVoorraad.Controls.Add(this.btnVerlaag);
             this.tabPageVoorraad.Controls.Add(this.btnVerhoog);
             this.tabPageVoorraad.Controls.Add(this.numericUpDown1);
@@ -126,6 +130,7 @@
             // 
             // tabPageMedewerkers
             // 
+            this.tabPageMedewerkers.Controls.Add(this.btnRefrMedw);
             this.tabPageMedewerkers.Controls.Add(this.btnVerwMedw);
             this.tabPageMedewerkers.Controls.Add(this.btnWijzMedw);
             this.tabPageMedewerkers.Controls.Add(this.btnToevMedw);
@@ -182,6 +187,7 @@
             // 
             // tabPageMenukaarten
             // 
+            this.tabPageMenukaarten.Controls.Add(this.btnRefrMenu);
             this.tabPageMenukaarten.Controls.Add(this.btnVerwMenukaart);
             this.tabPageMenukaarten.Controls.Add(this.btnWijzMenukaart);
             this.tabPageMenukaarten.Controls.Add(this.btnToevMenukaart);
@@ -235,12 +241,45 @@
             this.treeViewMenu.Size = new System.Drawing.Size(552, 494);
             this.treeViewMenu.TabIndex = 0;
             // 
-            // Eigenaar_Form_v2
+            // btnRefrMedw
+            // 
+            this.btnRefrMedw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrMedw.Location = new System.Drawing.Point(558, 345);
+            this.btnRefrMedw.Name = "btnRefrMedw";
+            this.btnRefrMedw.Size = new System.Drawing.Size(178, 107);
+            this.btnRefrMedw.TabIndex = 16;
+            this.btnRefrMedw.Text = "Refresh";
+            this.btnRefrMedw.UseVisualStyleBackColor = true;
+            this.btnRefrMedw.Click += new System.EventHandler(this.btnRefrMedw_Click);
+            // 
+            // btnRefrMenu
+            // 
+            this.btnRefrMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrMenu.Location = new System.Drawing.Point(558, 345);
+            this.btnRefrMenu.Name = "btnRefrMenu";
+            this.btnRefrMenu.Size = new System.Drawing.Size(178, 107);
+            this.btnRefrMenu.TabIndex = 15;
+            this.btnRefrMenu.Text = "Refresh";
+            this.btnRefrMenu.UseVisualStyleBackColor = true;
+            this.btnRefrMenu.Click += new System.EventHandler(this.btnRefrMenu_Click);
+            // 
+            // btnRefrVoorraad
+            // 
+            this.btnRefrVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrVoorraad.Location = new System.Drawing.Point(558, 268);
+            this.btnRefrVoorraad.Name = "btnRefrVoorraad";
+            this.btnRefrVoorraad.Size = new System.Drawing.Size(178, 107);
+            this.btnRefrVoorraad.TabIndex = 17;
+            this.btnRefrVoorraad.Text = "Refresh";
+            this.btnRefrVoorraad.UseVisualStyleBackColor = true;
+            this.btnRefrVoorraad.Click += new System.EventHandler(this.btnRefrVoorraad_Click);
+            // 
+            // Eigenaar_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 741);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Eigenaar_Form_v2";
+            this.Name = "Eigenaar_Form";
             this.Controls.SetChildIndex(this.tabControl1, 0);
             this.tabControl1.ResumeLayout(false);
             this.tabPageVoorraad.ResumeLayout(false);
@@ -269,5 +308,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button btnVerlaag;
         private System.Windows.Forms.Button btnVerhoog;
+        private System.Windows.Forms.Button btnRefrVoorraad;
+        private System.Windows.Forms.Button btnRefrMedw;
+        private System.Windows.Forms.Button btnRefrMenu;
     }
 }

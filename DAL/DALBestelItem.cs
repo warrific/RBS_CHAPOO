@@ -92,7 +92,7 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("UPDATE Bestelling_item SET status = 2 WHERE order_id = @Id AND WHERE item_id = @item_id", dbConnection);            // Moet nog update worden
+            SqlCommand command = new SqlCommand("UPDATE Bestelling_item SET status = 2 WHERE order_id = @Id AND item_id = @item_id", dbConnection);            // Moet nog update worden
             command.Parameters.AddWithValue("@Id", order_id);
             command.Parameters.AddWithValue("@item_id", item_id);
 

@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
 using System.Drawing;
-using System.Text;
-using System.Media;
 using System.Windows.Forms;
-using System.IO;
 using Logica;
 using Model;
-using UI;
 
 
 namespace UI
@@ -51,25 +43,19 @@ namespace UI
             foreach (Button btn in Betaalwijze)
             {
                 btn.FlatAppearance.BorderSize = 0;
-                btn.BackColor = System.Drawing.SystemColors.Control;
+                btn.BackColor = SystemColors.Control;
             }
             
             Button button = (Button)sender;
             button.FlatAppearance.BorderSize = 2;
             button.FlatAppearance.BorderColor = Color.LimeGreen;
-            button.BackColor = System.Drawing.SystemColors.Control;
+            button.BackColor = SystemColors.Control;
             Betaalwijze_out_lbl.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(button.Text);
         }
 
         private void Fooi_Btn_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            //string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            //string FileName = string.Format(@"{0}Resources\WAV Sounds\dtmf-" + button.Text + ".wav", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
-            ////string soundPath = RunningPath + @"\Resources\WAV Sounds\dtmf-" +button.Text.ToLower()+".wav";
-
-            //SoundPlayer SP = new SoundPlayer();
-            //SP.Play();   
+            Button button = (Button)sender;  
 
             Fooi_textbox.Text += button.Text;
             Fooi_out_lbl.Text += button.Text;
