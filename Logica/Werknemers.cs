@@ -57,7 +57,7 @@ namespace Logica
                     DAOWerknemer.WijzigenWerknemer(id, naam, functie);
                     return "";
                 }
-                else return "Functie niet ingevuld";
+                else return "Functie onjuist";
             }
             else return "Naam niet ingevuld";
         }
