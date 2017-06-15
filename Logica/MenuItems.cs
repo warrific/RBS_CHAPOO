@@ -60,5 +60,11 @@ namespace Logica
 
             return voorraad;
         }
+
+        public void BewerkVoorraad(MenuItem item, int aantalBesteld)
+        {
+            DALMenuItem dalMenuItem = new DALMenuItem();
+            dalMenuItem.BewerkVoorraad(item, aantalBesteld);
+        }
     }
 }

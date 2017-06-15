@@ -131,7 +131,7 @@
             // 
             // btn_Verstuur
             // 
-            this.btn_Verstuur.Location = new System.Drawing.Point(608, 769);
+            this.btn_Verstuur.Location = new System.Drawing.Point(608, 853);
             this.btn_Verstuur.Name = "btn_Verstuur";
             this.btn_Verstuur.Size = new System.Drawing.Size(132, 57);
             this.btn_Verstuur.TabIndex = 14;
@@ -162,7 +162,6 @@
             this.lbl_VoorraadOp.Name = "lbl_VoorraadOp";
             this.lbl_VoorraadOp.Size = new System.Drawing.Size(200, 200);
             this.lbl_VoorraadOp.TabIndex = 16;
-            this.lbl_VoorraadOp.Text = "x";
             this.lbl_VoorraadOp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Bediening_Form

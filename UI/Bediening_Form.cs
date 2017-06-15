@@ -202,18 +202,20 @@ namespace UI
             if (lijstBestelItem.Count == 0)
                 return;
 
+            Logica.MenuItems logMenuItems = new MenuItems();
+            Logica.Bestellingen logBestelingen = new Bestellingen();
+
             Model.Werknemer werknemer = new Model.Werknemer(1, Functie.Bediening, "ehk", "3333");
             Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
-            Logica.Bestellingen logBestelingen = new Bestellingen();
-
-
+            foreach(BestelItem item in lijstBestelItem)
+            {
+                logMenuItems.BewerkVoorraad(item.menuItem, item.aantal);
+            }
 
             Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open,werknemer, 1, "", 1, DateTime.Now);
 
-            Logica.MenuItems menuitems = new MenuItems();
-
-            menuitems.StuurBestellingNaarDatabase(bestelling);
+            logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
             foreach (BestelItem item in lijstBestelItem)
             {

@@ -174,5 +174,23 @@ namespace DAL
 
             return item_id;
         }
+
+        public void BewerkVoorraad(MenuItem item, int aantalBesteld)
+        {
+            dbConnection.Open();
+
+            string dbString =   "UPDATE Menuitem " +
+                                "SET voorraad = @nieuw " +
+                                "WHERE item_id = @itemid";
+
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@nieuw", item.voorraad - aantalBesteld);
+            command.Parameters.AddWithValue("@itemid", item.id);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
     }
 }
