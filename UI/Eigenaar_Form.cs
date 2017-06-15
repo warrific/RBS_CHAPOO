@@ -235,11 +235,9 @@ namespace UI
         private void VulCmbFunctie()
         {
             cmbFunctie.Items.Clear();
-            cmbFunctie.Items.Add("Bediening");
-            cmbFunctie.Items.Add("Kok");
-            cmbFunctie.Items.Add("Bar");
-            cmbFunctie.Items.Add("Sommelier");
-            cmbFunctie.Items.Add("Eigenaar");
+
+            foreach (Functie functie in Enum.GetValues(typeof(Functie)))
+                cmbFunctie.Items.Add(functie);
         }
 
         private void ToevMedwUI()
@@ -247,14 +245,14 @@ namespace UI
             InitControl(lblTitel, TITELX, TITELY, "Medewerker Toevoegen", FNTSIZE, 250);
 
             InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
-            InitControl(lblFunctie, LBLX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
-            InitControl(lblCode, LBLX, SPACING * 4, "4-Cijferige Code", FNTSIZE, WIDTH+20);
+            InitControl(lblFunctie, LBLX, SPACING * 2, "Functie", FNTSIZE, WIDTH);
+            InitControl(lblCode, LBLX, SPACING * 3, "4-Cijferige Code", FNTSIZE, WIDTH+20);
 
             InitControl(txtNaam, TBX, SPACING * 1, "", FNTSIZE, WIDTH);
-            InitControl(cmbFunctie, TBX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
-            InitControl(txtCode, TBX, SPACING * 4, "", FNTSIZE, 52);
+            InitControl(cmbFunctie, TBX, SPACING * 2, "Functie", FNTSIZE, WIDTH);
+            InitControl(txtCode, TBX, SPACING * 3, "", FNTSIZE, 52);
             txtCode.MaxLength = MAXCODELENGTH;
-            InitControl(lblError, 100, SPACING * 5, "", FNTSIZE, WIDTH+30);
+            InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH+30, 25);
 
             VulCmbFunctie();
 
@@ -315,6 +313,7 @@ namespace UI
             InitControl(lblNaam, LBLX, SPACING * 3, "Naam", FNTSIZE, WIDTH);
             InitControl(lblKorteNaam, LBLX, SPACING * 4, "Verkorte Naam", FNTSIZE, WIDTH);
             InitControl(lblPrijs, LBLX, SPACING * 5, "Prijs (in euro's)", FNTSIZE, WIDTH);
+            InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 30, 25);
 
             InitControl(cmbMenukaart, TBX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
             InitControl(cmbSubcategorie, TBX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
@@ -322,16 +321,13 @@ namespace UI
             InitControl(txtKorteNaam, TBX, SPACING * 4, "", FNTSIZE, WIDTH);
             InitControl(txtPrijs, TBX, SPACING * 5, "", FNTSIZE, WIDTH);
 
-            cmbMenukaart.Items.Add("Lunch");
-            cmbMenukaart.Items.Add("Diner");
-            cmbMenukaart.Items.Add("Dranken");
+            foreach (Functie categorie in Enum.GetValues(typeof(Categorie)))
+                cmbMenukaart.Items.Add(categorie);
 
-            cmbSubcategorie.Items.Add("Voorgerecht");
-            cmbSubcategorie.Items.Add("Tussengerecht");
-            cmbSubcategorie.Items.Add("Hoofdgerecht");
-            cmbSubcategorie.Items.Add("Nagerecht");
+            foreach (Functie subcategorie in Enum.GetValues(typeof(SubCategorie)))
+                cmbSubcategorie.Items.Add(subcategorie);
 
-            InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 60);
+            InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);
 
             PopupFormStandardControls();
             PopupFormExtraControls(lblMenukaart, cmbMenukaart);
