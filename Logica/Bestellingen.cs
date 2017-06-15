@@ -32,7 +32,7 @@ namespace Logica
             {
                 for (int m = 0; m < list_item.bestel_items.Count; m++)
                 {
-                    // Voor overzicht even los en nit in new Bestelling_weergave()
+                    // Voor overzicht even los en niet in new Bestelling_weergave()
                     id = bestellingen_lijst[i].id;
                     tafel_nummer = list_item.tafel.Id;
                     bediening = list_item.werknemer.naam;
@@ -90,6 +90,12 @@ namespace Logica
             DALBestelItem DALitem = new DALBestelItem();
 
             DALitem.MeldGereed(order_id, item_id);
+        }
+
+        public int GetOrderId(int tafelNr)
+        {
+            DALBestelling DALITem = new DALBestelling();
+            return DALITem.GetId(tafelNr);
         }
     }
 }

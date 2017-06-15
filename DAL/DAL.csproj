@@ -52,6 +52,7 @@
     <Compile Include="DALLogin.cs" />
     <Compile Include="DALMenuKaart.cs" />
     <Compile Include="DALMenuItem.cs" />
+    <Compile Include="DALRekeningItem.cs" />
     <Compile Include="DALTafel.cs" />
     <Compile Include="DALWerknemer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,80 +2,77 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 using System.Drawing;
 using System.Text;
+using System.Media;
 using System.Windows.Forms;
+using System.IO;
+using Logica;
+using Model;
+using UI;
 
 
 namespace UI
 {
     public partial class Betalen_Form : Main_Form
     {
-        public Betalen_Form()
+        List<Button> Betaalwijze = new List<Button>();
+
+        public Betalen_Form(int tafelNr)
         {
-            InitializeComponent();
             
+            double totaalPrijs = 0;
+            Bestellingen bestelling = new Bestellingen();
+            int order_id = bestelling.GetOrderId(tafelNr);
+            Rekeningen logica = new Rekeningen();
+            List<RekeningItem> rekening = logica.getRekening(order_id);
+            
+            foreach (RekeningItem item in rekening)
+            {
+                ListViewItem Lvi = new ListViewItem();
+                Lvi.SubItems.Add(item.aantal.ToString());
+                Lvi.SubItems.Add(item.naam);
+                Lvi.SubItems.Add(item.prijs.ToString());
+                Rekening_lview.Items.Add(Lvi);
+                totaalPrijs += item.prijs;
+            }
 
+            InitializeComponent();
+            Totaal_out_lbl.Text = totaalPrijs.ToString();
+            Betaalwijze.Add(Betaalwijze_contant_btn);
+            Betaalwijze.Add(Betaalwijze_pin_btn);
+            Betaalwijze.Add(Betaalwijze_credit_btn);
         }
 
-        private void Betaalwijze_pin_btn_Click(object sender, EventArgs e)
-        {  
-            Betaalwijze_out_lbl.Text = "Pin";
-        }
-
-        private void Betaalwijze_contant_btn_Click(object sender, EventArgs e)
+        private void Betaalwijze_click(object sender, EventArgs e)
         {
-            Betaalwijze_out_lbl.Text = "Contant";
+            foreach (Button btn in Betaalwijze)
+            {
+                btn.FlatAppearance.BorderSize = 0;
+                btn.BackColor = System.Drawing.SystemColors.Control;
+            }
+            
+            Button button = (Button)sender;
+            button.FlatAppearance.BorderSize = 2;
+            button.FlatAppearance.BorderColor = Color.LimeGreen;
+            button.BackColor = System.Drawing.SystemColors.Control;
+            Betaalwijze_out_lbl.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(button.Text);
         }
 
-        private void Betaalwijze_credit_btn_Click(object sender, EventArgs e)
+        private void Fooi_Btn_Click(object sender, EventArgs e)
         {
-            Betaalwijze_out_lbl.Text = "Credit Card";
-        }
+            Button button = (Button)sender;
+            //string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            //string FileName = string.Format(@"{0}Resources\WAV Sounds\dtmf-" + button.Text + ".wav", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+            ////string soundPath = RunningPath + @"\Resources\WAV Sounds\dtmf-" +button.Text.ToLower()+".wav";
 
-        private void Fooi_btn_1_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "1";
-        }
+            //SoundPlayer SP = new SoundPlayer();
+            //SP.Play();   
 
-        private void Fooi_btn_2_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "2";
-        }
-
-        private void Fooi_btn_3_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "3";
-        }
-
-        private void Fooi_btn_4_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "4";
-        }
-
-        private void Fooi_btn_5_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "5";
-        }
-
-        private void Fooi_btn_6_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "6";
-        }
-
-        private void Fooi_btn_7_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "7";
-        }
-
-        private void Fooi_btn_8_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "8";
-        }
-
-        private void Fooi_btn_9_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "9";
+            Fooi_textbox.Text += button.Text;
+            Fooi_out_lbl.Text += button.Text;
         }
 
         private void Fooi_btn_backspace_Click(object sender, EventArgs e)
@@ -83,17 +80,8 @@ namespace UI
             if (Fooi_textbox.TextLength > 0)
             {
                 Fooi_textbox.Text = Fooi_textbox.Text.Substring(0, (Fooi_textbox.TextLength - 1));
+                Fooi_out_lbl.Text = Fooi_textbox.Text;
             }
-        }
-
-        private void Fooi_btn_0_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += "0";
-        }
-
-        private void Fooi_btn_komma_Click(object sender, EventArgs e)
-        {
-            Fooi_textbox.Text += ",";
         }
 
         private void Opmerking_add_btn_Click(object sender, EventArgs e)
