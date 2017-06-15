@@ -91,5 +91,11 @@ namespace Logica
 
             DALitem.MeldGereed(order_id, item_id);
         }
+
+        public int GetOrderId(int tafelNr)
+        {
+            DALBestelling DALITem = new DALBestelling();
+            return DALITem.GetId(tafelNr);
+        }
     }
 }

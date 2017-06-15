@@ -103,5 +103,24 @@ namespace DAL
 
             return new Bestelling(order_id, items_list, tafel, status_order, persoon, totaalprijs, betaalmethode, fooi, opname);
         }
+
+        public int GetId(int tafelNr)
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE tafel_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", tafelNr);
+            SqlDataReader reader = command.ExecuteReader();
+
+            Bestelling item = null;
+
+            if (reader.Read())
+            {
+                item = Readitem(reader);
+            }
+            reader.Close();
+            dbConnection.Close();
+
+            return item.id;
+        }
     }
 }

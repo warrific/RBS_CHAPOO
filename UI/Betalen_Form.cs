@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using Logica;
 using Model;
+using UI;
 
 
 namespace UI
@@ -19,24 +20,27 @@ namespace UI
     {
         List<Button> Betaalwijze = new List<Button>();
 
-        public Betalen_Form()
+        public Betalen_Form(int tafelNr)
         {
-            //int tafel_nummer = 6;
-            //Bestellingen bestelling = new Bestellingen();
-            //int order_id = bestelling.GetId(tafel_nummer);
-            //Bestelitems logica = new Bestelitems();
-            //List<BestelItem> itemsList = logica.GetBestellingItems(order_id);
-
-            //foreach (BestelItem item in itemsList)
-            //{
-            //    ListViewItem LVI = new ListViewItem();
-            //    LVI.SubItems.Add(item.aantal.ToString());
-            //    LVI.SubItems.Add(item.menuItem.ToString());
-            //    LVI.SubItems.Add(item.status.ToString());
-            //    Rekening_lview.Items.Add(LVI);
-            //}
+            
+            double totaalPrijs = 0;
+            Bestellingen bestelling = new Bestellingen();
+            int order_id = bestelling.GetOrderId(tafelNr);
+            Rekeningen logica = new Rekeningen();
+            List<RekeningItem> rekening = logica.getRekening(order_id);
+            
+            foreach (RekeningItem item in rekening)
+            {
+                ListViewItem Lvi = new ListViewItem();
+                Lvi.SubItems.Add(item.aantal.ToString());
+                Lvi.SubItems.Add(item.naam);
+                Lvi.SubItems.Add(item.prijs.ToString());
+                Rekening_lview.Items.Add(Lvi);
+                totaalPrijs += item.prijs;
+            }
 
             InitializeComponent();
+            Totaal_out_lbl.Text = totaalPrijs.ToString();
             Betaalwijze.Add(Betaalwijze_contant_btn);
             Betaalwijze.Add(Betaalwijze_pin_btn);
             Betaalwijze.Add(Betaalwijze_credit_btn);
@@ -54,7 +58,7 @@ namespace UI
             button.FlatAppearance.BorderSize = 2;
             button.FlatAppearance.BorderColor = Color.LimeGreen;
             button.BackColor = System.Drawing.SystemColors.Control;
-            Betaalwijze_out_lbl.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(button.Text.ToLower());
+            Betaalwijze_out_lbl.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(button.Text);
         }
 
         private void Fooi_Btn_Click(object sender, EventArgs e)
