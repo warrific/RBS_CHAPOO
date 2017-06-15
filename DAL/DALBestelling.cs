@@ -168,5 +168,24 @@ namespace DAL
 
             dbConnection.Close();
         }
+
+        public int ControleerOfTafelAlBestellingHeeft(Tafel tafel)
+        {
+            dbConnection.Open();
+
+            string dbString =   "SELECT COUNT(status) " +
+                                "FROM Bestelling " +
+                                "WHERE tafel_id = @tafelid AND status = 1";
+
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@tafelid", tafel.Id);
+
+            int count = (int)command.ExecuteScalar();
+
+            dbConnection.Close();
+
+            return count;
+        }
     }
 }

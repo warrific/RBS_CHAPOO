@@ -220,6 +220,18 @@ namespace UI
                 logMenuItems.BewerkVoorraad(item.menuItem, item.aantal);
             }
 
+            if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel))
+            {
+                foreach (BestelItem item in lijstBestelItem)
+                {
+                    logBestelingen.StuurBestelItemNaarDatabase(item);
+                }
+
+                lijstBestelItem.Clear();
+                UpdateListView();
+                return;
+            }
+
             Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
