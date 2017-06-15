@@ -47,6 +47,25 @@ namespace DAL
             return werknemers;
         }
 
+        public Model.Werknemer GetWerknemer(int code)
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Medewerker WHERE code = @code", dbConnection);
+            command.Parameters.AddWithValue("@code", code);
+            SqlDataReader reader = command.ExecuteReader();
+
+            Werknemer werknemer = null;
+
+            if (reader.Read())
+            {
+                werknemer = ReadWerknemer(reader);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+            return werknemer;
+        }
+
         public Werknemer GetForID(int Id)
         {
             dbConnection.Open();

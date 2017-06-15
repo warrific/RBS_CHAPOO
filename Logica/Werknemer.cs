@@ -18,6 +18,12 @@ namespace Logica
             return dalwerknemer.GetAll();
         }
 
+        public Model.Werknemer GetWerknemer(int code)
+        {
+            DALWerknemer dalitem = new DALWerknemer();
+
+            return dalitem.GetWerknemer(code);
+        }
 
         //  public string check_werknemer (List<Werknemer>werknemers, string invoer_wachtwoord)
         // {

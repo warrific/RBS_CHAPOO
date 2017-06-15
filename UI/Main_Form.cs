@@ -14,38 +14,13 @@ namespace UI
 {
     public partial class Main_Form : Form
     {
-        public Main_Form()
+        public Main_Form(string naam, string functie )
         {
             InitializeComponent();
+            lbl_naam.Text = naam;
+            lbl_functie.Text = functie;
             panel1.BackColor = Color.FromArgb(179, 179, 179);
-            Size = new Size(768, 1024);
-           
-            // lijst halen van de Logica laag
-            Logica.Werknemer werknemer = new Logica.Werknemer();
-            List<Model.Werknemer> lijst = new List<Model.Werknemer>();
-            lijst = werknemer.GetAll();
-            
-            Logica.Login login = new Logica.Login();
-            
-                 foreach (Model.Werknemer list_item in lijst)
-                 {
-                         list_item.Id.ToString();
-                         list_item.functie.ToString();
-                         list_item.Wachtwoord.ToString();
-
-                         for (int i = 0; i < 12 ; i++)
-                         { 
-                            
-                             if (list_item.Id == i)
-                             {
-                                 lbl_naam.Text = list_item.naam;
-                                 lbl_functie.Text = list_item.functie.ToString();
-                                 return;
-                             }
-                         }
-
-                }
-                    
+            Size = new Size(768, 1024);             
         }
 
        // MenuItems menuitems = new MenuItems();
@@ -72,8 +47,7 @@ namespace UI
         private void btn_LogUit_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Login_Form obj_loginform = new Login_Form();
-            obj_loginform.Show();
+            new Login_Form().Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

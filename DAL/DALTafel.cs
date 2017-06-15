@@ -42,7 +42,7 @@ namespace DAL
                 Model.Tafel tafeloverzicht = new Model.Tafel();
                 Model.Bestelling bestellingsoverzicht = new Model.Bestelling();
                 tafeloverzicht.Id = reader.GetInt32(0);
-                tafeloverzicht.Status = (TafelStatus)Enum.Parse(typeof(TafelStatus),reader.GetString(1));
+                tafeloverzicht.Status = (TafelStatus)reader.GetInt32(1);
                 //bestellingsoverzicht.id = reader.GetInt32(2);
                 //bestellingsoverzicht.Status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus),reader.GetString(3));
 
@@ -61,8 +61,8 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE Id = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", Id);
+            SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE tafel_id = @tafel_id", dbConnection);
+            command.Parameters.AddWithValue("@tafel_id", Id);
             SqlDataReader reader = command.ExecuteReader();
 
             Model.Tafel item = null;
@@ -81,7 +81,7 @@ namespace DAL
         private Model.Tafel Readitem(SqlDataReader reader)
     {
             int tafel_id = (int)reader["tafel_id"];
-            TafelStatus status = (TafelStatus)Enum.Parse(typeof(TafelStatus), (string)reader["status"]);
+            TafelStatus status = (TafelStatus)(int)reader["status"];
             return new Model.Tafel(tafel_id, status);
 
         }

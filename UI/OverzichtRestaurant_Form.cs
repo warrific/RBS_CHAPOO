@@ -26,10 +26,33 @@ namespace UI
             List<Model.Tafel> lijst = new List<Model.Tafel>();
             lijst = items.GetAll();
 
+            //// Datasource vermelden en aanroepen
+            //data_source();
+
+            // Kolomen aanmaken en de waarde uit de lijst binden (vanuit Bestelling_dranken lijst in Bestellingen)
+            // TODO: in een loop zetten?
+            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn();
+            id.Width = 30;
+            id.DataPropertyName = "id";
+            id.HeaderText = "status tafel";
+            //data_status.Columns.Add(id);
+
+            DataGridViewTextBoxColumn tafel_nr = new DataGridViewTextBoxColumn();
+            tafel_nr.Width = 50;
+            tafel_nr.DataPropertyName = "tafel_nummer";
+            tafel_nr.HeaderText = "tafel nummer";
+            //data_status.Columns.Add(tafel_nr);
+
+            DataGridViewTextBoxColumn aantal = new DataGridViewTextBoxColumn();
+            aantal.Width = 50;
+            aantal.DataPropertyName = "Status";
+            aantal.HeaderText = "status bestelling";
+            //data_status.Columns.Add(aantal);
+
             
             // neemt de radiobuttons invullingen uit StatusChange_Form en beeld ze uit in deze (OverzichtRestaurant_Form)
             //using (var statuschange_form = new StatusChange_Form())
-            {
+           // {
                
                 //  statuschange_form.ShowDialog();
 
@@ -60,7 +83,7 @@ namespace UI
 
                    // }
                // }
-             }
+           //  }
 
             //foreach (Model.Tafel list_item in lijst)
            // {
@@ -76,41 +99,53 @@ namespace UI
            // }
         }
 
+
+            
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
 
-         //   StatusChange_Form statuschange_form = new StatusChange_Form();
-            
-         //   string status_tafel =statuschange_form.TafelStatus;
-         //   string status_bestelling = statuschange_form.BestellingsStatus;
-         //   string categorie = statuschange_form.Categorie;
-         //   List<string> ro_lijst = new List<string>();
-         //   ro_lijst.Add(status_tafel);
-         //   ro_lijst.Add(status_bestelling);
-         //   ro_lijst.Add(categorie);
 
-            /*string[] rij = { status_tafel, status_bestelling, categorie };
-            var listViewItem = new ListViewItem(rij);
-            list_tafeloverzicht.Items.Add(listViewItem);*/
+            
+            
+            //string status_tafel =statuschange_form.TafelStatus;
+            //string status_bestelling = statuschange_form.BestellingsStatus;
+            //string categorie = statuschange_form.Categorie;
+            //List<string> ro_lijst = new List<string>();
+            //ro_lijst.Add(status_tafel);
+            //ro_lijst.Add(status_bestelling);
+            //ro_lijst.Add(categorie);
+
+            //string[] rij = { status_tafel, status_bestelling, categorie };
+            //var listViewItem = new ListViewItem(rij);
+            //list_tafeloverzicht.Items.Add(listViewItem);
            
             
-           // list_tafeloverzicht.Items.Add(listViewItem);
-           // this.btn_Tafel1.Text  ="tafel_id 1";
+            //list_tafeloverzicht.Items.Add(listViewItem);
+            //this.btn_Tafel1.Text  ="tafel_id 1";
             
            //// aangeven welke records bij de tafel behoren
-           // foreach (ListViewItem item in list_tafeloverzicht.Items)
-           // {
-           //     if (item.Text == btn_Tafel1.Text)
-           //     {
-           //         item.BackColor = Color.LightGray;
-           //         return;
-           //     }
-           // }
+              foreach (ListViewItem item in list_tafeloverzicht.Items)
+              {
+                  if (item.Text == btn_Tafel1.Text)
+                {
+                    item.BackColor = Color.LightGray;
+                    return;
+                }
+             }
 
            // statussen updaten
 
+              reload();
 
+        }
 
+        private void reload()
+        {
+            //data_source();
+
+            // Datagridview verversen met nieuwe waardes
+            //data_status.Update();
+            //data_status.Refresh();
         }
     }
 }
