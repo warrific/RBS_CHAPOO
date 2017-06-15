@@ -85,10 +85,15 @@ namespace Logica
             }
         }
 
-        public void meld_gereed(int order_id, int item_id)
+        public void meld_gereed(int order_id, string item_naam)
         {
             DALBestelItem DALitem = new DALBestelItem();
+            DALMenuItem DALitem_naam = new DALMenuItem();
 
+            // Naam omzetten naar een ID
+            int item_id = DALitem_naam.GetIdForName(item_naam);
+
+            // DAL laag aanroepen en waardes mee geven om gereed te melden
             DALitem.MeldGereed(order_id, item_id);
         }
 

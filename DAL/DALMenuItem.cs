@@ -153,5 +153,27 @@ namespace DAL
 
             return lijstMenuItem;
         }
+
+        public int GetIdForName(string item_naam)
+        {
+            int item_id = 0;
+
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT [item_id] FROM Menuitem WHERE naam = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", item_naam);
+            SqlDataReader reader = command.ExecuteReader();
+
+            // Item id ophalen
+            while (reader.Read())
+            {
+                item_id = (int)reader["item_id"];
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return item_id;
+        }
     }
 }

@@ -28,53 +28,51 @@ namespace UI
             id.Width = 30;
             id.DataPropertyName = "id";
             id.HeaderText = "id";
-            data_dranken.Columns.Add(id);
+            data_items.Columns.Add(id);
             
             DataGridViewTextBoxColumn tafel_nr = new DataGridViewTextBoxColumn();
             tafel_nr.Width = 40;
             tafel_nr.DataPropertyName = "tafel_nummer";
             tafel_nr.HeaderText = "Tafel";
-            data_dranken.Columns.Add(tafel_nr);
+            data_items.Columns.Add(tafel_nr);
 
             DataGridViewTextBoxColumn aantal = new DataGridViewTextBoxColumn();
             aantal.Width = 40;
             aantal.DataPropertyName = "aantal";
             aantal.HeaderText = "Aantal";
-            data_dranken.Columns.Add(aantal);
+            data_items.Columns.Add(aantal);
 
             DataGridViewTextBoxColumn order = new DataGridViewTextBoxColumn();
             order.Width = 210;
             order.DataPropertyName = "order";
             order.HeaderText = "Order";
-            data_dranken.Columns.Add(order);
+            data_items.Columns.Add(order);
             
             DataGridViewTextBoxColumn opmerking = new DataGridViewTextBoxColumn();
             opmerking.Width = 210;
             opmerking.DataPropertyName = "opmerking";
             opmerking.HeaderText = "Opmerking";
-            data_dranken.Columns.Add(opmerking);
+            data_items.Columns.Add(opmerking);
 
             DataGridViewTextBoxColumn bediening = new DataGridViewTextBoxColumn();
             bediening.Width = 127;
             bediening.DataPropertyName = "bediening";
             bediening.HeaderText = "Bediening";
-            data_dranken.Columns.Add(bediening);
+            data_items.Columns.Add(bediening);
             
         }
 
         private void btn_gereed_Click(object sender, EventArgs e)
         {
-            // Als er een cell geselecteerd is
-            if (data_dranken.SelectedCells.Count == 1)
-            {
                 // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id" en het item id
-                int order_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[0].Value));
-                int item_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[1].Value));
+                int order_id = int.Parse(Convert.ToString(data_items.Rows[(data_items.CurrentCell.RowIndex)].Cells[0].Value));
+                string item_naam = (Convert.ToString(data_items.Rows[(data_items.CurrentCell.RowIndex)].Cells[3].Value));
 
                 // Roep meld gereed aan en geef waardes door
                 Bestellingen bestellingen = new Bestellingen();
-                bestellingen.meld_gereed(order_id, item_id);
-            }
+                bestellingen.meld_gereed(order_id, item_naam);
+
+                reload();
         }
 
         private void btn_herlaad_Click(object sender, EventArgs e)
@@ -111,8 +109,8 @@ namespace UI
             data_source();
 
             // Datagridview verversen met nieuwe waardes
-            data_dranken.Update();
-            data_dranken.Refresh();
+            data_items.Update();
+            data_items.Refresh();
         }
 
         private void data_source()
@@ -123,8 +121,8 @@ namespace UI
             bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
 
             // Niet automatisch kolomen genereren en de data bron vermelden
-            data_dranken.AutoGenerateColumns = false;
-            data_dranken.DataSource = bestellingen.bar_lijst;
+            data_items.AutoGenerateColumns = false;
+            data_items.DataSource = bestellingen.bar_lijst;
         }
     }
 }
