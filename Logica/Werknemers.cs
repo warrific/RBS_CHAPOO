@@ -16,11 +16,29 @@ namespace Logica
             return DAOWerknemer.GetAll();
         }
         
-        public void ToevoegenWerknemer(string naam, string functie, int code)
+        public string ToevoegenWerknemer(string naam, string functie, int code)
         {
-            DALWerknemer DAOWerknemer = new DALWerknemer();
-            int id = DAOWerknemer.GetLastId() + 1;
-            DAOWerknemer.ToevoegenWerknemer(id, naam, functie, code);
+            if (code.ToString().Length == 4)
+            {
+                DALWerknemer DAOWerknemer = new DALWerknemer();
+                List<int> codes = new List<int>();
+
+                codes = DAOWerknemer.GetCodes();
+
+                foreach (int DBCode in codes) //Check of code niet bestaat
+                {
+                    if (DBCode == code)
+                    {
+                        return "Code bestaat al!";
+                    }
+                }
+
+                int id = DAOWerknemer.GetLastId() + 1;
+                DAOWerknemer.ToevoegenWerknemer(id, naam, functie, code);
+                return "";
+            }
+            else
+                return "Code foute lengte";
         }
         public void WijzigenWerknemer(int id, string naam, string functie)
         {
