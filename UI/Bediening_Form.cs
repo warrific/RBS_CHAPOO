@@ -131,16 +131,17 @@ namespace UI
                 ButtonMenuItem button = new ButtonMenuItem(item);
                 flowLP_MenuItems.Controls.Add(button);
                 button.Location = new Point(50, 0);
-                button.Click += new EventHandler(VoegMenuItemsToe);
+                button.Click += new EventHandler(VoegMenuItemToe);
 
                 ButtonMenuItemVerlaag buttonVerlaag = new ButtonMenuItemVerlaag(item);
                 flowLP_MenuItems.Controls.Add(buttonVerlaag);
-                buttonVerlaag.Click += new EventHandler(VerlaagMenuItems);
+                buttonVerlaag.Click += new EventHandler(VerlaagMenuItem);
 
             }
         }
 
-        private void VoegMenuItemsToe(object sender, EventArgs e)
+        // Voegt menu items toe in een ViewList of verhoogd aantal van een menu item in de viewlist
+        private void VoegMenuItemToe(object sender, EventArgs e)
         {
             Model.MenuItem menuItem = ((ButtonMenuItem)sender).menuItem;
 
@@ -168,7 +169,8 @@ namespace UI
             UpdateListView();
         }
 
-        private void VerlaagMenuItems(object sender, EventArgs e)
+        // verlaagd het aantal van een menu item
+        private void VerlaagMenuItem(object sender, EventArgs e)
         {
             Model.MenuItem menuItem = ((ButtonMenuItemVerlaag)sender).menuItem;
 
