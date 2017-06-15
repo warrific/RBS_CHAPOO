@@ -42,6 +42,7 @@
             this.columnHeader_opmerking = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_afrekenen = new System.Windows.Forms.Button();
             this.lbl_VoorraadOp = new System.Windows.Forms.Label();
+            this.btn_verwijderHuidigeBestelling = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_dranken
@@ -164,10 +165,21 @@
             this.lbl_VoorraadOp.TabIndex = 16;
             this.lbl_VoorraadOp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btn_verwijderHuidigeBestelling
+            // 
+            this.btn_verwijderHuidigeBestelling.Location = new System.Drawing.Point(608, 786);
+            this.btn_verwijderHuidigeBestelling.Name = "btn_verwijderHuidigeBestelling";
+            this.btn_verwijderHuidigeBestelling.Size = new System.Drawing.Size(132, 61);
+            this.btn_verwijderHuidigeBestelling.TabIndex = 17;
+            this.btn_verwijderHuidigeBestelling.Text = "Verwijder huidige bestelling";
+            this.btn_verwijderHuidigeBestelling.UseVisualStyleBackColor = true;
+            this.btn_verwijderHuidigeBestelling.Click += new System.EventHandler(this.btn_verwijderHuidigeBestelling_Click);
+            // 
             // Bediening_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.btn_verwijderHuidigeBestelling);
             this.Controls.Add(this.lbl_VoorraadOp);
             this.Controls.Add(this.btn_afrekenen);
             this.Controls.Add(this.btn_Verstuur);
@@ -190,6 +202,7 @@
             this.Controls.SetChildIndex(this.btn_Verstuur, 0);
             this.Controls.SetChildIndex(this.btn_afrekenen, 0);
             this.Controls.SetChildIndex(this.lbl_VoorraadOp, 0);
+            this.Controls.SetChildIndex(this.btn_verwijderHuidigeBestelling, 0);
             this.ResumeLayout(false);
 
         }
@@ -210,5 +223,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader_opmerking;
         private System.Windows.Forms.Button btn_afrekenen;
         private System.Windows.Forms.Label lbl_VoorraadOp;
+        private System.Windows.Forms.Button btn_verwijderHuidigeBestelling;
     }
 }

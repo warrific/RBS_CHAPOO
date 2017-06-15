@@ -116,6 +116,7 @@ namespace UI
             btn_LunchNa.Click += new EventHandler(GenereerMenuItemButtons);
         }
 
+        // genereerd menu buttons voor het selecteren en verhogen van menu item + button voor verlagen
         private void GenereerMenuItemButtons(object sender, EventArgs e)
         {
             Categorie categorie = ((ButtonSelectie)sender).hoofdOptie;
@@ -150,17 +151,20 @@ namespace UI
 
             MenuItems logMenuItems = new MenuItems();
 
-
+            lbl_VoorraadOp.Text = "";
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
                 if (lijstBestelItem[i].menuItem == menuItem)
                 {
                     bestaat = true;
+
+                    // genereer waarschuwing + break
                     if (menuItem.voorraad <= lijstBestelItem[i].aantal)
                     {
-                        lbl_VoorraadOp.Text = "Menu item '" + menuItem.shortname.Trim(' ') + "' is op!";
+                        lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
                         break;
                     }
+                    
                     lijstBestelItem[i].aantal++;
                     
                 }
@@ -181,6 +185,8 @@ namespace UI
         {
             Model.MenuItem menuItem = ((ButtonMenuItemVerlaag)sender).menuItem;
 
+            lbl_VoorraadOp.Text = "";
+
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
                 if (lijstBestelItem[i].menuItem == menuItem)
@@ -197,6 +203,7 @@ namespace UI
             UpdateListView();
         }
 
+        // verzend bestelling naar db
         private void btn_Verstuur_Click(object sender, EventArgs e)
         {
             if (lijstBestelItem.Count == 0)
@@ -213,7 +220,7 @@ namespace UI
                 logMenuItems.BewerkVoorraad(item.menuItem, item.aantal);
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open,werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
@@ -226,9 +233,17 @@ namespace UI
             UpdateListView();
         }
 
+        // opent betalen form
         private void btn_afrekenen_Click(object sender, EventArgs e)
         {
             Betalen_Form betalen_form = new Betalen_Form((Int32.Parse(btn_Tafel.Text)));
+        }
+
+        // wist huidige bestelling
+        private void btn_verwijderHuidigeBestelling_Click(object sender, EventArgs e)
+        {
+            lijstBestelItem.Clear();
+            UpdateListView();
         }
     }
 }

@@ -139,9 +139,9 @@ namespace DAL
             command.Parameters.AddWithValue("@totaal", bestelling.totaalprijs);
             command.Parameters.AddWithValue("@betaal", bestelling.betaalmethode);
             command.Parameters.AddWithValue("@fooi", bestelling.fooi);
-            command.Parameters.AddWithValue("@status", bestelling.status_order);
+            command.Parameters.AddWithValue("@status", (int)bestelling.status_order);
 
-            command.ExecuteScalar();
+            command.ExecuteNonQuery();
 
             dbConnection.Close();
         }
@@ -159,7 +159,7 @@ namespace DAL
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
             command.Parameters.AddWithValue("@orderid", count);
-            command.Parameters.AddWithValue("@item_id", item.id);
+            command.Parameters.AddWithValue("@item_id", item.menuItem.id);
             command.Parameters.AddWithValue("@aantal", item.aantal);
             command.Parameters.AddWithValue("@opmerking", item.opmerking);
             command.Parameters.AddWithValue("@status", item.status_item);
