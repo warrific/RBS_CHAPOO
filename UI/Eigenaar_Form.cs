@@ -25,6 +25,8 @@ namespace UI
         const int SPACING = 45;
         const int FNTSIZE = 15;
         const int WIDTH = 150;
+        const int MAXCODELENGTH = 4;
+
 
         private void RefreshVoorraad()
         {
@@ -118,12 +120,13 @@ namespace UI
             popupForm.Height = 400;
         }
 
-        private void InitControl(Control lbl, int x, int y, string text, int fntSize, int width)
+        private void InitControl(Control lbl, int x, int y, string text, int fntSize, int width, int height = 30)
         {
             lbl.Location = new Point(x, y);
             lbl.Text = text;
             lbl.Font = new Font(lbl.Font.FontFamily, fntSize);
             lbl.Width = width;
+            lbl.Height = height;
         }
 
         private void PopupFormStandardControls()
@@ -131,6 +134,7 @@ namespace UI
             popupForm.Controls.Add(lblTitel);
             popupForm.Controls.Add(lblNaam);
             popupForm.Controls.Add(txtNaam);
+            popupForm.Controls.Add(lblError);
             popupForm.Controls.Add(btnBevestig);
         }
         private void PopupFormExtraControls(Control extraCtrl1, Control extraCtrl2)
@@ -138,7 +142,6 @@ namespace UI
             popupForm.Controls.Add(extraCtrl1);
             popupForm.Controls.Add(extraCtrl2);
         }
-
 
         ///---UI STUFF---///
 
@@ -187,6 +190,7 @@ namespace UI
         TextBox txtPrijs = new TextBox();
         //Algemeen
         Label lblTitel = new Label();
+        Label lblError = new Label();
         Button btnBevestig = new Button();
         string btnFunctie = "";
 
@@ -200,11 +204,14 @@ namespace UI
                 string functie = cmbFunctie.Text;
                 int code = int.Parse(txtCode.Text);
 
-                werknemers.ToevoegenWerknemer(naam, functie, code);
+                lblError.ForeColor = Color.Red;
+                lblError.Text = werknemers.ToevoegenWerknemer(naam, functie, code);
 
-                RefreshMedewerkers();
-
-                popupForm.Close();
+                if (lblError.Text == "")
+                {
+                    RefreshMedewerkers();
+                    popupForm.Close();
+                }
             }
             else if (btnFunctie == "WijzMedw")
             {
@@ -235,7 +242,6 @@ namespace UI
         private void ToevMedwUI()
         {
             InitControl(lblTitel, TITELX, TITELY, "Medewerker Toevoegen", FNTSIZE, 250);
-            lblTitel.Height = 30;
 
             InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
             InitControl(lblFunctie, LBLX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
@@ -244,11 +250,12 @@ namespace UI
             InitControl(txtNaam, TBX, SPACING * 1, "", FNTSIZE, WIDTH);
             InitControl(cmbFunctie, TBX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
             InitControl(txtCode, TBX, SPACING * 4, "", FNTSIZE, 52);
+            txtCode.MaxLength = MAXCODELENGTH;
+            InitControl(lblError, 100, SPACING * 5, "", FNTSIZE, WIDTH+20);
 
             VulCmbFunctie();
 
-            InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150);
-            btnBevestig.Height = 60;
+            InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 60);
             btnBevestig.Click += btnBevestig_Click;
             btnFunctie = "ToevMedw";
 
@@ -270,7 +277,6 @@ namespace UI
                 string functie = checkedItem.SubItems[2].Text;
 
                 InitControl(lblTitel, TITELX, TITELY, "Medewerker Wijzigen", FNTSIZE, 250);
-                lblTitel.Height = 30;
 
                 InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
                 InitControl(lblFunctie, LBLX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
@@ -281,8 +287,7 @@ namespace UI
 
                 VulCmbFunctie();
 
-                InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150);
-                btnBevestig.Height = 60;
+                InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 60);
                 btnBevestig.Click += btnBevestig_Click;
                 btnFunctie = "WijzMedw";
 
@@ -301,14 +306,12 @@ namespace UI
         private void ToevMenukaartUI()
         {
             InitControl(lblTitel, TITELX, TITELY, "Aan menu toevoegen", FNTSIZE, 250);
-            lblTitel.Height = 30;
 
             InitControl(lblMenukaart, LBLX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
             InitControl(lblSubcategorie, LBLX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
             InitControl(lblNaam, LBLX, SPACING * 3, "Naam", FNTSIZE, WIDTH);
             InitControl(lblKorteNaam, LBLX, SPACING * 4, "Verkorte Naam", FNTSIZE, WIDTH);
             InitControl(lblPrijs, LBLX, SPACING * 5, "Prijs (in euro's)", FNTSIZE, WIDTH);
-            lblPrijs.Height = lblSubcategorie.Height = 30;
 
             InitControl(cmbMenukaart, TBX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
             InitControl(cmbSubcategorie, TBX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
@@ -325,8 +328,7 @@ namespace UI
             cmbSubcategorie.Items.Add("Hoofdgerecht");
             cmbSubcategorie.Items.Add("Nagerecht");
 
-            InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150);
-            btnBevestig.Height = 60;
+            InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 60);
 
             PopupFormStandardControls();
             PopupFormExtraControls(lblMenukaart, cmbMenukaart);
