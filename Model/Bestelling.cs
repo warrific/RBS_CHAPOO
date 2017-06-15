@@ -23,7 +23,7 @@ namespace Model
             id = id_in;
             bestel_items = bestel_items_in;
             tafel = tafel_in;
-            status_order = status_order;
+            status_order = status_order_in;
             werknemer = werknemer_in;
             totaalprijs = totaalprijs_in;
             betaalmethode = betaalmethode_in;

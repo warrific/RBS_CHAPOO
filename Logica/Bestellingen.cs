@@ -114,5 +114,13 @@ namespace Logica
             DALBestelling dalBestelling = new DALBestelling();
             dalBestelling.ZetBestelItemsInDatabase(item);
         }
+
+        //TODO: SCHRIJF DIT AF
+        /*
+        public bool ControleerOfTafelAlBestellingHeeft()
+        {
+
+        }
+        */
     }
 }
