@@ -20,7 +20,7 @@ namespace DAL
         public List<RekeningItem> GetRekening(int order_id)
         {
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT b.aantal, m.shortname, m.prijs FROM menuitem as m, bestitems as b JOIN menuitem on menutitem.id = bestelitem.menuitem WHERE bestelitem.id = @Id", dbConnection); //Check namen in DB...
+            SqlCommand command = new SqlCommand("SELECT b.aantal, m.shortname, m.prijs FROM menuitem as m, bestelitems as b JOIN menuitem on menutitem.id = bestelitem.menuitem WHERE bestelitem.id = @Id", dbConnection); //Check namen in DB...
             command.Parameters.AddWithValue("@Id", order_id);
             SqlDataReader reader = command.ExecuteReader();
 

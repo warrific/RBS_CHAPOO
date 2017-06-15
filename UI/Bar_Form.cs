@@ -31,31 +31,31 @@ namespace UI
             data_dranken.Columns.Add(id);
             
             DataGridViewTextBoxColumn tafel_nr = new DataGridViewTextBoxColumn();
-            tafel_nr.Width = 50;
+            tafel_nr.Width = 40;
             tafel_nr.DataPropertyName = "tafel_nummer";
-            tafel_nr.HeaderText = "Tafel nummer";
+            tafel_nr.HeaderText = "Tafel";
             data_dranken.Columns.Add(tafel_nr);
 
             DataGridViewTextBoxColumn aantal = new DataGridViewTextBoxColumn();
-            aantal.Width = 50;
+            aantal.Width = 40;
             aantal.DataPropertyName = "aantal";
             aantal.HeaderText = "Aantal";
             data_dranken.Columns.Add(aantal);
 
             DataGridViewTextBoxColumn order = new DataGridViewTextBoxColumn();
-            order.Width = 200;
+            order.Width = 210;
             order.DataPropertyName = "order";
             order.HeaderText = "Order";
             data_dranken.Columns.Add(order);
             
             DataGridViewTextBoxColumn opmerking = new DataGridViewTextBoxColumn();
-            opmerking.Width = 200;
+            opmerking.Width = 210;
             opmerking.DataPropertyName = "opmerking";
             opmerking.HeaderText = "Opmerking";
             data_dranken.Columns.Add(opmerking);
 
             DataGridViewTextBoxColumn bediening = new DataGridViewTextBoxColumn();
-            bediening.Width = 130;
+            bediening.Width = 127;
             bediening.DataPropertyName = "bediening";
             bediening.HeaderText = "Bediening";
             data_dranken.Columns.Add(bediening);
@@ -67,9 +67,13 @@ namespace UI
             // Als er een cell geselecteerd is
             if (data_dranken.SelectedCells.Count == 1)
             {
-                // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id"
+                // Vind de geselecteerde rij, krijg het nummer van de rij, vind hiervan de waarde in de kolom "id" en het item id
                 int order_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[0].Value));
+                int item_id = int.Parse(Convert.ToString((data_dranken.Rows[(data_dranken.CurrentCell.RowIndex)]).Cells[1].Value));
+
+                // Roep meld gereed aan en geef waardes door
                 Bestellingen bestellingen = new Bestellingen();
+                bestellingen.meld_gereed(order_id, item_id);
             }
         }
 
