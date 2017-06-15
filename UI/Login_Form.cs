@@ -67,7 +67,7 @@ namespace UI
             List<Model.Werknemer> lijst = new List<Model.Werknemer>();
             lijst = l_werknmr.make_list();
 
-            Main_Form obj_main = new Main_Form(userName, userFunctie);
+            Main_Form obj_main = new Main_Form();
             
             //StatusChange_Form obj_statuschange = new StatusChange_Form();
             login.check_wachtwoord(invoer_password);

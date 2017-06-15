@@ -14,14 +14,14 @@ namespace UI
 {
     public partial class Main_Form : Form
     {
-        public Main_Form(string naam, string functie)
+        public Main_Form()
         {
             InitializeComponent();
             panel1.BackColor = Color.FromArgb(179, 179, 179);
             Size = new Size(768, 1024);
 
-            lbl_naam.Text = naam;
-            lbl_functie.Text = functie;
+            //lbl_naam.Text = naam;
+            //lbl_functie.Text = functie;
 
             // lijst halen van de Logica laag
             //Werknemers werknemer = new Werknemers();
