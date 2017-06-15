@@ -97,5 +97,17 @@ namespace Logica
             DALBestelling DALITem = new DALBestelling();
             return DALITem.GetId(tafelNr);
         }
+
+        public int GetCountOrderId()
+        {
+            DALBestelling dalBestelling = new DALBestelling();
+            return dalBestelling.GetCount();
+        }
+
+        public void StuurBestelItemNaarDatabase(BestelItem item)
+        {
+            DALBestelling dalBestelling = new DALBestelling();
+            dalBestelling.ZetBestelItemsInDatabase(item);
+        }
     }
 }

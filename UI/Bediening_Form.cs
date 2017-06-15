@@ -36,6 +36,7 @@ namespace UI
                 ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
                 lvi.SubItems.Add(item.aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
+                lvi.SubItems.Add(item.opmerking);
                 listView_Bestelling.Items.Add(lvi);
             }
         }
@@ -43,7 +44,7 @@ namespace UI
         protected void btn_dranken_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
-
+            flowLP_MenuItems.Controls.Clear();
             
             ButtonSelectie btn_nonalcoholisch = new ButtonSelectie(Categorie.Drank, SubCategorie.Nonalcoholisch);
             pnl_optiesbestelling.Controls.Add(btn_nonalcoholisch);
@@ -62,8 +63,8 @@ namespace UI
         protected void btn_diner_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
+            flowLP_MenuItems.Controls.Clear();
 
-            
             ButtonSelectie btn_DinerVoor = new ButtonSelectie(Categorie.Diner, SubCategorie.Voorgerecht);
             pnl_optiesbestelling.Controls.Add(btn_DinerVoor);
             btn_DinerVoor.Text = "Voorgerecht";
@@ -93,8 +94,8 @@ namespace UI
         protected void btn_lunch_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
+            flowLP_MenuItems.Controls.Clear();
 
-            
             ButtonSelectie btn_LunchVoor = new ButtonSelectie(Categorie.Lunch, SubCategorie.Voorgerecht);
             pnl_optiesbestelling.Controls.Add(btn_LunchVoor);
             btn_LunchVoor.Text = "Voorgerecht";
@@ -147,22 +148,28 @@ namespace UI
 
             bool bestaat = false;
 
+            MenuItems logMenuItems = new MenuItems();
+
+
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
-                if(lijstBestelItem[i].menuItem == menuItem)
+                if (lijstBestelItem[i].menuItem == menuItem)
                 {
-                    lijstBestelItem[i].aantal++;
                     bestaat = true;
+                    if (menuItem.voorraad <= lijstBestelItem[i].aantal)
+                    {
+                        lbl_VoorraadOp.Text = "Menu item '" + menuItem.shortname.Trim(' ') + "' is op!";
+                        break;
+                    }
+                    lijstBestelItem[i].aantal++;
+                    
                 }
             }
 
             if (bestaat == false)
             {
-                //TO DO: id van database halen
-                    // De huidige manier van status vermelden is via de enum status (open = besteld, gereed = gemaakt door bar / keuken en voltooid)
-                    // enum status in de database is nu een int (makkelijkere conversie naar enum)
-
-                BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, Status.Open);
+                Logica.Bestellingen logBestellingen = new Bestellingen();
+                BestelItem bestelItem = new BestelItem(logBestellingen.GetCountOrderId() + 1, menuItem, 1, "", Status.Open);
                 lijstBestelItem.Add(bestelItem); 
             }
 
@@ -188,6 +195,38 @@ namespace UI
             }
 
             UpdateListView();
+        }
+
+        private void btn_Verstuur_Click(object sender, EventArgs e)
+        {
+            if (lijstBestelItem.Count == 0)
+                return;
+
+            Model.Werknemer werknemer = new Model.Werknemer(1, Functie.Bediening, "ehk", "3333");
+            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
+
+            Logica.Bestellingen logBestelingen = new Bestellingen();
+
+
+
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open,werknemer, 1, "", 1, DateTime.Now);
+
+            Logica.MenuItems menuitems = new MenuItems();
+
+            menuitems.StuurBestellingNaarDatabase(bestelling);
+
+            foreach (BestelItem item in lijstBestelItem)
+            {
+                logBestelingen.StuurBestelItemNaarDatabase(item);
+            }
+
+            lijstBestelItem.Clear();
+            UpdateListView();
+        }
+
+        private void btn_afrekenen_Click(object sender, EventArgs e)
+        {
+            Betalen_Form betalen_form = new Betalen_Form((Int32.Parse(btn_Tafel.Text)));
         }
     }
 }

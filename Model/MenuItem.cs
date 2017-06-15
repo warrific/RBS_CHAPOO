@@ -12,7 +12,7 @@ namespace Model
         public int id { get; private set; }
         public string naam { get; private set; }
         public double prijs { get; private set; }
-        public int voorraad { get; private set; }
+        public int voorraad { get; set; }
         public Categorie categorie { get; private set; }
         public SubCategorie subcategorie { get; private set; }
         public string shortname { get; private set; }

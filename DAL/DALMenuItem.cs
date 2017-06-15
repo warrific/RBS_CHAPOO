@@ -102,8 +102,7 @@ namespace DAL
         // filtert de DB Menu items en stuurt een lijst terug met alle gefilterde menu items
         public List<MenuItem> FilterByCategories(Categorie categorie, SubCategorie subCategorie)
         {
-            DALConnection dalConnect = new DALConnection();
-            SqlConnection connection = dalConnect.OpenConnectieDB();
+            dbConnection.Open();
 
             //string SB = "SELECT * " + 
             //            "FROM Menuitem " + 
@@ -119,7 +118,7 @@ namespace DAL
 
             String sql = sb.ToString();
 
-            SqlCommand command = new SqlCommand(sql, connection);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
 
             SqlParameter dcategory = new SqlParameter("@dcategory", System.Data.SqlDbType.Int);
             SqlParameter dsubcategory = new SqlParameter("@dsubcategory", System.Data.SqlDbType.Int);
@@ -149,7 +148,7 @@ namespace DAL
                 lijstMenuItem.Add(menuItem);
             }
 
-            dalConnect.sluitConnectieDB(connection);
+            dbConnection.Close();
 
             return lijstMenuItem;
         }

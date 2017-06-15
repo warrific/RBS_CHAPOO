@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="DALBestelItem.cs" />
     <Compile Include="DALBestelling.cs" />
-    <Compile Include="DALConnection.cs" />
     <Compile Include="DALLogin.cs" />
     <Compile Include="DALMenuKaart.cs" />
     <Compile Include="DALMenuItem.cs" />

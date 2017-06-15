@@ -38,11 +38,15 @@
             this.columnHeader_Naam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Aantal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Bedrag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_Verstuur = new System.Windows.Forms.Button();
+            this.columnHeader_opmerking = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_afrekenen = new System.Windows.Forms.Button();
+            this.lbl_VoorraadOp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_dranken
             // 
-            this.btn_dranken.Location = new System.Drawing.Point(484, 71);
+            this.btn_dranken.Location = new System.Drawing.Point(281, 71);
             this.btn_dranken.Name = "btn_dranken";
             this.btn_dranken.Size = new System.Drawing.Size(125, 50);
             this.btn_dranken.TabIndex = 6;
@@ -64,7 +68,7 @@
             // 
             // btn_bestellingen
             // 
-            this.btn_bestellingen.Location = new System.Drawing.Point(615, 70);
+            this.btn_bestellingen.Location = new System.Drawing.Point(615, 71);
             this.btn_bestellingen.Name = "btn_bestellingen";
             this.btn_bestellingen.Size = new System.Drawing.Size(125, 50);
             this.btn_bestellingen.TabIndex = 8;
@@ -101,12 +105,13 @@
             this.listView_Bestelling.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader_Naam,
             this.columnHeader_Aantal,
-            this.columnHeader_Bedrag});
+            this.columnHeader_Bedrag,
+            this.columnHeader_opmerking});
             this.listView_Bestelling.FullRowSelect = true;
             this.listView_Bestelling.GridLines = true;
-            this.listView_Bestelling.Location = new System.Drawing.Point(0, 393);
+            this.listView_Bestelling.Location = new System.Drawing.Point(0, 386);
             this.listView_Bestelling.Name = "listView_Bestelling";
-            this.listView_Bestelling.Size = new System.Drawing.Size(751, 505);
+            this.listView_Bestelling.Size = new System.Drawing.Size(524, 602);
             this.listView_Bestelling.TabIndex = 13;
             this.listView_Bestelling.UseCompatibleStateImageBehavior = false;
             this.listView_Bestelling.View = System.Windows.Forms.View.Details;
@@ -124,10 +129,49 @@
             // 
             this.columnHeader_Bedrag.Text = "Bedrag";
             // 
+            // btn_Verstuur
+            // 
+            this.btn_Verstuur.Location = new System.Drawing.Point(608, 769);
+            this.btn_Verstuur.Name = "btn_Verstuur";
+            this.btn_Verstuur.Size = new System.Drawing.Size(132, 57);
+            this.btn_Verstuur.TabIndex = 14;
+            this.btn_Verstuur.Text = "Verstuur";
+            this.btn_Verstuur.UseVisualStyleBackColor = true;
+            this.btn_Verstuur.Click += new System.EventHandler(this.btn_Verstuur_Click);
+            // 
+            // columnHeader_opmerking
+            // 
+            this.columnHeader_opmerking.Text = "Opmerking";
+            this.columnHeader_opmerking.Width = 200;
+            // 
+            // btn_afrekenen
+            // 
+            this.btn_afrekenen.Location = new System.Drawing.Point(608, 916);
+            this.btn_afrekenen.Name = "btn_afrekenen";
+            this.btn_afrekenen.Size = new System.Drawing.Size(132, 57);
+            this.btn_afrekenen.TabIndex = 15;
+            this.btn_afrekenen.Text = "Afrekenen";
+            this.btn_afrekenen.UseVisualStyleBackColor = true;
+            this.btn_afrekenen.Click += new System.EventHandler(this.btn_afrekenen_Click);
+            // 
+            // lbl_VoorraadOp
+            // 
+            this.lbl_VoorraadOp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_VoorraadOp.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_VoorraadOp.Location = new System.Drawing.Point(531, 393);
+            this.lbl_VoorraadOp.Name = "lbl_VoorraadOp";
+            this.lbl_VoorraadOp.Size = new System.Drawing.Size(200, 200);
+            this.lbl_VoorraadOp.TabIndex = 16;
+            this.lbl_VoorraadOp.Text = "x";
+            this.lbl_VoorraadOp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Bediening_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.lbl_VoorraadOp);
+            this.Controls.Add(this.btn_afrekenen);
+            this.Controls.Add(this.btn_Verstuur);
             this.Controls.Add(this.listView_Bestelling);
             this.Controls.Add(this.flowLP_MenuItems);
             this.Controls.Add(this.pnl_optiesbestelling);
@@ -144,6 +188,9 @@
             this.Controls.SetChildIndex(this.pnl_optiesbestelling, 0);
             this.Controls.SetChildIndex(this.flowLP_MenuItems, 0);
             this.Controls.SetChildIndex(this.listView_Bestelling, 0);
+            this.Controls.SetChildIndex(this.btn_Verstuur, 0);
+            this.Controls.SetChildIndex(this.btn_afrekenen, 0);
+            this.Controls.SetChildIndex(this.lbl_VoorraadOp, 0);
             this.ResumeLayout(false);
 
         }
@@ -160,5 +207,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader_Naam;
         private System.Windows.Forms.ColumnHeader columnHeader_Aantal;
         private System.Windows.Forms.ColumnHeader columnHeader_Bedrag;
+        private System.Windows.Forms.Button btn_Verstuur;
+        private System.Windows.Forms.ColumnHeader columnHeader_opmerking;
+        private System.Windows.Forms.Button btn_afrekenen;
+        private System.Windows.Forms.Label lbl_VoorraadOp;
     }
 }

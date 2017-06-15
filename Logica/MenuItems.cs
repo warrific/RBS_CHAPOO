@@ -37,5 +37,28 @@ namespace Logica
         {
             return bestelItem.menuItem.prijs * bestelItem.aantal;
         }
+
+        public void StuurBestellingNaarDatabase(Bestelling bestelling)
+        {
+            DALBestelling dalBestelling = new DALBestelling();
+            dalBestelling.ZetBestellingInDatabase(bestelling);
+        }
+
+        public int GetVoorraad(MenuItem item)
+        {
+            DALMenuItem dalMenuItem = new DALMenuItem();
+
+            List<MenuItem> lijstMenuItems = dalMenuItem.GetAll();
+
+            int voorraad = 0;
+
+            foreach(MenuItem dbItem in lijstMenuItems)
+            {
+                if (item == dbItem)
+                    dbItem.voorraad = voorraad;
+            }
+
+            return voorraad;
+        }
     }
 }
