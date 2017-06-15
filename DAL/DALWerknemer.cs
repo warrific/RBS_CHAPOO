@@ -21,9 +21,7 @@ namespace DAL
         protected SqlConnection dbConnection;
         public DALWerknemer()
         {
-            string connString = ConfigurationManager
-            .ConnectionStrings["DBConnectionString"]
-            .ConnectionString;
+            string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
             dbConnection = new SqlConnection(connString);
         }
 

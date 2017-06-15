@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using Model;
@@ -106,11 +105,17 @@ namespace DAL
             DALConnection dalConnect = new DALConnection();
             SqlConnection connection = dalConnect.OpenConnectieDB();
 
+            //string SB = "SELECT * " + 
+            //            "FROM Menuitem " + 
+            //            "JOIN Menukaart ON MenuItem.item_id = Menukaart.item " +
+            //            "WHERE category = @dcategory AND subcategorie = @dsubcategory";
+
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * ");
             sb.Append("FROM Menuitem ");
             sb.Append("JOIN Menukaart ON MenuItem.item_id = Menukaart.item ");
             sb.Append("WHERE category = @dcategory AND subcategorie = @dsubcategory");
+
 
             String sql = sb.ToString();
 

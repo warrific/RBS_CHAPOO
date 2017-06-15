@@ -8,25 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using Logica;
 
 namespace UI
 {
-     public partial class ButtonMenuItem : Button
+    public partial class ButtonMenuItemVerlaag : ButtonMenuItem
     {
-        public Model.MenuItem menuItem
-        {
-            get; protected set;
-        }
+        
 
-
-        public ButtonMenuItem(Model.MenuItem menuItem)
+        public ButtonMenuItemVerlaag(Model.MenuItem menuItem) : base(menuItem)
         {
             this.menuItem = menuItem;
-
             InitializeComponent();
-
-            this.Size = new Size(125, 40);
-            this.Text = menuItem.shortname;
+            this.Size = new Size(40, 40);
+            this.Text = "-1";
         }
     }
 }

@@ -114,7 +114,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(752, 709);
+            this.ClientSize = new System.Drawing.Size(752, 873);
             this.Controls.Add(this.panel1);
             this.Name = "Main_Form";
             this.Text = "Main menu";
@@ -132,5 +132,6 @@
         private System.Windows.Forms.Label lbl_functie;
         protected System.Windows.Forms.Label lbl_tafel;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbl_naam;
     }
 }

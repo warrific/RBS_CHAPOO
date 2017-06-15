@@ -20,22 +20,19 @@ namespace Logica
                 return daltafel.GetAll();
             }
 
-
-       
-
         // Als er op afrekenen gedrukt wordt dan kan een tafel vrij gegeven worden.
 
-        public TafelStatus VeranderTafelStatus(int bedrag)
+        public Status_tafel VeranderTafelStatus(int bedrag)
         {  
             if(bedrag > 0)
             {
-            TafelStatus tafel1 = TafelStatus.vrij;
+                Status_tafel tafel1 = Status_tafel.Vrij;
             return tafel1;
             }
 
             else
             {
-            TafelStatus tafel1 = TafelStatus.bezet;
+                Status_tafel tafel1 = Status_tafel.Bezet;
             return tafel1;
             }  
         }
@@ -43,17 +40,17 @@ namespace Logica
 
         // Als een tafel vrij is dan is lopen er geen bestellingen en is er dus bediend.
         
-        //public Model.BestellingsStatus  VeranderBestellingStatus (TafelStatus tafel)
-       // {
-        //    BestellingsStatus verandering_status = BestellingsStatus.Gereed;
+        public Status VeranderBestellingStatus (Status_tafel tafel)
+        {
+            Status verandering_status = Status.Gereed;
 
-        //    if(tafel == TafelStatus.vrij)
-        //    {
-        //      verandering_status = BestellingsStatus.Voltooid;
-        //    }
+            if(tafel == Status_tafel.Vrij)
+            {
+              verandering_status = Status.Voltooid;
+            }
 
-        //    return verandering_status;/*
-        //}
+            return verandering_status;
+        }
      
 
      //   public BestelStatus VeranderBestellingStatus(Functie functie, int druktBtn1, int druktBtn2 )

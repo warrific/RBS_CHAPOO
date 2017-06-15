@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tafel_lbl = new System.Windows.Forms.Label();
             this.Medewerker_lbl = new System.Windows.Forms.Label();
             this.Datum_lbl = new System.Windows.Forms.Label();
-            this.Datagrid_items_bestelling = new System.Windows.Forms.DataGridView();
-            this.Aantal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prijs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fooi_lbl = new System.Windows.Forms.Label();
             this.Betaalwijze_lbl = new System.Windows.Forms.Label();
             this.Btw_lbl = new System.Windows.Forms.Label();
@@ -74,7 +65,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.Bon_back_panel = new System.Windows.Forms.Panel();
             this.Fooi_textbox = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Datagrid_items_bestelling)).BeginInit();
+            this.Rekening_lview = new System.Windows.Forms.ListView();
+            this.Aantal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Product = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Prijs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Bon_back_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,101 +105,23 @@
             this.Datum_lbl.TabIndex = 8;
             this.Datum_lbl.Text = "Datum:";
             // 
-            // Datagrid_items_bestelling
-            // 
-            this.Datagrid_items_bestelling.BackgroundColor = System.Drawing.Color.DarkSlateGray;
-            this.Datagrid_items_bestelling.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Datagrid_items_bestelling.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.Datagrid_items_bestelling.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Datagrid_items_bestelling.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.Datagrid_items_bestelling.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Datagrid_items_bestelling.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Aantal,
-            this.Naam,
-            this.Prijs});
-            this.Datagrid_items_bestelling.EnableHeadersVisualStyles = false;
-            this.Datagrid_items_bestelling.GridColor = System.Drawing.Color.DarkSlateGray;
-            this.Datagrid_items_bestelling.Location = new System.Drawing.Point(10, 176);
-            this.Datagrid_items_bestelling.Name = "Datagrid_items_bestelling";
-            this.Datagrid_items_bestelling.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Datagrid_items_bestelling.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.Datagrid_items_bestelling.RowHeadersVisible = false;
-            this.Datagrid_items_bestelling.Size = new System.Drawing.Size(450, 655);
-            this.Datagrid_items_bestelling.TabIndex = 9;
-            // 
-            // Aantal
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Control;
-            this.Aantal.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Aantal.FillWeight = 70F;
-            this.Aantal.HeaderText = "Aantal";
-            this.Aantal.Name = "Aantal";
-            this.Aantal.ReadOnly = true;
-            this.Aantal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Aantal.Width = 50;
-            // 
-            // Naam
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Control;
-            this.Naam.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Naam.HeaderText = "Naam";
-            this.Naam.Name = "Naam";
-            this.Naam.ReadOnly = true;
-            this.Naam.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Naam.Width = 360;
-            // 
-            // Prijs
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Control;
-            this.Prijs.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Prijs.HeaderText = "Prijs";
-            this.Prijs.Name = "Prijs";
-            this.Prijs.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Prijs.Width = 40;
-            // 
             // Fooi_lbl
             // 
             this.Fooi_lbl.AutoSize = true;
             this.Fooi_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Fooi_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Fooi_lbl.Location = new System.Drawing.Point(66, 864);
+            this.Fooi_lbl.Location = new System.Drawing.Point(67, 890);
             this.Fooi_lbl.Name = "Fooi_lbl";
-            this.Fooi_lbl.Size = new System.Drawing.Size(44, 20);
+            this.Fooi_lbl.Size = new System.Drawing.Size(65, 20);
             this.Fooi_lbl.TabIndex = 10;
-            this.Fooi_lbl.Text = "Fooi:";
+            this.Fooi_lbl.Text = "Fooi:  € ";
             // 
             // Betaalwijze_lbl
             // 
             this.Betaalwijze_lbl.AutoSize = true;
             this.Betaalwijze_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Betaalwijze_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Betaalwijze_lbl.Location = new System.Drawing.Point(17, 890);
+            this.Betaalwijze_lbl.Location = new System.Drawing.Point(18, 862);
             this.Betaalwijze_lbl.Name = "Betaalwijze_lbl";
             this.Betaalwijze_lbl.Size = new System.Drawing.Size(93, 20);
             this.Betaalwijze_lbl.TabIndex = 11;
@@ -216,11 +132,11 @@
             this.Btw_lbl.AutoSize = true;
             this.Btw_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Btw_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Btw_lbl.Location = new System.Drawing.Point(70, 918);
+            this.Btw_lbl.Location = new System.Drawing.Point(71, 918);
             this.Btw_lbl.Name = "Btw_lbl";
-            this.Btw_lbl.Size = new System.Drawing.Size(40, 20);
+            this.Btw_lbl.Size = new System.Drawing.Size(61, 20);
             this.Btw_lbl.TabIndex = 12;
-            this.Btw_lbl.Text = "Btw:";
+            this.Btw_lbl.Text = "Btw:  € ";
             // 
             // label1
             // 
@@ -229,42 +145,48 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(1, 941);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 24);
+            this.label1.Size = new System.Drawing.Size(135, 24);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Totaalprijs:";
+            this.label1.Text = "Totaalprijs: € ";
             // 
             // Betaalwijze_pin_btn
             // 
+            this.Betaalwijze_pin_btn.BackColor = System.Drawing.SystemColors.Control;
+            this.Betaalwijze_pin_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Betaalwijze_pin_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Betaalwijze_pin_btn.Location = new System.Drawing.Point(487, 118);
             this.Betaalwijze_pin_btn.Name = "Betaalwijze_pin_btn";
             this.Betaalwijze_pin_btn.Size = new System.Drawing.Size(75, 75);
             this.Betaalwijze_pin_btn.TabIndex = 14;
             this.Betaalwijze_pin_btn.Text = "PIN";
-            this.Betaalwijze_pin_btn.UseVisualStyleBackColor = true;
-            this.Betaalwijze_pin_btn.Click += new System.EventHandler(this.Betaalwijze_pin_btn_Click);
+            this.Betaalwijze_pin_btn.UseVisualStyleBackColor = false;
+            this.Betaalwijze_pin_btn.Click += new System.EventHandler(this.Betaalwijze_click);
             // 
             // Betaalwijze_contant_btn
             // 
+            this.Betaalwijze_contant_btn.BackColor = System.Drawing.SystemColors.Control;
+            this.Betaalwijze_contant_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Betaalwijze_contant_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Betaalwijze_contant_btn.Location = new System.Drawing.Point(568, 118);
             this.Betaalwijze_contant_btn.Name = "Betaalwijze_contant_btn";
             this.Betaalwijze_contant_btn.Size = new System.Drawing.Size(75, 75);
             this.Betaalwijze_contant_btn.TabIndex = 15;
             this.Betaalwijze_contant_btn.Text = "CONTANT";
-            this.Betaalwijze_contant_btn.UseVisualStyleBackColor = true;
-            this.Betaalwijze_contant_btn.Click += new System.EventHandler(this.Betaalwijze_contant_btn_Click);
+            this.Betaalwijze_contant_btn.UseVisualStyleBackColor = false;
+            this.Betaalwijze_contant_btn.Click += new System.EventHandler(this.Betaalwijze_click);
             // 
             // Betaalwijze_credit_btn
             // 
+            this.Betaalwijze_credit_btn.BackColor = System.Drawing.SystemColors.Control;
+            this.Betaalwijze_credit_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Betaalwijze_credit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Betaalwijze_credit_btn.Location = new System.Drawing.Point(649, 118);
             this.Betaalwijze_credit_btn.Name = "Betaalwijze_credit_btn";
             this.Betaalwijze_credit_btn.Size = new System.Drawing.Size(75, 75);
             this.Betaalwijze_credit_btn.TabIndex = 16;
             this.Betaalwijze_credit_btn.Text = "CREDIT CARD";
-            this.Betaalwijze_credit_btn.UseVisualStyleBackColor = true;
-            this.Betaalwijze_credit_btn.Click += new System.EventHandler(this.Betaalwijze_credit_btn_Click);
+            this.Betaalwijze_credit_btn.UseVisualStyleBackColor = false;
+            this.Betaalwijze_credit_btn.Click += new System.EventHandler(this.Betaalwijze_click);
             // 
             // Betaalwijze_header_lbl
             // 
@@ -319,7 +241,7 @@
             this.Fooi_btn_2.TabIndex = 23;
             this.Fooi_btn_2.Text = "2";
             this.Fooi_btn_2.UseVisualStyleBackColor = true;
-            this.Fooi_btn_2.Click += new System.EventHandler(this.Fooi_btn_2_Click);
+            this.Fooi_btn_2.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_3
             // 
@@ -330,7 +252,7 @@
             this.Fooi_btn_3.TabIndex = 24;
             this.Fooi_btn_3.Text = "3";
             this.Fooi_btn_3.UseVisualStyleBackColor = true;
-            this.Fooi_btn_3.Click += new System.EventHandler(this.Fooi_btn_3_Click);
+            this.Fooi_btn_3.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_4
             // 
@@ -341,7 +263,7 @@
             this.Fooi_btn_4.TabIndex = 25;
             this.Fooi_btn_4.Text = "4";
             this.Fooi_btn_4.UseVisualStyleBackColor = true;
-            this.Fooi_btn_4.Click += new System.EventHandler(this.Fooi_btn_4_Click);
+            this.Fooi_btn_4.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_5
             // 
@@ -352,7 +274,7 @@
             this.Fooi_btn_5.TabIndex = 26;
             this.Fooi_btn_5.Text = "5";
             this.Fooi_btn_5.UseVisualStyleBackColor = true;
-            this.Fooi_btn_5.Click += new System.EventHandler(this.Fooi_btn_5_Click);
+            this.Fooi_btn_5.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_6
             // 
@@ -363,7 +285,7 @@
             this.Fooi_btn_6.TabIndex = 27;
             this.Fooi_btn_6.Text = "6";
             this.Fooi_btn_6.UseVisualStyleBackColor = true;
-            this.Fooi_btn_6.Click += new System.EventHandler(this.Fooi_btn_6_Click);
+            this.Fooi_btn_6.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_7
             // 
@@ -374,7 +296,7 @@
             this.Fooi_btn_7.TabIndex = 28;
             this.Fooi_btn_7.Text = "7";
             this.Fooi_btn_7.UseVisualStyleBackColor = true;
-            this.Fooi_btn_7.Click += new System.EventHandler(this.Fooi_btn_7_Click);
+            this.Fooi_btn_7.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_8
             // 
@@ -385,7 +307,7 @@
             this.Fooi_btn_8.TabIndex = 29;
             this.Fooi_btn_8.Text = "8";
             this.Fooi_btn_8.UseVisualStyleBackColor = true;
-            this.Fooi_btn_8.Click += new System.EventHandler(this.Fooi_btn_8_Click);
+            this.Fooi_btn_8.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_9
             // 
@@ -396,7 +318,7 @@
             this.Fooi_btn_9.TabIndex = 30;
             this.Fooi_btn_9.Text = "9";
             this.Fooi_btn_9.UseVisualStyleBackColor = true;
-            this.Fooi_btn_9.Click += new System.EventHandler(this.Fooi_btn_9_Click);
+            this.Fooi_btn_9.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Fooi_btn_backspace
             // 
@@ -418,7 +340,7 @@
             this.Fooi_btn_0.TabIndex = 32;
             this.Fooi_btn_0.Text = "0";
             this.Fooi_btn_0.UseVisualStyleBackColor = true;
-            this.Fooi_btn_0.Click += new System.EventHandler(this.Fooi_btn_0_Click);
+            this.Fooi_btn_0.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Opmerking_add_btn
             // 
@@ -440,7 +362,7 @@
             this.Fooi_btn_komma.TabIndex = 35;
             this.Fooi_btn_komma.Text = ",";
             this.Fooi_btn_komma.UseVisualStyleBackColor = true;
-            this.Fooi_btn_komma.Click += new System.EventHandler(this.Fooi_btn_komma_Click);
+            this.Fooi_btn_komma.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // Tafel_out_lbl
             // 
@@ -477,7 +399,7 @@
             this.Fooi_out_lbl.AutoSize = true;
             this.Fooi_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fooi_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Fooi_out_lbl.Location = new System.Drawing.Point(120, 864);
+            this.Fooi_out_lbl.Location = new System.Drawing.Point(136, 890);
             this.Fooi_out_lbl.Name = "Fooi_out_lbl";
             this.Fooi_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.Fooi_out_lbl.TabIndex = 39;
@@ -487,7 +409,7 @@
             this.Betaalwijze_out_lbl.AutoSize = true;
             this.Betaalwijze_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Betaalwijze_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Betaalwijze_out_lbl.Location = new System.Drawing.Point(120, 890);
+            this.Betaalwijze_out_lbl.Location = new System.Drawing.Point(135, 858);
             this.Betaalwijze_out_lbl.Name = "Betaalwijze_out_lbl";
             this.Betaalwijze_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.Betaalwijze_out_lbl.TabIndex = 40;
@@ -497,7 +419,7 @@
             this.Btw_out_lbl.AutoSize = true;
             this.Btw_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btw_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Btw_out_lbl.Location = new System.Drawing.Point(120, 918);
+            this.Btw_out_lbl.Location = new System.Drawing.Point(136, 918);
             this.Btw_out_lbl.Name = "Btw_out_lbl";
             this.Btw_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.Btw_out_lbl.TabIndex = 41;
@@ -507,7 +429,7 @@
             this.Totaal_out_lbl.AutoSize = true;
             this.Totaal_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Totaal_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Totaal_out_lbl.Location = new System.Drawing.Point(120, 942);
+            this.Totaal_out_lbl.Location = new System.Drawing.Point(135, 941);
             this.Totaal_out_lbl.Name = "Totaal_out_lbl";
             this.Totaal_out_lbl.Size = new System.Drawing.Size(0, 24);
             this.Totaal_out_lbl.TabIndex = 42;
@@ -525,7 +447,7 @@
             this.Fooi_btn_1.TabIndex = 22;
             this.Fooi_btn_1.Text = "1";
             this.Fooi_btn_1.UseVisualStyleBackColor = false;
-            this.Fooi_btn_1.Click += new System.EventHandler(this.Fooi_btn_1_Click);
+            this.Fooi_btn_1.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
             // button1
             // 
@@ -553,14 +475,47 @@
             this.Fooi_textbox.Location = new System.Drawing.Point(22, 203);
             this.Fooi_textbox.Multiline = true;
             this.Fooi_textbox.Name = "Fooi_textbox";
+            this.Fooi_textbox.ReadOnly = true;
             this.Fooi_textbox.Size = new System.Drawing.Size(236, 37);
             this.Fooi_textbox.TabIndex = 21;
             this.Fooi_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Rekening_lview
+            // 
+            this.Rekening_lview.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Rekening_lview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Rekening_lview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Aantal,
+            this.Product,
+            this.Prijs});
+            this.Rekening_lview.ForeColor = System.Drawing.SystemColors.Control;
+            this.Rekening_lview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.Rekening_lview.Location = new System.Drawing.Point(12, 188);
+            this.Rekening_lview.Name = "Rekening_lview";
+            this.Rekening_lview.Size = new System.Drawing.Size(445, 651);
+            this.Rekening_lview.TabIndex = 45;
+            this.Rekening_lview.UseCompatibleStateImageBehavior = false;
+            this.Rekening_lview.View = System.Windows.Forms.View.Details;
+            // 
+            // Aantal
+            // 
+            this.Aantal.Text = "Aantal";
+            // 
+            // Product
+            // 
+            this.Product.Text = "Product";
+            this.Product.Width = 315;
+            // 
+            // Prijs
+            // 
+            this.Prijs.Text = "Prijs";
+            this.Prijs.Width = 70;
             // 
             // Betalen_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.Rekening_lview);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Totaal_out_lbl);
             this.Controls.Add(this.Btw_out_lbl);
@@ -592,7 +547,6 @@
             this.Controls.Add(this.Btw_lbl);
             this.Controls.Add(this.Betaalwijze_lbl);
             this.Controls.Add(this.Fooi_lbl);
-            this.Controls.Add(this.Datagrid_items_bestelling);
             this.Controls.Add(this.Datum_lbl);
             this.Controls.Add(this.Medewerker_lbl);
             this.Controls.Add(this.Tafel_lbl);
@@ -602,7 +556,6 @@
             this.Controls.SetChildIndex(this.Tafel_lbl, 0);
             this.Controls.SetChildIndex(this.Medewerker_lbl, 0);
             this.Controls.SetChildIndex(this.Datum_lbl, 0);
-            this.Controls.SetChildIndex(this.Datagrid_items_bestelling, 0);
             this.Controls.SetChildIndex(this.Fooi_lbl, 0);
             this.Controls.SetChildIndex(this.Betaalwijze_lbl, 0);
             this.Controls.SetChildIndex(this.Btw_lbl, 0);
@@ -634,7 +587,7 @@
             this.Controls.SetChildIndex(this.Btw_out_lbl, 0);
             this.Controls.SetChildIndex(this.Totaal_out_lbl, 0);
             this.Controls.SetChildIndex(this.button1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.Datagrid_items_bestelling)).EndInit();
+            this.Controls.SetChildIndex(this.Rekening_lview, 0);
             this.Bon_back_panel.ResumeLayout(false);
             this.Bon_back_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -647,7 +600,6 @@
         private System.Windows.Forms.Label Tafel_lbl;
         private System.Windows.Forms.Label Medewerker_lbl;
         private System.Windows.Forms.Label Datum_lbl;
-        private System.Windows.Forms.DataGridView Datagrid_items_bestelling;
         private System.Windows.Forms.Label Fooi_lbl;
         private System.Windows.Forms.Label Betaalwijze_lbl;
         private System.Windows.Forms.Label Btw_lbl;
@@ -680,10 +632,11 @@
         private System.Windows.Forms.Label Btw_out_lbl;
         private System.Windows.Forms.Label Totaal_out_lbl;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Aantal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Prijs;
         private System.Windows.Forms.Panel Bon_back_panel;
         private System.Windows.Forms.TextBox Fooi_textbox;
+        private System.Windows.Forms.ListView Rekening_lview;
+        private System.Windows.Forms.ColumnHeader Aantal;
+        private System.Windows.Forms.ColumnHeader Product;
+        private System.Windows.Forms.ColumnHeader Prijs;
     }
 }

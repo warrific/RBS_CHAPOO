@@ -132,6 +132,11 @@ namespace UI
                 flowLP_MenuItems.Controls.Add(button);
                 button.Location = new Point(50, 0);
                 button.Click += new EventHandler(VoegMenuItemsToe);
+
+                ButtonMenuItemVerlaag buttonVerlaag = new ButtonMenuItemVerlaag(item);
+                flowLP_MenuItems.Controls.Add(buttonVerlaag);
+                buttonVerlaag.Click += new EventHandler(VerlaagMenuItems);
+
             }
         }
 
@@ -158,6 +163,26 @@ namespace UI
 
                 BestelItem bestelItem = new BestelItem(1, menuItem, 1, null, Status.Open);
                 lijstBestelItem.Add(bestelItem); 
+            }
+
+            UpdateListView();
+        }
+
+        private void VerlaagMenuItems(object sender, EventArgs e)
+        {
+            Model.MenuItem menuItem = ((ButtonMenuItemVerlaag)sender).menuItem;
+
+            for (int i = 0; i < lijstBestelItem.Count; i++)
+            {
+                if (lijstBestelItem[i].menuItem == menuItem)
+                {
+                    lijstBestelItem[i].aantal--;
+
+                    if (lijstBestelItem[i].aantal == 0)
+                    {
+                        lijstBestelItem.RemoveAt(i);
+                    }
+                }
             }
 
             UpdateListView();
