@@ -38,6 +38,17 @@ namespace Logica
             return bestelItem.menuItem.prijs * bestelItem.aantal;
         }
 
+        public double BerekenTotaalBestelling(List<BestelItem> lijstBestelItem)
+        {
+            double totaal = 0;
+            foreach(BestelItem item in lijstBestelItem)
+            {
+                totaal += item.menuItem.prijs * item.aantal;
+            }
+
+            return totaal;
+        }
+
         public void StuurBestellingNaarDatabase(Bestelling bestelling)
         {
             DALBestelling dalBestelling = new DALBestelling();

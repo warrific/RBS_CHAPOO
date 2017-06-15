@@ -213,7 +213,7 @@ namespace UI
                 logMenuItems.BewerkVoorraad(item.menuItem, item.aantal);
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open,werknemer, 1, "", 1, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open,werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
