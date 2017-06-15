@@ -22,6 +22,8 @@ namespace UI
 
             //lbl_naam.Text = naam;
             //lbl_functie.Text = functie;
+            //lbl_naam.Text = naam;
+            //lbl_functie.Text = functie;
 
             // lijst halen van de Logica laag
             //Werknemers werknemer = new Werknemers();
