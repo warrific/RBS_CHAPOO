@@ -282,6 +282,7 @@ namespace UI
                 InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
                 InitControl(lblFunctie, LBLX, SPACING * 3, "Functie", FNTSIZE, WIDTH);
                 InitControl(lblId, LBLX, SPACING * 4, id.ToString(), FNTSIZE, WIDTH);
+                InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 30, 25);
 
                 InitControl(txtNaam, TBX, SPACING * 1, naam, FNTSIZE, WIDTH);
                 InitControl(cmbFunctie, TBX, SPACING * 3, functie, FNTSIZE, WIDTH);
