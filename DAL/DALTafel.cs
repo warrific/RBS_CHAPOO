@@ -37,14 +37,10 @@ namespace DAL
             {
 
                 Tafel tafeloverzicht = new Tafel();
-                //Bestelling bestellingsoverzicht = new Bestelling();
                 tafeloverzicht.Id = reader.GetInt32(0);
                 tafeloverzicht.Status = (Status_tafel)Enum.Parse(typeof(Status_tafel),reader.GetString(1));
-                //bestellingsoverzicht.id = reader.GetInt32(2);
-                //bestellingsoverzicht.Status = (BestellingsStatus)Enum.Parse(typeof(BestellingsStatus),reader.GetString(3));
 
                 restaurantoverzicht.Add(tafeloverzicht);
-                //restaurantoverzicht.Add(bestellingsoverzicht);
 
             }
 
@@ -56,7 +52,6 @@ namespace DAL
 
         public Tafel GetForID(int Id)
         {
-            // Connectie opzetten
             dbConnection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE tafel_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", Id);
@@ -75,11 +70,11 @@ namespace DAL
             return item;
         }
 
-        private Model.Tafel Readitem(SqlDataReader reader)
+        private Tafel Readitem(SqlDataReader reader)
     {
             int tafel_id = (int)reader["tafel_id"];
             Status_tafel status = (Status_tafel)(int)reader["status"];
-            return new Model.Tafel(tafel_id, status);
+            return new Tafel(tafel_id, status);
 
         }
     }

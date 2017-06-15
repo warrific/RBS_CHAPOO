@@ -121,8 +121,8 @@ namespace DAL
 
             SqlCommand command = new SqlCommand(sql, connection);
 
-            SqlParameter dcategory = new SqlParameter("@dcategory", System.Data.SqlDbType.Int);
-            SqlParameter dsubcategory = new SqlParameter("@dsubcategory", System.Data.SqlDbType.Int);
+            SqlParameter dcategory = new SqlParameter("@dcategory", SqlDbType.Int);
+            SqlParameter dsubcategory = new SqlParameter("@dsubcategory", SqlDbType.Int);
             dcategory.Value = (int)categorie;
             dsubcategory.Value = (int)subCategorie;
 
