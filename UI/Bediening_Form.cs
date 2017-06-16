@@ -22,7 +22,6 @@ namespace UI
         {
             InitializeComponent();
             lijstBestelItem = new List<BestelItem>();
-            
         }
 
         private void UpdateListView()
@@ -34,6 +33,7 @@ namespace UI
             foreach (BestelItem item in lijstBestelItem)
             {
                 ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
+                lvi.Tag = item.menuItem.id;
                 lvi.SubItems.Add(item.aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
                 lvi.SubItems.Add(item.opmerking);
@@ -41,18 +41,21 @@ namespace UI
             }
         }
          
-        protected void btn_dranken_Click(object sender, EventArgs e)
+        protected void Btn_dranken_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
-            
+
+            Btn_VerwijderItemUitDB.Enabled = false;
+            Btn_VerwijderItemUitDB.Visible = false;
+
             ButtonSelectie btn_nonalcoholisch = new ButtonSelectie(Categorie.Drank, SubCategorie.Nonalcoholisch);
             pnl_optiesbestelling.Controls.Add(btn_nonalcoholisch);
             btn_nonalcoholisch.Text = "Non-Alcoholisch";
             btn_nonalcoholisch.Location = new Point(220, 0);
             btn_nonalcoholisch.Click += new EventHandler(GenereerMenuItemButtons);
 
-            ButtonSelectie btn_alcoholisch = new ButtonSelectie(Categorie.Drank, SubCategorie.Alcoholisch);
+            ButtonSelectie btn_alcoholisch = new ButtonSelectie(Categorie.Alcohol, SubCategorie.Alcoholisch);
             pnl_optiesbestelling.Controls.Add(btn_alcoholisch);
             btn_alcoholisch.Text = "Alcoholisch";
             btn_alcoholisch.Location = new Point(345, 0);
@@ -62,10 +65,13 @@ namespace UI
 
         }
 
-        protected void btn_diner_Click(object sender, EventArgs e)
+        protected void Btn_diner_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
+
+            Btn_VerwijderItemUitDB.Enabled = false;
+            Btn_VerwijderItemUitDB.Visible = false;
 
             ButtonSelectie btn_DinerVoor = new ButtonSelectie(Categorie.Diner, SubCategorie.Voorgerecht);
             pnl_optiesbestelling.Controls.Add(btn_DinerVoor);
@@ -95,10 +101,13 @@ namespace UI
 
         }
 
-        protected void btn_lunch_Click(object sender, EventArgs e)
+        protected void Btn_lunch_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
+
+            Btn_VerwijderItemUitDB.Enabled = false;
+            Btn_VerwijderItemUitDB.Visible = false;
 
             ButtonSelectie btn_LunchVoor = new ButtonSelectie(Categorie.Lunch, SubCategorie.Voorgerecht);
             pnl_optiesbestelling.Controls.Add(btn_LunchVoor);
@@ -194,7 +203,7 @@ namespace UI
 
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
-                if (lijstBestelItem[i].menuItem == menuItem)
+                if (lijstBestelItem[i].menuItem.shortname == menuItem.shortname)
                 {
                     lijstBestelItem[i].aantal--;
 
@@ -209,7 +218,7 @@ namespace UI
         }
 
         // verzend bestelling naar db
-        private void btn_Verstuur_Click(object sender, EventArgs e)
+        private void Btn_Verstuur_Click(object sender, EventArgs e)
         {
             if (lijstBestelItem.Count == 0)
                 return;
@@ -252,22 +261,28 @@ namespace UI
         }
 
         // opent betalen form
-        private void btn_afrekenen_Click(object sender, EventArgs e)
+        private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
             Betalen_Form betalen_form = new Betalen_Form((Int32.Parse(btn_Tafel.Text)));
         }
 
         // wist huidige bestelling
-        private void btn_verwijderHuidigeBestelling_Click(object sender, EventArgs e)
+        private void Btn_verwijderHuidigeBestelling_Click(object sender, EventArgs e)
         {
             lijstBestelItem.Clear();
             UpdateListView();
         }
 
-        
         private void ToonTotaleBestelling(object sender, EventArgs e)
         {
-            listView_Bestelling.Clear();
+            listView_Bestelling.Items.Clear();
+
+            pnl_optiesbestelling.Controls.Clear();
+            flowLP_MenuItems.Controls.Clear();
+
+            pnl_optiesbestelling.Controls.Add(Btn_VerwijderItemUitDB);
+            Btn_VerwijderItemUitDB.Enabled = true;
+            Btn_VerwijderItemUitDB.Visible = true;
 
             Logica.Bestellingen logBestelingen = new Bestellingen();
             Logica.Bestelitems logBestelItems = new Bestelitems();
@@ -290,6 +305,58 @@ namespace UI
                 lvi.SubItems.Add(item.opmerking);
                 listView_Bestelling.Items.Add(lvi);
             }
+        }
+
+        // toont opmerking textbox en butoon
+        private void Btn_commentaar_Click(object sender, EventArgs e)
+        {
+            if(textBox_Commentaar.Enabled)
+            {
+                textBox_Commentaar.Enabled = false;
+                textBox_Commentaar.Visible = false;
+                btn_CommentaarSent.Enabled = false;
+                btn_CommentaarSent.Visible = false;
+            }
+            else
+            {
+                textBox_Commentaar.Enabled = true;
+                textBox_Commentaar.Visible = true;
+                btn_CommentaarSent.Enabled = true;
+                btn_CommentaarSent.Visible = true;
+            }
+        }
+
+        // voegt opmerking aan bestelitem
+        private void Btn_CommentaarSent_Click(object sender, EventArgs e)
+        {
+            if(listView_Bestelling.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            foreach(ListViewItem item in listView_Bestelling.SelectedItems)
+            {
+
+                foreach(BestelItem bestelItem in lijstBestelItem)
+                {
+                    if(bestelItem.menuItem.id.ToString() == item.Tag.ToString())
+                    {
+                        bestelItem.opmerking = textBox_Commentaar.Text;
+                    }
+                }
+            }
+
+            UpdateListView();
+        }
+
+        private void Btn_VerwijderItemUitDB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_VoorraadOp_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
