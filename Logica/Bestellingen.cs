@@ -125,5 +125,21 @@ namespace Logica
             }
             return false;
         }
+
+        public int GetBestellingIdByTafelNummer(Model.Tafel tafel)
+        {
+            DAL.DALBestelling dalBestelling = new DALBestelling();
+
+            List<Bestelling> lijstBestellingen = dalBestelling.GetAll();
+
+            foreach(Bestelling bestelling in lijstBestellingen)
+            {
+                if(bestelling.tafel.Id == tafel.Id)
+                {
+                    return bestelling.id;
+                }
+            }
+            return 0;
+        }
     }
 }

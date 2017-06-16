@@ -22,6 +22,8 @@ namespace UI
             InitializeComponent();
             this.Size = new Size(40, 40);
             this.Text = "-1";
+            this.BackColor = Color.DarkRed;
+            this.ForeColor = Color.White;
         }
     }
 }

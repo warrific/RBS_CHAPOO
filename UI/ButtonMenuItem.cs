@@ -24,7 +24,8 @@ namespace UI
             this.menuItem = menuItem;
 
             InitializeComponent();
-
+            this.BackColor = Color.DarkGreen;
+            this.ForeColor = Color.White;
             this.Size = new Size(125, 40);
             this.Text = menuItem.shortname;
         }

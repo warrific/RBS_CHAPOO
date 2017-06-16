@@ -43,6 +43,7 @@
             this.btn_afrekenen = new System.Windows.Forms.Button();
             this.lbl_VoorraadOp = new System.Windows.Forms.Label();
             this.btn_verwijderHuidigeBestelling = new System.Windows.Forms.Button();
+            this.btn_commentaar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_dranken
@@ -73,8 +74,9 @@
             this.btn_bestellingen.Name = "btn_bestellingen";
             this.btn_bestellingen.Size = new System.Drawing.Size(125, 50);
             this.btn_bestellingen.TabIndex = 8;
-            this.btn_bestellingen.Text = "Bestellingen";
+            this.btn_bestellingen.Text = "Totale Bestelling";
             this.btn_bestellingen.UseVisualStyleBackColor = true;
+            this.btn_bestellingen.Click += new System.EventHandler(this.ToonTotaleBestelling);
             // 
             // btn_diner
             // 
@@ -132,7 +134,7 @@
             // 
             // btn_Verstuur
             // 
-            this.btn_Verstuur.Location = new System.Drawing.Point(608, 853);
+            this.btn_Verstuur.Location = new System.Drawing.Point(608, 832);
             this.btn_Verstuur.Name = "btn_Verstuur";
             this.btn_Verstuur.Size = new System.Drawing.Size(132, 57);
             this.btn_Verstuur.TabIndex = 14;
@@ -167,7 +169,7 @@
             // 
             // btn_verwijderHuidigeBestelling
             // 
-            this.btn_verwijderHuidigeBestelling.Location = new System.Drawing.Point(608, 786);
+            this.btn_verwijderHuidigeBestelling.Location = new System.Drawing.Point(608, 743);
             this.btn_verwijderHuidigeBestelling.Name = "btn_verwijderHuidigeBestelling";
             this.btn_verwijderHuidigeBestelling.Size = new System.Drawing.Size(132, 61);
             this.btn_verwijderHuidigeBestelling.TabIndex = 17;
@@ -175,10 +177,20 @@
             this.btn_verwijderHuidigeBestelling.UseVisualStyleBackColor = true;
             this.btn_verwijderHuidigeBestelling.Click += new System.EventHandler(this.btn_verwijderHuidigeBestelling_Click);
             // 
+            // btn_commentaar
+            // 
+            this.btn_commentaar.Location = new System.Drawing.Point(608, 651);
+            this.btn_commentaar.Name = "btn_commentaar";
+            this.btn_commentaar.Size = new System.Drawing.Size(132, 63);
+            this.btn_commentaar.TabIndex = 18;
+            this.btn_commentaar.Text = "Voeg Commentaar Toe";
+            this.btn_commentaar.UseVisualStyleBackColor = true;
+            // 
             // Bediening_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.btn_commentaar);
             this.Controls.Add(this.btn_verwijderHuidigeBestelling);
             this.Controls.Add(this.lbl_VoorraadOp);
             this.Controls.Add(this.btn_afrekenen);
@@ -203,6 +215,7 @@
             this.Controls.SetChildIndex(this.btn_afrekenen, 0);
             this.Controls.SetChildIndex(this.lbl_VoorraadOp, 0);
             this.Controls.SetChildIndex(this.btn_verwijderHuidigeBestelling, 0);
+            this.Controls.SetChildIndex(this.btn_commentaar, 0);
             this.ResumeLayout(false);
 
         }
@@ -224,5 +237,6 @@
         private System.Windows.Forms.Button btn_afrekenen;
         private System.Windows.Forms.Label lbl_VoorraadOp;
         private System.Windows.Forms.Button btn_verwijderHuidigeBestelling;
+        private System.Windows.Forms.Button btn_commentaar;
     }
 }
