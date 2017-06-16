@@ -11,13 +11,17 @@ namespace Model
     {
         public int aantal { get; private set; }
         public string naam { get; private set; }
-        public float prijs { get; private set; }
+        public double prijs { get; private set; }
+        public double btw { get; private set; }
 
-        public RekeningItem(int aantal, string naam, float prijs)
+
+
+        public RekeningItem(int aantal, string naam, double prijs, double btw)
         {
             this.aantal = aantal;
             this.naam = naam;
             this.prijs = prijs;
+            this.btw = btw;
         }
     }
 }

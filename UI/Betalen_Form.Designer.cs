@@ -52,7 +52,6 @@
             this.Fooi_btn_9 = new System.Windows.Forms.Button();
             this.Fooi_btn_backspace = new System.Windows.Forms.Button();
             this.Fooi_btn_0 = new System.Windows.Forms.Button();
-            this.Opmerking_add_btn = new System.Windows.Forms.Button();
             this.Fooi_btn_komma = new System.Windows.Forms.Button();
             this.Tafel_out_lbl = new System.Windows.Forms.Label();
             this.medewerker_out_lbl = new System.Windows.Forms.Label();
@@ -342,17 +341,6 @@
             this.Fooi_btn_0.UseVisualStyleBackColor = true;
             this.Fooi_btn_0.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
-            // Opmerking_add_btn
-            // 
-            this.Opmerking_add_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Opmerking_add_btn.Location = new System.Drawing.Point(621, 830);
-            this.Opmerking_add_btn.Name = "Opmerking_add_btn";
-            this.Opmerking_add_btn.Size = new System.Drawing.Size(103, 48);
-            this.Opmerking_add_btn.TabIndex = 34;
-            this.Opmerking_add_btn.Text = "Toevoegen";
-            this.Opmerking_add_btn.UseVisualStyleBackColor = true;
-            this.Opmerking_add_btn.Click += new System.EventHandler(this.Opmerking_add_btn_Click);
-            // 
             // Fooi_btn_komma
             // 
             this.Fooi_btn_komma.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -360,7 +348,7 @@
             this.Fooi_btn_komma.Name = "Fooi_btn_komma";
             this.Fooi_btn_komma.Size = new System.Drawing.Size(75, 75);
             this.Fooi_btn_komma.TabIndex = 35;
-            this.Fooi_btn_komma.Text = ",";
+            this.Fooi_btn_komma.Text = ".";
             this.Fooi_btn_komma.UseVisualStyleBackColor = true;
             this.Fooi_btn_komma.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
@@ -409,7 +397,7 @@
             this.Betaalwijze_out_lbl.AutoSize = true;
             this.Betaalwijze_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Betaalwijze_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
-            this.Betaalwijze_out_lbl.Location = new System.Drawing.Point(135, 858);
+            this.Betaalwijze_out_lbl.Location = new System.Drawing.Point(136, 862);
             this.Betaalwijze_out_lbl.Name = "Betaalwijze_out_lbl";
             this.Betaalwijze_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.Betaalwijze_out_lbl.TabIndex = 40;
@@ -479,6 +467,7 @@
             this.Fooi_textbox.Size = new System.Drawing.Size(236, 37);
             this.Fooi_textbox.TabIndex = 21;
             this.Fooi_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Fooi_textbox.TextChanged += new System.EventHandler(this.Fooi_textbox_TextChanged);
             // 
             // Rekening_lview
             // 
@@ -488,6 +477,7 @@
             this.Aantal,
             this.Product,
             this.Prijs});
+            this.Rekening_lview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rekening_lview.ForeColor = System.Drawing.SystemColors.Control;
             this.Rekening_lview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.Rekening_lview.Location = new System.Drawing.Point(12, 188);
@@ -509,6 +499,7 @@
             // Prijs
             // 
             this.Prijs.Text = "Prijs";
+            this.Prijs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Prijs.Width = 70;
             // 
             // Betalen_Form
@@ -525,7 +516,6 @@
             this.Controls.Add(this.medewerker_out_lbl);
             this.Controls.Add(this.Tafel_out_lbl);
             this.Controls.Add(this.Fooi_btn_komma);
-            this.Controls.Add(this.Opmerking_add_btn);
             this.Controls.Add(this.Fooi_btn_0);
             this.Controls.Add(this.Fooi_btn_backspace);
             this.Controls.Add(this.Fooi_btn_9);
@@ -577,7 +567,6 @@
             this.Controls.SetChildIndex(this.Fooi_btn_9, 0);
             this.Controls.SetChildIndex(this.Fooi_btn_backspace, 0);
             this.Controls.SetChildIndex(this.Fooi_btn_0, 0);
-            this.Controls.SetChildIndex(this.Opmerking_add_btn, 0);
             this.Controls.SetChildIndex(this.Fooi_btn_komma, 0);
             this.Controls.SetChildIndex(this.Tafel_out_lbl, 0);
             this.Controls.SetChildIndex(this.medewerker_out_lbl, 0);
@@ -622,7 +611,6 @@
         private System.Windows.Forms.Button Fooi_btn_9;
         private System.Windows.Forms.Button Fooi_btn_backspace;
         private System.Windows.Forms.Button Fooi_btn_0;
-        private System.Windows.Forms.Button Opmerking_add_btn;
         private System.Windows.Forms.Button Fooi_btn_komma;
         private System.Windows.Forms.Label Tafel_out_lbl;
         private System.Windows.Forms.Label medewerker_out_lbl;

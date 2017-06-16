@@ -20,7 +20,7 @@ namespace DAL
         public List<RekeningItem> GetRekening(int order_id)
         {
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT b.aantal, m.shortname, m.prijs FROM menuitem as m, bestelitems as b JOIN menuitem on menutitem.id = bestelitem.menuitem WHERE bestelitem.id = @Id", dbConnection); //Check namen in DB...
+            SqlCommand command = new SqlCommand("SELECT b.aantal, m.shortname, m.prijs, c.btw_tarief FROM Menuitem AS m INNER JOIN Bestelling_item AS b ON m.item_id = b.item_id INNER JOIN Menucategory as c ON m.category = c.id WHERE b.order_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", order_id);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -39,7 +39,7 @@ namespace DAL
 
         private RekeningItem ReadItem(SqlDataReader reader)
         {
-            return new RekeningItem((int)reader["aantal"], (string)reader["shortname"], (float)reader["prijs"]);
+            return new RekeningItem((int)reader["aantal"], (string)reader["shortname"], (double)reader["prijs"] * (int)reader["aantal"], (double)reader["btw_tarief"]);
         }
     }
 }
