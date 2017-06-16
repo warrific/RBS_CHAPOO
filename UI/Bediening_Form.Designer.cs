@@ -181,7 +181,6 @@
             this.lbl_VoorraadOp.Size = new System.Drawing.Size(199, 53);
             this.lbl_VoorraadOp.TabIndex = 16;
             this.lbl_VoorraadOp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_VoorraadOp.Click += new System.EventHandler(this.lbl_VoorraadOp_Click);
             // 
             // btn_verwijderHuidigeBestelling
             // 

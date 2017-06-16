@@ -33,7 +33,7 @@ namespace UI
             foreach (BestelItem item in lijstBestelItem)
             {
                 ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
-                lvi.Tag = item.menuItem.id;
+                lvi.Tag = item;
                 lvi.SubItems.Add(item.aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
                 lvi.SubItems.Add(item.opmerking);
@@ -303,6 +303,7 @@ namespace UI
                 lvi.SubItems.Add(item.aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
                 lvi.SubItems.Add(item.opmerking);
+                lvi.Tag = item;
                 listView_Bestelling.Items.Add(lvi);
             }
         }
@@ -334,12 +335,15 @@ namespace UI
                 return;
             }
 
+
+
             foreach(ListViewItem item in listView_Bestelling.SelectedItems)
             {
+                BestelItem BestelItemId = (BestelItem)item.Tag;
 
-                foreach(BestelItem bestelItem in lijstBestelItem)
+                foreach (BestelItem bestelItem in lijstBestelItem)
                 {
-                    if(bestelItem.menuItem.id.ToString() == item.Tag.ToString())
+                    if(bestelItem.menuItem.id.ToString() == BestelItemId.menuItem.id.ToString())
                     {
                         bestelItem.opmerking = textBox_Commentaar.Text;
                     }
@@ -351,12 +355,30 @@ namespace UI
 
         private void Btn_VerwijderItemUitDB_Click(object sender, EventArgs e)
         {
+            Logica.Bestelitems logBestelItems = new Bestelitems();
+            Logica.Bestellingen logBestelingen = new Bestellingen();
+            Logica.MenuItems logMenuItems = new MenuItems();
+            foreach (ListViewItem item in listView_Bestelling.SelectedItems)
+            {
+                BestelItem bestelItem = (BestelItem)item.Tag;
+                logBestelItems.VerwijderBestelItemUitDB(bestelItem);
+            }
 
-        }
+            // dummy tafel
+            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
-        private void lbl_VoorraadOp_Click(object sender, EventArgs e)
-        {
+            int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
+            List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
 
+            foreach (BestelItem item in lijstBestelItems)
+            {
+                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
+                lvi.SubItems.Add(item.aantal.ToString());
+                lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
+                lvi.SubItems.Add(item.opmerking);
+                lvi.Tag = item;
+                listView_Bestelling.Items.Add(lvi);
+            }
         }
     }
 }

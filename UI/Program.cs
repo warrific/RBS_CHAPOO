@@ -18,7 +18,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Orders_Form(Model.Functie.Kok));
+            Application.Run(new Bediening_Form());
         }
     }
 }
