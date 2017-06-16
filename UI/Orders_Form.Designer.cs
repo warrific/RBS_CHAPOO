@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class Bar_Form
+    partial class Orders_Form
     {
         /// <summary>
         /// Required designer variable.
