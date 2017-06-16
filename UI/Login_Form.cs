@@ -61,8 +61,8 @@ namespace UI
         private void btn_enter_Click(object sender, EventArgs e)
         {
             string invoer_password = txt_wachtwoord.Text;
-            Logica.Login login = new Logica.Login();
-            Logica.Werknemers l_werknmr = new Logica.Werknemers();
+            Login login = new Login();
+            Werknemers l_werknmr = new Werknemers();
             Model.Werknemer m_werknmr = new Model.Werknemer();
             List<Model.Werknemer> lijst = new List<Model.Werknemer>();
             lijst = l_werknmr.make_list();
@@ -98,7 +98,7 @@ namespace UI
                 if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Bar)
                 {
                     this.Hide();
-                    new Bar_Form().Show();
+                    new Orders_Form(Functie.Bar).Show();
 
                     return;
                 }
@@ -106,7 +106,7 @@ namespace UI
                 if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Kok)
                 {
                     this.Hide();
-                    new Keuken_Form().Show();
+                    new Orders_Form(Functie.Kok).Show();
 
                     return;
                 }
