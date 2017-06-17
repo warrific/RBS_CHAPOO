@@ -100,7 +100,7 @@ namespace UI
             //}
         }
 
-        public Eigenaar_Form()
+        public Eigenaar_Form(string username , string userfunctie): base (username , userfunctie)
         {
             InitializeComponent();
 

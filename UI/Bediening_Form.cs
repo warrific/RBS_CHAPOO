@@ -18,13 +18,8 @@ namespace UI
 
         List<BestelItem> lijstBestelItem;
 
-        public Bediening_Form()
-        {
-            InitializeComponent();
-            lijstBestelItem = new List<BestelItem>();
-        }
 
-        public Bediening_Form(int tafelnr_in)
+        public Bediening_Form(string username, string userfunctie, int tafelnr_in): base(username, userfunctie)
         {
             InitializeComponent();
             int tafelnr = tafelnr_in;
@@ -270,7 +265,7 @@ namespace UI
         // opent betalen form
         private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
-            Betalen_Form betalen_form = new Betalen_Form((Int32.Parse(btn_Tafel.Text)));
+            Betalen_Form betalen_form = new Betalen_Form(username , userfunctie,(Int32.Parse(btn_Tafel.Text)));
         }
 
         // wist huidige bestelling

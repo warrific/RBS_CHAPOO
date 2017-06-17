@@ -16,9 +16,10 @@ namespace UI
         private double fooi;
         private double subtotaal;
         private double btwBedrag;
-        
 
-        public Betalen_Form(int tafelNr)
+
+        public Betalen_Form(string username, string userfunctie, int tafelNr)
+            : base(username, userfunctie)
         {
             logica = new Rekeningen(tafelNr);
             

@@ -10,6 +10,7 @@ namespace Logica
 {
     public class Werknemer
     {
+        private Model.Werknemer modelWerknemer;
 
         public List<Model.Werknemer> GetAll()
         {
@@ -22,6 +23,14 @@ namespace Logica
             DALWerknemer dalitem = new DALWerknemer();
 
             return dalitem.GetWerknemer(code);
+        }
+
+        public bool WachtwoordOngeldig(string password, out Model.Werknemer modelWerknemer)
+        {
+            modelWerknemer = GetWerknemer(int.Parse(password));
+            
+            return modelWerknemer == null;
+         
         }
 
         public  Logica.Werknemer BedieningKiestTafel (string persoonid)
