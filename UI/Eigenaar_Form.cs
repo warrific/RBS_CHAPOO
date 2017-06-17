@@ -6,7 +6,7 @@ using Logica;
 using Model;
 
 //Known issues: voorraad negatief maken, wat gebeurt er dan?
-//Extra toekomstige functionaliteiten: functie controleren, refresh, undo, waarschuwing niets geselecteerd, feedback op: iets is gelukt
+//Extra toekomstige functionaliteiten: undo, waarschuwing niets geselecteerd, feedback op: iets is gelukt
 
 namespace UI
 {
@@ -348,6 +348,7 @@ namespace UI
 
                 InitControl(txtNaam, TBX, SPACING * 1, naam, FNTSIZE, WIDTH);
                 InitControl(cmbFunctie, TBX, SPACING * 3, functie, FNTSIZE, WIDTH);
+                cmbFunctie.DropDownStyle = ComboBoxStyle.DropDown;
 
                 VulCmbFunctie();
 
@@ -440,7 +441,9 @@ namespace UI
                 InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 30, 25);
 
                 InitControl(cmbMenukaart, TBX, SPACING * 1, menukaart, FNTSIZE, WIDTH);
+                cmbMenukaart.DropDownStyle = ComboBoxStyle.DropDown;
                 InitControl(cmbSubcategorie, TBX, SPACING * 2, subcategorie, FNTSIZE, WIDTH);
+                cmbSubcategorie.DropDownStyle = ComboBoxStyle.DropDown;
                 InitControl(txtNaam, TBX, SPACING * 3, naam, FNTSIZE, WIDTH);
                 InitControl(txtKorteNaam, TBX, SPACING * 4, korteNaam, FNTSIZE, WIDTH);
                 InitControl(txtPrijs, TBX, SPACING * 5, prijs, FNTSIZE, WIDTH);

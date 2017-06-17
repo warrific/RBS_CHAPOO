@@ -32,15 +32,21 @@ namespace Logica
                         {
                             if (prijs != "")
                             {
-                                DALMenuItem DALItem = new DALMenuItem();
+                                float floatPrijs;
+                                bool isFloat = float.TryParse(prijs, out floatPrijs);
+                                if (isFloat)
+                                {
+                                    DALMenuItem DALItem = new DALMenuItem();
 
-                                int id = DALItem.GetLastId() + 1;
-                                int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-                                int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
-                                
-                                DALItem.ToevoegenMenu(id, category, naam, korteNaam, prijs);
-                                DALItem.ToevoegenMenu2(id, sub);
-                                return "";
+                                    int id = DALItem.GetLastId() + 1;
+                                    int category = (int)Enum.Parse(typeof(Categorie), menukaart);
+                                    int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+
+                                    DALItem.ToevoegenMenu(id, category, naam, korteNaam, prijs);
+                                    DALItem.ToevoegenMenu2(id, sub);
+                                    return "";
+                                }
+                                else return "Prijs ongeldig";
                             }
                             else return "prijs niet ingevuld";
                         }
@@ -65,15 +71,20 @@ namespace Logica
                         {
                             if (prijs != "")
                             {
-                                DALMenuItem DALItem = new DALMenuItem();
+                                float floatPrijs;
+                                bool isFloat = float.TryParse(prijs, out floatPrijs);
+                                if (isFloat)
+                                { 
+                                    DALMenuItem DALItem = new DALMenuItem();
 
-                                int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-                                int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
-                                //float floatPrijs = float.Parse(prijs);
-
-                                DALItem.WijzigenMenu(id, category, naam, korteNaam, prijs);
-                                DALItem.WijzigenMenu2(id, sub);
-                                return "";
+                                    int category = (int)Enum.Parse(typeof(Categorie), menukaart);
+                                    int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+                                
+                                    DALItem.WijzigenMenu(id, category, naam, korteNaam, prijs);
+                                    DALItem.WijzigenMenu2(id, sub);
+                                    return "";
+                                }
+                                else return "Prijs ongeldig";
                             }
                             else return "prijs niet ingevuld";
                         }

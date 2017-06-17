@@ -25,6 +25,10 @@ namespace UI
             Size = new Size(768, 1024);
         }
 
+        public Main_Form()
+        {
+            InitializeComponent();
+        }
 
         private void btn_Tafel_Click(object sender, EventArgs e)
         {
