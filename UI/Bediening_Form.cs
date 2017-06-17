@@ -12,6 +12,8 @@ namespace UI
 
         List<BestelItem> lijstBestelItem;
 
+        Model.Tafel tafel;
+
         public Bediening_Form()
         {
             InitializeComponent();
@@ -21,7 +23,7 @@ namespace UI
         public Bediening_Form(int tafelnr_in)
         {
             InitializeComponent();
-            int tafelnr = tafelnr_in;
+            tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
             lijstBestelItem = new List<BestelItem>();
         }
 
@@ -229,7 +231,6 @@ namespace UI
 
             //dummy tafel en werknemer
             Model.Werknemer werknemer = new Model.Werknemer(1, Functie.Bediening, "ehk", "3333");
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             foreach(BestelItem item in lijstBestelItem)
             {
@@ -248,7 +249,7 @@ namespace UI
                 return;
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "open", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
@@ -364,9 +365,6 @@ namespace UI
                 BestelItem bestelItem = (BestelItem)item.Tag;
                 logBestelItems.VerwijderBestelItemUitDB(bestelItem);
             }
-
-            // dummy tafel
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
             List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);

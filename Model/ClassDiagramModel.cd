@@ -3,75 +3,51 @@
   <Class Name="Model.BestelItem">
     <Position X="1" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAAQAAAAAAAAAAAAACIAAAAAAgA=</HashCode>
+      <HashCode>AAACAAAAAAAAABAAAAAAAQAAAAAAIgAAAAAAAAAAAAA=</HashCode>
       <FileName>BestelItem.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="menuItem" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Model.Bestelling">
-    <Position X="5" Y="1.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAoAAAAAAACAQQEAAAIAAAAAAAAAAAAAAAAAAAAhA=</HashCode>
-      <FileName>Bestelling.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="tafel" />
-      <Property Name="werknemer" />
-      <Property Name="status_order" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="bestel_items" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Model.Bestelling_weergave">
     <Position X="7.25" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAgAAAAABAAAAAACAAAAAAAAAACIAQAAAAgA=</HashCode>
+      <HashCode>AAECAAAAAAAAAAIAAAAAAQAAAAAAIgAAAAAAAAAAAEA=</HashCode>
       <FileName>Bestelling_weergave.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="status_item" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Model.MenuItem">
     <Position X="0.5" Y="4.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIACAAAAAAIAAgAAQAAAAAAACAAAAAEgA=</HashCode>
+      <HashCode>AAACAAAAAAAAACAgCAAABAAAAAAAIIAAAAAQAAAAAAA=</HashCode>
       <FileName>MenuItem.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="subcategorie" />
-      <Property Name="categorie" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Model.RekeningItem">
     <Position X="3" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAQAAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAQIgAAAAAAAAAAAAA=</HashCode>
       <FileName>RekeningItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Werknemer">
+    <Position X="3" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAAAAAAAAAACAABCAAEAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Werknemer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Bestelling">
+    <Position X="5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABLAAAAAAAAgAABCAACAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Bestelling.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Model.Tafel">
     <Position X="6.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQCAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAACAAAEAAAAAAAAACAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Tafel.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="status" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Model.Werknemer">
-    <Position X="3" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAIAAAAAAAAAAACAQACAAEAQAAAAAQAAAAAAAAgA=</HashCode>
-      <FileName>Werknemer.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="functie" />
-    </ShowAsAssociation>
   </Class>
   <Enum Name="Model.Categorie">
     <Position X="0.5" Y="7.5" Width="1.5" />
