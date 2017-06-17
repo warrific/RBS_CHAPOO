@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using DAL;
+using System.Text.RegularExpressions;
 
 namespace Logica
 {
@@ -12,8 +13,8 @@ namespace Logica
     {
         public List<Model.Werknemer> make_list()
         {
-            DALWerknemer DAOWerknemer = new DALWerknemer();
-            return DAOWerknemer.GetAll();
+            DALWerknemer DALWerknemer = new DALWerknemer();
+            return DALWerknemer.GetAll();
         }
         
         public string ToevoegenWerknemer(string naam, string functie, int code)
@@ -24,10 +25,10 @@ namespace Logica
                 {
                     if (code.ToString().Length == 4)
                     {
-                        DALWerknemer DAOWerknemer = new DALWerknemer();
+                        DALWerknemer DALWerknemer = new DALWerknemer();
                         List<int> codes = new List<int>();
 
-                        codes = DAOWerknemer.GetCodes();
+                        codes = DALWerknemer.GetCodes();
 
                         foreach (int DBCode in codes) //Check of code niet bestaat
                         {
@@ -37,8 +38,8 @@ namespace Logica
                             }
                         }
 
-                        int id = DAOWerknemer.GetLastId() + 1;
-                        DAOWerknemer.ToevoegenWerknemer(id, naam, functie, code);
+                        int id = DALWerknemer.GetLastId() + 1;
+                        DALWerknemer.ToevoegenWerknemer(id, naam, functie, code);
                         return "";
                     }
                     else return "Code foute lengte"; 
@@ -53,8 +54,8 @@ namespace Logica
             {
                 if (Enum.IsDefined(typeof(Functie), functie))
                 {
-                    DALWerknemer DAOWerknemer = new DALWerknemer();
-                    DAOWerknemer.WijzigenWerknemer(id, naam, functie);
+                    DALWerknemer DALWerknemer = new DALWerknemer();
+                    DALWerknemer.WijzigenWerknemer(id, naam, functie);
                     return "";
                 }
                 else return "Functie onjuist";
@@ -63,8 +64,8 @@ namespace Logica
         }
         public void VerwijderenWerknemer(int id)
         {
-            DALWerknemer DAOWerknemer = new DALWerknemer();
-            DAOWerknemer.VerwijderenWerknemer(id);
+            DALWerknemer DALWerknemer = new DALWerknemer();
+            DALWerknemer.VerwijderenWerknemer(id);
         }
     }
 }

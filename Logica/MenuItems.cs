@@ -18,8 +18,41 @@ namespace Logica
 
         public void WijzigVoorraad(int id, int aantal, bool optellen)
         {
-            DALMenuItem DALitem = new DALMenuItem();
-            DALitem.WijzigVoorraad(id, aantal, optellen);
+            DALMenuItem DALItem = new DALMenuItem();
+            DALItem.WijzigVoorraad(id, aantal, optellen);
+        }
+
+        public string ToevoegenMenu(string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
+        {
+            if (Enum.IsDefined(typeof(Categorie), menukaart))
+            {
+                if (Enum.IsDefined(typeof(SubCategorie), subcategorie))
+                {
+                    if (naam != "")
+                    {
+                        if (korteNaam != "")
+                        {
+                            if (prijs != "")
+                            {
+                                DALMenuItem DALItem = new DALMenuItem();
+
+                                int id = DALItem.GetLastId() + 1;
+                                int category = (int)Enum.Parse(typeof(Categorie), menukaart);
+                                int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+                                
+                                DALItem.ToevoegenMenu(id, category, naam, korteNaam, prijs);
+                                DALItem.ToevoegenMenu2(id, sub);
+                                return "";
+                            }
+                            else return "prijs niet ingevuld";
+                        }
+                        else return "Korte naam niett ingevuld";
+                    }
+                    else return "Naam niet ingevuld";
+                }
+                else return "Subcategorie niet ingevuld";
+            }
+            else return "Menukaart niet ingevuld";
         }
         
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)

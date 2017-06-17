@@ -26,7 +26,7 @@ namespace UI
         const int FNTSIZE = 15;
         const int WIDTH = 150;
         const int MAXCODELENGTH = 4;
-
+        bool naamKort = false;
 
         private void RefreshVoorraad()
         {
@@ -37,7 +37,10 @@ namespace UI
 
             listViewVoorraad.View = View.Details;
             listViewVoorraad.Columns.Add("Id", 50);
-            listViewVoorraad.Columns.Add("Naam", 350);
+            if (naamKort)
+                listViewVoorraad.Columns.Add("Verkorte naam", 320);
+            else
+                listViewVoorraad.Columns.Add("Naam", 350);
             listViewVoorraad.Columns.Add("Voorraad", 100);
 
             int aantal = MI_lijst.Count;
@@ -45,7 +48,10 @@ namespace UI
             for (int i = 0; i < aantal; i++)
             {
                 ListViewItem li = new ListViewItem(MI_lijst[i].id.ToString());
-                li.SubItems.Add(MI_lijst[i].naam.ToString());
+                if (naamKort)
+                    li.SubItems.Add(MI_lijst[i].shortname.ToString());
+                else
+                    li.SubItems.Add(MI_lijst[i].naam.ToString());
                 li.SubItems.Add(MI_lijst[i].voorraad.ToString());
 
                 listViewVoorraad.Items.Add(li);
@@ -76,10 +82,43 @@ namespace UI
             }
         }
 
-        private void RefreshMenukaarten()
+        private void RefreshMenu()
         {
-            treeViewMenu.Nodes.Clear();
+            listViewMenu.Clear();
 
+            List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); //maak list aan
+            MenuItems menuItems = new MenuItems(); //maak object aan
+            MI_lijst = menuItems.make_list(); //vul lijst
+
+            listViewMenu.View = View.Details;
+            listViewMenu.Columns.Add("Id", 50);
+            if (naamKort)
+                listViewMenu.Columns.Add("Verkorte naam", 170);
+            else
+                listViewMenu.Columns.Add("Naam", 190);
+            listViewMenu.Columns.Add("Subcategorie", 100);
+            listViewMenu.Columns.Add("Menukaart", 120);
+            listViewMenu.Columns.Add("Prijs", 70);
+
+            int aantal = MI_lijst.Count;
+
+            for (int i = 0; i < aantal; i++)
+            {
+                ListViewItem li = new ListViewItem(MI_lijst[i].id.ToString());
+                if (naamKort)
+                    li.SubItems.Add(MI_lijst[i].shortname.ToString());
+                else
+                    li.SubItems.Add(MI_lijst[i].naam.ToString());
+                li.SubItems.Add(MI_lijst[i].subcategorie.ToString());
+                li.SubItems.Add(MI_lijst[i].categorie.ToString());
+                li.SubItems.Add(MI_lijst[i].prijs.ToString("€0.00"));
+
+                listViewMenu.Items.Add(li);
+            }
+
+            /*treeViewMenu.Nodes.Clear();
+
+            foreach()
             treeViewMenu.Nodes.Add("Lunch");
 
             treeViewMenu.Nodes.Add("Diner");
@@ -91,13 +130,7 @@ namespace UI
                 treeViewMenu.Nodes[i].Nodes.Add("Voorgerecht");
                 treeViewMenu.Nodes[i].Nodes.Add("Hoofdgerecht");
                 treeViewMenu.Nodes[i].Nodes.Add("Nagerecht");
-            }
-
-            //foreach (Model.MenuItem item in MI_lijst)
-            //{
-            //    TreeNode node = new TreeNode();
-            //    treeViewMenu.Nodes.Add(item.id.ToString());
-            //}
+            }*/
         }
 
         public Eigenaar_Form()
@@ -111,7 +144,7 @@ namespace UI
             RefreshMedewerkers();
 
             ///Tab3 Menukaarten
-            RefreshMenukaarten();
+            RefreshMenu();
         }
         //Hulpmethodes
         private void InitPopupForm()
@@ -145,31 +178,8 @@ namespace UI
 
         ///---UI STUFF---///
 
-        private void btnVerhoog_Click(object sender, EventArgs e)
-        {
-            MenuItems menuitems = new MenuItems();
-            foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
-            {
-                int id = int.Parse(checkedItem.SubItems[0].Text);
-
-                menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, true);
-            }
-            RefreshVoorraad();
-        }
-
-        private void btnVerlaag_Click(object sender, EventArgs e)
-        {
-            MenuItems menuitems = new MenuItems();
-            foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
-            {
-                int id = int.Parse(checkedItem.SubItems[0].Text);
-
-                menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, false);
-            }
-            RefreshVoorraad();
-        }
         ///PopupForm    controls
-            //Medewerker controls
+        //Medewerker controls
         Label lblNaam = new Label(); //Zit ook in menukaart
         Label lblFunctie = new Label();
         Label lblCode = new Label();
@@ -178,7 +188,7 @@ namespace UI
         TextBox txtNaam = new TextBox(); //Zit ook in menukaart
         ComboBox cmbFunctie = new ComboBox();
         TextBox txtCode = new TextBox();
-            //Menukaart controls
+        //Menukaart controls
         Label lblMenukaart = new Label();
         Label lblSubcategorie = new Label();
         Label lblKorteNaam = new Label();
@@ -198,23 +208,24 @@ namespace UI
         {
             if (btnFunctie == "ToevMedw")
             {
-                Werknemers werknemers = new Werknemers(); 
+                Werknemers werknemers = new Werknemers();
 
+                lblError.ForeColor = Color.Red;
                 string naam = txtNaam.Text;
                 string functie = cmbFunctie.Text;
                 int code;
                 bool ingevuld = int.TryParse(txtCode.Text, out code);
                 if (!ingevuld)
-                    lblError.Text = "Code niet ingevuld";
-
-                lblError.ForeColor = Color.Red;
-                lblError.Text = werknemers.ToevoegenWerknemer(naam, functie, code);
+                    lblError.Text = "Code ongeldig";
+                else
+                    lblError.Text = werknemers.ToevoegenWerknemer(naam, functie, code);
 
                 if (lblError.Text == "")
                 {
                     RefreshMedewerkers();
                     popupForm.Close();
                 }
+
             }
             else if (btnFunctie == "WijzMedw")
             {
@@ -233,8 +244,31 @@ namespace UI
                     popupForm.Close();
                 }
             }
+            else if (btnFunctie == "ToevMenu")
+            {
+                MenuItems menuLogica = new MenuItems();
+
+                string menukaart = cmbMenukaart.Text;
+                string subcategorie = cmbSubcategorie.Text;
+                string naam = txtNaam.Text;
+                string korteNaam = txtKorteNaam.Text;
+                string prijs = txtPrijs.Text;
+
+                lblError.ForeColor = Color.Red;
+                lblError.Text = menuLogica.ToevoegenMenu(menukaart, subcategorie, naam, korteNaam, prijs);
+
+                if (lblError.Text == "")
+                {
+                    RefreshMenu();
+                    popupForm.Close();
+                }
+            }
+            else if (btnFunctie == "WijzMenu")
+            {
+
+            }
         }
-        
+
         private void VulCmbFunctie()
         {
             cmbFunctie.Items.Clear();
@@ -249,8 +283,8 @@ namespace UI
 
             InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
             InitControl(lblFunctie, LBLX, SPACING * 2, "Functie", FNTSIZE, WIDTH);
-            InitControl(lblCode, LBLX, SPACING * 3, "4-Cijferige Code", FNTSIZE, WIDTH+20);
-            InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 30, 25);
+            InitControl(lblCode, LBLX, SPACING * 3, "4-Cijferige Code", FNTSIZE, WIDTH + 20);
+            InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 40, 25);
 
             InitControl(txtNaam, TBX, SPACING * 1, "", FNTSIZE, WIDTH);
             InitControl(cmbFunctie, TBX, SPACING * 2, "Functie", FNTSIZE, WIDTH);
@@ -306,12 +340,12 @@ namespace UI
                 MessageBox.Show("Te veel items aangevinkt!");
             else
                 MessageBox.Show("Geen item aangevinkt!");
-            
+
         }
 
         private void ToevMenukaartUI()
         {
-            InitControl(lblTitel, TITELX, TITELY, "Aan menu toevoegen", FNTSIZE, 250);
+            InitControl(lblTitel, TITELX + 10, TITELY, "Aan menu toevoegen", FNTSIZE, 250);
 
             InitControl(lblMenukaart, LBLX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
             InitControl(lblSubcategorie, LBLX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
@@ -328,13 +362,17 @@ namespace UI
             InitControl(txtKorteNaam, TBX, SPACING * 4, "", FNTSIZE, WIDTH);
             InitControl(txtPrijs, TBX, SPACING * 5, "", FNTSIZE, WIDTH);
 
+            cmbMenukaart.Items.Clear();
             foreach (Categorie categorie in Enum.GetValues(typeof(Categorie)))
                 cmbMenukaart.Items.Add(categorie);
 
+            cmbSubcategorie.Items.Clear();
             foreach (SubCategorie subcategorie in Enum.GetValues(typeof(SubCategorie)))
                 cmbSubcategorie.Items.Add(subcategorie);
 
             InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);
+            btnBevestig.Click += btnBevestig_Click;
+            btnFunctie = "ToevMenu";
 
             PopupFormStandardControls();
             PopupFormExtraControls(lblMenukaart, cmbMenukaart);
@@ -346,6 +384,32 @@ namespace UI
         private void WijzMenukaartUI()
         {
 
+        }
+
+        ///---FORM BUTTON EVENTS---///
+        
+        private void btnVerhoog_Click(object sender, EventArgs e)
+        {
+            MenuItems menuitems = new MenuItems();
+            foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
+            {
+                int id = int.Parse(checkedItem.SubItems[0].Text);
+
+                menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, true);
+            }
+            RefreshVoorraad();
+        }
+
+        private void btnVerlaag_Click(object sender, EventArgs e)
+        {
+            MenuItems menuitems = new MenuItems();
+            foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
+            {
+                int id = int.Parse(checkedItem.SubItems[0].Text);
+
+                menuitems.WijzigVoorraad(id, (int)numericUpDown1.Value, false);
+            }
+            RefreshVoorraad();
         }
 
         private void btnToevMedw_Click(object sender, EventArgs e)
@@ -447,7 +511,26 @@ namespace UI
 
         private void btnRefrMenu_Click(object sender, EventArgs e)
         {
-            RefreshMenukaarten();
+            RefreshMenu();
+        }
+
+        private void btnVeranderNaam_Click(object sender, EventArgs e)
+        {
+            naamKort = !naamKort;
+
+            if (naamKort)
+            {
+                btnVeranderNaamM.Text = "Hele naam";
+                btnVeranderNaamV.Text = "Hele naam";
+            }
+            else
+            {
+                btnVeranderNaamM.Text = "Verkort naam";
+                btnVeranderNaamV.Text = "Verkort naam";
+            }
+            RefreshVoorraad();
+            RefreshMenu();
+            
         }
     }
 }

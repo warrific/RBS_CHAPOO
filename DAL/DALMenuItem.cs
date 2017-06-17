@@ -65,6 +65,21 @@ namespace DAL
             return item;
         }
 
+        public int GetLastId()
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT MAX(item_id) FROM Menuitem", dbConnection);
+
+            int id = 0;
+
+            id = (int)command.ExecuteScalar();
+
+            dbConnection.Close();
+
+            return id;
+        }
+
         public void WijzigVoorraad(int itemId, int aantal, bool optellen)
         {
 
@@ -77,6 +92,38 @@ namespace DAL
                 command = new SqlCommand("UPDATE Menuitem SET voorraad -= @Aantal WHERE item_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", itemId);
             command.Parameters.AddWithValue("@Aantal", aantal);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
+        public void ToevoegenMenu(int id, int menukaart, string naam, string korteNaam, string prijs)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("INSERT INTO Menuitem VALUES (@Id, @Naam, 0, @Prijs, @Kaart, @Shortname)", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Naam", naam);
+            command.Parameters.AddWithValue("@Kaart", menukaart);
+            command.Parameters.AddWithValue("@Prijs", prijs);
+            command.Parameters.AddWithValue("@Menukaart", menukaart);
+            command.Parameters.AddWithValue("@Shortname", korteNaam);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
+        public void ToevoegenMenu2(int id, int subcategorie)
+        {
+            dbConnection.Open();
+            
+            SqlCommand command = new SqlCommand("INSERT INTO Menukaart VALUES (@Id, @Id, @Subcategorie)", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Subcategorie", subcategorie);
+
             SqlDataReader reader = command.ExecuteReader();
 
             reader.Close();

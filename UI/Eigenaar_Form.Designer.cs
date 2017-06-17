@@ -30,23 +30,25 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageVoorraad = new System.Windows.Forms.TabPage();
+            this.btnVeranderNaamV = new System.Windows.Forms.Button();
+            this.btnRefrVoorraad = new System.Windows.Forms.Button();
             this.btnVerlaag = new System.Windows.Forms.Button();
             this.btnVerhoog = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.listViewVoorraad = new System.Windows.Forms.ListView();
             this.tabPageMedewerkers = new System.Windows.Forms.TabPage();
+            this.btnRefrMedw = new System.Windows.Forms.Button();
             this.btnVerwMedw = new System.Windows.Forms.Button();
             this.btnWijzMedw = new System.Windows.Forms.Button();
             this.btnToevMedw = new System.Windows.Forms.Button();
             this.listViewMedewerkers = new System.Windows.Forms.ListView();
             this.tabPageMenukaarten = new System.Windows.Forms.TabPage();
+            this.btnVeranderNaamM = new System.Windows.Forms.Button();
+            this.listViewMenu = new System.Windows.Forms.ListView();
+            this.btnRefrMenu = new System.Windows.Forms.Button();
             this.btnVerwMenukaart = new System.Windows.Forms.Button();
             this.btnWijzMenukaart = new System.Windows.Forms.Button();
             this.btnToevMenukaart = new System.Windows.Forms.Button();
-            this.treeViewMenu = new System.Windows.Forms.TreeView();
-            this.btnRefrMedw = new System.Windows.Forms.Button();
-            this.btnRefrMenu = new System.Windows.Forms.Button();
-            this.btnRefrVoorraad = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageVoorraad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -69,6 +71,7 @@
             // 
             // tabPageVoorraad
             // 
+            this.tabPageVoorraad.Controls.Add(this.btnVeranderNaamV);
             this.tabPageVoorraad.Controls.Add(this.btnRefrVoorraad);
             this.tabPageVoorraad.Controls.Add(this.btnVerlaag);
             this.tabPageVoorraad.Controls.Add(this.btnVerhoog);
@@ -82,6 +85,28 @@
             this.tabPageVoorraad.TabIndex = 0;
             this.tabPageVoorraad.Text = "Voorraad";
             this.tabPageVoorraad.UseVisualStyleBackColor = true;
+            // 
+            // btnVeranderNaamV
+            // 
+            this.btnVeranderNaamV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVeranderNaamV.Location = new System.Drawing.Point(558, 381);
+            this.btnVeranderNaamV.Name = "btnVeranderNaamV";
+            this.btnVeranderNaamV.Size = new System.Drawing.Size(178, 107);
+            this.btnVeranderNaamV.TabIndex = 18;
+            this.btnVeranderNaamV.Text = "Verkort naam";
+            this.btnVeranderNaamV.UseVisualStyleBackColor = true;
+            this.btnVeranderNaamV.Click += new System.EventHandler(this.btnVeranderNaam_Click);
+            // 
+            // btnRefrVoorraad
+            // 
+            this.btnRefrVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrVoorraad.Location = new System.Drawing.Point(558, 268);
+            this.btnRefrVoorraad.Name = "btnRefrVoorraad";
+            this.btnRefrVoorraad.Size = new System.Drawing.Size(178, 107);
+            this.btnRefrVoorraad.TabIndex = 17;
+            this.btnRefrVoorraad.Text = "Refresh";
+            this.btnRefrVoorraad.UseVisualStyleBackColor = true;
+            this.btnRefrVoorraad.Click += new System.EventHandler(this.btnRefrVoorraad_Click);
             // 
             // btnVerlaag
             // 
@@ -124,7 +149,7 @@
             this.listViewVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewVoorraad.Location = new System.Drawing.Point(0, 0);
             this.listViewVoorraad.Name = "listViewVoorraad";
-            this.listViewVoorraad.Size = new System.Drawing.Size(552, 527);
+            this.listViewVoorraad.Size = new System.Drawing.Size(552, 617);
             this.listViewVoorraad.TabIndex = 1;
             this.listViewVoorraad.UseCompatibleStateImageBehavior = false;
             // 
@@ -142,6 +167,17 @@
             this.tabPageMedewerkers.TabIndex = 1;
             this.tabPageMedewerkers.Text = "Medewerkers";
             this.tabPageMedewerkers.UseVisualStyleBackColor = true;
+            // 
+            // btnRefrMedw
+            // 
+            this.btnRefrMedw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrMedw.Location = new System.Drawing.Point(558, 345);
+            this.btnRefrMedw.Name = "btnRefrMedw";
+            this.btnRefrMedw.Size = new System.Drawing.Size(178, 107);
+            this.btnRefrMedw.TabIndex = 16;
+            this.btnRefrMedw.Text = "Refresh";
+            this.btnRefrMedw.UseVisualStyleBackColor = true;
+            this.btnRefrMedw.Click += new System.EventHandler(this.btnRefrMedw_Click);
             // 
             // btnVerwMedw
             // 
@@ -181,17 +217,18 @@
             this.listViewMedewerkers.CheckBoxes = true;
             this.listViewMedewerkers.Location = new System.Drawing.Point(0, 0);
             this.listViewMedewerkers.Name = "listViewMedewerkers";
-            this.listViewMedewerkers.Size = new System.Drawing.Size(552, 506);
+            this.listViewMedewerkers.Size = new System.Drawing.Size(552, 612);
             this.listViewMedewerkers.TabIndex = 2;
             this.listViewMedewerkers.UseCompatibleStateImageBehavior = false;
             // 
             // tabPageMenukaarten
             // 
+            this.tabPageMenukaarten.Controls.Add(this.btnVeranderNaamM);
+            this.tabPageMenukaarten.Controls.Add(this.listViewMenu);
             this.tabPageMenukaarten.Controls.Add(this.btnRefrMenu);
             this.tabPageMenukaarten.Controls.Add(this.btnVerwMenukaart);
             this.tabPageMenukaarten.Controls.Add(this.btnWijzMenukaart);
             this.tabPageMenukaarten.Controls.Add(this.btnToevMenukaart);
-            this.tabPageMenukaarten.Controls.Add(this.treeViewMenu);
             this.tabPageMenukaarten.Location = new System.Drawing.Point(4, 54);
             this.tabPageMenukaarten.Name = "tabPageMenukaarten";
             this.tabPageMenukaarten.Padding = new System.Windows.Forms.Padding(3);
@@ -199,6 +236,37 @@
             this.tabPageMenukaarten.TabIndex = 2;
             this.tabPageMenukaarten.Text = "Menukaarten";
             this.tabPageMenukaarten.UseVisualStyleBackColor = true;
+            // 
+            // btnVeranderNaamM
+            // 
+            this.btnVeranderNaamM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVeranderNaamM.Location = new System.Drawing.Point(558, 458);
+            this.btnVeranderNaamM.Name = "btnVeranderNaamM";
+            this.btnVeranderNaamM.Size = new System.Drawing.Size(178, 107);
+            this.btnVeranderNaamM.TabIndex = 17;
+            this.btnVeranderNaamM.Text = "Verkort naam";
+            this.btnVeranderNaamM.UseVisualStyleBackColor = true;
+            this.btnVeranderNaamM.Click += new System.EventHandler(this.btnVeranderNaam_Click);
+            // 
+            // listViewMenu
+            // 
+            this.listViewMenu.CheckBoxes = true;
+            this.listViewMenu.Location = new System.Drawing.Point(0, 0);
+            this.listViewMenu.Name = "listViewMenu";
+            this.listViewMenu.Size = new System.Drawing.Size(552, 612);
+            this.listViewMenu.TabIndex = 16;
+            this.listViewMenu.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnRefrMenu
+            // 
+            this.btnRefrMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrMenu.Location = new System.Drawing.Point(558, 345);
+            this.btnRefrMenu.Name = "btnRefrMenu";
+            this.btnRefrMenu.Size = new System.Drawing.Size(178, 107);
+            this.btnRefrMenu.TabIndex = 15;
+            this.btnRefrMenu.Text = "Refresh";
+            this.btnRefrMenu.UseVisualStyleBackColor = true;
+            this.btnRefrMenu.Click += new System.EventHandler(this.btnRefrMenu_Click);
             // 
             // btnVerwMenukaart
             // 
@@ -233,47 +301,6 @@
             this.btnToevMenukaart.UseVisualStyleBackColor = true;
             this.btnToevMenukaart.Click += new System.EventHandler(this.btnToevMenukaart_Click);
             // 
-            // treeViewMenu
-            // 
-            this.treeViewMenu.CheckBoxes = true;
-            this.treeViewMenu.Location = new System.Drawing.Point(0, 0);
-            this.treeViewMenu.Name = "treeViewMenu";
-            this.treeViewMenu.Size = new System.Drawing.Size(552, 494);
-            this.treeViewMenu.TabIndex = 0;
-            // 
-            // btnRefrMedw
-            // 
-            this.btnRefrMedw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefrMedw.Location = new System.Drawing.Point(558, 345);
-            this.btnRefrMedw.Name = "btnRefrMedw";
-            this.btnRefrMedw.Size = new System.Drawing.Size(178, 107);
-            this.btnRefrMedw.TabIndex = 16;
-            this.btnRefrMedw.Text = "Refresh";
-            this.btnRefrMedw.UseVisualStyleBackColor = true;
-            this.btnRefrMedw.Click += new System.EventHandler(this.btnRefrMedw_Click);
-            // 
-            // btnRefrMenu
-            // 
-            this.btnRefrMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefrMenu.Location = new System.Drawing.Point(558, 345);
-            this.btnRefrMenu.Name = "btnRefrMenu";
-            this.btnRefrMenu.Size = new System.Drawing.Size(178, 107);
-            this.btnRefrMenu.TabIndex = 15;
-            this.btnRefrMenu.Text = "Refresh";
-            this.btnRefrMenu.UseVisualStyleBackColor = true;
-            this.btnRefrMenu.Click += new System.EventHandler(this.btnRefrMenu_Click);
-            // 
-            // btnRefrVoorraad
-            // 
-            this.btnRefrVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefrVoorraad.Location = new System.Drawing.Point(558, 268);
-            this.btnRefrVoorraad.Name = "btnRefrVoorraad";
-            this.btnRefrVoorraad.Size = new System.Drawing.Size(178, 107);
-            this.btnRefrVoorraad.TabIndex = 17;
-            this.btnRefrVoorraad.Text = "Refresh";
-            this.btnRefrVoorraad.UseVisualStyleBackColor = true;
-            this.btnRefrVoorraad.Click += new System.EventHandler(this.btnRefrVoorraad_Click);
-            // 
             // Eigenaar_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,7 +325,6 @@
         private System.Windows.Forms.TabPage tabPageMenukaarten;
         private System.Windows.Forms.ListView listViewVoorraad;
         private System.Windows.Forms.ListView listViewMedewerkers;
-        private System.Windows.Forms.TreeView treeViewMenu;
         private System.Windows.Forms.Button btnToevMenukaart;
         private System.Windows.Forms.Button btnWijzMenukaart;
         private System.Windows.Forms.Button btnVerwMenukaart;
@@ -311,5 +337,8 @@
         private System.Windows.Forms.Button btnRefrVoorraad;
         private System.Windows.Forms.Button btnRefrMedw;
         private System.Windows.Forms.Button btnRefrMenu;
+        private System.Windows.Forms.ListView listViewMenu;
+        private System.Windows.Forms.Button btnVeranderNaamM;
+        private System.Windows.Forms.Button btnVeranderNaamV;
     }
 }
