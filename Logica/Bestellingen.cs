@@ -145,10 +145,15 @@ namespace Logica
             }
         }
 
-        public void meld_gereed(int order_id, int item_id)
+        public void meld_gereed(int order_id, string item_naam)
         {
             DALBestelItem DALitem = new DALBestelItem();
+            DALMenuItem DALitem_naam = new DALMenuItem();
 
+            // Naam omzetten naar een ID
+            int item_id = DALitem_naam.GetIdForName(item_naam);
+
+            // DAL laag aanroepen en waardes mee geven om gereed te melden
             DALitem.MeldGereed(order_id, item_id);
         }
 
@@ -156,6 +161,45 @@ namespace Logica
         {
             DALBestelling DALITem = new DALBestelling();
             return DALITem.GetId(tafelNr);
+        }
+
+        public int GetCountOrderId()
+        {
+            DALBestelling dalBestelling = new DALBestelling();
+            return dalBestelling.GetCount();
+        }
+
+        public void StuurBestelItemNaarDatabase(BestelItem item)
+        {
+            DALBestelling dalBestelling = new DALBestelling();
+            dalBestelling.ZetBestelItemsInDatabase(item);
+        }
+        public bool ControleerOfTafelAlBestellingHeeft(Model.Tafel tafel)
+        {
+            DALBestelling dalBestelling = new DALBestelling();
+            int aantal = dalBestelling.ControleerOfTafelAlBestellingHeeft(tafel);
+
+            if( aantal == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public int GetBestellingIdByTafelNummer(Model.Tafel tafel)
+        {
+            DAL.DALBestelling dalBestelling = new DALBestelling();
+
+            List<Bestelling> lijstBestellingen = dalBestelling.GetAll();
+
+            foreach(Bestelling bestelling in lijstBestellingen)
+            {
+                if(bestelling.tafel.Id == tafel.Id)
+                {
+                    return bestelling.id;
+                }
+            }
+            return 0;
         }
     }
 }

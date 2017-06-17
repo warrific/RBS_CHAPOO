@@ -102,8 +102,7 @@ namespace DAL
         // filtert de DB Menu items en stuurt een lijst terug met alle gefilterde menu items
         public List<MenuItem> FilterByCategories(Categorie categorie, SubCategorie subCategorie)
         {
-            DALConnection dalConnect = new DALConnection();
-            SqlConnection connection = dalConnect.OpenConnectieDB();
+            dbConnection.Open();
 
             //string SB = "SELECT * " + 
             //            "FROM Menuitem " + 
@@ -119,10 +118,10 @@ namespace DAL
 
             String sql = sb.ToString();
 
-            SqlCommand command = new SqlCommand(sql, connection);
+            SqlCommand command = new SqlCommand(sql, dbConnection);
 
-            SqlParameter dcategory = new SqlParameter("@dcategory", System.Data.SqlDbType.Int);
-            SqlParameter dsubcategory = new SqlParameter("@dsubcategory", System.Data.SqlDbType.Int);
+            SqlParameter dcategory = new SqlParameter("@dcategory", SqlDbType.Int);
+            SqlParameter dsubcategory = new SqlParameter("@dsubcategory", SqlDbType.Int);
             dcategory.Value = (int)categorie;
             dsubcategory.Value = (int)subCategorie;
 
@@ -149,9 +148,49 @@ namespace DAL
                 lijstMenuItem.Add(menuItem);
             }
 
-            dalConnect.sluitConnectieDB(connection);
+            dbConnection.Close();
 
             return lijstMenuItem;
+        }
+
+        public int GetIdForName(string item_naam)
+        {
+            int item_id = 0;
+
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT [item_id] FROM Menuitem WHERE naam = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", item_naam);
+            SqlDataReader reader = command.ExecuteReader();
+
+            // Item id ophalen
+            while (reader.Read())
+            {
+                item_id = (int)reader["item_id"];
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return item_id;
+        }
+
+        public void BewerkVoorraad(MenuItem item, int aantalBesteld)
+        {
+            dbConnection.Open();
+
+            string dbString =   "UPDATE Menuitem " +
+                                "SET voorraad = @nieuw " +
+                                "WHERE item_id = @itemid";
+
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@nieuw", item.voorraad - aantalBesteld);
+            command.Parameters.AddWithValue("@itemid", item.id);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
         }
     }
 }

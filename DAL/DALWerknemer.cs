@@ -159,6 +159,27 @@ namespace DAL
             dbConnection.Close();
         }
 
+        public List<int> GetCodes()
+        {
+            dbConnection.Open();
+
+            List<int> codes = new List<int>();
+
+            SqlCommand command = new SqlCommand("SELECT code FROM Medewerker", dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                int code = ((int)reader["code"]);
+                codes.Add(code);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return codes;
+        }
+
         private Werknemer ReadWerknemer(SqlDataReader reader)
         {
             // haal gegevens van alle velden op

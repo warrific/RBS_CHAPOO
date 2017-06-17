@@ -46,8 +46,8 @@ namespace DAL
         public int GetCount()
         {
             int count = 0;
-
             // Connectie opzetten
+
             dbConnection.Open();
             SqlCommand command = new SqlCommand("SELECT COUNT(order_id) FROM Bestelling", dbConnection);
 
@@ -62,6 +62,7 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
+
             SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE order_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", bestelId);
             SqlDataReader reader = command.ExecuteReader();
@@ -121,6 +122,70 @@ namespace DAL
             dbConnection.Close();
 
             return item.id;
+        }
+
+        public void ZetBestellingInDatabase(Bestelling bestelling)
+        {
+            dbConnection.Open();
+
+            string dbString =   "INSERT INTO Bestelling (order_id, tafel_id, persoon_id, totaal_prijs, betaal_methode, fooi, status) " +
+                                "VALUES (@orderid, @tafelid, @persoonid, @totaal, @betaal, @fooi, @status)";
+
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@orderid", bestelling.id);
+            command.Parameters.AddWithValue("@tafelid", bestelling.tafel.Id);
+            command.Parameters.AddWithValue("@persoonid", bestelling.werknemer.Id);
+            command.Parameters.AddWithValue("@totaal", bestelling.totaalprijs);
+            command.Parameters.AddWithValue("@betaal", bestelling.betaalmethode);
+            command.Parameters.AddWithValue("@fooi", bestelling.fooi);
+            command.Parameters.AddWithValue("@status", (int)bestelling.status_order);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
+
+        public void ZetBestelItemsInDatabase(BestelItem item)
+        {
+            int count = GetCount();
+
+
+            dbConnection.Open();
+
+            string dbString = "INSERT INTO Bestelling_item (order_id, item_id, aantal, opmerking, status) " +
+                                "VALUES (@orderid, @item_id, @aantal, @opmerking, @status)";
+
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@orderid", count);
+            command.Parameters.AddWithValue("@item_id", item.menuItem.id);
+            command.Parameters.AddWithValue("@aantal", item.aantal);
+            command.Parameters.AddWithValue("@opmerking", item.opmerking);
+            command.Parameters.AddWithValue("@status", item.status_item);
+
+            command.ExecuteScalar();
+
+            dbConnection.Close();
+        }
+
+        public int ControleerOfTafelAlBestellingHeeft(Tafel tafel)
+        {
+            dbConnection.Open();
+
+            string dbString =   "SELECT COUNT(status) " +
+                                "FROM Bestelling " +
+                                "WHERE tafel_id = @tafelid AND status = 1";
+
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@tafelid", tafel.Id);
+
+            int count = (int)command.ExecuteScalar();
+
+            dbConnection.Close();
+
+            return count;
         }
     }
 }

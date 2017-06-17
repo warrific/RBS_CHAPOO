@@ -69,17 +69,11 @@
     <Compile Include="ButtonMenuItemVerlaag.Designer.cs">
       <DependentUpon>ButtonMenuItemVerlaag.cs</DependentUpon>
     </Compile>
-    <Compile Include="Keuken_Form.cs">
+    <Compile Include="Orders_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Keuken_Form.Designer.cs">
-      <DependentUpon>Keuken_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bar_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bar_Form.Designer.cs">
-      <DependentUpon>Bar_Form.cs</DependentUpon>
+    <Compile Include="Orders_Form.Designer.cs">
+      <DependentUpon>Orders_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Bediening_Form.cs">
       <SubType>Form</SubType>
@@ -131,21 +125,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RBS1617S_DB06DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RBS1617S_DB06DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="RBS1617S_DB06DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RBS1617S_DB06DataSet1.xsd</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Keuken_Form.resx">
-      <DependentUpon>Keuken_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Bar_Form.resx">
-      <DependentUpon>Bar_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Orders_Form.resx">
+      <DependentUpon>Orders_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bediening_Form.resx">
       <DependentUpon>Bediening_Form.cs</DependentUpon>
@@ -175,6 +156,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StatusChange_Form.resx">
+      <DependentUpon>StatusChange_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -184,28 +168,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="RBS1617S_DB06DataSet.xsc">
-      <DependentUpon>RBS1617S_DB06DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="RBS1617S_DB06DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>RBS1617S_DB06DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="RBS1617S_DB06DataSet.xss">
-      <DependentUpon>RBS1617S_DB06DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="RBS1617S_DB06DataSet1.xsc">
-      <DependentUpon>RBS1617S_DB06DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="RBS1617S_DB06DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>RBS1617S_DB06DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="RBS1617S_DB06DataSet1.xss">
-      <DependentUpon>RBS1617S_DB06DataSet1.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -236,9 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

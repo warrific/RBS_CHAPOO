@@ -92,11 +92,12 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE order_id = @Id AND WHERE item_id = @item_id", dbConnection);            // Moet nog update worden
+            SqlCommand command = new SqlCommand("UPDATE Bestelling_item SET status = 2 WHERE order_id = @Id AND item_id = @item_id", dbConnection);            // Moet nog update worden
             command.Parameters.AddWithValue("@Id", order_id);
             command.Parameters.AddWithValue("@item_id", item_id);
 
             // Commando uitvoeren
+            command.ExecuteScalar();
 
             dbConnection.Close();
         }
@@ -112,6 +113,22 @@ namespace DAL
             Status status_item = (Status)(int)reader["status"];
 
             return new BestelItem(id, menu_item, aantal, opmerking, status_item);
+        }
+
+        public void VerwijderBestelItemUitDatabase(BestelItem item)
+        {
+            dbConnection.Open();
+
+            string dbString =   "DELETE FROM Bestelling_item " +
+                                "WHERE order_id = @orderid AND item_id = @itemid";
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@orderid", item.id);
+            command.Parameters.AddWithValue("@itemid", item.menuItem.id);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
         }
     }
 }

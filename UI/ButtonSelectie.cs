@@ -31,7 +31,8 @@ namespace UI
             InitializeComponent();
 
             this.Size = new Size(125, 50);
-        
+            this.BackColor = Color.DarkBlue;
+            this.ForeColor = Color.White;
             //this.Click += new EventHandler(btn_Click);
 
         }
