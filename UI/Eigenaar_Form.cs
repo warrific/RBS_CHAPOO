@@ -90,9 +90,14 @@ namespace UI
             listViewMenu.View = View.Details;
             listViewMenu.Columns.Add("Id", 50);
             if (naamKort)
+            {
                 listViewMenu.Columns.Add("Verkorte naam", 170);
-            else
+                listViewMenu.Columns.Add("naam", 0);
+            }
+            else {
                 listViewMenu.Columns.Add("Naam", 190);
+                listViewMenu.Columns.Add("Verkorte naam", 0);
+            }
             listViewMenu.Columns.Add("Subcategorie", 100);
             listViewMenu.Columns.Add("Menukaart", 120);
             listViewMenu.Columns.Add("Prijs", 70);
@@ -103,9 +108,15 @@ namespace UI
             {
                 ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
+                {
                     li.SubItems.Add(MI_lijst[i].Shortname.ToString());
-                else
                     li.SubItems.Add(MI_lijst[i].Naam.ToString());
+                }
+                else
+                {
+                    li.SubItems.Add(MI_lijst[i].Naam.ToString());
+                    li.SubItems.Add(MI_lijst[i].Shortname.ToString());
+                }
                 li.SubItems.Add(MI_lijst[i].Subcategorie.ToString());
                 li.SubItems.Add(MI_lijst[i].Categorie.ToString());
                 li.SubItems.Add(MI_lijst[i].Prijs.ToString("€0.00"));
@@ -249,7 +260,7 @@ namespace UI
                 string subcategorie = cmbSubcategorie.Text;
                 string naam = txtNaam.Text;
                 string korteNaam = txtKorteNaam.Text;
-                string prijs = txtPrijs.Text;
+                string prijs = txtPrijs.Text.Replace(",",".");
 
                 lblError.ForeColor = Color.Red;
                 lblError.Text = menuLogica.ToevoegenMenu(menukaart, subcategorie, naam, korteNaam, prijs);
@@ -262,20 +273,23 @@ namespace UI
             }
             else if (btnFunctie == "WijzMenu")
             {
-                /*MenuItems menuLogica = new MenuItems();
+                MenuItems menuLogica = new MenuItems();
 
                 int id = int.Parse(lblId.Text);
+                string menukaart = cmbMenukaart.Text;
+                string subcategorie = cmbSubcategorie.Text;
                 string naam = txtNaam.Text;
-                string functie = cmbFunctie.Text;
+                string korteNaam = txtKorteNaam.Text;
+                string prijs = txtPrijs.Text;
 
                 lblError.ForeColor = Color.Red;
-                lblError.Text = menuLogica.WijzigenMenu(id, naam, functie);
+                lblError.Text = menuLogica.WijzigenMenu(id, menukaart, subcategorie, naam, korteNaam, prijs);
 
                 if (lblError.Text == "")
                 {
-                    RefreshMedewerkers();
+                    RefreshMenu();
                     popupForm.Close();
-                }*/
+                }
             }
         }
         
@@ -389,11 +403,72 @@ namespace UI
             PopupFormExtraControls(lblSubcategorie, cmbSubcategorie);
             PopupFormExtraControls(lblKorteNaam, txtKorteNaam);
             PopupFormExtraControls(lblPrijs, txtPrijs);
+
+            popupForm.ShowDialog();
         }
 
         private void WijzMenukaartUI()
         {
+            if (listViewMenu.CheckedItems.Count == 1)
+            {
+                ListViewItem checkedItem = listViewMenu.CheckedItems[0];
+                string naam, korteNaam;
 
+                int id = int.Parse(checkedItem.SubItems[0].Text);
+                if (naamKort)
+                {
+                    korteNaam = checkedItem.SubItems[2].Text.Trim();
+                    naam = checkedItem.SubItems[1].Text.Trim();
+                }
+                else
+                {
+                    naam = checkedItem.SubItems[1].Text.Trim();
+                    korteNaam = checkedItem.SubItems[2].Text.Trim();
+                }
+                string subcategorie = checkedItem.SubItems[3].Text;
+                string menukaart = checkedItem.SubItems[4].Text;
+                string prijs = checkedItem.SubItems[5].Text.Replace("€", string.Empty).Replace(",", ".");
+
+                InitControl(lblTitel, TITELX + 10, TITELY, "Aan menu wijzigen", FNTSIZE, 250);
+
+                InitControl(lblId, LBLX, SPACING * 4, id.ToString(), FNTSIZE, WIDTH);
+                InitControl(lblMenukaart, LBLX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
+                InitControl(lblSubcategorie, LBLX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
+                InitControl(lblNaam, LBLX, SPACING * 3, "Naam", FNTSIZE, WIDTH);
+                InitControl(lblKorteNaam, LBLX, SPACING * 4, "Verkorte Naam", FNTSIZE, WIDTH);
+                InitControl(lblPrijs, LBLX, SPACING * 5, "Prijs (in euro's)", FNTSIZE, WIDTH);
+                InitControl(lblError, 100, SPACING * 6, "", FNTSIZE, WIDTH + 30, 25);
+
+                InitControl(cmbMenukaart, TBX, SPACING * 1, menukaart, FNTSIZE, WIDTH);
+                InitControl(cmbSubcategorie, TBX, SPACING * 2, subcategorie, FNTSIZE, WIDTH);
+                InitControl(txtNaam, TBX, SPACING * 3, naam, FNTSIZE, WIDTH);
+                InitControl(txtKorteNaam, TBX, SPACING * 4, korteNaam, FNTSIZE, WIDTH);
+                InitControl(txtPrijs, TBX, SPACING * 5, prijs, FNTSIZE, WIDTH);
+
+                cmbMenukaart.Items.Clear();
+                foreach (Categorie categorie in Enum.GetValues(typeof(Categorie)))
+                    cmbMenukaart.Items.Add(categorie);
+
+                cmbSubcategorie.Items.Clear();
+                foreach (SubCategorie sub in Enum.GetValues(typeof(SubCategorie)))
+                    cmbSubcategorie.Items.Add(sub);
+
+                InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);
+                btnBevestig.Click += btnBevestig_Click;
+                btnFunctie = "WijzMenu";
+
+                PopupFormStandardControls();
+                PopupFormExtraControls(lblMenukaart, cmbMenukaart);
+                PopupFormExtraControls(lblSubcategorie, cmbSubcategorie);
+                PopupFormExtraControls(lblKorteNaam, txtKorteNaam);
+                PopupFormExtraControls(lblPrijs, txtPrijs);
+
+                popupForm.ShowDialog();
+            }
+            else if (listViewMenu.CheckedItems.Count > 1)
+                MessageBox.Show("Te veel items aangevinkt!");
+            else
+                MessageBox.Show("Geen item aangevinkt!");
         }
 
         ///---FORM BUTTON EVENTS---///
@@ -445,7 +520,11 @@ namespace UI
         {
             if (listViewMedewerkers.CheckedItems.Count >= 1)
             {
-                string message = "Weet u zeker dat u deze medewerker(s) wilt verwijderen?";
+                string message;
+                if (listViewMedewerkers.CheckedItems.Count == 1)
+                    message = "Weet u zeker dat u deze medewerker wilt verwijderen?";
+                else
+                    message = "Weet u zeker dat u deze medewerkers wilt verwijderen?";
                 string caption = "Waarschuwing";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result;
@@ -454,7 +533,6 @@ namespace UI
 
                 if (result == DialogResult.Yes)
                 {
-
                     foreach (ListViewItem checkedItem in listViewMedewerkers.CheckedItems)
                     {
                         Werknemers werknemers = new Werknemers();
@@ -476,8 +554,6 @@ namespace UI
             popupForm.Controls.Clear();
 
             ToevMenukaartUI();
-
-            popupForm.ShowDialog();
         }
 
         private void btnWijzMenukaart_Click(object sender, EventArgs e)
@@ -487,28 +563,41 @@ namespace UI
             popupForm.Controls.Clear();
 
             WijzMenukaartUI();
-
-            popupForm.ShowDialog();
         }
 
         private void btnVerwMenukaart_Click(object sender, EventArgs e)
         {
-            //if (treeViewMenu.CheckedItems.Count >= 1)
-            //{
-            string message = "Weet u zeker dat u dit menu-item wilt verwijderen?";
-            string caption = "Waarschuwing";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-
-            result = MessageBox.Show(message, caption, buttons);
-
-            if (result == DialogResult.Yes)
+            if (listViewMenu.CheckedItems.Count >= 1)
             {
+                string message;
+                if (listViewMenu.CheckedItems.Count == 1)
+                    message = "Weet u zeker dat u dit menu-item wilt verwijderen?";
+                else
+                    message = "Weet u zeker dat u deze menu-items wilt verwijderen?";
+                string caption = "Waarschuwing";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
 
+                result = MessageBox.Show(message, caption, buttons);
+
+                if (result == DialogResult.Yes)
+                {
+                    foreach (ListViewItem checkedItem in listViewMenu.CheckedItems)
+                    {
+                        MenuItems menuLogica = new MenuItems();
+
+                        int id = int.Parse(checkedItem.SubItems[0].Text);
+
+                        menuLogica.VerwijderenMenu(id);
+
+                        RefreshMenu();
+                    }
+                }
             }
-            //}
         }
 
+        /// Overige buttons ///
+        
         private void btnRefrVoorraad_Click(object sender, EventArgs e)
         {
             RefreshVoorraad();
@@ -523,7 +612,7 @@ namespace UI
         {
             RefreshMenu();
         }
-
+        
         private void btnVeranderNaam_Click(object sender, EventArgs e)
         {
             naamKort = !naamKort;

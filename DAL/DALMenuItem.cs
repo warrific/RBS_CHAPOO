@@ -128,6 +128,64 @@ namespace DAL
             dbConnection.Close();
         }
 
+        public void WijzigenMenu(int id, int menukaart, string naam, string korteNaam, string prijs)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("UPDATE Menuitem SET naam = @Naam, prijs = @Prijs, category = @Kaart, shortname = @Shortname WHERE item_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Naam", naam);
+            command.Parameters.AddWithValue("@Kaart", menukaart);
+            command.Parameters.AddWithValue("@Prijs", prijs);
+            command.Parameters.AddWithValue("@Menukaart", menukaart);
+            command.Parameters.AddWithValue("@Shortname", korteNaam);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
+        public void WijzigenMenu2(int id, int subcategorie)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("UPDATE Menukaart SET subcategorie = @Subcategorie WHERE menu_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Subcategorie", subcategorie);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
+        public void VerwijderenMenu(int id)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("DELETE FROM Menuitem WHERE item_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
+        public void VerwijderenMenu2(int id)
+        {
+            dbConnection.Open();
+
+            SqlCommand command = new SqlCommand("DELETE FROM Menukaart WHERE menu_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", id);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            dbConnection.Close();
+        }
+
         private MenuItem Readitem(SqlDataReader reader)
         {
             DALMenuKaart getkaart = new DALMenuKaart();

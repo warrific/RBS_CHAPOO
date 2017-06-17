@@ -52,7 +52,47 @@ namespace Logica
             }
             else return "Menukaart niet ingevuld";
         }
-        
+
+        public string WijzigenMenu(int id, string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
+        {
+            if (Enum.IsDefined(typeof(Categorie), menukaart))
+            {
+                if (Enum.IsDefined(typeof(SubCategorie), subcategorie))
+                {
+                    if (naam != "")
+                    {
+                        if (korteNaam != "")
+                        {
+                            if (prijs != "")
+                            {
+                                DALMenuItem DALItem = new DALMenuItem();
+
+                                int category = (int)Enum.Parse(typeof(Categorie), menukaart);
+                                int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+                                //float floatPrijs = float.Parse(prijs);
+
+                                DALItem.WijzigenMenu(id, category, naam, korteNaam, prijs);
+                                DALItem.WijzigenMenu2(id, sub);
+                                return "";
+                            }
+                            else return "prijs niet ingevuld";
+                        }
+                        else return "Korte naam niett ingevuld";
+                    }
+                    else return "Naam niet ingevuld";
+                }
+                else return "Subcategorie niet ingevuld";
+            }
+            else return "Menukaart niet ingevuld";
+        }
+
+        public void VerwijderenMenu(int id)
+        {
+            DALMenuItem DALItem = new DALMenuItem();
+            DALItem.VerwijderenMenu2(id);
+            DALItem.VerwijderenMenu(id);
+        }
+
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
         {
             DALMenuItem dalMenuItem = new DALMenuItem();
