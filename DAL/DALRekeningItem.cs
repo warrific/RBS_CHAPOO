@@ -39,7 +39,7 @@ namespace DAL
 
         private RekeningItem ReadItem(SqlDataReader reader)
         {
-            return new RekeningItem((int)reader["aantal"], (string)reader["shortname"], (double)reader["prijs"] * (int)reader["aantal"], (double)reader["btw_tarief"]);
+            return new RekeningItem((int)reader["aantal"], (string)reader["shortname"], (double)reader["prijs"], (double)reader["btw_tarief"]);
         }
     }
 }

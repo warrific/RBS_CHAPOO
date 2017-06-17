@@ -31,7 +31,7 @@ namespace Logica
             double totaalPrijs = 0;
             foreach (RekeningItem item in rekening)
             {
-                totaalPrijs += item.prijs;
+                totaalPrijs += item.prijs * item.aantal;
             }
             return totaalPrijs; 
         }
@@ -44,11 +44,6 @@ namespace Logica
                 btwTarief += item.prijs * item.btw;
             }
             return btwTarief;
-        }
-
-        public double BtwBedrag()
-        {
-            return 0;
         }
 
         public double GetTotaalprijs(double fooi, double subtotaal, double btwBedrag)

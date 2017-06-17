@@ -111,9 +111,9 @@
             this.Fooi_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.Fooi_lbl.Location = new System.Drawing.Point(67, 890);
             this.Fooi_lbl.Name = "Fooi_lbl";
-            this.Fooi_lbl.Size = new System.Drawing.Size(65, 20);
+            this.Fooi_lbl.Size = new System.Drawing.Size(48, 20);
             this.Fooi_lbl.TabIndex = 10;
-            this.Fooi_lbl.Text = "Fooi:  € ";
+            this.Fooi_lbl.Text = "Fooi: ";
             // 
             // Betaalwijze_lbl
             // 
@@ -133,9 +133,9 @@
             this.Btw_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.Btw_lbl.Location = new System.Drawing.Point(71, 918);
             this.Btw_lbl.Name = "Btw_lbl";
-            this.Btw_lbl.Size = new System.Drawing.Size(61, 20);
+            this.Btw_lbl.Size = new System.Drawing.Size(44, 20);
             this.Btw_lbl.TabIndex = 12;
-            this.Btw_lbl.Text = "Btw:  € ";
+            this.Btw_lbl.Text = "Btw: ";
             // 
             // label1
             // 
@@ -144,9 +144,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(1, 941);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 24);
+            this.label1.Size = new System.Drawing.Size(112, 24);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Totaalprijs: € ";
+            this.label1.Text = "Totaalprijs:";
             // 
             // Betaalwijze_pin_btn
             // 
