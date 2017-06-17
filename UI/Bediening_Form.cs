@@ -18,6 +18,13 @@ namespace UI
             lijstBestelItem = new List<BestelItem>();
         }
 
+        public Bediening_Form(int tafelnr_in)
+        {
+            InitializeComponent();
+            int tafelnr = tafelnr_in;
+            lijstBestelItem = new List<BestelItem>();
+        }
+
         private void UpdateListView()
         {
             listView_Bestelling.Items.Clear();

@@ -128,9 +128,9 @@
 
         private System.Windows.Forms.Button btn_LogUit;
         protected System.Windows.Forms.Button btn_Tafel;
-        private System.Windows.Forms.Label lbl_functie;
         protected System.Windows.Forms.Label lbl_tafel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lbl_naam;
+        protected System.Windows.Forms.Label lbl_functie;
+        protected System.Windows.Forms.Label lbl_naam;
     }
 }

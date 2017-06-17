@@ -9,15 +9,19 @@ namespace Model
 {
     public class RekeningItem
     {
-        public int Aantal { get; private set; }
-        public string Naam { get; private set; }
-        public float Prijs { get; private set; }
+        public int aantal { get; private set; }
+        public string naam { get; private set; }
+        public double prijs { get; private set; }
+        public double btw { get; private set; }
 
-        public RekeningItem(int aantal, string naam, float prijs)
+
+
+        public RekeningItem(int aantal, string naam, double prijs, double btw)
         {
-            this.Aantal = aantal;
-            this.Naam = naam;
-            this.Prijs = prijs;
+            this.aantal = aantal;
+            this.naam = naam;
+            this.prijs = prijs;
+            this.btw = btw;
         }
     }
 }

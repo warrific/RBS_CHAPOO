@@ -67,7 +67,7 @@ namespace Model
                 errorMessage = errorMessage + "verkeerde id: " + in_id;
 
             if (Setfunctie(in_functie) == false)
-    {
+       {
                 errorMessage = errorMessage + "verkeerde functie: " + in_functie;
             }
 

@@ -52,14 +52,30 @@ namespace DAL
             SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE tafel_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", Id);
             SqlDataReader reader = command.ExecuteReader();
-
             Tafel item = null;
-
             if (reader.Read())
             {
-                item = Readitem(reader);
+          //      item =(Tafel)Read("Id");
             }
+            reader.Close();
+            dbConnection.Close();
 
+            return item;
+        }
+
+
+        public int GetID(int Id)
+        {
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Tafel WHERE tafel_id = @Id", dbConnection);
+            command.Parameters.AddWithValue("@Id", Id);
+            SqlDataReader reader = command.ExecuteReader();
+            int item = 0;
+            if (reader.Read())
+            {
+                item = (int)reader["tafel_id"];
+            }
             reader.Close();
             dbConnection.Close();
 

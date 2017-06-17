@@ -18,6 +18,9 @@ namespace Model
         public double Fooi { get; private set; }
         public DateTime Opname { get; private set; }
 
+        public Bestelling() 
+        { }
+
         public Bestelling(int id_in, List<BestelItem> bestel_items_in, Tafel tafel_in, Status status_order_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi_in, DateTime opname_in)
         {
             Id = id_in;
