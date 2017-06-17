@@ -57,7 +57,7 @@
             this.btn_Tafel.TabIndex = 1;
             this.btn_Tafel.Text = "*TAFEL*";
             this.btn_Tafel.UseVisualStyleBackColor = false;
-            this.btn_Tafel.Click += new System.EventHandler(this.button1_Click);
+            //this.btn_Tafel.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbl_naam
             // 

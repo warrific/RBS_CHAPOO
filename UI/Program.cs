@@ -18,7 +18,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Betalen_Form(1));
+            Application.Run(new Login_Form());
         }
     }
 }

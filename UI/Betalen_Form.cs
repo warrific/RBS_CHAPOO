@@ -29,9 +29,9 @@ namespace UI
             
             foreach (RekeningItem item in logica.getRekening())
             {
-                ListViewItem Lvi = new ListViewItem(item.aantal.ToString());
-                Lvi.SubItems.Add(item.naam);
-                Lvi.SubItems.Add(String.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", item.prijs * item.aantal));
+                ListViewItem Lvi = new ListViewItem(item.Aantal.ToString());
+                Lvi.SubItems.Add(item.Naam);
+                Lvi.SubItems.Add(String.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", item.Prijs * item.Aantal));
                 Rekening_lview.Items.Add(Lvi);
             }
 

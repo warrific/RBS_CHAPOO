@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using Logica;
 using Model;
-
+using Logica;
 
 namespace UI
 {
@@ -37,12 +28,12 @@ namespace UI
                  Logica.Werknemer l_werknemer = new Logica.Werknemer();
                  
                  Model.Werknemer m_werknemer = l_werknemer.GetWerknemer(int.Parse(invoer_password));
-                 username = m_werknemer.naam;
-                 userfunctie = m_werknemer.functie.ToString();
+                 username = m_werknemer.Naam;
+                 userfunctie = m_werknemer.Functie.ToString();
                //  Main_Form obj_main = new Main_Form(username , userfunctie);
                  
               
-                     switch (m_werknemer.functie)
+                     switch (m_werknemer.Functie)
 	                {
                         case Functie.Eigenaar:
                             this.Hide();

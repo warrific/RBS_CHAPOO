@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DAL;
+using Model;
 
 namespace Logica
 {
@@ -19,10 +20,9 @@ namespace Logica
             return dalitem.GetWerknemer(code);
         }
 
-        public  Logica.Werknemer BedieningKiestTafel (string persoonid)
+        public  Werknemer BedieningKiestTafel (string persoonid)
         {
-                
-            Logica.Werknemer id = new Logica.Werknemer();
+            Werknemer id = new Werknemer();
 
             Status_tafel status_tafel = new Status_tafel();
             if(status_tafel == Status_tafel.Vrij)

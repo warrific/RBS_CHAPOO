@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 using DAL;
+using System.Linq;
 
 namespace Logica
 {
@@ -16,8 +17,8 @@ namespace Logica
        // sorteer de bar_lijst en tafel_lijst naar tafelnr(van 1 naar 10)
             List<Bestelling_weergave> bar_sortedbyTafelNr = new List<Bestelling_weergave>();
             List<Bestelling_weergave> keuken_sortedbyTafelNr = new List<Bestelling_weergave>();
-            var bar_sortedByTafelNr = bar_lijst.OrderBy(i => i.tafel_nummer).ToList();
-            var keuken_sortedByTafelNr = keuken_lijst.OrderBy(i => i.tafel_nummer).ToList();
+            var bar_sortedByTafelNr = bar_lijst.OrderBy(i => i.Tafel_nummer).ToList();
+            var keuken_sortedByTafelNr = keuken_lijst.OrderBy(i => i.Tafel_nummer).ToList();
 
             return bar_sortedByTafelNr;
             //foreach (Bestelling_weergave list_item in bar_sortedByTafelNr)
