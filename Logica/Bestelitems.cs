@@ -15,5 +15,11 @@ namespace Logica
             DALBestelItem DALItem = new DALBestelItem();
             return DALItem.GetAllForID(order_id);
         }
+
+        public void VerwijderBestelItemUitDB(BestelItem item)
+        {
+            DAL.DALBestelItem dalBestelItem = new DALBestelItem();
+            dalBestelItem.VerwijderBestelItemUitDatabase(item);
+        }
     }
 }

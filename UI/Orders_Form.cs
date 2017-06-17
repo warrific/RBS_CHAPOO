@@ -4,19 +4,34 @@ using Logica;
 
 namespace UI
 {
-    public partial class Bar_Form : UI.Main_Form
+    public partial class Orders_Form : Main_Form
     {
+
         private bool status_actueel = true;
         private bool is_drinken = true;
 
-        public Bar_Form()
+        public Orders_Form(Model.Functie functie)
         {
             InitializeComponent();
 
-            // Datasource vermelden en aanroepen
+            // Labels voor tafels weg
+            lbl_tafel.Hide();
+            btn_Tafel.Hide();
+
+            // Functie check, dit word later gebruikt voor lijsten filteren
+            if (functie == Model.Functie.Bar)
+            {
+                is_drinken = true;
+            }
+            if (functie == Model.Functie.Kok)
+            {
+                is_drinken = false;
+            }
+
+            // Datasource aanroepen
             data_source();
 
-            // Kolomen aanmaken en de waarde uit de lijst binden (vanuit Bestelling_dranken lijst in Bestellingen)
+            // Kolomen aanmaken en de waarde uit de lijst binden (vanuit Bestelling_bar / keuken  lijst in Bestellingen)
             // TODO: in een loop zetten?
             DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn();
             id.Width = 30;
@@ -114,9 +129,18 @@ namespace UI
             // Bestellingen ophalen en in lijst zetten (in methode)
             bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
 
-            // Niet automatisch kolomen genereren en de data bron vermelden
+            // Niet automatisch kolomen genereren
             data_items.AutoGenerateColumns = false;
-            data_items.DataSource = bestellingen.bar_lijst;
+
+            // Check of we het bar of keuken form nodig hebben, en dit aan de databron binden
+            if (is_drinken)
+            {
+                data_items.DataSource = bestellingen.bar_lijst;
+            }
+            if (!is_drinken)
+            {
+                data_items.DataSource = bestellingen.keuken_lijst;
+            }
         }
     }
 }

@@ -114,5 +114,21 @@ namespace DAL
 
             return new BestelItem(id, menu_item, aantal, opmerking, status_item);
         }
+
+        public void VerwijderBestelItemUitDatabase(BestelItem item)
+        {
+            dbConnection.Open();
+
+            string dbString =   "DELETE FROM Bestelling_item " +
+                                "WHERE order_id = @orderid AND item_id = @itemid";
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@orderid", item.id);
+            command.Parameters.AddWithValue("@itemid", item.menuItem.id);
+
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
+        }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Model
+﻿namespace Model
 {
     // De categorieen in MenuItem
     public enum Categorie
@@ -28,5 +22,11 @@ namespace Model
     public enum Status_tafel
     {
         Vrij = 1, Bezet
+    }
+
+    // Functie vd medewerker
+    public enum Functie
+    {
+        Bediening, Bar, Eigenaar, Kok, Sommelier
     }
 }

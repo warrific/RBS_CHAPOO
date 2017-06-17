@@ -69,17 +69,11 @@
     <Compile Include="ButtonMenuItemVerlaag.Designer.cs">
       <DependentUpon>ButtonMenuItemVerlaag.cs</DependentUpon>
     </Compile>
-    <Compile Include="Keuken_Form.cs">
+    <Compile Include="Orders_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Keuken_Form.Designer.cs">
-      <DependentUpon>Keuken_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bar_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bar_Form.Designer.cs">
-      <DependentUpon>Bar_Form.cs</DependentUpon>
+    <Compile Include="Orders_Form.Designer.cs">
+      <DependentUpon>Orders_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Bediening_Form.cs">
       <SubType>Form</SubType>
@@ -131,11 +125,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Keuken_Form.resx">
-      <DependentUpon>Keuken_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Bar_Form.resx">
-      <DependentUpon>Bar_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Orders_Form.resx">
+      <DependentUpon>Orders_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bediening_Form.resx">
       <DependentUpon>Bediening_Form.cs</DependentUpon>
