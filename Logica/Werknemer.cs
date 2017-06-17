@@ -25,6 +25,22 @@ namespace Logica
             return dalitem.GetWerknemer(code);
         }
 
+        public Model.Werknemer GetWerknemerByName(string name)
+        {
+            DALWerknemer dalWerknemer = new DALWerknemer();
+            List<Model.Werknemer> lijstWerknemers = dalWerknemer.GetAll();
+
+            foreach(Model.Werknemer werknemer in lijstWerknemers)
+            {
+                if(werknemer.Naam == name)
+                {
+                    return werknemer;
+                }
+            }
+
+            return null;
+        }
+
         public bool WachtwoordOngeldig(string password, out Model.Werknemer modelWerknemer)
         {
             modelWerknemer = GetWerknemer(int.Parse(password));

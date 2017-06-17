@@ -17,12 +17,17 @@ namespace UI
     {
 
         List<BestelItem> lijstBestelItem;
-
+        Model.Tafel tafel;
+        Model.Werknemer werknemer;
 
         public Bediening_Form(string username, string userfunctie, int tafelnr_in): base(username, userfunctie)
         {
             InitializeComponent();
-            int tafelnr = tafelnr_in;
+
+            Logica.Werknemer logWerknemer = new Logica.Werknemer();
+
+            tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
+            werknemer = logWerknemer.GetWerknemerByName(username);
             lijstBestelItem = new List<BestelItem>();
         }
 
@@ -228,10 +233,6 @@ namespace UI
             Logica.MenuItems logMenuItems = new MenuItems();
             Logica.Bestellingen logBestelingen = new Bestellingen();
 
-            //dummy tafel en werknemer
-            Model.Werknemer werknemer = new Model.Werknemer(1, Functie.Bediening, "ehk", "3333");
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
-
             foreach(BestelItem item in lijstBestelItem)
             {
                 logMenuItems.BewerkVoorraad(item.MenuItem, item.Aantal);
@@ -289,9 +290,6 @@ namespace UI
             Logica.Bestellingen logBestelingen = new Bestellingen();
             Logica.Bestelitems logBestelItems = new Bestelitems();
             MenuItems logMenuItems = new MenuItems();
-
-            // dummy tafel
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel) == false)
                 return;
