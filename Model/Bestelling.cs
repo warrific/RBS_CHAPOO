@@ -17,25 +17,5 @@ namespace Model
         public string betaalmethode { get; private set; }
         public double fooi { get; private set; }
         public DateTime opname { get; private set; }
-
-        public Bestelling(int id_in, List<BestelItem> bestel_items_in, Tafel tafel_in, Status status_order_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi_in, DateTime opname_in)
-        {
-            id = id_in;
-            bestel_items = bestel_items_in;
-            tafel = tafel_in;
-            status_order = status_order_in;
-            werknemer = werknemer_in;
-            totaalprijs = totaalprijs_in;
-            betaalmethode = betaalmethode_in;
-            fooi = fooi_in;
-            opname = opname_in;
-        }
-
-        // Dit kan volgensmij ook in de property zelf?
-        // TO DO: DIT MOET IN LOGICA
-        public int BerekenTotaalPrijs()
-        {
-            return 0;
-        }
     }
 }
