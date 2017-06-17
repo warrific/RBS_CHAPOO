@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Model;
 using DAL;
 
@@ -18,8 +14,41 @@ namespace Logica
 
         public void WijzigVoorraad(int id, int aantal, bool optellen)
         {
-            DALMenuItem DALitem = new DALMenuItem();
-            DALitem.WijzigVoorraad(id, aantal, optellen);
+            DALMenuItem DALItem = new DALMenuItem();
+            DALItem.WijzigVoorraad(id, aantal, optellen);
+        }
+
+        public string ToevoegenMenu(string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
+        {
+            if (Enum.IsDefined(typeof(Categorie), menukaart))
+            {
+                if (Enum.IsDefined(typeof(SubCategorie), subcategorie))
+                {
+                    if (naam != "")
+                    {
+                        if (korteNaam != "")
+                        {
+                            if (prijs != "")
+                            {
+                                DALMenuItem DALItem = new DALMenuItem();
+
+                                int id = DALItem.GetLastId() + 1;
+                                int category = (int)Enum.Parse(typeof(Categorie), menukaart);
+                                int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+                                
+                                DALItem.ToevoegenMenu(id, category, naam, korteNaam, prijs);
+                                DALItem.ToevoegenMenu2(id, sub);
+                                return "";
+                            }
+                            else return "prijs niet ingevuld";
+                        }
+                        else return "Korte naam niett ingevuld";
+                    }
+                    else return "Naam niet ingevuld";
+                }
+                else return "Subcategorie niet ingevuld";
+            }
+            else return "Menukaart niet ingevuld";
         }
         
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
@@ -35,7 +64,7 @@ namespace Logica
 
         public double BerekenTotaalBestelItem(BestelItem bestelItem)
         {
-            return bestelItem.menuItem.prijs * bestelItem.aantal;
+            return bestelItem.MenuItem.Prijs * bestelItem.Aantal;
         }
 
         public double BerekenTotaalBestelling(List<BestelItem> lijstBestelItem)
@@ -43,7 +72,7 @@ namespace Logica
             double totaal = 0;
             foreach(BestelItem item in lijstBestelItem)
             {
-                totaal += item.menuItem.prijs * item.aantal;
+                totaal += item.MenuItem.Prijs * item.Aantal;
             }
 
             return totaal;
@@ -66,7 +95,7 @@ namespace Logica
             foreach(MenuItem dbItem in lijstMenuItems)
             {
                 if (item == dbItem)
-                    dbItem.voorraad = voorraad;
+                    dbItem.Voorraad = voorraad;
             }
 
             return voorraad;

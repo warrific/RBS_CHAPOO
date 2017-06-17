@@ -1,44 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="DAL.DALBestelItem">
-    <Position X="8.25" Y="2.25" Width="1.75" />
+    <Position X="5.75" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAABAAAAAAEAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>IAAAABAEAAAAAAAAAAACAAAAAAQAAAAAEgAAAAAAAAA=</HashCode>
       <FileName>DALBestelItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAL.DALBestelling">
-    <Position X="6.25" Y="2.25" Width="1.75" />
+    <Position X="5.75" Y="3.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAIEAAAACAAAAAAAEAAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>IAQAAAAUAAAAAAAIAAAAAAAABAAAAAAAEgAgAAIAAAA=</HashCode>
       <FileName>DALBestelling.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAL.DALConnection">
-    <Position X="8.5" Y="0.75" Width="1.5" />
+  <Class Name="DAL.DALLogin">
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
-      <FileName>DALConnection.cs</FileName>
+      <HashCode>IAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DALLogin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAL.DALMenuItem">
-    <Position X="10.25" Y="2.25" Width="1.75" />
+    <Position X="1.75" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAwAAAAAAIAAIQ=</HashCode>
+      <HashCode>IAAAAAEEAAAAAAAAAAAAAAAAAAAAAAACEhAAAAAAAEA=</HashCode>
       <FileName>DALMenuItem.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAL.DALTafel">
-    <Position X="7.5" Y="4.5" Width="1.5" />
+  <Class Name="DAL.DALMenuKaart">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAIAgAA=</HashCode>
+      <HashCode>IIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DALMenuKaart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.DALRekeningItem">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>DALRekeningItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.DALTafel">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAA=</HashCode>
       <FileName>DALTafel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAL.DALWerknemer">
-    <Position X="9.5" Y="4.5" Width="1.75" />
+    <Position X="1.75" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAIAAAQ=</HashCode>
+      <HashCode>IAAAAAAIAAAAAAAAAAIAAAAABAAAAAEAEgAAAAAAAEA=</HashCode>
       <FileName>DALWerknemer.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Model;
@@ -32,16 +31,13 @@ namespace DAL
             SqlCommand command = new SqlCommand("SELECT Tafel.tafel_id, Tafel.status AS tafelstatus, Bestelling.status AS bestellingstatus FROM Tafel JOIN Bestelling on Tafel.tafel_id = Bestelling.tafel_id", dbConnection);
             SqlDataReader reader = command.ExecuteReader();
 
+            Tafel tafel = null;
+
             //  inlezen
             while (reader.Read())
             {
-
-                Tafel tafeloverzicht = new Tafel();
-                tafeloverzicht.Id = reader.GetInt32(0);
-                tafeloverzicht.Status = (Status_tafel)Enum.Parse(typeof(Status_tafel),reader.GetString(1));
-
-                restaurantoverzicht.Add(tafeloverzicht);
-
+                tafel = Readitem(reader);
+                restaurantoverzicht.Add(tafel);
             }
 
             reader.Close();

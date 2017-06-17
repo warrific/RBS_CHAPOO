@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using Model;
@@ -121,7 +118,7 @@ namespace DAL
             reader.Close();
             dbConnection.Close();
 
-            return item.id;
+            return item.Id;
         }
 
         public void ZetBestellingInDatabase(Bestelling bestelling)
@@ -133,13 +130,13 @@ namespace DAL
 
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
-            command.Parameters.AddWithValue("@orderid", bestelling.id);
-            command.Parameters.AddWithValue("@tafelid", bestelling.tafel.Id);
-            command.Parameters.AddWithValue("@persoonid", bestelling.werknemer.Id);
-            command.Parameters.AddWithValue("@totaal", bestelling.totaalprijs);
-            command.Parameters.AddWithValue("@betaal", bestelling.betaalmethode);
-            command.Parameters.AddWithValue("@fooi", bestelling.fooi);
-            command.Parameters.AddWithValue("@status", (int)bestelling.status_order);
+            command.Parameters.AddWithValue("@orderid", bestelling.Id);
+            command.Parameters.AddWithValue("@tafelid", bestelling.Tafel.Id);
+            command.Parameters.AddWithValue("@persoonid", bestelling.Werknemer.Id);
+            command.Parameters.AddWithValue("@totaal", bestelling.Totaalprijs);
+            command.Parameters.AddWithValue("@betaal", bestelling.Betaalmethode);
+            command.Parameters.AddWithValue("@fooi", bestelling.Fooi);
+            command.Parameters.AddWithValue("@status", (int)bestelling.Status_order);
 
             command.ExecuteNonQuery();
 
@@ -159,10 +156,10 @@ namespace DAL
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
             command.Parameters.AddWithValue("@orderid", count);
-            command.Parameters.AddWithValue("@item_id", item.menuItem.id);
-            command.Parameters.AddWithValue("@aantal", item.aantal);
-            command.Parameters.AddWithValue("@opmerking", item.opmerking);
-            command.Parameters.AddWithValue("@status", item.status_item);
+            command.Parameters.AddWithValue("@item_id", item.MenuItem.Id);
+            command.Parameters.AddWithValue("@aantal", item.Aantal);
+            command.Parameters.AddWithValue("@opmerking", item.Opmerking);
+            command.Parameters.AddWithValue("@status", item.Status_item);
 
             command.ExecuteScalar();
 

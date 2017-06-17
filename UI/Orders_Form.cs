@@ -32,7 +32,6 @@ namespace UI
             data_source();
 
             // Kolomen aanmaken en de waarde uit de lijst binden (vanuit Bestelling_bar / keuken  lijst in Bestellingen)
-            // TODO: in een loop zetten?
             DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn();
             id.Width = 30;
             id.DataPropertyName = "id";
@@ -52,19 +51,19 @@ namespace UI
             data_items.Columns.Add(aantal);
 
             DataGridViewTextBoxColumn order = new DataGridViewTextBoxColumn();
-            order.Width = 210;
+            order.Width = 300;
             order.DataPropertyName = "order";
             order.HeaderText = "Order";
             data_items.Columns.Add(order);
             
             DataGridViewTextBoxColumn opmerking = new DataGridViewTextBoxColumn();
-            opmerking.Width = 210;
+            opmerking.Width = 180;
             opmerking.DataPropertyName = "opmerking";
             opmerking.HeaderText = "Opmerking";
             data_items.Columns.Add(opmerking);
 
             DataGridViewTextBoxColumn bediening = new DataGridViewTextBoxColumn();
-            bediening.Width = 127;
+            bediening.Width = 107;
             bediening.DataPropertyName = "bediening";
             bediening.HeaderText = "Bediening";
             data_items.Columns.Add(bediening);

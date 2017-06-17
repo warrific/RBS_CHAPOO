@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Model;
 using DAL;
 using System.Windows.Forms;
@@ -31,7 +27,7 @@ namespace Logica
             double totaalPrijs = 0;
             foreach (RekeningItem item in rekening)
             {
-                totaalPrijs += item.prijs * item.aantal;
+                totaalPrijs += item.Prijs * item.Aantal;
             }
             return totaalPrijs; 
         }
@@ -41,7 +37,7 @@ namespace Logica
             double btwTarief = 0;
             foreach (RekeningItem item in rekening)
             {
-                btwTarief += item.prijs * item.btw;
+                btwTarief += item.Prijs * item.Btw;
             }
             return btwTarief;
         }
