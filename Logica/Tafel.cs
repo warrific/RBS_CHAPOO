@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DAL;
 using Model;
 
@@ -12,13 +8,29 @@ namespace Logica
     {
 
         // Haalt de benodigde gegevens uit de Database
-
-           
-            public List<Model.Tafel> GetAll()
-            {
+ 
+        public List<Model.Tafel> GetAll()
+        {
                 DALTafel daltafel = new DALTafel();
                 return daltafel.GetAll();
+        }
+
+        // maak een lijst met alleen de TafelId's om eventueel door te geven aan de bestellingenlijst
+   
+        public bool CheckTafelNr(int tafelnr)
+        {
+            DALTafel daltafel = new DALTafel();
+
+            if ( tafelnr == daltafel.GetID(tafelnr))
+            {
+                return true;
             }
+            
+            else
+            {
+                return false;
+            }
+        }
 
         // Als er op afrekenen gedrukt wordt dan kan een tafel vrij gegeven worden.
 
@@ -27,13 +39,13 @@ namespace Logica
             if(bedrag > 0)
             {
                 Status_tafel tafel1 = Status_tafel.Vrij;
-            return tafel1;
+                return tafel1;
             }
 
             else
             {
                 Status_tafel tafel1 = Status_tafel.Bezet;
-            return tafel1;
+                return tafel1;
             }  
         }
 

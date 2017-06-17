@@ -4,38 +4,45 @@ using System.Drawing;
 using System.Windows.Forms;
 using Logica;
 using Model;
-
+using System.Globalization;
 
 namespace UI
 {
     public partial class Betalen_Form : Main_Form
     {
-        List<Button> Betaalwijze = new List<Button>();
+        private List<Button> Betaalwijze = new List<Button>();
+        private Rekeningen logica;
+        private double totaalPrijs;
+        private double fooi;
+        private double subtotaal;
+        private double btwBedrag;
+        
 
         public Betalen_Form(int tafelNr)
         {
+            logica = new Rekeningen(tafelNr);
             
-            double totaalPrijs = 0;
-            Bestellingen bestelling = new Bestellingen();
-            int order_id = bestelling.GetOrderId(tafelNr);
-            Rekeningen logica = new Rekeningen();
-            List<RekeningItem> rekening = logica.getRekening(order_id);
-            
-            foreach (RekeningItem item in rekening)
-            {
-                ListViewItem Lvi = new ListViewItem();
-                Lvi.SubItems.Add(item.aantal.ToString());
-                Lvi.SubItems.Add(item.naam);
-                Lvi.SubItems.Add(item.prijs.ToString());
-                Rekening_lview.Items.Add(Lvi);
-                totaalPrijs += item.prijs;
-            }
-
             InitializeComponent();
-            Totaal_out_lbl.Text = totaalPrijs.ToString();
             Betaalwijze.Add(Betaalwijze_contant_btn);
             Betaalwijze.Add(Betaalwijze_pin_btn);
             Betaalwijze.Add(Betaalwijze_credit_btn);
+            
+            foreach (RekeningItem item in logica.getRekening())
+            {
+                ListViewItem Lvi = new ListViewItem(item.Aantal.ToString());
+                Lvi.SubItems.Add(item.Naam);
+                Lvi.SubItems.Add(String.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", item.Prijs * item.Aantal));
+                Rekening_lview.Items.Add(Lvi);
+            }
+
+            btwBedrag = logica.GetBtw();
+            subtotaal = logica.GetSubtotaalPrijs();
+            totaalPrijs = subtotaal + btwBedrag;
+            Btw_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", btwBedrag);
+            Totaal_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}",totaalPrijs);
+            Tafel_out_lbl.Text = tafelNr.ToString();
+            Datum_out_lbl.Text = DateTime.Now.ToString();
+            medewerker_out_lbl = lbl_functie;
         }
 
         private void Betaalwijze_click(object sender, EventArgs e)
@@ -50,15 +57,15 @@ namespace UI
             button.FlatAppearance.BorderSize = 2;
             button.FlatAppearance.BorderColor = Color.LimeGreen;
             button.BackColor = SystemColors.Control;
-            Betaalwijze_out_lbl.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(button.Text);
+            Betaalwijze_out_lbl.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(button.Text);
         }
 
         private void Fooi_Btn_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;  
-
-            Fooi_textbox.Text += button.Text;
-            Fooi_out_lbl.Text += button.Text;
+            string opmaakString;
+            Button button = (Button)sender;
+            opmaakString = Fooi_textbox.Text + button.Text;
+            Fooi_textbox.Text = Fooi_out_lbl.Text = opmaakString;
         }
 
         private void Fooi_btn_backspace_Click(object sender, EventArgs e)
@@ -70,9 +77,19 @@ namespace UI
             }
         }
 
-        private void Opmerking_add_btn_Click(object sender, EventArgs e)
+        private void Fooi_textbox_TextChanged(object sender, EventArgs e)
         {
-            string opmerking = Opmerking_txtbox.Text;
+            
+            if (Fooi_textbox.Text == "")
+            {
+                fooi = 0;
+            }
+            else
+            {
+                fooi = double.Parse(Fooi_textbox.Text);
+            }
+            totaalPrijs = logica.GetTotaalprijs(fooi, subtotaal, btwBedrag);
+            Totaal_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", totaalPrijs);
         }
     }
 }

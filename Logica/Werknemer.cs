@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DAL;
 using Model;
 
@@ -11,14 +7,31 @@ namespace Logica
     public class Werknemer
     {
 
-
         public List<Model.Werknemer> GetAll()
         {
             DALWerknemer dalwerknemer = new DALWerknemer();
             return dalwerknemer.GetAll();
         }
 
+        public Model.Werknemer GetWerknemer(int code)
+        {
+            DALWerknemer dalitem = new DALWerknemer();
 
+            return dalitem.GetWerknemer(code);
+        }
+
+        public  Werknemer BedieningKiestTafel (string persoonid)
+        {
+            Werknemer id = new Werknemer();
+
+            Status_tafel status_tafel = new Status_tafel();
+            if(status_tafel == Status_tafel.Vrij)
+            {
+                    
+            } 
+
+            return  id;
+         }
         //  public string check_werknemer (List<Werknemer>werknemers, string invoer_wachtwoord)
         // {
         //      string naam_werknemer = "";
@@ -40,3 +53,4 @@ namespace Logica
         // }
     }
 }
+
