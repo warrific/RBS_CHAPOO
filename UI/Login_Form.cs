@@ -54,15 +54,15 @@ namespace UI
                         break;
                         case Functie.Bar:
                             this.Hide();
-                            new Bar_Form().Show();
+                            new Orders_Form(Functie.Bar).Show();
                         break;
                         case Functie.Kok:
                             this.Hide();
-                            new Keuken_Form().Show();
+                            new Orders_Form(Functie.Kok).Show();
                         break;
                         case Functie.Sommelier:
                             this.Hide();
-                            new Bar_Form().Show();
+                            new Orders_Form(Functie.Sommelier).Show();
                         break;
                                
                          default:
@@ -76,65 +76,6 @@ namespace UI
             Button button = (Button)sender;
             txt_wachtwoord.Text += button.Text;
         }
-        //private void btn_1_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_1 = "1";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_1;
-        //}
-
-        //private void btn_2_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_2 = "2";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_2;
-        //}
-
-        //private void btn_3_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_3 = "3";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_3;
-        //}
-
-        //private void btn_4_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_4 = "4";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_4;
-        //}
-
-        //private void btn_5_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_5 = "5";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_5;
-        //}
-
-        //private void btn_6_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_6 = "6";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_6;
-        //}
-
-        //private void btn_7_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_7 = "7";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_7;
-        //}
-
-        //private void btn_8_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_8 = "8";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_8;
-        //}
-
-        //private void btn_9_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_9 = "9";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_9;
-        //}
-
-        //private void btn_0_Click(object sender, EventArgs e)
-        //{
-        //    string key_numpad_0 = "0";
-        //    txt_wachtwoord.Text = txt_wachtwoord.Text + key_numpad_0;
-        //}
 
         private void btn_del_Click(object sender, EventArgs e)
         {

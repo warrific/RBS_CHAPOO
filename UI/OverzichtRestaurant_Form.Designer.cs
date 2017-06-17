@@ -52,12 +52,10 @@
             this.btn_Tafel1 = new System.Windows.Forms.Button();
             this.data_dranken = new System.Windows.Forms.DataGridView();
             this.rBS1617SDB06DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rBS1617S_DB06DataSet = new UI.RBS1617S_DB06DataSet();
             this.btn_BestellingOpnemen = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_dranken)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rBS1617SDB06DataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rBS1617S_DB06DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -307,16 +305,6 @@
             this.data_dranken.Size = new System.Drawing.Size(275, 710);
             this.data_dranken.TabIndex = 8;
             // 
-            // rBS1617SDB06DataSetBindingSource
-            // 
-            this.rBS1617SDB06DataSetBindingSource.DataSource = this.rBS1617S_DB06DataSet;
-            this.rBS1617SDB06DataSetBindingSource.Position = 0;
-            // 
-            // rBS1617S_DB06DataSet
-            // 
-            this.rBS1617S_DB06DataSet.DataSetName = "RBS1617S_DB06DataSet";
-            this.rBS1617S_DB06DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // btn_BestellingOpnemen
             // 
             this.btn_BestellingOpnemen.Location = new System.Drawing.Point(65, 82);
@@ -325,13 +313,12 @@
             this.btn_BestellingOpnemen.TabIndex = 9;
             this.btn_BestellingOpnemen.Text = "Bestelling Opnemen";
             this.btn_BestellingOpnemen.UseVisualStyleBackColor = true;
-            this.btn_BestellingOpnemen.Click += (sender, Eventargs) => {this.btn_BestellingOpnemen_Click(sender , Eventargs,tafel_nummer );};
-            
+            this.btn_BestellingOpnemen.Click += new System.EventHandler(this.btn_BestellingOpnemen_Click);
             // 
             // OverzichtRestaurant_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(752, 873);
+            this.ClientSize = new System.Drawing.Size(752, 865);
             this.Controls.Add(this.btn_BestellingOpnemen);
             this.Controls.Add(this.data_dranken);
             this.Controls.Add(this.panel2);
@@ -343,7 +330,6 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_dranken)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rBS1617SDB06DataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rBS1617S_DB06DataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,6 +360,6 @@
         private System.Windows.Forms.Label lbl_tafel2;
         private System.Windows.Forms.Button btn_BestellingOpnemen;
         private System.Windows.Forms.BindingSource rBS1617SDB06DataSetBindingSource;
-        private RBS1617S_DB06DataSet rBS1617S_DB06DataSet;
+        //private RBS1617S_DB06DataSet rBS1617S_DB06DataSet;
     }
 }
