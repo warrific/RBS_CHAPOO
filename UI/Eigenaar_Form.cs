@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Logica;
 using Model;
@@ -44,9 +41,9 @@ namespace UI
 
             for (int i = 0; i < aantal; i++)
             {
-                ListViewItem li = new ListViewItem(MI_lijst[i].id.ToString());
-                li.SubItems.Add(MI_lijst[i].naam.ToString());
-                li.SubItems.Add(MI_lijst[i].voorraad.ToString());
+                ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
+                li.SubItems.Add(MI_lijst[i].Naam.ToString());
+                li.SubItems.Add(MI_lijst[i].Voorraad.ToString());
 
                 listViewVoorraad.Items.Add(li);
             }
@@ -69,8 +66,8 @@ namespace UI
             for (int i = 0; i < aantal2; i++)
             {
                 ListViewItem li = new ListViewItem(w_lijst[i].Id.ToString());
-                li.SubItems.Add(w_lijst[i].naam.ToString());
-                li.SubItems.Add(w_lijst[i].functie.ToString());
+                li.SubItems.Add(w_lijst[i].Naam.ToString());
+                li.SubItems.Add(w_lijst[i].Functie.ToString());
 
                 listViewMedewerkers.Items.Add(li);
             }

@@ -24,11 +24,11 @@ namespace UI
             foreach (RekeningItem item in rekening)
             {
                 ListViewItem Lvi = new ListViewItem();
-                Lvi.SubItems.Add(item.aantal.ToString());
-                Lvi.SubItems.Add(item.naam);
-                Lvi.SubItems.Add(item.prijs.ToString());
+                Lvi.SubItems.Add(item.Aantal.ToString());
+                Lvi.SubItems.Add(item.Naam);
+                Lvi.SubItems.Add(item.Prijs.ToString());
                 Rekening_lview.Items.Add(Lvi);
-                totaalPrijs += item.prijs;
+                totaalPrijs += item.Prijs;
             }
 
             InitializeComponent();

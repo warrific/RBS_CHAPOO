@@ -8,10 +8,8 @@ namespace Model
 {
     public class Tafel
     {
-        private int id;
-        public int Id { get { return id; } set { if (id > 0 || id < 11) { id = value; } } }
-        private Status_tafel status;
-        public Status_tafel Status { get { return status; } set {if(status == Status_tafel.Vrij||status == Status_tafel.Bezet ) status = value; }}
+        public int Id { get; private set; }
+        public Status_tafel Status { get; private set; }
 
         public Tafel() {}
          
@@ -25,7 +23,7 @@ namespace Model
         {
             if ((in_id > 0) && (in_id <11))
         {
-                this.id = in_id;
+                this.Id = in_id;
                 return true;
             }
             return false;

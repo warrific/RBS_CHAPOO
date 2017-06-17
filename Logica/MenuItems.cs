@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Model;
 using DAL;
 
@@ -35,7 +31,7 @@ namespace Logica
 
         public double BerekenTotaalBestelItem(BestelItem bestelItem)
         {
-            return bestelItem.menuItem.prijs * bestelItem.aantal;
+            return bestelItem.MenuItem.Prijs * bestelItem.Aantal;
         }
 
         public double BerekenTotaalBestelling(List<BestelItem> lijstBestelItem)
@@ -43,7 +39,7 @@ namespace Logica
             double totaal = 0;
             foreach(BestelItem item in lijstBestelItem)
             {
-                totaal += item.menuItem.prijs * item.aantal;
+                totaal += item.MenuItem.Prijs * item.Aantal;
             }
 
             return totaal;
@@ -66,7 +62,7 @@ namespace Logica
             foreach(MenuItem dbItem in lijstMenuItems)
             {
                 if (item == dbItem)
-                    dbItem.voorraad = voorraad;
+                    dbItem.Voorraad = voorraad;
             }
 
             return voorraad;

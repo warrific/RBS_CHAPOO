@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using Logica;
 using Model;
 
@@ -32,27 +26,20 @@ namespace UI
             foreach (Model.Werknemer list_item in lijst)
             {
                 list_item.Id.ToString();
-                list_item.functie.ToString();
+                list_item.Functie.ToString();
                 list_item.Wachtwoord.ToString();
 
                 for (int i = 0; i < lijst.Count(); i++)
                 {
-
                     if (list_item.Id == i)
                     {
-                        userName = list_item.naam;
-                        userFunctie = list_item.functie.ToString();
-                        //lbl_naam.Text = list_item.naam;
-                        // lbl_functie.Text = list_item.functie.ToString();
-                        // return;
+                        userName = list_item.Naam;
+                        userFunctie = list_item.Functie.ToString();
                     }
                 }
             }
         }
-
-
-        //Voeg een a property toe in form1 om  een retrieve value from textbox:
-
+        
         public string password
         {
             get { return txt_wachtwoord.Text; }
@@ -75,48 +62,38 @@ namespace UI
             foreach (Model.Werknemer list_item in lijst)
             {
                 list_item.Id.ToString();
-                list_item.functie.ToString();
+                list_item.Functie.ToString();
 
                 
 
-                if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Eigenaar)
+                if (invoer_password == list_item.Wachtwoord && list_item.Functie == Functie.Eigenaar)
                 {
                     this.Hide();
                     new Eigenaar_Form().Show();
-
-                    return;
                 }
 
-                if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Bediening)
+                if (invoer_password == list_item.Wachtwoord && list_item.Functie == Functie.Bediening)
                 {
                     this.Hide();
                     new OverzichtRestaurant_Form().Show();
-
-                    return;
                 }
 
-                if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Bar)
+                if (invoer_password == list_item.Wachtwoord && list_item.Functie == Functie.Bar)
                 {
                     this.Hide();
                     new Orders_Form(Functie.Bar).Show();
-
-                    return;
                 }
 
-                if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Kok)
+                if (invoer_password == list_item.Wachtwoord && list_item.Functie == Functie.Kok)
                 {
                     this.Hide();
                     new Orders_Form(Functie.Kok).Show();
-
-                    return;
                 }
 
-                if (invoer_password == list_item.Wachtwoord && list_item.functie == Functie.Sommelier)
+                if (invoer_password == list_item.Wachtwoord && list_item.Functie == Functie.Sommelier)
                 {
                     this.Hide();
                     obj_main.Show();
-
-                    return;
                 }
             }
 

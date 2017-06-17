@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Model;
 using DAL;
 
@@ -30,24 +26,24 @@ namespace Logica
             int i = 0;
             foreach (Bestelling list_item in make_listbestelling())
             {
-                for (int m = 0; m < list_item.bestel_items.Count; m++)
+                for (int m = 0; m < list_item.Bestel_items.Count; m++)
                 {
                     // Voor overzicht even los en niet in new Bestelling_weergave()
-                    id = bestellingen_lijst[i].id;
-                    tafel_nummer = list_item.tafel.Id;
-                    bediening = list_item.werknemer.naam;
-                    aantal = list_item.bestel_items[m].aantal;
-                    order = list_item.bestel_items[m].menuItem.naam;
-                    opmerking = list_item.bestel_items[m].opmerking;
-                    status = list_item.bestel_items[m].status_item;
+                    id = bestellingen_lijst[i].Id;
+                    tafel_nummer = list_item.Tafel.Id;
+                    bediening = list_item.Werknemer.Naam;
+                    aantal = list_item.Bestel_items[m].Aantal;
+                    order = list_item.Bestel_items[m].MenuItem.Naam;
+                    opmerking = list_item.Bestel_items[m].Opmerking;
+                    status = list_item.Bestel_items[m].Status_item;
 
                     
                     // Check welke lijst gevuld moet worden en wat hier in moet (actueel of historie)
-                    if ((list_item.bestel_items[m].menuItem.categorie == Categorie.Drank || list_item.bestel_items[m].menuItem.categorie == Categorie.Alcohol)&& (list_item.bestel_items[m].status_item == Status.Open) == status_actueel)
+                    if ((list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Drank || list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Alcohol)&& (list_item.Bestel_items[m].Status_item == Status.Open) == status_actueel)
                     {
                         bar_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status));
                     }
-                    else if ((list_item.bestel_items[m].menuItem.categorie == Categorie.Diner || list_item.bestel_items[m].menuItem.categorie == Categorie.Lunch) && (list_item.bestel_items[m].status_item == Status.Open) == status_actueel)
+                    else if ((list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Diner || list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Lunch) && (list_item.Bestel_items[m].Status_item == Status.Open) == status_actueel)
                     {
                         keuken_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status));
                     }
@@ -134,9 +130,9 @@ namespace Logica
 
             foreach(Bestelling bestelling in lijstBestellingen)
             {
-                if(bestelling.tafel.Id == tafel.Id)
+                if(bestelling.Tafel.Id == tafel.Id)
                 {
-                    return bestelling.id;
+                    return bestelling.Id;
                 }
             }
             return 0;

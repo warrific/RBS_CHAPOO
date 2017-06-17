@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Model;
@@ -92,7 +88,7 @@ namespace DAL
         {
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("UPDATE Bestelling_item SET status = 2 WHERE order_id = @Id AND item_id = @item_id", dbConnection);            // Moet nog update worden
+            SqlCommand command = new SqlCommand("UPDATE TOP (1) Bestelling_item SET status = 2 WHERE order_id = @Id AND item_id = @item_id", dbConnection);            // Moet nog update worden
             command.Parameters.AddWithValue("@Id", order_id);
             command.Parameters.AddWithValue("@item_id", item_id);
 
@@ -123,8 +119,8 @@ namespace DAL
                                 "WHERE order_id = @orderid AND item_id = @itemid";
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
-            command.Parameters.AddWithValue("@orderid", item.id);
-            command.Parameters.AddWithValue("@itemid", item.menuItem.id);
+            command.Parameters.AddWithValue("@orderid", item.Id);
+            command.Parameters.AddWithValue("@itemid", item.MenuItem.Id);
 
             command.ExecuteNonQuery();
 

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Configuration;
 using Model;
 using System.Data;
-using System.Data.SqlTypes;
 
 namespace DAL
 {
@@ -185,8 +183,8 @@ namespace DAL
 
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
-            command.Parameters.AddWithValue("@nieuw", item.voorraad - aantalBesteld);
-            command.Parameters.AddWithValue("@itemid", item.id);
+            command.Parameters.AddWithValue("@nieuw", item.Voorraad - aantalBesteld);
+            command.Parameters.AddWithValue("@itemid", item.Id);
 
             command.ExecuteNonQuery();
 
