@@ -34,11 +34,11 @@ namespace UI
 
             foreach (BestelItem item in lijstBestelItem)
             {
-                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
+                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
                 lvi.Tag = item;
-                lvi.SubItems.Add(item.aantal.ToString());
+                lvi.SubItems.Add(item.Aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
-                lvi.SubItems.Add(item.opmerking);
+                lvi.SubItems.Add(item.Opmerking);
                 listView_Bestelling.Items.Add(lvi);
             }
         }
@@ -170,18 +170,18 @@ namespace UI
 
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
-                if (lijstBestelItem[i].menuItem.shortname == menuItem.shortname)
+                if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
                 {
                     bestaat = true;
 
                     // genereer waarschuwing + break
-                    if (menuItem.voorraad == lijstBestelItem[i].aantal)
+                    if (menuItem.Voorraad == lijstBestelItem[i].Aantal)
                     {
-                        lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
+                        lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.Shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
                         break;
                     }
                     
-                    lijstBestelItem[i].aantal++;
+                    lijstBestelItem[i].Aantal++;
                     
                 }
             }
@@ -205,11 +205,11 @@ namespace UI
 
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
-                if (lijstBestelItem[i].menuItem.shortname == menuItem.shortname)
+                if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
                 {
-                    lijstBestelItem[i].aantal--;
+                    lijstBestelItem[i].Aantal--;
 
-                    if (lijstBestelItem[i].aantal == 0)
+                    if (lijstBestelItem[i].Aantal == 0)
                     {
                         lijstBestelItem.RemoveAt(i);
                     }
@@ -234,7 +234,7 @@ namespace UI
 
             foreach(BestelItem item in lijstBestelItem)
             {
-                logMenuItems.BewerkVoorraad(item.menuItem, item.aantal);
+                logMenuItems.BewerkVoorraad(item.MenuItem, item.Aantal);
             }
 
             if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel))
@@ -301,10 +301,10 @@ namespace UI
 
             foreach(BestelItem item in lijstBestelItems)
             {
-                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
-                lvi.SubItems.Add(item.aantal.ToString());
+                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
+                lvi.SubItems.Add(item.Aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
-                lvi.SubItems.Add(item.opmerking);
+                lvi.SubItems.Add(item.Opmerking);
                 lvi.Tag = item;
                 listView_Bestelling.Items.Add(lvi);
             }
@@ -345,9 +345,9 @@ namespace UI
 
                 foreach (BestelItem bestelItem in lijstBestelItem)
                 {
-                    if(bestelItem.menuItem.id.ToString() == BestelItemId.menuItem.id.ToString())
+                    if(bestelItem.MenuItem.Id.ToString() == BestelItemId.MenuItem.Id.ToString())
                     {
-                        bestelItem.opmerking = textBox_Commentaar.Text;
+                        bestelItem.Opmerking = textBox_Commentaar.Text;
                     }
                 }
             }
@@ -374,10 +374,10 @@ namespace UI
 
             foreach (BestelItem item in lijstBestelItems)
             {
-                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
-                lvi.SubItems.Add(item.aantal.ToString());
+                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
+                lvi.SubItems.Add(item.Aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
-                lvi.SubItems.Add(item.opmerking);
+                lvi.SubItems.Add(item.Opmerking);
                 lvi.Tag = item;
                 listView_Bestelling.Items.Add(lvi);
             }
