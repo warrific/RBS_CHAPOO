@@ -1,6 +1,12 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Logica;
@@ -11,19 +17,17 @@ namespace UI
     {
 
         List<BestelItem> lijstBestelItem;
-
         Model.Tafel tafel;
+        Model.Werknemer werknemer;
 
-        public Bediening_Form()
+        public Bediening_Form(string username, string userfunctie, int tafelnr_in): base(username, userfunctie)
         {
             InitializeComponent();
-            lijstBestelItem = new List<BestelItem>();
-        }
 
-        public Bediening_Form(int tafelnr_in)
-        {
-            InitializeComponent();
+            Logica.Werknemer logWerknemer = new Logica.Werknemer();
+
             tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
+            werknemer = logWerknemer.GetWerknemerByName(username);
             lijstBestelItem = new List<BestelItem>();
         }
 
@@ -229,9 +233,6 @@ namespace UI
             Logica.MenuItems logMenuItems = new MenuItems();
             Logica.Bestellingen logBestelingen = new Bestellingen();
 
-            //dummy tafel en werknemer
-            Model.Werknemer werknemer = new Model.Werknemer(1, Functie.Bediening, "ehk", "3333");
-
             foreach(BestelItem item in lijstBestelItem)
             {
                 logMenuItems.BewerkVoorraad(item.MenuItem, item.Aantal);
@@ -249,7 +250,7 @@ namespace UI
                 return;
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "open", 0, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
@@ -265,7 +266,7 @@ namespace UI
         // opent betalen form
         private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
-            Betalen_Form betalen_form = new Betalen_Form((Int32.Parse(btn_Tafel.Text)));
+            Betalen_Form betalen_form = new Betalen_Form(username , userfunctie,(Int32.Parse(btn_Tafel.Text)));
         }
 
         // wist huidige bestelling
@@ -289,9 +290,6 @@ namespace UI
             Logica.Bestellingen logBestelingen = new Bestellingen();
             Logica.Bestelitems logBestelItems = new Bestelitems();
             MenuItems logMenuItems = new MenuItems();
-
-            // dummy tafel
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel) == false)
                 return;
@@ -365,6 +363,9 @@ namespace UI
                 BestelItem bestelItem = (BestelItem)item.Tag;
                 logBestelItems.VerwijderBestelItemUitDB(bestelItem);
             }
+
+            // dummy tafel
+            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
             List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);

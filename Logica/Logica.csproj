@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bestelitems.cs" />
-    <Compile Include="Login.cs" />
     <Compile Include="Bestellingen.cs" />
     <Compile Include="Rekeningen.cs" />
     <Compile Include="RestaurantOverzicht.cs" />

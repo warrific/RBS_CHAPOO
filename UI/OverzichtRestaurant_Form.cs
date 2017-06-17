@@ -17,7 +17,7 @@ namespace UI
         private bool status_actueel = true;
         private bool is_drinken = true;
 
-        public OverzichtRestaurant_Form()
+        public OverzichtRestaurant_Form( string username, string userfunctie): base(username,userfunctie)
         {
             InitializeComponent();
             // list_tafeloverzicht.View = View.Details;
@@ -29,7 +29,7 @@ namespace UI
             //  lijst = items.GetAll();
 
             //// Datasource vermelden en aanroepen
-            //data_source();
+            data_source();
 
             // Kolomen aanmaken en de waarde uit de lijst binden (vanuit Bestelling_dranken lijst in Bestellingen)
             // TODO: in een loop zetten?
@@ -37,19 +37,19 @@ namespace UI
             dranklijst_id.Width = 80;
             dranklijst_id.DataPropertyName = "order_id";
             dranklijst_id.HeaderText = "order id";
-            data_dranken.Columns.Add(dranklijst_id);
+            //data_items.Columns.Add(dranklijst_id);
 
             DataGridViewTextBoxColumn dranklijst_tafel_nr = new DataGridViewTextBoxColumn();
             dranklijst_tafel_nr.Width = 80;
             dranklijst_tafel_nr.DataPropertyName = "tafel_nummer";
             dranklijst_tafel_nr.HeaderText = "tafel nummer";
-            data_dranken.Columns.Add(dranklijst_tafel_nr);
+           // data_items.Columns.Add(dranklijst_tafel_nr);
 
             DataGridViewTextBoxColumn dranklijst_aantal = new DataGridViewTextBoxColumn();
             dranklijst_aantal.Width = 80;
             dranklijst_aantal.DataPropertyName = "status";
             dranklijst_aantal.HeaderText = "status bestelling";
-            data_dranken.Columns.Add(dranklijst_aantal);
+            //data_items.Columns.Add(dranklijst_aantal);
 
             //////////////////////////////////////////////////////////////////////////////////
 
@@ -279,7 +279,7 @@ namespace UI
 
         private void reload()
         {
-            //data_source();
+            data_source();
 
             // Datagridview verversen met nieuwe waardes
             data_dranken.Update();
@@ -297,7 +297,7 @@ namespace UI
                 if (lbl_tafel1.Text == "Bezet" || lbl_tafel2.Text == "Bezet" || lbl_tafel3.Text == " Bezet" ||lbl_tafel4.Text == "Bezet" || lbl_tafel5.Text == "Bezet" || lbl_tafel6.Text == " Bezet" ||lbl_tafel7.Text == "Bezet" || lbl_tafel8.Text == "Bezet" || lbl_tafel9.Text == " Bezet" || lbl_tafel10.Text == "Bezet" )
                 {
                     this.Hide();
-                    new Bediening_Form(tafel_nummer).Show();
+                    new Bediening_Form(username , userfunctie, tafel_nummer).Show();
                 }
             }  
         }
@@ -315,6 +315,27 @@ namespace UI
            //}
 
 
+        }
+
+        private void data_source()
+        {
+            Bestellingen bestellingen = new Bestellingen();
+
+            // Bestellingen ophalen en in lijst zetten (in methode)
+            bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
+
+            // Niet automatisch kolomen genereren
+            //data_items.AutoGenerateColumns = false;
+
+            // Check of we het bar of keuken form nodig hebben, en dit aan de databron binden
+            if (is_drinken)
+            {
+              //  data_items.DataSource = bestellingen.bar_lijst;
+            }
+            if (!is_drinken)
+            {
+             //   data_items.DataSource = bestellingen.keuken_lijst;
+            }
         }
     }
 }

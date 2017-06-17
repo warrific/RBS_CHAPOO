@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using DAL;
 using Model;
 
@@ -6,6 +10,7 @@ namespace Logica
 {
     public class Werknemer
     {
+        private Model.Werknemer modelWerknemer;
 
         public List<Model.Werknemer> GetAll()
         {
@@ -20,9 +25,34 @@ namespace Logica
             return dalitem.GetWerknemer(code);
         }
 
-        public  Werknemer BedieningKiestTafel (string persoonid)
+        public Model.Werknemer GetWerknemerByName(string name)
         {
-            Werknemer id = new Werknemer();
+            DALWerknemer dalWerknemer = new DALWerknemer();
+            List<Model.Werknemer> lijstWerknemers = dalWerknemer.GetAll();
+
+            foreach(Model.Werknemer werknemer in lijstWerknemers)
+            {
+                if(werknemer.Naam == name)
+                {
+                    return werknemer;
+                }
+            }
+
+            return null;
+        }
+
+        public bool WachtwoordOngeldig(string password, out Model.Werknemer modelWerknemer)
+        {
+            modelWerknemer = GetWerknemer(int.Parse(password));
+            
+            return modelWerknemer == null;
+         
+        }
+
+        public  Logica.Werknemer BedieningKiestTafel (string persoonid)
+        {
+                
+            Logica.Werknemer id = new Logica.Werknemer();
 
             Status_tafel status_tafel = new Status_tafel();
             if(status_tafel == Status_tafel.Vrij)

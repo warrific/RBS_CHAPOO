@@ -45,6 +45,7 @@
             this.btn_del = new System.Windows.Forms.Button();
             this.btn_0 = new System.Windows.Forms.Button();
             this.btn_enter = new System.Windows.Forms.Button();
+            this.lbl_invalidmessage = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,11 +71,12 @@
             // 
             this.txt_wachtwoord.AcceptsReturn = true;
             this.txt_wachtwoord.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.txt_wachtwoord.Location = new System.Drawing.Point(266, 81);
+            this.txt_wachtwoord.Location = new System.Drawing.Point(266, 143);
             this.txt_wachtwoord.MaxLength = 8;
+            this.txt_wachtwoord.Multiline = true;
             this.txt_wachtwoord.Name = "txt_wachtwoord";
             this.txt_wachtwoord.PasswordChar = '*';
-            this.txt_wachtwoord.Size = new System.Drawing.Size(200, 20);
+            this.txt_wachtwoord.Size = new System.Drawing.Size(200, 30);
             this.txt_wachtwoord.TabIndex = 2;
             this.txt_wachtwoord.UseWaitCursor = true;
             // 
@@ -100,7 +102,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_del);
             this.flowLayoutPanel1.Controls.Add(this.btn_0);
             this.flowLayoutPanel1.Controls.Add(this.btn_enter);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(266, 117);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(266, 179);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 266);
             this.flowLayoutPanel1.TabIndex = 7;
@@ -108,6 +110,7 @@
             // 
             // btn_1
             // 
+            this.btn_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_1.Location = new System.Drawing.Point(3, 3);
             this.btn_1.Name = "btn_1";
             this.btn_1.Padding = new System.Windows.Forms.Padding(10);
@@ -120,6 +123,7 @@
             // 
             // btn_2
             // 
+            this.btn_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_2.Location = new System.Drawing.Point(69, 3);
             this.btn_2.Name = "btn_2";
             this.btn_2.Padding = new System.Windows.Forms.Padding(10);
@@ -132,6 +136,7 @@
             // 
             // btn_3
             // 
+            this.btn_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_3.Location = new System.Drawing.Point(135, 3);
             this.btn_3.Name = "btn_3";
             this.btn_3.Padding = new System.Windows.Forms.Padding(10);
@@ -144,6 +149,7 @@
             // 
             // btn_4
             // 
+            this.btn_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_4.Location = new System.Drawing.Point(3, 69);
             this.btn_4.Name = "btn_4";
             this.btn_4.Padding = new System.Windows.Forms.Padding(10);
@@ -156,6 +162,7 @@
             // 
             // btn_5
             // 
+            this.btn_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_5.Location = new System.Drawing.Point(69, 69);
             this.btn_5.Name = "btn_5";
             this.btn_5.Padding = new System.Windows.Forms.Padding(10);
@@ -168,6 +175,7 @@
             // 
             // btn_6
             // 
+            this.btn_6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_6.Location = new System.Drawing.Point(135, 69);
             this.btn_6.Name = "btn_6";
             this.btn_6.Padding = new System.Windows.Forms.Padding(10);
@@ -180,6 +188,7 @@
             // 
             // btn_7
             // 
+            this.btn_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_7.Location = new System.Drawing.Point(3, 135);
             this.btn_7.Name = "btn_7";
             this.btn_7.Padding = new System.Windows.Forms.Padding(10);
@@ -192,6 +201,7 @@
             // 
             // btn_8
             // 
+            this.btn_8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_8.Location = new System.Drawing.Point(69, 135);
             this.btn_8.Name = "btn_8";
             this.btn_8.Padding = new System.Windows.Forms.Padding(10);
@@ -204,6 +214,7 @@
             // 
             // btn_9
             // 
+            this.btn_9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_9.Location = new System.Drawing.Point(135, 135);
             this.btn_9.Name = "btn_9";
             this.btn_9.Padding = new System.Windows.Forms.Padding(10);
@@ -228,6 +239,7 @@
             // 
             // btn_0
             // 
+            this.btn_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_0.Location = new System.Drawing.Point(69, 201);
             this.btn_0.Name = "btn_0";
             this.btn_0.Padding = new System.Windows.Forms.Padding(10);
@@ -250,12 +262,24 @@
             this.btn_enter.UseWaitCursor = true;
             this.btn_enter.Click += new System.EventHandler(this.btn_enter_Click);
             // 
+            // lbl_invalidmessage
+            // 
+            this.lbl_invalidmessage.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_invalidmessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_invalidmessage.Location = new System.Drawing.Point(263, 100);
+            this.lbl_invalidmessage.Name = "lbl_invalidmessage";
+            this.lbl_invalidmessage.Size = new System.Drawing.Size(200, 30);
+            this.lbl_invalidmessage.TabIndex = 10;
+            this.lbl_invalidmessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Login_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(752, 773);
+            this.Controls.Add(this.lbl_invalidmessage);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_wachtwoord);
@@ -289,6 +313,7 @@
         private System.Windows.Forms.Button btn_del;
         private System.Windows.Forms.Button btn_0;
         private System.Windows.Forms.Button btn_enter;
+        private System.Windows.Forms.Label lbl_invalidmessage;
     }
 }
 
