@@ -44,12 +44,12 @@ namespace UI
 
             for (int i = 0; i < aantal; i++)
             {
-                ListViewItem li = new ListViewItem(MI_lijst[i].id.ToString());
+                ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
-                    li.SubItems.Add(MI_lijst[i].shortname.ToString());
+                    li.SubItems.Add(MI_lijst[i].Shortname.ToString());
                 else
-                    li.SubItems.Add(MI_lijst[i].naam.ToString());
-                li.SubItems.Add(MI_lijst[i].voorraad.ToString());
+                    li.SubItems.Add(MI_lijst[i].Naam.ToString());
+                li.SubItems.Add(MI_lijst[i].Voorraad.ToString());
 
                 listViewVoorraad.Items.Add(li);
             }
@@ -101,14 +101,14 @@ namespace UI
 
             for (int i = 0; i < aantal; i++)
             {
-                ListViewItem li = new ListViewItem(MI_lijst[i].id.ToString());
+                ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
-                    li.SubItems.Add(MI_lijst[i].shortname.ToString());
+                    li.SubItems.Add(MI_lijst[i].Shortname.ToString());
                 else
-                    li.SubItems.Add(MI_lijst[i].naam.ToString());
-                li.SubItems.Add(MI_lijst[i].subcategorie.ToString());
-                li.SubItems.Add(MI_lijst[i].categorie.ToString());
-                li.SubItems.Add(MI_lijst[i].prijs.ToString("€0.00"));
+                    li.SubItems.Add(MI_lijst[i].Naam.ToString());
+                li.SubItems.Add(MI_lijst[i].Subcategorie.ToString());
+                li.SubItems.Add(MI_lijst[i].Categorie.ToString());
+                li.SubItems.Add(MI_lijst[i].Prijs.ToString("€0.00"));
 
                 listViewMenu.Items.Add(li);
             }
@@ -262,7 +262,20 @@ namespace UI
             }
             else if (btnFunctie == "WijzMenu")
             {
+                /*MenuItems menuLogica = new MenuItems();
 
+                int id = int.Parse(lblId.Text);
+                string naam = txtNaam.Text;
+                string functie = cmbFunctie.Text;
+
+                lblError.ForeColor = Color.Red;
+                lblError.Text = menuLogica.WijzigenMenu(id, naam, functie);
+
+                if (lblError.Text == "")
+                {
+                    RefreshMedewerkers();
+                    popupForm.Close();
+                }*/
             }
         }
         
