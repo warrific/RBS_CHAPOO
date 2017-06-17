@@ -14,6 +14,66 @@ namespace Logica
         public List<Bestelling_weergave> bar_lijst = new List<Bestelling_weergave>();
         public List<Bestelling_weergave> keuken_lijst = new List<Bestelling_weergave>();
 
+        public List<Bestelling_weergave> make_liststatus_weergave(List<Bestelling_weergave> bar_lijst, List<Bestelling_weergave> keuken_lijst)
+        {
+            
+       // sorteer de bar_lijst en tafel_lijst naar tafelnr(van 1 naar 10)
+            List<Bestelling_weergave> bar_sortedbyTafelNr = new List<Bestelling_weergave>();
+            List<Bestelling_weergave> keuken_sortedbyTafelNr = new List<Bestelling_weergave>();
+            var bar_sortedByTafelNr = bar_lijst.OrderBy(i => i.tafel_nummer).ToList();
+            var keuken_sortedByTafelNr = keuken_lijst.OrderBy(i => i.tafel_nummer).ToList();
+
+            return bar_sortedByTafelNr;
+            //foreach (Bestelling_weergave list_item in bar_sortedByTafelNr)
+            //{ 
+                
+            //    switch (m_werknemer.functie)
+            //    {
+            //        case list_item.tafel_nummer = 1 :
+                        
+            //            break;
+            //        case list_item.tafel_nummer = 2 :
+            //            this.Hide();
+            //            new Bediening_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 3:
+            //            this.Hide();
+            //            new Bar_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 4:
+            //            this.Hide();
+            //            new Keuken_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 5:
+            //            this.Hide();
+            //            new Bar_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 6:
+            //            this.Hide();
+            //            new Eigenaar_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 7:
+            //            this.Hide();
+            //            new Bediening_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 8:
+            //            this.Hide();
+            //            new Bar_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 9:
+            //            this.Hide();
+            //            new Keuken_Form().Show();
+            //            break;
+            //        case list_item.tafel_nummer = 10:
+            //            this.Hide();
+            //            new Bar_Form().Show();
+            //            break;
+            //        default:
+            //            break;
+            //    }      
+
+        }
+
         public List<Bestelling_weergave> make_listbestelling_weergave(bool status_actueel, bool is_drinken)
         {
             // Initialiseren

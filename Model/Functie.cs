@@ -2,6 +2,6 @@
 {
     public enum Functie
     {
-        Bediening, Bar, Eigenaar, Kok, Sommelier
+        Bediening = 1, Bar, Eigenaar, Kok, Sommelier
     }
 }

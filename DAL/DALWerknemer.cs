@@ -45,6 +45,26 @@ namespace DAL
             return werknemers;
         }
 
+        public List<Model.Werknemer> GetAllBediening()
+        {
+            dbConnection.Open();
+            SqlCommand command =
+            new SqlCommand("SELECT * FROM Medewerker WHERE  functie=Bediening ", dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Werknemer> bediening = new  List<Werknemer>();
+
+            while (reader.Read())
+            {
+                Werknemer werknemer = ReadWerknemer(reader);
+                bediening.Add(werknemer);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+            return bediening;
+        }
+
         public Model.Werknemer GetWerknemer(int code)
         {
             dbConnection.Open();

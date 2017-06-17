@@ -39,7 +39,7 @@ namespace UI
                  Model.Werknemer m_werknemer = l_werknemer.GetWerknemer(int.Parse(invoer_password));
                  username = m_werknemer.naam;
                  userfunctie = m_werknemer.functie.ToString();
-                 Main_Form obj_main = new Main_Form(username , userfunctie);
+               //  Main_Form obj_main = new Main_Form(username , userfunctie);
                  
               
                      switch (m_werknemer.functie)
@@ -50,7 +50,7 @@ namespace UI
                         break;
                          case Functie.Bediening:
                             this.Hide();
-                            new Bediening_Form().Show();
+                            new OverzichtRestaurant_Form().Show();
                         break;
                         case Functie.Bar:
                             this.Hide();

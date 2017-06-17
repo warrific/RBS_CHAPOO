@@ -10,13 +10,14 @@ namespace Logica
 {
     public class RestaurantOverzicht
     {
-        public List<Bestelling_weergave> bar_lijst = new  List<Bestelling_weergave>();
+        public List<Bestelling_weergave> bar_lijst;
         public List<Bestelling_weergave> keuken_lijst ;
 
         public List<RestaurantOverzicht> overzicht_lijst = new List<RestaurantOverzicht>();
+
         //overzicht_lijst = bar_lijst.Zip(keuken_lijst, (bar, keuken) =>
         //                              new { bar.id, bar.tafel_nummer, bar.aantal, bar.order, bar.opmerking, bar.bediening, bar.status, keuken.id, keuken.tafel_nummer, keuken.aantal, keuken.order, keuken.opmerking, keuken.bediening, keuken.status })
-        //                         .ToList();
+        //                          .ToList();
 
         //IEnumerable both = bar_lijst.OfType<object>().Concat(keuken_lijst.OfType<object>());
         
