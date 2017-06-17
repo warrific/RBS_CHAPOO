@@ -10,7 +10,7 @@ using Model;
 
 namespace UI
 {
-    public partial class Eigenaar_Form : UI.Main_Form
+    public partial class Eigenaar_Form : Main_Form
     {
         Form popupForm = new Form();
 
@@ -141,7 +141,7 @@ namespace UI
             }*/
             }
 
-        public Eigenaar_Form()
+        public Eigenaar_Form(string username, string userfunctie) : base(username, userfunctie)
         {
             InitializeComponent();
 

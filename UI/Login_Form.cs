@@ -46,12 +46,12 @@ namespace UI
 
                  else 
                  {
-                     string username = modelWerknemer.naam;
-                     string userfunctie = modelWerknemer.functie.ToString();
+                     string username = modelWerknemer.Naam;
+                     string userfunctie = modelWerknemer.Functie.ToString();
                      //  Main_Form obj_main = new Main_Form(username , userfunctie);
 
 
-                     switch (modelWerknemer.functie)
+                     switch (modelWerknemer.Functie)
                      {
                          case Functie.Eigenaar:
                              this.Hide();
