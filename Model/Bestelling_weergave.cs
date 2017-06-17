@@ -8,30 +8,23 @@ namespace Model
 {
     public class Bestelling_weergave
     {
-        public int id { get; set; }
-        public int tafel_nummer { get; set; }
-        public int aantal { get; set; }
-        public string order { get; set; }
-        public string opmerking { get; set; }
-        public string bediening { get; set; }
-        public Status status_item { get; set; }
+        public int Id { get; private set; }
+        public int Tafel_nummer { get; private set; }
+        public int Aantal { get; private set; }
+        public string Order { get; private set; }
+        public string Opmerking { get; private set; }
+        public string Bediening { get; private set; }
+        public Status Status_item { get; private set; }
 
         public Bestelling_weergave(int id_in, int tafel_nummer_in, int aantal_in, string order_in, string opmerking_in, string bediening_in, Status status_item_in)
         {
-            id = id_in;
-            aantal = aantal_in;
-            order = order_in;
-            opmerking = opmerking_in;
-            bediening = bediening_in;
-            tafel_nummer = tafel_nummer_in;
-            status_item = status_item_in;
-        }
-
-        // Dit kan volgensmij ook in de property zelf?
-        // TO DO: DIT MOET IN LOGICA
-        public int BerekenTotaalPrijs()
-        {
-            return 0;
+            Id = id_in;
+            Aantal = aantal_in;
+            Order = order_in;
+            Opmerking = opmerking_in;
+            Bediening = bediening_in;
+            Tafel_nummer = tafel_nummer_in;
+            Status_item = status_item_in;
         }
     }
 }

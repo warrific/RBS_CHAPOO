@@ -1,12 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Logica;
@@ -18,9 +12,18 @@ namespace UI
 
         List<BestelItem> lijstBestelItem;
 
+        Model.Tafel tafel;
+
         public Bediening_Form()
         {
             InitializeComponent();
+            lijstBestelItem = new List<BestelItem>();
+        }
+
+        public Bediening_Form(int tafelnr_in)
+        {
+            InitializeComponent();
+            tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
             lijstBestelItem = new List<BestelItem>();
         }
 
@@ -32,11 +35,11 @@ namespace UI
 
             foreach (BestelItem item in lijstBestelItem)
             {
-                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
+                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
                 lvi.Tag = item;
-                lvi.SubItems.Add(item.aantal.ToString());
+                lvi.SubItems.Add(item.Aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
-                lvi.SubItems.Add(item.opmerking);
+                lvi.SubItems.Add(item.Opmerking);
                 listView_Bestelling.Items.Add(lvi);
             }
         }
@@ -168,18 +171,18 @@ namespace UI
 
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
-                if (lijstBestelItem[i].menuItem.shortname == menuItem.shortname)
+                if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
                 {
                     bestaat = true;
 
                     // genereer waarschuwing + break
-                    if (menuItem.voorraad == lijstBestelItem[i].aantal)
+                    if (menuItem.Voorraad == lijstBestelItem[i].Aantal)
                     {
-                        lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
+                        lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.Shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
                         break;
                     }
                     
-                    lijstBestelItem[i].aantal++;
+                    lijstBestelItem[i].Aantal++;
                     
                 }
             }
@@ -203,11 +206,11 @@ namespace UI
 
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
-                if (lijstBestelItem[i].menuItem.shortname == menuItem.shortname)
+                if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
                 {
-                    lijstBestelItem[i].aantal--;
+                    lijstBestelItem[i].Aantal--;
 
-                    if (lijstBestelItem[i].aantal == 0)
+                    if (lijstBestelItem[i].Aantal == 0)
                     {
                         lijstBestelItem.RemoveAt(i);
                     }
@@ -228,11 +231,10 @@ namespace UI
 
             //dummy tafel en werknemer
             Model.Werknemer werknemer = new Model.Werknemer(1, Functie.Bediening, "ehk", "3333");
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             foreach(BestelItem item in lijstBestelItem)
             {
-                logMenuItems.BewerkVoorraad(item.menuItem, item.aantal);
+                logMenuItems.BewerkVoorraad(item.MenuItem, item.Aantal);
             }
 
             if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel))
@@ -247,7 +249,7 @@ namespace UI
                 return;
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "open", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
@@ -299,10 +301,10 @@ namespace UI
 
             foreach(BestelItem item in lijstBestelItems)
             {
-                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
-                lvi.SubItems.Add(item.aantal.ToString());
+                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
+                lvi.SubItems.Add(item.Aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
-                lvi.SubItems.Add(item.opmerking);
+                lvi.SubItems.Add(item.Opmerking);
                 lvi.Tag = item;
                 listView_Bestelling.Items.Add(lvi);
             }
@@ -343,9 +345,9 @@ namespace UI
 
                 foreach (BestelItem bestelItem in lijstBestelItem)
                 {
-                    if(bestelItem.menuItem.id.ToString() == BestelItemId.menuItem.id.ToString())
+                    if(bestelItem.MenuItem.Id.ToString() == BestelItemId.MenuItem.Id.ToString())
                     {
-                        bestelItem.opmerking = textBox_Commentaar.Text;
+                        bestelItem.Opmerking = textBox_Commentaar.Text;
                     }
                 }
             }
@@ -364,18 +366,15 @@ namespace UI
                 logBestelItems.VerwijderBestelItemUitDB(bestelItem);
             }
 
-            // dummy tafel
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
-
             int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
             List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
 
             foreach (BestelItem item in lijstBestelItems)
             {
-                ListViewItem lvi = new ListViewItem(item.menuItem.shortname);
-                lvi.SubItems.Add(item.aantal.ToString());
+                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
+                lvi.SubItems.Add(item.Aantal.ToString());
                 lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
-                lvi.SubItems.Add(item.opmerking);
+                lvi.SubItems.Add(item.Opmerking);
                 lvi.Tag = item;
                 listView_Bestelling.Items.Add(lvi);
             }

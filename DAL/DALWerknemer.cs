@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using Model;
@@ -43,6 +39,45 @@ namespace DAL
             reader.Close();
             dbConnection.Close();
             return werknemers;
+        }
+
+        public List<Model.Werknemer> GetAllBediening()
+        {
+            dbConnection.Open();
+            SqlCommand command =
+            new SqlCommand("SELECT * FROM Medewerker WHERE  functie=Bediening ", dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<Werknemer> bediening = new  List<Werknemer>();
+
+            while (reader.Read())
+            {
+                Werknemer werknemer = ReadWerknemer(reader);
+                bediening.Add(werknemer);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+            return bediening;
+        }
+
+        public Model.Werknemer GetWerknemer(int code)
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Medewerker WHERE code = @code", dbConnection);
+            command.Parameters.AddWithValue("@code", code);
+            SqlDataReader reader = command.ExecuteReader();
+
+            Werknemer werknemer = null;
+
+            if (reader.Read())
+            {
+                werknemer = ReadWerknemer(reader);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+            return werknemer;
         }
 
         public Werknemer GetForID(int Id)

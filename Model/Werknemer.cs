@@ -8,31 +8,18 @@ namespace Model
 {
     public class Werknemer
     {
-       // int id;
-       // Functie functie;
-       // string naam;
-       // string wachtwoord;
-
-      //  public Werknemer()
-      //  {
-
-      //  }
-
         //members van Werknemer
-        private int id;
-        public int Id { get { return id; } set { id = value; } }
-        public Functie functie;
-        public string naam;
-        private string wachtwoord;
-        public string Wachtwoord { get { return this.wachtwoord; } set { if ((wachtwoord.Length == 4)) { this.wachtwoord = value; } } }
+        public int Id { get; private set; }
+        public Functie Functie { get; private set; }
+        public string Naam { get; private set; }
+        public string Wachtwoord { get; private set; }
 
         //bool properties voor set-members
-
         public bool Setid(int in_id)
         {
             if ((in_id > 0))
             {
-                this.id = in_id;
+                this.Id = in_id;
                 return true;
             }
             return false;
@@ -42,7 +29,7 @@ namespace Model
         {
             if ((in_functie == Functie.Bediening || in_functie == Functie.Bar || in_functie == Functie.Eigenaar || in_functie == Functie.Kok || in_functie == Functie.Sommelier))
             {
-                this.functie = in_functie;
+                this.Functie = in_functie;
                 return true;
             }
             return false;
@@ -52,7 +39,7 @@ namespace Model
         {
             if ((in_naam != " "))
             {
-                this.naam = in_naam;
+                this.Naam = in_naam;
                 return true;
             }
             return false;
@@ -66,10 +53,10 @@ namespace Model
 
          public Werknemer(int in_id, Functie in_functie, string in_naam, string in_wachtwoord)
 {
-            id = in_id;
-            functie = in_functie;
-            naam = in_naam;
-            wachtwoord = in_wachtwoord;
+            Id = in_id;
+            Functie = in_functie;
+            Naam = in_naam;
+            Wachtwoord = in_wachtwoord;
 
 
             // exceptions van de contructor Werknemer
@@ -80,7 +67,7 @@ namespace Model
                 errorMessage = errorMessage + "verkeerde id: " + in_id;
 
             if (Setfunctie(in_functie) == false)
-    {
+       {
                 errorMessage = errorMessage + "verkeerde functie: " + in_functie;
             }
 

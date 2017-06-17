@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Logica;
 using Model;
@@ -40,7 +37,7 @@ namespace UI
             if (naamKort)
                 listViewVoorraad.Columns.Add("Verkorte naam", 320);
             else
-                listViewVoorraad.Columns.Add("Naam", 350);
+            listViewVoorraad.Columns.Add("Naam", 350);
             listViewVoorraad.Columns.Add("Voorraad", 100);
 
             int aantal = MI_lijst.Count;
@@ -75,8 +72,8 @@ namespace UI
             for (int i = 0; i < aantal2; i++)
             {
                 ListViewItem li = new ListViewItem(w_lijst[i].Id.ToString());
-                li.SubItems.Add(w_lijst[i].naam.ToString());
-                li.SubItems.Add(w_lijst[i].functie.ToString());
+                li.SubItems.Add(w_lijst[i].Naam.ToString());
+                li.SubItems.Add(w_lijst[i].Functie.ToString());
 
                 listViewMedewerkers.Items.Add(li);
             }
@@ -131,7 +128,7 @@ namespace UI
                 treeViewMenu.Nodes[i].Nodes.Add("Hoofdgerecht");
                 treeViewMenu.Nodes[i].Nodes.Add("Nagerecht");
             }*/
-        }
+            }
 
         public Eigenaar_Form()
         {
@@ -179,7 +176,7 @@ namespace UI
         ///---UI STUFF---///
 
         ///PopupForm    controls
-        //Medewerker controls
+            //Medewerker controls
         Label lblNaam = new Label(); //Zit ook in menukaart
         Label lblFunctie = new Label();
         Label lblCode = new Label();
@@ -188,7 +185,7 @@ namespace UI
         TextBox txtNaam = new TextBox(); //Zit ook in menukaart
         ComboBox cmbFunctie = new ComboBox();
         TextBox txtCode = new TextBox();
-        //Menukaart controls
+            //Menukaart controls
         Label lblMenukaart = new Label();
         Label lblSubcategorie = new Label();
         Label lblKorteNaam = new Label();
@@ -208,7 +205,7 @@ namespace UI
         {
             if (btnFunctie == "ToevMedw")
             {
-                Werknemers werknemers = new Werknemers();
+                Werknemers werknemers = new Werknemers(); 
 
                 lblError.ForeColor = Color.Red;
                 string naam = txtNaam.Text;
@@ -218,7 +215,7 @@ namespace UI
                 if (!ingevuld)
                     lblError.Text = "Code ongeldig";
                 else
-                    lblError.Text = werknemers.ToevoegenWerknemer(naam, functie, code);
+                lblError.Text = werknemers.ToevoegenWerknemer(naam, functie, code);
 
                 if (lblError.Text == "")
                 {
@@ -268,7 +265,7 @@ namespace UI
 
             }
         }
-
+        
         private void VulCmbFunctie()
         {
             cmbFunctie.Items.Clear();
@@ -340,7 +337,7 @@ namespace UI
                 MessageBox.Show("Te veel items aangevinkt!");
             else
                 MessageBox.Show("Geen item aangevinkt!");
-
+            
         }
 
         private void ToevMenukaartUI()
