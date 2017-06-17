@@ -79,7 +79,7 @@ namespace UI
             int order_id = 0;
             int item_id = 0;
             Bestellingen bestellingen = new Bestellingen();
-            bestellingen.meld_gereed(order_id, item_id);
+            //bestellingen.meld_gereed(order_id, item_id);
             {
                 //lbl_tafel1.Text = Status_tafel.Bezet;
 
@@ -139,7 +139,7 @@ namespace UI
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
             int tafelnummer = 1;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
            
            if(lbl_tafel1.Text == "Vrij")
            {
@@ -181,7 +181,7 @@ namespace UI
         private void btn_Tafel2_Click(object sender, EventArgs e)
         {
             int tafelnummer = 2;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel2.Text == "Vrij")
             {
                 lbl_tafel2.Text = "Bezet";
@@ -192,7 +192,7 @@ namespace UI
         private void btn_Tafel3_Click(object sender, EventArgs e)
         {
             int tafelnummer = 3;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel3.Text == "Vrij")
             {
                 lbl_tafel3.Text = "Bezet";
@@ -203,7 +203,7 @@ namespace UI
         private void btn_Tafel4_Click(object sender, EventArgs e)
         {
             int tafelnummer = 4;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel4.Text == "Vrij")
             {
                 lbl_tafel4.Text = "Bezet";
@@ -214,7 +214,7 @@ namespace UI
         private void btn_Tafel5_Click(object sender, EventArgs e)
         {
             int tafelnummer = 5;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel5.Text == "Vrij")
             {
                 lbl_tafel5.Text = "Bezet";
@@ -225,7 +225,7 @@ namespace UI
         private void btn_Tafel6_Click(object sender, EventArgs e)
         {
             int tafelnummer = 6;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel6.Text == "Vrij")
             {
                 lbl_tafel6.Text = "Bezet";
@@ -236,7 +236,7 @@ namespace UI
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
             int tafelnummer = 7;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel7.Text == "Vrij")
             {
                 lbl_tafel7.Text = "Bezet";
@@ -247,7 +247,7 @@ namespace UI
         private void btn_Tafel8_Click(object sender, EventArgs e)
         {
             int tafelnummer = 8;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel8.Text == "Vrij")
             {
                 lbl_tafel8.Text = "Bezet";
@@ -258,7 +258,7 @@ namespace UI
         private void btn_Tafel9_Click(object sender, EventArgs e)
         {
             int tafelnummer = 9;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel9.Text == "Vrij")
             {
                 lbl_tafel9.Text = "Bezet";
@@ -269,7 +269,7 @@ namespace UI
         private void btn_Tafel10_Click(object sender, EventArgs e)
         {
             int tafelnummer = 10;
-            btn_BestellingOpnemen_Click(sender, e, tafelnummer);
+            btn_BestellingOpnemen_Click(sender, e);
             if (lbl_tafel10.Text == "Vrij")
             {
                 lbl_tafel10.Text = "Bezet";
@@ -286,8 +286,9 @@ namespace UI
             data_dranken.Refresh();
         }
 
-        private void btn_BestellingOpnemen_Click(object sender, EventArgs e, int tafel_nummer)
+        private void btn_BestellingOpnemen_Click(object sender, EventArgs e)
         {
+            int tafel_nummer = 1;
             Logica.Tafel logica_tafel = new Logica.Tafel();
             logica_tafel.CheckTafelNr(tafel_nummer);
 
