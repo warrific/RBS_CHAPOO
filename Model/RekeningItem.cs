@@ -9,6 +9,9 @@ namespace Model
 {
     public class RekeningItem
     {
+        public int Aantal { get; private set; }
+        public string Naam { get; private set; }
+        public float Prijs { get; private set; }
         public int aantal { get; private set; }
         public string naam { get; private set; }
         public double prijs { get; private set; }
