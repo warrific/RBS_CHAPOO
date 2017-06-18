@@ -124,7 +124,7 @@ namespace UI
             }
         }
 
-        public Eigenaar_Form(string username, string userfunctie) : base(username, userfunctie)
+        public Eigenaar_Form(Model.Werknemer modelWerknemer) : base(modelWerknemer)
         {
             InitializeComponent();
 

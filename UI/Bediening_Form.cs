@@ -15,19 +15,21 @@ namespace UI
 {
     public partial class Bediening_Form : Main_Form
     {
-
+        Model.Werknemer modelWerknemerOut = new Model.Werknemer();
         List<BestelItem> lijstBestelItem;
         Model.Tafel tafel;
         Model.Werknemer werknemer;
 
-        public Bediening_Form(string username, string userfunctie, int tafelnr_in): base(username, userfunctie)
+        public Bediening_Form(Model.Werknemer modelWerknemer, int tafelnr_in): base(modelWerknemer)
         {
             InitializeComponent();
+
+            setTafelNR(tafelnr_in);
 
             Logica.Werknemer logWerknemer = new Logica.Werknemer();
 
             tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
-            werknemer = logWerknemer.GetWerknemerByName(username);
+            werknemer = logWerknemer.GetWerknemerByName(modelWerknemerOut.Naam);
             lijstBestelItem = new List<BestelItem>();
         }
 
@@ -266,7 +268,7 @@ namespace UI
         // opent betalen form
         private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
-            Betalen_Form betalen_form = new Betalen_Form(username , userfunctie,(Int32.Parse(btn_Tafel.Text)));
+            Betalen_Form betalen_form = new Betalen_Form(modelWerknemerOut, tafel.Id);
         }
 
         // wist huidige bestelling
@@ -335,8 +337,6 @@ namespace UI
                 return;
             }
 
-
-
             foreach(ListViewItem item in listView_Bestelling.SelectedItems)
             {
                 BestelItem BestelItemId = (BestelItem)item.Tag;
@@ -355,17 +355,14 @@ namespace UI
 
         private void Btn_VerwijderItemUitDB_Click(object sender, EventArgs e)
         {
-            Logica.Bestelitems logBestelItems = new Bestelitems();
-            Logica.Bestellingen logBestelingen = new Bestellingen();
-            Logica.MenuItems logMenuItems = new MenuItems();
+            Bestelitems logBestelItems = new Bestelitems();
+            Bestellingen logBestelingen = new Bestellingen();
+            MenuItems logMenuItems = new MenuItems();
             foreach (ListViewItem item in listView_Bestelling.SelectedItems)
             {
                 BestelItem bestelItem = (BestelItem)item.Tag;
                 logBestelItems.VerwijderBestelItemUitDB(bestelItem);
             }
-
-            // dummy tafel
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
             List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
