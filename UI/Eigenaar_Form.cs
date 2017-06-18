@@ -64,8 +64,9 @@ namespace UI
 
             listViewMedewerkers.View = View.Details;
             listViewMedewerkers.Columns.Add("Id", 50);
-            listViewMedewerkers.Columns.Add("Naam", 350);
+            listViewMedewerkers.Columns.Add("Naam", 300);
             listViewMedewerkers.Columns.Add("Functie", 100);
+            listViewMedewerkers.Columns.Add("Code", 100);
 
             int aantal2 = w_lijst.Count;
 
@@ -74,6 +75,7 @@ namespace UI
                 ListViewItem li = new ListViewItem(w_lijst[i].Id.ToString());
                 li.SubItems.Add(w_lijst[i].Naam.ToString());
                 li.SubItems.Add(w_lijst[i].Functie.ToString());
+                li.SubItems.Add(w_lijst[i].Wachtwoord.ToString());
 
                 listViewMedewerkers.Items.Add(li);
             }
