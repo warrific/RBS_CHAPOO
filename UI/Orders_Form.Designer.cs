@@ -37,6 +37,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.data_items)).BeginInit();
             this.SuspendLayout();
             // 
+            // btn_Tafel
+            // 
+            this.btn_Tafel.BackColor = System.Drawing.SystemColors.Control;
+            // 
             // data_items
             // 
             this.data_items.AllowUserToOrderColumns = true;
@@ -52,24 +56,26 @@
             // 
             // btn_herlaad
             // 
+            this.btn_herlaad.BackColor = System.Drawing.SystemColors.Control;
             this.btn_herlaad.Location = new System.Drawing.Point(29, 96);
             this.btn_herlaad.Margin = new System.Windows.Forms.Padding(4);
             this.btn_herlaad.Name = "btn_herlaad";
             this.btn_herlaad.Size = new System.Drawing.Size(160, 62);
             this.btn_herlaad.TabIndex = 10;
             this.btn_herlaad.Text = "Herlaad";
-            this.btn_herlaad.UseVisualStyleBackColor = true;
+            this.btn_herlaad.UseVisualStyleBackColor = false;
             this.btn_herlaad.Click += new System.EventHandler(this.btn_herlaad_Click);
             // 
             // btn_gereed
             // 
+            this.btn_gereed.BackColor = System.Drawing.SystemColors.Control;
             this.btn_gereed.Location = new System.Drawing.Point(803, 96);
             this.btn_gereed.Margin = new System.Windows.Forms.Padding(4);
             this.btn_gereed.Name = "btn_gereed";
             this.btn_gereed.Size = new System.Drawing.Size(160, 62);
             this.btn_gereed.TabIndex = 11;
             this.btn_gereed.Text = "Gereed";
-            this.btn_gereed.UseVisualStyleBackColor = true;
+            this.btn_gereed.UseVisualStyleBackColor = false;
             this.btn_gereed.Click += new System.EventHandler(this.btn_gereed_Click);
             // 
             // btn_historie

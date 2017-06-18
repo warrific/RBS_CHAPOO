@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.btn_LogUit = new System.Windows.Forms.Button();
             this.btn_Tafel = new System.Windows.Forms.Button();
             this.lbl_naam = new System.Windows.Forms.Label();
@@ -41,12 +42,12 @@
             // 
             // btn_LogUit
             // 
-            this.btn_LogUit.BackColor = System.Drawing.Color.Silver;
+            this.btn_LogUit.BackColor = System.Drawing.SystemColors.Control;
             this.btn_LogUit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_LogUit.Image = global::UI.Properties.Resources.logout;
             this.btn_LogUit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_LogUit.Location = new System.Drawing.Point(849, 9);
-            this.btn_LogUit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_LogUit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_LogUit.Name = "btn_LogUit";
             this.btn_LogUit.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btn_LogUit.Size = new System.Drawing.Size(137, 62);
@@ -58,10 +59,10 @@
             // 
             // btn_Tafel
             // 
-            this.btn_Tafel.BackColor = System.Drawing.Color.Silver;
+            this.btn_Tafel.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Tafel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Tafel.Location = new System.Drawing.Point(87, 9);
-            this.btn_Tafel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Tafel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Tafel.Name = "btn_Tafel";
             this.btn_Tafel.Size = new System.Drawing.Size(67, 62);
             this.btn_Tafel.TabIndex = 1;
@@ -113,7 +114,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lbl_naam);
             this.panel1.Controls.Add(this.btn_LogUit);
@@ -121,17 +122,20 @@
             this.panel1.Controls.Add(this.lbl_tafel);
             this.panel1.Controls.Add(this.lbl_functie);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1005, 79);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(392, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(403, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(208, 79);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -139,11 +143,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.BackColor = System.Drawing.Color.LightCyan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1003, 1065);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Form";
             this.Text = "Main menu";
             this.panel1.ResumeLayout(false);

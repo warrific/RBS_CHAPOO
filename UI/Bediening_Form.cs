@@ -18,17 +18,16 @@ namespace UI
         Model.Werknemer modelWerknemerOut = new Model.Werknemer();
         List<BestelItem> lijstBestelItem;
         Model.Tafel tafel;
-        Model.Werknemer werknemer;
 
         public Bediening_Form(Model.Werknemer modelWerknemer, int tafelnr_in): base(modelWerknemer)
         {
             InitializeComponent();
+
             setTafelNR(tafelnr_in);
 
             Logica.Werknemer logWerknemer = new Logica.Werknemer();
 
             tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
-            werknemer = logWerknemer.GetWerknemerByName(modelWerknemerOut.Naam);
             lijstBestelItem = new List<BestelItem>();
         }
 
@@ -251,7 +250,7 @@ namespace UI
                 return;
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer = modelWerknemerOut, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , modelWerknemerOut, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 

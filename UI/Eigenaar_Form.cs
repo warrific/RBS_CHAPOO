@@ -5,9 +5,6 @@ using System.Windows.Forms;
 using Logica;
 using Model;
 
-//Known issues: voorraad negatief maken, wat gebeurt er dan?
-//Extra toekomstige functionaliteiten: undo, waarschuwing niets geselecteerd, feedback op: iets is gelukt
-
 namespace UI
 {
     public partial class Eigenaar_Form : Main_Form
@@ -125,23 +122,7 @@ namespace UI
 
                 listViewMenu.Items.Add(li);
             }
-
-            /*treeViewMenu.Nodes.Clear();
-
-            foreach()
-            treeViewMenu.Nodes.Add("Lunch");
-
-            treeViewMenu.Nodes.Add("Diner");
-
-            treeViewMenu.Nodes.Add("Dranken");
-
-            for (int i = 0; i < 2; i++)
-            {
-                treeViewMenu.Nodes[i].Nodes.Add("Voorgerecht");
-                treeViewMenu.Nodes[i].Nodes.Add("Hoofdgerecht");
-                treeViewMenu.Nodes[i].Nodes.Add("Nagerecht");
-            }*/
-            }
+        }
 
         public Eigenaar_Form(Model.Werknemer modelWerknemer) : base(modelWerknemer)
         {
