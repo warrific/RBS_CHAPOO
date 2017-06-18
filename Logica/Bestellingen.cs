@@ -198,5 +198,11 @@ namespace Logica
             }
             return 0;
         }
+
+        public void RekenBestellingAf(Bestelling bestelling)
+        {
+            DALBestelling dal = new DALBestelling();
+            dal.RekenAf(bestelling);
+        }
     }
 }

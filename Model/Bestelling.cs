@@ -17,9 +17,19 @@ namespace Model
         public string Betaalmethode { get; private set; }
         public double Fooi { get; private set; }
         public DateTime Opname { get; private set; }
+        public string opmerking { get; private set; }
 
         public Bestelling() 
         { }
+
+        public Bestelling(int id, double totaalPrijs, string betaalMethode, string opmerking, double fooi)
+        {
+            this.Id = id;
+            this.Totaalprijs = totaalPrijs;
+            this.Betaalmethode = betaalMethode;
+            this.opmerking = opmerking;
+            this.Fooi = fooi;
+        }
 
         public Bestelling(int id_in, List<BestelItem> bestel_items_in, Tafel tafel_in, Status status_order_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi_in, DateTime opname_in)
         {

@@ -17,7 +17,6 @@ namespace UI
         private double subtotaal;
         private double btwBedrag;
 
-
         public Betalen_Form(string username, string userfunctie, int tafelNr)
             : base(username, userfunctie)
         {
@@ -91,6 +90,13 @@ namespace UI
             }
             totaalPrijs = logica.GetTotaalprijs(fooi, subtotaal, btwBedrag);
             Totaal_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", totaalPrijs);
+        }
+
+        private void btn_afrekenen_Click(object sender, EventArgs e)
+        {
+            Bestellingen bestelling = new Bestellingen();
+            bestelling.RekenBestellingAf(new Bestelling(logica.OrderId, totaalPrijs, Betaalwijze_out_lbl.Text, Opmerking_txtbox.Text, fooi));
+            this.Close();
         }
     }
 }

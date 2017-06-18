@@ -184,5 +184,24 @@ namespace DAL
 
             return count;
         }
+
+        public void RekenAf(Bestelling bestelling)
+        {
+            dbConnection.Open();
+
+            string dbString = "UPDATE Bestelling SET totaal_prijs = @totaalprijs, fooi = @fooi, opmerking = @opmerking, betaal_methode = @betaalmethode WHERE orderId = @id AND betaal_methode = 'open'";
+
+            SqlCommand command = new SqlCommand(dbString, dbConnection);
+
+            command.Parameters.AddWithValue("@id", bestelling.Id);
+            command.Parameters.AddWithValue("@totaalprijs", bestelling.Totaalprijs);
+            command.Parameters.AddWithValue("@fooi", bestelling.Fooi);
+            command.Parameters.AddWithValue("@opmerking", bestelling.opmerking);
+            command.Parameters.AddWithValue("@betaalmethode", bestelling.Betaalmethode);
+
+            command.ExecuteScalar();
+
+            dbConnection.Close();
+        }
     }
 }

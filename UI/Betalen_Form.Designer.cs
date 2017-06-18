@@ -61,8 +61,8 @@
             this.Btw_out_lbl = new System.Windows.Forms.Label();
             this.Totaal_out_lbl = new System.Windows.Forms.Label();
             this.Fooi_btn_1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.Bon_back_panel = new System.Windows.Forms.Panel();
+            this.btn_afrekenen = new System.Windows.Forms.Button();
             this.Fooi_textbox = new System.Windows.Forms.TextBox();
             this.Rekening_lview = new System.Windows.Forms.ListView();
             this.Aantal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -437,25 +437,28 @@
             this.Fooi_btn_1.UseVisualStyleBackColor = false;
             this.Fooi_btn_1.Click += new System.EventHandler(this.Fooi_Btn_Click);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(621, 932);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 46);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "Afrekenen";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Bon_back_panel
             // 
             this.Bon_back_panel.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.Bon_back_panel.Controls.Add(this.btn_afrekenen);
             this.Bon_back_panel.Controls.Add(this.Fooi_textbox);
             this.Bon_back_panel.Controls.Add(this.Fooi_header_lbl);
             this.Bon_back_panel.Location = new System.Drawing.Point(466, 63);
             this.Bon_back_panel.Name = "Bon_back_panel";
             this.Bon_back_panel.Size = new System.Drawing.Size(288, 928);
             this.Bon_back_panel.TabIndex = 44;
+            // 
+            // btn_afrekenen
+            // 
+            this.btn_afrekenen.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_afrekenen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_afrekenen.Location = new System.Drawing.Point(133, 855);
+            this.btn_afrekenen.Name = "btn_afrekenen";
+            this.btn_afrekenen.Size = new System.Drawing.Size(124, 55);
+            this.btn_afrekenen.TabIndex = 22;
+            this.btn_afrekenen.Text = "Afrekenen";
+            this.btn_afrekenen.UseVisualStyleBackColor = false;
+            this.btn_afrekenen.Click += new System.EventHandler(this.btn_afrekenen_Click);
             // 
             // Fooi_textbox
             // 
@@ -494,20 +497,19 @@
             // Product
             // 
             this.Product.Text = "Product";
-            this.Product.Width = 315;
+            this.Product.Width = 288;
             // 
             // Prijs
             // 
             this.Prijs.Text = "Prijs";
             this.Prijs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Prijs.Width = 70;
+            this.Prijs.Width = 97;
             // 
             // Betalen_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(752, 985);
             this.Controls.Add(this.Rekening_lview);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Totaal_out_lbl);
             this.Controls.Add(this.Btw_out_lbl);
             this.Controls.Add(this.Betaalwijze_out_lbl);
@@ -575,7 +577,6 @@
             this.Controls.SetChildIndex(this.Betaalwijze_out_lbl, 0);
             this.Controls.SetChildIndex(this.Btw_out_lbl, 0);
             this.Controls.SetChildIndex(this.Totaal_out_lbl, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.Rekening_lview, 0);
             this.Bon_back_panel.ResumeLayout(false);
             this.Bon_back_panel.PerformLayout();
@@ -619,12 +620,12 @@
         private System.Windows.Forms.Label Betaalwijze_out_lbl;
         private System.Windows.Forms.Label Btw_out_lbl;
         private System.Windows.Forms.Label Totaal_out_lbl;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel Bon_back_panel;
         private System.Windows.Forms.TextBox Fooi_textbox;
         private System.Windows.Forms.ListView Rekening_lview;
         private System.Windows.Forms.ColumnHeader Aantal;
         private System.Windows.Forms.ColumnHeader Product;
         private System.Windows.Forms.ColumnHeader Prijs;
+        private System.Windows.Forms.Button btn_afrekenen;
     }
 }

@@ -8,7 +8,7 @@ namespace Logica
     public class Rekeningen
     {
         private List<RekeningItem> rekening;
-
+        public int OrderId { get; private set; }
 
         public Rekeningen(int tafelNr)
         {
