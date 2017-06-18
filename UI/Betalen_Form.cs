@@ -35,6 +35,9 @@ namespace UI
                 Rekening_lview.Items.Add(Lvi);
             }
 
+            btn_Tafel.Text = tafelNr.ToString();
+            lbl_naam.Text = modelWerknemer.Naam;
+            lbl_functie.Text = Enum.GetName(typeof (Functie), modelWerknemer.Functie);
             btwBedrag = logica.GetBtw();
             subtotaal = logica.GetSubtotaalPrijs();
             totaalPrijs = subtotaal + btwBedrag;
@@ -90,6 +93,12 @@ namespace UI
             }
             totaalPrijs = logica.GetTotaalprijs(fooi, subtotaal, btwBedrag);
             Totaal_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", totaalPrijs);
+        }
+
+        public void btn_afrekenen_Click(object sender, EventArgs e)
+        {
+            Bestellingen bestelling = new Bestellingen();
+            bestelling.RekenBestellingAf(new Bestelling(logica.OrderId, totaalPrijs, Betaalwijze_out_lbl.Text, Opmerking_txtbox.Text, fooi));
         }
     }
 }

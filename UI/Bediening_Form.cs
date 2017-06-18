@@ -23,7 +23,6 @@ namespace UI
         public Bediening_Form(Model.Werknemer modelWerknemer, int tafelnr_in): base(modelWerknemer)
         {
             InitializeComponent();
-
             setTafelNR(tafelnr_in);
 
             Logica.Werknemer logWerknemer = new Logica.Werknemer();
@@ -252,7 +251,7 @@ namespace UI
                 return;
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , werknemer = modelWerknemerOut, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
@@ -269,6 +268,7 @@ namespace UI
         private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
             Betalen_Form betalen_form = new Betalen_Form(modelWerknemerOut, tafel.Id);
+            betalen_form.Show();
         }
 
         // wist huidige bestelling

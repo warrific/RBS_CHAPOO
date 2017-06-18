@@ -251,7 +251,6 @@ namespace UI
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
             tafelnummer = 7;
-
             setTafelNR(tafelnummer);
 
             if (lbl_tafel7.Text == "Vrij")

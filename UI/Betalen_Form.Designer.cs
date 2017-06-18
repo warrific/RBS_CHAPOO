@@ -74,8 +74,9 @@
             // Tafel_lbl
             // 
             this.Tafel_lbl.AutoSize = true;
-            this.Tafel_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Tafel_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Tafel_lbl.BackColor = System.Drawing.Color.LightCyan;
+            this.Tafel_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tafel_lbl.ForeColor = System.Drawing.Color.Black;
             this.Tafel_lbl.Location = new System.Drawing.Point(66, 84);
             this.Tafel_lbl.Name = "Tafel_lbl";
             this.Tafel_lbl.Size = new System.Drawing.Size(48, 20);
@@ -85,8 +86,8 @@
             // Medewerker_lbl
             // 
             this.Medewerker_lbl.AutoSize = true;
-            this.Medewerker_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Medewerker_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Medewerker_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Medewerker_lbl.ForeColor = System.Drawing.Color.Black;
             this.Medewerker_lbl.Location = new System.Drawing.Point(13, 110);
             this.Medewerker_lbl.Name = "Medewerker_lbl";
             this.Medewerker_lbl.Size = new System.Drawing.Size(100, 20);
@@ -96,8 +97,8 @@
             // Datum_lbl
             // 
             this.Datum_lbl.AutoSize = true;
-            this.Datum_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Datum_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Datum_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Datum_lbl.ForeColor = System.Drawing.Color.Black;
             this.Datum_lbl.Location = new System.Drawing.Point(52, 139);
             this.Datum_lbl.Name = "Datum_lbl";
             this.Datum_lbl.Size = new System.Drawing.Size(61, 20);
@@ -108,7 +109,7 @@
             // 
             this.Fooi_lbl.AutoSize = true;
             this.Fooi_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Fooi_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Fooi_lbl.ForeColor = System.Drawing.Color.Black;
             this.Fooi_lbl.Location = new System.Drawing.Point(67, 890);
             this.Fooi_lbl.Name = "Fooi_lbl";
             this.Fooi_lbl.Size = new System.Drawing.Size(48, 20);
@@ -119,7 +120,7 @@
             // 
             this.Betaalwijze_lbl.AutoSize = true;
             this.Betaalwijze_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Betaalwijze_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Betaalwijze_lbl.ForeColor = System.Drawing.Color.Black;
             this.Betaalwijze_lbl.Location = new System.Drawing.Point(18, 862);
             this.Betaalwijze_lbl.Name = "Betaalwijze_lbl";
             this.Betaalwijze_lbl.Size = new System.Drawing.Size(93, 20);
@@ -130,7 +131,7 @@
             // 
             this.Btw_lbl.AutoSize = true;
             this.Btw_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Btw_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Btw_lbl.ForeColor = System.Drawing.Color.Black;
             this.Btw_lbl.Location = new System.Drawing.Point(71, 918);
             this.Btw_lbl.Name = "Btw_lbl";
             this.Btw_lbl.Size = new System.Drawing.Size(44, 20);
@@ -141,7 +142,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(1, 941);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 24);
@@ -190,7 +191,7 @@
             // Betaalwijze_header_lbl
             // 
             this.Betaalwijze_header_lbl.AutoSize = true;
-            this.Betaalwijze_header_lbl.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.Betaalwijze_header_lbl.BackColor = System.Drawing.Color.SteelBlue;
             this.Betaalwijze_header_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Betaalwijze_header_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.Betaalwijze_header_lbl.Location = new System.Drawing.Point(483, 73);
@@ -202,7 +203,7 @@
             // Opmerking_header_lbl
             // 
             this.Opmerking_header_lbl.AutoSize = true;
-            this.Opmerking_header_lbl.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.Opmerking_header_lbl.BackColor = System.Drawing.Color.SteelBlue;
             this.Opmerking_header_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Opmerking_header_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.Opmerking_header_lbl.Location = new System.Drawing.Point(482, 647);
@@ -213,6 +214,7 @@
             // 
             // Opmerking_txtbox
             // 
+            this.Opmerking_txtbox.BackColor = System.Drawing.SystemColors.Control;
             this.Opmerking_txtbox.Location = new System.Drawing.Point(486, 684);
             this.Opmerking_txtbox.Name = "Opmerking_txtbox";
             this.Opmerking_txtbox.Size = new System.Drawing.Size(238, 140);
@@ -222,7 +224,7 @@
             // Fooi_header_lbl
             // 
             this.Fooi_header_lbl.AutoSize = true;
-            this.Fooi_header_lbl.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.Fooi_header_lbl.BackColor = System.Drawing.Color.SteelBlue;
             this.Fooi_header_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fooi_header_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.Fooi_header_lbl.Location = new System.Drawing.Point(17, 164);
@@ -356,7 +358,7 @@
             // 
             this.Tafel_out_lbl.AutoSize = true;
             this.Tafel_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Tafel_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Tafel_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.Tafel_out_lbl.Location = new System.Drawing.Point(120, 84);
             this.Tafel_out_lbl.Name = "Tafel_out_lbl";
             this.Tafel_out_lbl.Size = new System.Drawing.Size(0, 20);
@@ -366,7 +368,7 @@
             // 
             this.medewerker_out_lbl.AutoSize = true;
             this.medewerker_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.medewerker_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.medewerker_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.medewerker_out_lbl.Location = new System.Drawing.Point(120, 110);
             this.medewerker_out_lbl.Name = "medewerker_out_lbl";
             this.medewerker_out_lbl.Size = new System.Drawing.Size(0, 20);
@@ -376,7 +378,7 @@
             // 
             this.Datum_out_lbl.AutoSize = true;
             this.Datum_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Datum_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Datum_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.Datum_out_lbl.Location = new System.Drawing.Point(120, 139);
             this.Datum_out_lbl.Name = "Datum_out_lbl";
             this.Datum_out_lbl.Size = new System.Drawing.Size(0, 20);
@@ -386,7 +388,7 @@
             // 
             this.Fooi_out_lbl.AutoSize = true;
             this.Fooi_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fooi_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Fooi_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.Fooi_out_lbl.Location = new System.Drawing.Point(136, 890);
             this.Fooi_out_lbl.Name = "Fooi_out_lbl";
             this.Fooi_out_lbl.Size = new System.Drawing.Size(0, 20);
@@ -396,7 +398,7 @@
             // 
             this.Betaalwijze_out_lbl.AutoSize = true;
             this.Betaalwijze_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Betaalwijze_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Betaalwijze_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.Betaalwijze_out_lbl.Location = new System.Drawing.Point(136, 862);
             this.Betaalwijze_out_lbl.Name = "Betaalwijze_out_lbl";
             this.Betaalwijze_out_lbl.Size = new System.Drawing.Size(0, 20);
@@ -406,7 +408,7 @@
             // 
             this.Btw_out_lbl.AutoSize = true;
             this.Btw_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btw_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Btw_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.Btw_out_lbl.Location = new System.Drawing.Point(136, 918);
             this.Btw_out_lbl.Name = "Btw_out_lbl";
             this.Btw_out_lbl.Size = new System.Drawing.Size(0, 20);
@@ -416,7 +418,7 @@
             // 
             this.Totaal_out_lbl.AutoSize = true;
             this.Totaal_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Totaal_out_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.Totaal_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.Totaal_out_lbl.Location = new System.Drawing.Point(135, 941);
             this.Totaal_out_lbl.Name = "Totaal_out_lbl";
             this.Totaal_out_lbl.Size = new System.Drawing.Size(0, 24);
@@ -439,7 +441,7 @@
             // 
             // Bon_back_panel
             // 
-            this.Bon_back_panel.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.Bon_back_panel.BackColor = System.Drawing.Color.SteelBlue;
             this.Bon_back_panel.Controls.Add(this.btn_afrekenen);
             this.Bon_back_panel.Controls.Add(this.Fooi_textbox);
             this.Bon_back_panel.Controls.Add(this.Fooi_header_lbl);
@@ -451,7 +453,7 @@
             // btn_afrekenen
             // 
             this.btn_afrekenen.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_afrekenen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_afrekenen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_afrekenen.Location = new System.Drawing.Point(133, 855);
             this.btn_afrekenen.Name = "btn_afrekenen";
             this.btn_afrekenen.Size = new System.Drawing.Size(124, 55);
@@ -474,7 +476,7 @@
             // 
             // Rekening_lview
             // 
-            this.Rekening_lview.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Rekening_lview.BackColor = System.Drawing.Color.LightCyan;
             this.Rekening_lview.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Rekening_lview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Aantal,
@@ -508,6 +510,7 @@
             // Betalen_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(752, 985);
             this.Controls.Add(this.Rekening_lview);
             this.Controls.Add(this.Totaal_out_lbl);
