@@ -266,7 +266,7 @@ namespace UI
         // opent betalen form
         private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
-            Betalen_Form betalen_form = new Betalen_Form(username , userfunctie,(Int32.Parse(btn_Tafel.Text)));
+            Betalen_Form betalen_form = new Betalen_Form(username , userfunctie,tafel.Id);
         }
 
         // wist huidige bestelling
@@ -335,8 +335,6 @@ namespace UI
                 return;
             }
 
-
-
             foreach(ListViewItem item in listView_Bestelling.SelectedItems)
             {
                 BestelItem BestelItemId = (BestelItem)item.Tag;
@@ -363,9 +361,6 @@ namespace UI
                 BestelItem bestelItem = (BestelItem)item.Tag;
                 logBestelItems.VerwijderBestelItemUitDB(bestelItem);
             }
-
-            // dummy tafel
-            Model.Tafel tafel = new Model.Tafel(1, Status_tafel.Vrij);
 
             int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
             List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
