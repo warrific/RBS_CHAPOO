@@ -42,7 +42,7 @@
             // 
             // btn_LogUit
             // 
-            this.btn_LogUit.BackColor = System.Drawing.Color.Silver;
+            this.btn_LogUit.BackColor = System.Drawing.SystemColors.Control;
             this.btn_LogUit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_LogUit.Image = global::UI.Properties.Resources.logout;
             this.btn_LogUit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -59,7 +59,7 @@
             // 
             // btn_Tafel
             // 
-            this.btn_Tafel.BackColor = System.Drawing.Color.Silver;
+            this.btn_Tafel.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Tafel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Tafel.Location = new System.Drawing.Point(87, 9);
             this.btn_Tafel.Margin = new System.Windows.Forms.Padding(4);
@@ -114,7 +114,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lbl_naam);
             this.panel1.Controls.Add(this.btn_LogUit);
@@ -129,10 +129,13 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(392, 0);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(403, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(208, 79);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -140,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.BackColor = System.Drawing.Color.LightCyan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1003, 1065);
             this.Controls.Add(this.panel1);
