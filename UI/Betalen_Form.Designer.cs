@@ -483,7 +483,7 @@
             this.Product,
             this.Prijs});
             this.Rekening_lview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rekening_lview.ForeColor = System.Drawing.SystemColors.Control;
+            this.Rekening_lview.ForeColor = System.Drawing.Color.Black;
             this.Rekening_lview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.Rekening_lview.Location = new System.Drawing.Point(12, 188);
             this.Rekening_lview.Name = "Rekening_lview";

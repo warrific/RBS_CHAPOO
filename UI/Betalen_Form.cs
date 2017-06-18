@@ -10,42 +10,44 @@ namespace UI
 {
     public partial class Betalen_Form : Main_Form
     {
-        private List<Button> Betaalwijze = new List<Button>();
-        private Rekeningen logica;
+        // Fields beschikbaar binnen betalenform. 
+        private List<Button> Betaalwijze = new List<Button>(); //Nieuwe lijst van buttons aanmaken.
+        private Rekeningen logica; //Hier zit alle logica funtionaliteiten in
         private double totaalPrijs;
         private double fooi;
         private double subtotaal;
         private double btwBedrag;
 
 
-        public Betalen_Form(Model.Werknemer modelWerknemer, int tafelNr) : base(modelWerknemer)
+        public Betalen_Form(Model.Werknemer modelWerknemer, int tafelNr) : base(modelWerknemer) // Betalen Form krijgt een werknemer mee en een tafelnummer de medewerker word vefvolgens naar de Base constructor gestuurd
         {
-            logica = new Rekeningen(tafelNr);
+            logica = new Rekeningen(tafelNr); // Hier maak je een nieuwe instantie van de class Rekeningen. Met in de constructor een tafelnummer.
             
-            InitializeComponent();
-            Betaalwijze.Add(Betaalwijze_contant_btn);
-            Betaalwijze.Add(Betaalwijze_pin_btn);
+            InitializeComponent(); //Laadt alle grafische user elementen
+            Betaalwijze.Add(Betaalwijze_contant_btn); //We voegen een button toe aan de button list betaalwijze
+            Betaalwijze.Add(Betaalwijze_pin_btn); 
             Betaalwijze.Add(Betaalwijze_credit_btn);
             
-            foreach (RekeningItem item in logica.getRekening())
+            foreach (RekeningItem item in logica.getRekening())// We loopen door de lijst met rekeningItems en tonen de items in de listview.
             {
                 ListViewItem Lvi = new ListViewItem(item.Aantal.ToString());
                 Lvi.SubItems.Add(item.Naam);
-                Lvi.SubItems.Add(String.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", item.Prijs * item.Aantal));
-                Rekening_lview.Items.Add(Lvi);
+                Lvi.SubItems.Add(String.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", item.Prijs * item.Aantal)); 
+                Rekening_lview.Items.Add(Lvi); // we voegen de aangemaakte listviewItem in de listview control.
             }
 
-            btn_Tafel.Text = tafelNr.ToString();
+            btn_Tafel.Text = tafelNr.ToString(); //Vullen van de Labels en button in de main Form
             lbl_naam.Text = modelWerknemer.Naam;
             lbl_functie.Text = Enum.GetName(typeof (Functie), modelWerknemer.Functie);
-            btwBedrag = logica.GetBtw();
+
+            btwBedrag = logica.GetBtw(); //We roepen de GetBtw methode en deze stoppen we in de variabele btwBedrag.
             subtotaal = logica.GetSubtotaalPrijs();
-            totaalPrijs = subtotaal + btwBedrag;
+            totaalPrijs = subtotaal + btwBedrag; 
             Btw_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}", btwBedrag);
             Totaal_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}",totaalPrijs);
             Tafel_out_lbl.Text = tafelNr.ToString();
             Datum_out_lbl.Text = DateTime.Now.ToString();
-            medewerker_out_lbl = lbl_functie;
+            medewerker_out_lbl = lbl_naam;
         }
 
         private void Betaalwijze_click(object sender, EventArgs e)
@@ -98,6 +100,7 @@ namespace UI
         {
             Bestellingen bestelling = new Bestellingen();
             bestelling.RekenBestellingAf(new Bestelling(logica.OrderId, totaalPrijs, Betaalwijze_out_lbl.Text, Opmerking_txtbox.Text, fooi));
+            this.Close();
         }
     }
 }

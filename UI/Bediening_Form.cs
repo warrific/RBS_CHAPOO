@@ -22,7 +22,7 @@ namespace UI
         public Bediening_Form(Model.Werknemer modelWerknemer, int tafelnr_in): base(modelWerknemer)
         {
             InitializeComponent();
-
+            modelWerknemerOut = modelWerknemer;
             setTafelNR(tafelnr_in);
 
             Logica.Werknemer logWerknemer = new Logica.Werknemer();

@@ -189,7 +189,7 @@ namespace DAL
         {
             dbConnection.Open();
 
-            string dbString = "UPDATE Bestelling SET totaal_prijs = @totaalprijs, fooi = @fooi, opmerking = @opmerking, betaal_methode = @betaalmethode WHERE orderId = @id AND betaal_methode = 'open'";
+            string dbString = "UPDATE Bestelling SET totaal_prijs = @totaalprijs, fooi = @fooi, opmerking = @opmerking, betaal_methode = @betaalmethode WHERE order_id = @id AND betaal_methode = 'open'";
 
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
