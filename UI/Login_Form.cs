@@ -16,8 +16,6 @@ namespace UI
 {
     public partial class Login_Form : Form
     {
-        private string username;
-        private string userfunctie;
         public Login_Form()
         {
             InitializeComponent();
@@ -46,32 +44,27 @@ namespace UI
 
                  else 
                  {
-                     string username = modelWerknemer.Naam;
-                     string userfunctie = modelWerknemer.Functie.ToString();
-                     //  Main_Form obj_main = new Main_Form(username , userfunctie);
-
-
                      switch (modelWerknemer.Functie)
                      {
                          case Functie.Eigenaar:
                              this.Hide();
-                             new Eigenaar_Form(username, userfunctie).Show();
+                             new Eigenaar_Form(modelWerknemer).Show();
                              break;
                          case Functie.Bediening:
                              this.Hide();
-                             new OverzichtRestaurant_Form(username, userfunctie).Show();
+                             new OverzichtRestaurant_Form(modelWerknemer).Show();
                              break;
                          case Functie.Bar:
                              this.Hide();
-                             new Orders_Form(username, userfunctie, Functie.Bar).Show();
+                             new Orders_Form(modelWerknemer, Functie.Bar).Show();
                              break;
                          case Functie.Kok:
                              this.Hide();
-                             new Orders_Form(username, userfunctie, Functie.Kok).Show();
+                             new Orders_Form(modelWerknemer, Functie.Kok).Show();
                              break;
                          case Functie.Sommelier:
                              this.Hide();
-                             new Orders_Form(username, userfunctie, Functie.Sommelier).Show();
+                             new Orders_Form(modelWerknemer, Functie.Sommelier).Show();
                              break;
 
                          default:

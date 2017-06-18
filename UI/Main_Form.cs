@@ -12,16 +12,20 @@ using Logica;
 
 namespace UI
 {
+
     public partial class Main_Form : Form
     {
-        protected string username;
-        protected string userfunctie;
+        private string tafelnr;
+
+        private Model.Werknemer modelWerknemerOut = new Model.Werknemer();
         
-        public Main_Form(string username, string userfunctie)
+        public Main_Form(Model.Werknemer modelWerknemer)
         {
+            modelWerknemerOut = modelWerknemer;
+
             InitializeComponent();
-            lbl_naam.Text = username;
-            lbl_functie.Text = userfunctie;
+            lbl_naam.Text = modelWerknemerOut.Naam;
+            lbl_functie.Text = Enum.GetName(typeof(Functie), modelWerknemerOut.Functie);
             Size = new Size(768, 1024);
         }
 
@@ -33,13 +37,26 @@ namespace UI
         private void btn_Tafel_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new OverzichtRestaurant_Form(username , userfunctie);
+            OverzichtRestaurant_Form overzichtform = new OverzichtRestaurant_Form(modelWerknemerOut);
+            overzichtform.Show();
         }
 
         private void btn_LogUit_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Login_Form();
+            Login_Form loginform = new Login_Form();
+            loginform.Show();
+        }
+
+        public void setTafelNR(int tafelnummer)
+        {
+            tafelnr = tafelnummer.ToString();
+            btn_Tafel.Text = tafelnr;
+        }
+
+        public void updateTafelNR()
+        {
+            btn_Tafel.Text = tafelnr;
         }
     }
 }

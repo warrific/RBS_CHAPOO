@@ -18,8 +18,7 @@ namespace UI
         private double btwBedrag;
 
 
-        public Betalen_Form(string username, string userfunctie, int tafelNr)
-            : base(username, userfunctie)
+        public Betalen_Form(Model.Werknemer modelWerknemer, int tafelNr) : base(modelWerknemer)
         {
             logica = new Rekeningen(tafelNr);
             

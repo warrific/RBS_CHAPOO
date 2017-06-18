@@ -14,12 +14,17 @@ namespace UI
 {
     public partial class OverzichtRestaurant_Form : UI.Main_Form
     {
+        private Model.Werknemer modelWerknemerOut = new Model.Werknemer();
         private bool status_actueel = true;
         private bool is_drinken = true;
+        private int tafelnummer ;
 
-        public OverzichtRestaurant_Form( string username, string userfunctie): base(username,userfunctie)
+        public OverzichtRestaurant_Form(Model.Werknemer modelWerknemer) : base(modelWerknemer)
         {
             InitializeComponent();
+
+            modelWerknemerOut = modelWerknemer;
+
             // list_tafeloverzicht.View = View.Details;
             // list_tafeloverzicht.HideSelection = false;
 
@@ -135,13 +140,13 @@ namespace UI
         // }
         //}
 
-
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 1;
-            btn_BestellingOpnemen_Click(sender, e);
-           
-           if(lbl_tafel1.Text == "Vrij")
+            tafelnummer = 1;
+
+            setTafelNR(tafelnummer);
+
+           if (lbl_tafel1.Text == "Vrij")
            {
                lbl_tafel1.Text = "Bezet";
            }
@@ -180,8 +185,10 @@ namespace UI
 
         private void btn_Tafel2_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 2;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 2;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel2.Text == "Vrij")
             {
                 lbl_tafel2.Text = "Bezet";
@@ -191,8 +198,10 @@ namespace UI
 
         private void btn_Tafel3_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 3;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 3;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel3.Text == "Vrij")
             {
                 lbl_tafel3.Text = "Bezet";
@@ -202,8 +211,10 @@ namespace UI
 
         private void btn_Tafel4_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 4;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 4;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel4.Text == "Vrij")
             {
                 lbl_tafel4.Text = "Bezet";
@@ -213,8 +224,10 @@ namespace UI
 
         private void btn_Tafel5_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 5;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 5;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel5.Text == "Vrij")
             {
                 lbl_tafel5.Text = "Bezet";
@@ -224,8 +237,10 @@ namespace UI
 
         private void btn_Tafel6_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 6;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 6;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel6.Text == "Vrij")
             {
                 lbl_tafel6.Text = "Bezet";
@@ -235,8 +250,10 @@ namespace UI
 
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 7;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 7;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel7.Text == "Vrij")
             {
                 lbl_tafel7.Text = "Bezet";
@@ -246,8 +263,10 @@ namespace UI
 
         private void btn_Tafel8_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 8;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 8;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel8.Text == "Vrij")
             {
                 lbl_tafel8.Text = "Bezet";
@@ -257,8 +276,10 @@ namespace UI
 
         private void btn_Tafel9_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 9;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 9;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel9.Text == "Vrij")
             {
                 lbl_tafel9.Text = "Bezet";
@@ -268,8 +289,10 @@ namespace UI
 
         private void btn_Tafel10_Click(object sender, EventArgs e)
         {
-            int tafelnummer = 10;
-            btn_BestellingOpnemen_Click(sender, e);
+            tafelnummer = 10;
+
+            setTafelNR(tafelnummer);
+
             if (lbl_tafel10.Text == "Vrij")
             {
                 lbl_tafel10.Text = "Bezet";
@@ -288,17 +311,13 @@ namespace UI
 
         private void btn_BestellingOpnemen_Click(object sender, EventArgs e)
         {
-            int tafel_nummer = 1;
             Logica.Tafel logica_tafel = new Logica.Tafel();
-            logica_tafel.CheckTafelNr(tafel_nummer);
+            logica_tafel.CheckTafelNr(tafelnummer);
 
-            if (logica_tafel.CheckTafelNr(tafel_nummer))
+            if (logica_tafel.CheckTafelNr(tafelnummer))
             {
-                if (lbl_tafel1.Text == "Bezet" || lbl_tafel2.Text == "Bezet" || lbl_tafel3.Text == " Bezet" ||lbl_tafel4.Text == "Bezet" || lbl_tafel5.Text == "Bezet" || lbl_tafel6.Text == " Bezet" ||lbl_tafel7.Text == "Bezet" || lbl_tafel8.Text == "Bezet" || lbl_tafel9.Text == " Bezet" || lbl_tafel10.Text == "Bezet" )
-                {
                     this.Hide();
-                    new Bediening_Form(username , userfunctie, tafel_nummer).Show();
-                }
+                    new Bediening_Form(modelWerknemerOut, tafelnummer).Show();
             }  
         }
 

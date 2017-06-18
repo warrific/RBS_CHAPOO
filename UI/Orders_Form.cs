@@ -10,7 +10,7 @@ namespace UI
         private bool status_actueel = true;
         private bool is_drinken = true;
 
-        public Orders_Form(string username, string userfunctie, Model.Functie functie) : base(username, userfunctie)
+        public Orders_Form(Model.Werknemer werknemer, Model.Functie functie) : base(werknemer)
         {
             InitializeComponent();
 
