@@ -53,10 +53,12 @@ namespace DAL
             command.Parameters.AddWithValue("@Id", Id);
             SqlDataReader reader = command.ExecuteReader();
             Tafel item = null;
+
             if (reader.Read())
             {
-          //      item =(Tafel)Read("Id");
+                item = Readitem(reader);
             }
+
             reader.Close();
             dbConnection.Close();
 
