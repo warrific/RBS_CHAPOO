@@ -370,6 +370,7 @@
             this.medewerker_out_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.medewerker_out_lbl.ForeColor = System.Drawing.Color.Black;
             this.medewerker_out_lbl.Location = new System.Drawing.Point(120, 110);
+            this.medewerker_out_lbl.MaximumSize = new System.Drawing.Size(200, 0);
             this.medewerker_out_lbl.Name = "medewerker_out_lbl";
             this.medewerker_out_lbl.Size = new System.Drawing.Size(0, 20);
             this.medewerker_out_lbl.TabIndex = 37;

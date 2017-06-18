@@ -47,7 +47,7 @@ namespace UI
             Totaal_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}",totaalPrijs);
             Tafel_out_lbl.Text = tafelNr.ToString();
             Datum_out_lbl.Text = DateTime.Now.ToString();
-            medewerker_out_lbl = lbl_naam;
+            medewerker_out_lbl.Text = modelWerknemer.Naam;
         }
 
         private void Betaalwijze_click(object sender, EventArgs e)

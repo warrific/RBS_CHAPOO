@@ -13,9 +13,9 @@ namespace Logica
         public Rekeningen(int tafelNr)
         {
             Bestellingen bestelling = new Bestellingen();
-            int order_id = bestelling.GetOrderId(tafelNr);
+            OrderId = bestelling.GetOrderId(tafelNr);
             DALRekeningItem dal = new DALRekeningItem();
-            rekening = dal.GetRekening(order_id);
+            rekening = dal.GetRekening(OrderId);
         }
         public List<RekeningItem> getRekening()
         {

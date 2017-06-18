@@ -95,7 +95,7 @@ namespace DAL
             int werknemer_id = (int)reader["persoon_id"];
             Werknemer persoon = getwerknemer.GetForID(werknemer_id);                                      // zelfde verhaal als tafel "persoon_id"
             double totaalprijs = (float)(double)reader["totaal_prijs"];
-            string betaalmethode = (string)reader["betaal_methode"];
+            string betaalmethode = "open";//(string)reader["betaal_methode"];
             double fooi = (float)(double)reader["fooi"];
             DateTime opname = DateTime.Now;
 
@@ -196,7 +196,7 @@ namespace DAL
             command.Parameters.AddWithValue("@id", bestelling.Id);
             command.Parameters.AddWithValue("@totaalprijs", bestelling.Totaalprijs);
             command.Parameters.AddWithValue("@fooi", bestelling.Fooi);
-            command.Parameters.AddWithValue("@opmerking", bestelling.opmerking);
+            command.Parameters.AddWithValue("@opmerking", bestelling.Opmerking);
             command.Parameters.AddWithValue("@betaalmethode", bestelling.Betaalmethode);
 
             command.ExecuteScalar();

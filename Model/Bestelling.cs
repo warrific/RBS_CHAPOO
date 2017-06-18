@@ -17,7 +17,7 @@ namespace Model
         public string Betaalmethode { get; private set; }
         public double Fooi { get; private set; }
         public DateTime Opname { get; private set; }
-        public string opmerking { get; private set; }
+        public string Opmerking { get; private set; }
 
         public Bestelling() 
         { }
@@ -27,7 +27,7 @@ namespace Model
             this.Id = id;
             this.Totaalprijs = totaalPrijs;
             this.Betaalmethode = betaalMethode;
-            this.opmerking = opmerking;
+            this.Opmerking = opmerking;
             this.Fooi = fooi;
         }
 
