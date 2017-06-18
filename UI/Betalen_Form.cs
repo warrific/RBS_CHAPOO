@@ -79,7 +79,6 @@ namespace UI
 
         private void Fooi_textbox_TextChanged(object sender, EventArgs e)
         {
-            
             if (Fooi_textbox.Text == "")
             {
                 fooi = 0;
