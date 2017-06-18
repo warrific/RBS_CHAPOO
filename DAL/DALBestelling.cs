@@ -97,7 +97,15 @@ namespace DAL
             double totaalprijs = (float)(double)reader["totaal_prijs"];
             string betaalmethode = "open";//(string)reader["betaal_methode"];
             double fooi = (float)(double)reader["fooi"];
-            DateTime opname = DateTime.Now;
+            string opname;
+            try
+            {
+                opname = (string)reader["datum"];
+            }
+            catch
+            {
+                opname = "";
+            }
 
             return new Bestelling(order_id, items_list, tafel, status_order, persoon, totaalprijs, betaalmethode, fooi, opname);
         }
@@ -125,8 +133,8 @@ namespace DAL
         {
             dbConnection.Open();
 
-            string dbString =   "INSERT INTO Bestelling (order_id, tafel_id, persoon_id, totaal_prijs, betaal_methode, fooi, status) " +
-                                "VALUES (@orderid, @tafelid, @persoonid, @totaal, @betaal, @fooi, @status)";
+            string dbString =   "INSERT INTO Bestelling (order_id, tafel_id, persoon_id, totaal_prijs, betaal_methode, fooi, status, datum) " +
+                                "VALUES (@orderid, @tafelid, @persoonid, @totaal, @betaal, @fooi, @status, @datum)";
 
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
@@ -137,6 +145,7 @@ namespace DAL
             command.Parameters.AddWithValue("@betaal", bestelling.Betaalmethode);
             command.Parameters.AddWithValue("@fooi", bestelling.Fooi);
             command.Parameters.AddWithValue("@status", (int)bestelling.Status_order);
+            command.Parameters.AddWithValue("@datum", bestelling.Opname.ToString());
 
             command.ExecuteNonQuery();
 

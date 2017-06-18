@@ -16,7 +16,7 @@ namespace Model
         public double Totaalprijs { get; private set; }
         public string Betaalmethode { get; private set; }
         public double Fooi { get; private set; }
-        public DateTime Opname { get; private set; }
+        public string Opname { get; private set; }
         public string Opmerking { get; private set; }
 
         public Bestelling() 
@@ -31,7 +31,7 @@ namespace Model
             this.Fooi = fooi;
         }
 
-        public Bestelling(int id_in, List<BestelItem> bestel_items_in, Tafel tafel_in, Status status_order_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi_in, DateTime opname_in)
+        public Bestelling(int id_in, List<BestelItem> bestel_items_in, Tafel tafel_in, Status status_order_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi_in, string opname_in)
         {
             Id = id_in;
             Bestel_items = bestel_items_in;

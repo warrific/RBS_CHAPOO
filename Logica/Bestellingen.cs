@@ -2,6 +2,7 @@
 using Model;
 using DAL;
 using System.Linq;
+using System;
 
 namespace Logica
 {
@@ -81,6 +82,7 @@ namespace Logica
             string opmerking = "";
             string bediening = "";
             Status status;
+            string order_date = "";
 
             DALBestelling DALitem = new DALBestelling();
 
@@ -97,16 +99,19 @@ namespace Logica
                     order = list_item.Bestel_items[m].MenuItem.Naam;
                     opmerking = list_item.Bestel_items[m].Opmerking;
                     status = list_item.Bestel_items[m].Status_item;
+                    if (list_item.Opname != "")
+                    {
+                        order_date = list_item.Opname.Substring(9, 6);
+                    }
 
-                    
                     // Check welke lijst gevuld moet worden en wat hier in moet (actueel of historie)
                     if ((list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Drank || list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Alcohol)&& (list_item.Bestel_items[m].Status_item == Status.Open) == status_actueel)
                     {
-                        bar_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status));
+                        bar_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status, order_date));
                     }
                     else if ((list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Diner || list_item.Bestel_items[m].MenuItem.Categorie == Categorie.Lunch) && (list_item.Bestel_items[m].Status_item == Status.Open) == status_actueel)
                     {
-                        keuken_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status));
+                        keuken_lijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status, order_date));
                     }
                 }
 

@@ -250,7 +250,7 @@ namespace UI
                 return;
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , modelWerknemerOut, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now);
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , modelWerknemerOut, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 

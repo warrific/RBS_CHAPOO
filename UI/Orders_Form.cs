@@ -57,17 +57,23 @@ namespace UI
             data_items.Columns.Add(order);
             
             DataGridViewTextBoxColumn opmerking = new DataGridViewTextBoxColumn();
-            opmerking.Width = 180;
+            opmerking.Width = 160;
             opmerking.DataPropertyName = "opmerking";
             opmerking.HeaderText = "Opmerking";
             data_items.Columns.Add(opmerking);
 
             DataGridViewTextBoxColumn bediening = new DataGridViewTextBoxColumn();
-            bediening.Width = 107;
+            bediening.Width = 87;
             bediening.DataPropertyName = "bediening";
             bediening.HeaderText = "Bediening";
             data_items.Columns.Add(bediening);
-            
+
+            DataGridViewTextBoxColumn datum = new DataGridViewTextBoxColumn();
+            datum.Width = 40;
+            datum.DataPropertyName = "order_date";
+            datum.HeaderText = "datum";
+            data_items.Columns.Add(datum);
+
         }
 
         private void btn_gereed_Click(object sender, EventArgs e)
