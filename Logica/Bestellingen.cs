@@ -89,6 +89,7 @@ namespace Logica
             int i = 0;
             foreach (Bestelling list_item in make_listbestelling())
             {
+                // Loop voor de bestel items die in de bestelling staan
                 for (int m = 0; m < list_item.Bestel_items.Count; m++)
                 {
                     // Voor overzicht even los en niet in new Bestelling_weergave()

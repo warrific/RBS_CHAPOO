@@ -14,11 +14,11 @@ namespace UI
         {
             InitializeComponent();
 
-            // Labels voor tafels weg
+            // Labels van tafels weg
             lbl_tafel.Hide();
             btn_Tafel.Hide();
 
-            // Functie check, dit word later gebruikt voor lijsten filteren
+            // Functie check, dit wordt later gebruikt voor lijsten filteren
             if (functie == Model.Functie.Bar)
             {
                 is_drinken = true;
