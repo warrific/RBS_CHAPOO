@@ -180,7 +180,7 @@ namespace UI
                     bestaat = true;
 
                     // genereer waarschuwing + break
-                    if (menuItem.Voorraad == lijstBestelItem[i].Aantal)
+                    if (menuItem.Voorraad <= lijstBestelItem[i].Aantal)
                     {
                         lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.Shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
                         break;

@@ -11,7 +11,19 @@ namespace Model
         public int Id { get; private set; }
         public string Naam { get; private set; }
         public double Prijs { get; private set; }
-        public int Voorraad { get; set; }
+        public int Voorraad
+        {   get
+            {
+                return Voorraad;
+            }
+            set
+            {
+                if (Voorraad + value >= 0)
+                {
+                    Voorraad = value;
+                }
+            }
+        }
         public Categorie Categorie { get; private set; }
         public SubCategorie Subcategorie { get; private set; }
         public string Shortname { get; private set; }
