@@ -26,8 +26,8 @@ namespace UI
         {
             listViewVoorraad.Clear();
             List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); //maak list aan
-            MenuItems menuItems = new MenuItems(); //maak object aan
-            MI_lijst = menuItems.make_list(); //vul lijst
+            MenuItems menuItemLogica = new MenuItems(); //maak object aan
+            MI_lijst = menuItemLogica.make_list(); //vul lijst
 
             listViewVoorraad.View = View.Details;
             listViewVoorraad.Columns.Add("Id", 50);
@@ -37,9 +37,7 @@ namespace UI
             listViewVoorraad.Columns.Add("Naam", 350);
             listViewVoorraad.Columns.Add("Voorraad", 100);
 
-            int aantal = MI_lijst.Count;
-
-            for (int i = 0; i < aantal; i++)
+            for (int i = 0; i < MI_lijst.Count; i++)
             {
                 ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
@@ -56,8 +54,8 @@ namespace UI
         {
             listViewMedewerkers.Clear();
             List<Model.Werknemer> w_lijst = new List<Model.Werknemer>();
-            Werknemers werknemers = new Werknemers(); //maak object aan
-            w_lijst = werknemers.make_list();
+            Werknemers werknemerLogica = new Werknemers(); //maak object aan
+            w_lijst = werknemerLogica.make_list();
 
             listViewMedewerkers.View = View.Details;
             listViewMedewerkers.Columns.Add("Id", 50);
@@ -65,9 +63,7 @@ namespace UI
             listViewMedewerkers.Columns.Add("Functie", 100);
             listViewMedewerkers.Columns.Add("Code", 100);
 
-            int aantal2 = w_lijst.Count;
-
-            for (int i = 0; i < aantal2; i++)
+            for (int i = 0; i < w_lijst.Count; i++)
             {
                 ListViewItem li = new ListViewItem(w_lijst[i].Id.ToString());
                 li.SubItems.Add(w_lijst[i].Naam.ToString());
@@ -83,8 +79,8 @@ namespace UI
             listViewMenu.Clear();
 
             List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); //maak list aan
-            MenuItems menuItems = new MenuItems(); //maak object aan
-            MI_lijst = menuItems.make_list(); //vul lijst
+            MenuItems menuItemLogica = new MenuItems(); //maak object aan
+            MI_lijst = menuItemLogica.make_list(); //vul lijst
 
             listViewMenu.View = View.Details;
             listViewMenu.Columns.Add("Id", 50);
@@ -101,9 +97,7 @@ namespace UI
             listViewMenu.Columns.Add("Menukaart", 120);
             listViewMenu.Columns.Add("Prijs", 70);
 
-            int aantal = MI_lijst.Count;
-
-            for (int i = 0; i < aantal; i++)
+            for (int i = 0; i < MI_lijst.Count; i++)
             {
                 ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
@@ -203,7 +197,7 @@ namespace UI
         {
             if (btnFunctie == "ToevMedw")
             {
-                Werknemers werknemers = new Werknemers(); 
+                Werknemers werknemerLogica = new Werknemers(); 
 
                 lblError.ForeColor = Color.Red;
                 string naam = txtNaam.Text;
@@ -213,7 +207,7 @@ namespace UI
                 if (!ingevuld)
                     lblError.Text = "Code ongeldig";
                 else
-                lblError.Text = werknemers.ToevoegenWerknemer(naam, functie, code);
+                lblError.Text = werknemerLogica.ToevoegenWerknemer(naam, functie, code);
 
                 if (lblError.Text == "")
                 {
@@ -224,14 +218,14 @@ namespace UI
             }
             else if (btnFunctie == "WijzMedw")
             {
-                Werknemers werknemers = new Werknemers();
+                Werknemers werknemerLogica = new Werknemers();
 
                 int id = int.Parse(lblId.Text);
                 string naam = txtNaam.Text;
                 string functie = cmbFunctie.Text;
 
                 lblError.ForeColor = Color.Red;
-                lblError.Text = werknemers.WijzigenWerknemer(id, naam, functie);
+                lblError.Text = werknemerLogica.WijzigenWerknemer(id, naam, functie);
 
                 if (lblError.Text == "")
                 {
@@ -489,7 +483,6 @@ namespace UI
 
         private void btnToevMedw_Click(object sender, EventArgs e)
         {
-            //BaseButton? 
             InitPopupForm();
 
             popupForm.Controls.Clear();
@@ -609,13 +602,13 @@ namespace UI
 
             if (naamKort)
             {
-                btnVeranderNaamM.Text = "Hele naam";
-                btnVeranderNaamV.Text = "Hele naam";
+                btnVeranderNaamMenu.Text = "Hele naam";
+                btnVeranderNaamVoorraad.Text = "Hele naam";
             }
             else
             {
-                btnVeranderNaamM.Text = "Verkort naam";
-                btnVeranderNaamV.Text = "Verkort naam";
+                btnVeranderNaamMenu.Text = "Verkort naam";
+                btnVeranderNaamVoorraad.Text = "Verkort naam";
             }
             RefreshVoorraad();
             RefreshMenu();
