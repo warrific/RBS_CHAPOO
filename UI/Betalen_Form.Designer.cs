@@ -511,8 +511,9 @@
             // Betalen_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(752, 985);
+            this.ClientSize = new System.Drawing.Size(752, 741);
             this.Controls.Add(this.Rekening_lview);
             this.Controls.Add(this.Totaal_out_lbl);
             this.Controls.Add(this.Btw_out_lbl);

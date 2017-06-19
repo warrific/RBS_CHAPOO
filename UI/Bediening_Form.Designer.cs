@@ -33,6 +33,7 @@
             this.btn_bestellingen = new System.Windows.Forms.Button();
             this.btn_diner = new System.Windows.Forms.Button();
             this.pnl_optiesbestelling = new System.Windows.Forms.Panel();
+            this.Btn_VerwijderItemUitDB = new System.Windows.Forms.Button();
             this.flowLP_MenuItems = new System.Windows.Forms.FlowLayoutPanel();
             this.listView_Bestelling = new System.Windows.Forms.ListView();
             this.columnHeader_Naam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,7 +47,6 @@
             this.btn_commentaar = new System.Windows.Forms.Button();
             this.textBox_Commentaar = new System.Windows.Forms.RichTextBox();
             this.btn_CommentaarSent = new System.Windows.Forms.Button();
-            this.Btn_VerwijderItemUitDB = new System.Windows.Forms.Button();
             this.pnl_optiesbestelling.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +108,18 @@
             this.pnl_optiesbestelling.Name = "pnl_optiesbestelling";
             this.pnl_optiesbestelling.Size = new System.Drawing.Size(751, 62);
             this.pnl_optiesbestelling.TabIndex = 11;
+            // 
+            // Btn_VerwijderItemUitDB
+            // 
+            this.Btn_VerwijderItemUitDB.Enabled = false;
+            this.Btn_VerwijderItemUitDB.Location = new System.Drawing.Point(311, 1);
+            this.Btn_VerwijderItemUitDB.Name = "Btn_VerwijderItemUitDB";
+            this.Btn_VerwijderItemUitDB.Size = new System.Drawing.Size(149, 61);
+            this.Btn_VerwijderItemUitDB.TabIndex = 21;
+            this.Btn_VerwijderItemUitDB.Text = "Verwijder uit bestelling";
+            this.Btn_VerwijderItemUitDB.UseVisualStyleBackColor = true;
+            this.Btn_VerwijderItemUitDB.Visible = false;
+            this.Btn_VerwijderItemUitDB.Click += new System.EventHandler(this.Btn_VerwijderItemUitDB_Click);
             // 
             // flowLP_MenuItems
             // 
@@ -224,22 +236,11 @@
             this.btn_CommentaarSent.Visible = false;
             this.btn_CommentaarSent.Click += new System.EventHandler(this.Btn_CommentaarSent_Click);
             // 
-            // Btn_VerwijderItemUitDB
-            // 
-            this.Btn_VerwijderItemUitDB.Enabled = false;
-            this.Btn_VerwijderItemUitDB.Location = new System.Drawing.Point(311, 1);
-            this.Btn_VerwijderItemUitDB.Name = "Btn_VerwijderItemUitDB";
-            this.Btn_VerwijderItemUitDB.Size = new System.Drawing.Size(149, 61);
-            this.Btn_VerwijderItemUitDB.TabIndex = 21;
-            this.Btn_VerwijderItemUitDB.Text = "Verwijder uit bestelling";
-            this.Btn_VerwijderItemUitDB.UseVisualStyleBackColor = true;
-            this.Btn_VerwijderItemUitDB.Visible = false;
-            this.Btn_VerwijderItemUitDB.Click += new System.EventHandler(this.Btn_VerwijderItemUitDB_Click);
-            // 
             // Bediening_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(752, 985);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(752, 873);
             this.Controls.Add(this.lbl_VoorraadOp);
             this.Controls.Add(this.btn_CommentaarSent);
             this.Controls.Add(this.textBox_Commentaar);
