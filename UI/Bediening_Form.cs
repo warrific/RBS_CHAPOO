@@ -354,6 +354,7 @@ namespace UI
 
         private void Btn_VerwijderItemUitDB_Click(object sender, EventArgs e)
         {
+            listView_Bestelling.Items.Clear();
             Bestelitems logBestelItems = new Bestelitems();
             Bestellingen logBestelingen = new Bestellingen();
             MenuItems logMenuItems = new MenuItems();

@@ -128,6 +128,10 @@ namespace UI
         {
             InitializeComponent();
 
+            // Labels voor tafels weg
+            lbl_tafel.Hide();
+            btn_Tafel.Hide();
+
             ///Tab1 Voorraad
             RefreshVoorraad();
 
