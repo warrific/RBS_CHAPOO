@@ -8,19 +8,22 @@ namespace Model
 {
     public class MenuItem
     {
+        private int voorraadOpslag;
+
         public int Id { get; private set; }
         public string Naam { get; private set; }
         public double Prijs { get; private set; }
         public int Voorraad
-        {   get
+        {
+            get
             {
-                return Voorraad;
+                return voorraadOpslag;
             }
             set
             {
-                if (Voorraad + value >= 0)
+                if (voorraadOpslag + value >= 0)
                 {
-                    Voorraad = value;
+                    voorraadOpslag = value;
                 }
             }
         }
@@ -37,11 +40,6 @@ namespace Model
             Categorie = categorie_in;
             Shortname = shortname_in;
             Subcategorie = subcategorie_in;
-        }
-
-        public void ToonAlleMenuItems()
-        {
-
         }
     }
 }

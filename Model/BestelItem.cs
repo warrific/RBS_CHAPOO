@@ -2,19 +2,21 @@
 {
     public class BestelItem
     {
+        private int aantalOpslag;
+
         public int Id { get; private set; }
         public MenuItem MenuItem { get; private set; }
         public int Aantal
         {
             get
             {
-                return Aantal;
+                return aantalOpslag;
             }
             set
             {
-                if(Aantal + value >= 0)
+                if(aantalOpslag + value >= 0)
                 {
-                    Aantal = value;
+                    aantalOpslag = value;
                 }
             }
         }
