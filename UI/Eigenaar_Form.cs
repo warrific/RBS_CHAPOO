@@ -29,6 +29,7 @@ namespace UI
             MenuItems menuItemLogica = new MenuItems(); //maak object aan
             MI_lijst = menuItemLogica.make_list(); //vul lijst
 
+            //ListView kolommen en items
             listViewVoorraad.View = View.Details;
             listViewVoorraad.Columns.Add("Id", 50);
             if (naamKort)
@@ -37,7 +38,7 @@ namespace UI
             listViewVoorraad.Columns.Add("Naam", 350);
             listViewVoorraad.Columns.Add("Voorraad", 100);
 
-            for (int i = 0; i < MI_lijst.Count; i++)
+            for (int i = 0; i < MI_lijst.Count; i++) //Vult listview met items
             {
                 ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
@@ -57,13 +58,14 @@ namespace UI
             Werknemers werknemerLogica = new Werknemers(); //maak object aan
             w_lijst = werknemerLogica.make_list();
 
+            //ListView kolommen en items
             listViewMedewerkers.View = View.Details;
             listViewMedewerkers.Columns.Add("Id", 50);
             listViewMedewerkers.Columns.Add("Naam", 300);
             listViewMedewerkers.Columns.Add("Functie", 100);
             listViewMedewerkers.Columns.Add("Code", 100);
 
-            for (int i = 0; i < w_lijst.Count; i++)
+            for (int i = 0; i < w_lijst.Count; i++) //Vult listview met items
             {
                 ListViewItem li = new ListViewItem(w_lijst[i].Id.ToString());
                 li.SubItems.Add(w_lijst[i].Naam.ToString());
@@ -82,6 +84,7 @@ namespace UI
             MenuItems menuItemLogica = new MenuItems(); //maak object aan
             MI_lijst = menuItemLogica.make_list(); //vul lijst
 
+            //ListView kolommen en items
             listViewMenu.View = View.Details;
             listViewMenu.Columns.Add("Id", 50);
             if (naamKort)
@@ -89,7 +92,8 @@ namespace UI
                 listViewMenu.Columns.Add("Verkorte naam", 170);
                 listViewMenu.Columns.Add("naam", 0);
             }
-            else {
+            else
+            {
                 listViewMenu.Columns.Add("Naam", 190);
                 listViewMenu.Columns.Add("Verkorte naam", 0);
             }
@@ -97,7 +101,7 @@ namespace UI
             listViewMenu.Columns.Add("Menukaart", 120);
             listViewMenu.Columns.Add("Prijs", 70);
 
-            for (int i = 0; i < MI_lijst.Count; i++)
+            for (int i = 0; i < MI_lijst.Count; i++) //Vult listview met items
             {
                 ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
@@ -284,6 +288,7 @@ namespace UI
 
         private void ToevMedwUI()
         {
+            //Control instellingen die in popupform staan
             InitControl(lblTitel, TITELX, TITELY, "Medewerker Toevoegen", FNTSIZE, 250);
 
             InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
@@ -303,6 +308,7 @@ namespace UI
             btnBevestig.Click += btnBevestig_Click;
             btnFunctie = "ToevMedw";
 
+            //Voeg controls to aan form
             PopupFormStandardControls();
             PopupFormExtraControls(lblCode, txtCode);
             PopupFormExtraControls(lblFunctie, cmbFunctie);
@@ -314,12 +320,13 @@ namespace UI
         {
             if (listViewMedewerkers.CheckedItems.Count == 1)
             {
+                //Lees data uit listview
                 ListViewItem checkedItem = listViewMedewerkers.CheckedItems[0];
 
                 int id = int.Parse(checkedItem.SubItems[0].Text);
                 string naam = checkedItem.SubItems[1].Text.Trim();
                 string functie = checkedItem.SubItems[2].Text;
-
+                
                 InitControl(lblTitel, TITELX, TITELY, "Medewerker Wijzigen", FNTSIZE, 250);
 
                 InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
@@ -336,7 +343,7 @@ namespace UI
                 InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 60);
                 btnBevestig.Click += btnBevestig_Click;
                 btnFunctie = "WijzMedw";
-
+                
                 PopupFormStandardControls();
                 PopupFormExtraControls(lblFunctie, cmbFunctie);
 
