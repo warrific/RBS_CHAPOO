@@ -30,7 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageVoorraad = new System.Windows.Forms.TabPage();
-            this.btnVeranderNaamV = new System.Windows.Forms.Button();
+            this.btnVeranderNaamVoorraad = new System.Windows.Forms.Button();
             this.btnRefrVoorraad = new System.Windows.Forms.Button();
             this.btnVerlaag = new System.Windows.Forms.Button();
             this.btnVerhoog = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@
             this.btnToevMedw = new System.Windows.Forms.Button();
             this.listViewMedewerkers = new System.Windows.Forms.ListView();
             this.tabPageMenukaarten = new System.Windows.Forms.TabPage();
-            this.btnVeranderNaamM = new System.Windows.Forms.Button();
+            this.btnVeranderNaamMenu = new System.Windows.Forms.Button();
             this.listViewMenu = new System.Windows.Forms.ListView();
             this.btnRefrMenu = new System.Windows.Forms.Button();
             this.btnVerwMenukaart = new System.Windows.Forms.Button();
@@ -71,7 +71,7 @@
             // 
             // tabPageVoorraad
             // 
-            this.tabPageVoorraad.Controls.Add(this.btnVeranderNaamV);
+            this.tabPageVoorraad.Controls.Add(this.btnVeranderNaamVoorraad);
             this.tabPageVoorraad.Controls.Add(this.btnRefrVoorraad);
             this.tabPageVoorraad.Controls.Add(this.btnVerlaag);
             this.tabPageVoorraad.Controls.Add(this.btnVerhoog);
@@ -86,16 +86,16 @@
             this.tabPageVoorraad.Text = "Voorraad";
             this.tabPageVoorraad.UseVisualStyleBackColor = true;
             // 
-            // btnVeranderNaamV
+            // btnVeranderNaamVoorraad
             // 
-            this.btnVeranderNaamV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVeranderNaamV.Location = new System.Drawing.Point(558, 381);
-            this.btnVeranderNaamV.Name = "btnVeranderNaamV";
-            this.btnVeranderNaamV.Size = new System.Drawing.Size(178, 107);
-            this.btnVeranderNaamV.TabIndex = 18;
-            this.btnVeranderNaamV.Text = "Verkort naam";
-            this.btnVeranderNaamV.UseVisualStyleBackColor = true;
-            this.btnVeranderNaamV.Click += new System.EventHandler(this.btnVeranderNaam_Click);
+            this.btnVeranderNaamVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVeranderNaamVoorraad.Location = new System.Drawing.Point(558, 381);
+            this.btnVeranderNaamVoorraad.Name = "btnVeranderNaamVoorraad";
+            this.btnVeranderNaamVoorraad.Size = new System.Drawing.Size(178, 107);
+            this.btnVeranderNaamVoorraad.TabIndex = 18;
+            this.btnVeranderNaamVoorraad.Text = "Verkort naam";
+            this.btnVeranderNaamVoorraad.UseVisualStyleBackColor = true;
+            this.btnVeranderNaamVoorraad.Click += new System.EventHandler(this.btnVeranderNaam_Click);
             // 
             // btnRefrVoorraad
             // 
@@ -223,7 +223,7 @@
             // 
             // tabPageMenukaarten
             // 
-            this.tabPageMenukaarten.Controls.Add(this.btnVeranderNaamM);
+            this.tabPageMenukaarten.Controls.Add(this.btnVeranderNaamMenu);
             this.tabPageMenukaarten.Controls.Add(this.listViewMenu);
             this.tabPageMenukaarten.Controls.Add(this.btnRefrMenu);
             this.tabPageMenukaarten.Controls.Add(this.btnVerwMenukaart);
@@ -237,16 +237,16 @@
             this.tabPageMenukaarten.Text = "Menukaarten";
             this.tabPageMenukaarten.UseVisualStyleBackColor = true;
             // 
-            // btnVeranderNaamM
+            // btnVeranderNaamMenu
             // 
-            this.btnVeranderNaamM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVeranderNaamM.Location = new System.Drawing.Point(558, 458);
-            this.btnVeranderNaamM.Name = "btnVeranderNaamM";
-            this.btnVeranderNaamM.Size = new System.Drawing.Size(178, 107);
-            this.btnVeranderNaamM.TabIndex = 17;
-            this.btnVeranderNaamM.Text = "Verkort naam";
-            this.btnVeranderNaamM.UseVisualStyleBackColor = true;
-            this.btnVeranderNaamM.Click += new System.EventHandler(this.btnVeranderNaam_Click);
+            this.btnVeranderNaamMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVeranderNaamMenu.Location = new System.Drawing.Point(558, 458);
+            this.btnVeranderNaamMenu.Name = "btnVeranderNaamMenu";
+            this.btnVeranderNaamMenu.Size = new System.Drawing.Size(178, 107);
+            this.btnVeranderNaamMenu.TabIndex = 17;
+            this.btnVeranderNaamMenu.Text = "Verkort naam";
+            this.btnVeranderNaamMenu.UseVisualStyleBackColor = true;
+            this.btnVeranderNaamMenu.Click += new System.EventHandler(this.btnVeranderNaam_Click);
             // 
             // listViewMenu
             // 
@@ -304,7 +304,7 @@
             // Eigenaar_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(752, 741);
+            this.ClientSize = new System.Drawing.Size(752, 733);
             this.Controls.Add(this.tabControl1);
             this.Name = "Eigenaar_Form";
             this.Controls.SetChildIndex(this.tabControl1, 0);
@@ -338,7 +338,7 @@
         private System.Windows.Forms.Button btnRefrMedw;
         private System.Windows.Forms.Button btnRefrMenu;
         private System.Windows.Forms.ListView listViewMenu;
-        private System.Windows.Forms.Button btnVeranderNaamM;
-        private System.Windows.Forms.Button btnVeranderNaamV;
+        private System.Windows.Forms.Button btnVeranderNaamMenu;
+        private System.Windows.Forms.Button btnVeranderNaamVoorraad;
     }
 }

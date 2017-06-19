@@ -31,6 +31,7 @@ namespace UI
             lijstBestelItem = new List<BestelItem>();
         }
 
+        // update de listview met de items in de lijst bestel items
         private void UpdateListView()
         {
             listView_Bestelling.Items.Clear();
@@ -47,8 +48,9 @@ namespace UI
                 listView_Bestelling.Items.Add(lvi);
             }
         }
-         
-        protected void Btn_dranken_Click(object sender, EventArgs e)
+
+        // genereerd categorie buttons voor drankjes
+        private void Btn_dranken_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
@@ -72,7 +74,8 @@ namespace UI
 
         }
 
-        protected void Btn_diner_Click(object sender, EventArgs e)
+        // genereerd categorie buttons voor diner
+        private void Btn_diner_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
@@ -108,7 +111,8 @@ namespace UI
 
         }
 
-        protected void Btn_lunch_Click(object sender, EventArgs e)
+        // genereerd categorie buttons voor lunch
+        private void Btn_lunch_Click(object sender, EventArgs e)
         {
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
@@ -180,7 +184,7 @@ namespace UI
                     bestaat = true;
 
                     // genereer waarschuwing + break
-                    if (menuItem.Voorraad == lijstBestelItem[i].Aantal)
+                    if (menuItem.Voorraad <= lijstBestelItem[i].Aantal)
                     {
                         lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.Shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
                         break;
