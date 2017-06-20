@@ -46,7 +46,6 @@
     <Compile Include="Rekeningen_Service.cs" />
     <Compile Include="RestaurantOverzicht_Service.cs" />
     <Compile Include="Werknemer_Service.cs" />
-    <Compile Include="Werknemers_Service.cs" />
     <Compile Include="MenuItems_Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tafel_Service.cs" />

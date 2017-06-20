@@ -22,6 +22,24 @@ namespace UI
         const int MAXCODELENGTH = 4;
         bool naamKort = false;
 
+        public Eigenaar_Form(Model.Werknemer modelWerknemer) : base(modelWerknemer)
+        {
+            InitializeComponent();
+
+            // Labels voor tafels weg
+            lbl_tafel.Hide();
+            btn_Tafel.Hide();
+
+            ///Tab1 Voorraad
+            RefreshVoorraad();
+
+            ///Tab2 Medewerkers
+            RefreshMedewerkers();
+
+            ///Tab3 Menukaarten
+            RefreshMenu();
+        }
+
         private void RefreshVoorraad()
         {
             listViewVoorraad.Clear();
@@ -55,7 +73,7 @@ namespace UI
         {
             listViewMedewerkers.Clear();
             List<Model.Werknemer> w_lijst = new List<Model.Werknemer>();
-            Werknemers_Service werknemerLogica = new Werknemers_Service(); //maak object aan
+            Werknemer_Service werknemerLogica = new Werknemer_Service(); //maak object aan
             w_lijst = werknemerLogica.make_list();
 
             //ListView kolommen en items
@@ -122,23 +140,6 @@ namespace UI
             }
         }
 
-        public Eigenaar_Form(Model.Werknemer modelWerknemer) : base(modelWerknemer)
-        {
-            InitializeComponent();
-
-            // Labels voor tafels weg
-            lbl_tafel.Hide();
-            btn_Tafel.Hide();
-
-            ///Tab1 Voorraad
-            RefreshVoorraad();
-
-            ///Tab2 Medewerkers
-            RefreshMedewerkers();
-
-            ///Tab3 Menukaarten
-            RefreshMenu();
-        }
         //Hulpmethodes
         private void InitPopupForm()
         {
@@ -201,7 +202,7 @@ namespace UI
         {
             if (btnFunctie == "ToevMedw")
             {
-                Werknemers_Service werknemerLogica = new Werknemers_Service(); 
+                Werknemer_Service werknemerLogica = new Werknemer_Service(); 
 
                 lblError.ForeColor = Color.Red;
                 string naam = txtNaam.Text;
@@ -222,7 +223,7 @@ namespace UI
             }
             else if (btnFunctie == "WijzMedw")
             {
-                Werknemers_Service werknemerLogica = new Werknemers_Service();
+                Werknemer_Service werknemerLogica = new Werknemer_Service();
 
                 int id = int.Parse(lblId.Text);
                 string naam = txtNaam.Text;
@@ -278,6 +279,10 @@ namespace UI
             }
         }
         
+        private void ControleerGegevens()
+        { 
+}
+
         private void VulCmbFunctie()
         {
             cmbFunctie.Items.Clear();
@@ -525,7 +530,7 @@ namespace UI
                 {
                     foreach (ListViewItem checkedItem in listViewMedewerkers.CheckedItems)
                     {
-                        Werknemers_Service werknemers = new Werknemers_Service();
+                        Werknemer_Service werknemers = new Werknemer_Service();
 
                         int id = int.Parse(checkedItem.SubItems[0].Text);
 
