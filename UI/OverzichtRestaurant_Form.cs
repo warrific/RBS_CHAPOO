@@ -14,16 +14,16 @@ namespace UI
 {
     public partial class OverzichtRestaurant_Form : UI.Main_Form
     {
-        private Model.Werknemer modelWerknemerOut = new Model.Werknemer();
+        private Model.Werknemer huidigeGebruiker = new Model.Werknemer();
         private bool status_actueel = true;
         private bool is_drinken = true;
         private int tafelnummer ;
 
-        public OverzichtRestaurant_Form(Model.Werknemer modelWerknemer) : base(modelWerknemer)
+        public OverzichtRestaurant_Form(Model.Werknemer huidigeGebruiker_in) : base(huidigeGebruiker_in)
         {
             InitializeComponent();
 
-            modelWerknemerOut = modelWerknemer;
+            huidigeGebruiker = huidigeGebruiker_in;
 
             // list_tafeloverzicht.View = View.Details;
             // list_tafeloverzicht.HideSelection = false;
@@ -83,7 +83,7 @@ namespace UI
         {
             int order_id = 0;
             int item_id = 0;
-            Bestellingen bestellingen = new Bestellingen();
+            Bestellingen_Service bestellingen = new Bestellingen_Service();
             //bestellingen.meld_gereed(order_id, item_id);
             {
                 //lbl_tafel1.Text = Status_tafel.Bezet;
@@ -310,13 +310,13 @@ namespace UI
 
         private void btn_BestellingOpnemen_Click(object sender, EventArgs e)
         {
-            Logica.Tafel logica_tafel = new Logica.Tafel();
+            Logica.Tafel_Service logica_tafel = new Logica.Tafel_Service();
             logica_tafel.CheckTafelNr(tafelnummer);
 
             if (logica_tafel.CheckTafelNr(tafelnummer))
             {
                     this.Hide();
-                    new Bediening_Form(modelWerknemerOut, tafelnummer).Show();
+                    new Bediening_Form(huidigeGebruiker, tafelnummer).Show();
             }  
         }
 
@@ -337,10 +337,10 @@ namespace UI
 
         private void data_source()
         {
-            Bestellingen bestellingen = new Bestellingen();
+            Bestellingen_Service bestellingen = new Bestellingen_Service();
 
             // Bestellingen ophalen en in lijst zetten (in methode)
-            bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
+            //bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
 
             // Niet automatisch kolomen genereren
             //data_items.AutoGenerateColumns = false;

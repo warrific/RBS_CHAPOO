@@ -8,11 +8,11 @@ using System.Data;
 
 namespace DAL
 {
-    public class DALMenuItem
+    public class MenuItem_DAO
     {
         protected SqlConnection dbConnection;
 
-        public DALMenuItem()
+        public MenuItem_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
 
@@ -188,7 +188,7 @@ namespace DAL
 
         private MenuItem Readitem(SqlDataReader reader)
         {
-            DALMenuKaart getkaart = new DALMenuKaart();
+            MenuKaart_DAO getkaart = new MenuKaart_DAO();
 
             int id = (int)reader["item_id"];
             string naam = (string)reader["naam"];

@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using Logica;
 using Model;
 
@@ -30,49 +22,47 @@ namespace UI
 
         private void btn_enter_Click(object sender, EventArgs e)
         {
-                 string invoer_password = txt_wachtwoord.Text;
+            string invoer_password = txt_wachtwoord.Text;
 
-                 Logica.Werknemer l_werknemer = new Logica.Werknemer();
+            Werknemer_Service l_werknemer = new Werknemer_Service();
 
-                 Model.Werknemer modelWerknemer;
+            Werknemer huidigeGebruiker;
 
-                 if (l_werknemer.WachtwoordOngeldig(invoer_password, out modelWerknemer))
-                 {
-                     txt_wachtwoord.Text = "";
-                     lbl_invalidmessage.Text = "password invalid";
-                 }
+            if (l_werknemer.WachtwoordOngeldig(invoer_password, out huidigeGebruiker))
+            {
+                txt_wachtwoord.Text = "";
+                lbl_invalidmessage.Text = "password invalid";
+            }
 
-                 else 
-                 {
-                     switch (modelWerknemer.Functie)
-                     {
-                         case Functie.Eigenaar:
-                             this.Hide();
-                             new Eigenaar_Form(modelWerknemer).Show();
-                             break;
-                         case Functie.Bediening:
-                             this.Hide();
-                             new OverzichtRestaurant_Form(modelWerknemer).Show();
-                             break;
-                         case Functie.Bar:
-                             this.Hide();
-                             new Orders_Form(modelWerknemer, Functie.Bar).Show();
-                             break;
-                         case Functie.Kok:
-                             this.Hide();
-                             new Orders_Form(modelWerknemer, Functie.Kok).Show();
-                             break;
-                         case Functie.Sommelier:
-                             this.Hide();
-                             new Orders_Form(modelWerknemer, Functie.Sommelier).Show();
-                             break;
+            else
+            {
+                switch (huidigeGebruiker.Functie)
+                {
+                    case Functie.Eigenaar:
+                        this.Hide();
+                        new Eigenaar_Form(huidigeGebruiker).Show();
+                        break;
+                    case Functie.Bediening:
+                        this.Hide();
+                        new OverzichtRestaurant_Form(huidigeGebruiker).Show();
+                        break;
+                    case Functie.Bar:
+                        this.Hide();
+                        new Orders_Form(huidigeGebruiker, Functie.Bar).Show();
+                        break;
+                    case Functie.Kok:
+                        this.Hide();
+                        new Orders_Form(huidigeGebruiker, Functie.Kok).Show();
+                        break;
+                    case Functie.Sommelier:
+                        this.Hide();
+                        new Orders_Form(huidigeGebruiker, Functie.Sommelier).Show();
+                        break;
 
-                         default:
-                             break;
-                     }   
-                 
-                 }
-                     
+                    default:
+                        break;
+                }
+            }
         }
 
         private void btn_Click(object sender, EventArgs e)

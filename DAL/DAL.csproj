@@ -46,14 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DALBestelItem.cs" />
-    <Compile Include="DALBestelling.cs" />
-    <Compile Include="DALLogin.cs" />
-    <Compile Include="DALMenuKaart.cs" />
-    <Compile Include="DALMenuItem.cs" />
-    <Compile Include="DALRekeningItem.cs" />
-    <Compile Include="DALTafel.cs" />
-    <Compile Include="DALWerknemer.cs" />
+    <Compile Include="BestelItem_DAO.cs" />
+    <Compile Include="Bestelling_DAO.cs" />
+    <Compile Include="Login_DAO.cs" />
+    <Compile Include="MenuKaart_DAO.cs" />
+    <Compile Include="MenuItem_DAO.cs" />
+    <Compile Include="RekeningItem_DAO.cs" />
+    <Compile Include="Tafel_DAO.cs" />
+    <Compile Include="Werknemer_DAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

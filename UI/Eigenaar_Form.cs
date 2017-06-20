@@ -26,7 +26,7 @@ namespace UI
         {
             listViewVoorraad.Clear();
             List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); //maak list aan
-            MenuItems menuItemLogica = new MenuItems(); //maak object aan
+            MenuItems_Service menuItemLogica = new MenuItems_Service(); //maak object aan
             MI_lijst = menuItemLogica.make_list(); //vul lijst
 
             //ListView kolommen en items
@@ -55,7 +55,7 @@ namespace UI
         {
             listViewMedewerkers.Clear();
             List<Model.Werknemer> w_lijst = new List<Model.Werknemer>();
-            Werknemers werknemerLogica = new Werknemers(); //maak object aan
+            Werknemers_Service werknemerLogica = new Werknemers_Service(); //maak object aan
             w_lijst = werknemerLogica.make_list();
 
             //ListView kolommen en items
@@ -81,7 +81,7 @@ namespace UI
             listViewMenu.Clear();
 
             List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); //maak list aan
-            MenuItems menuItemLogica = new MenuItems(); //maak object aan
+            MenuItems_Service menuItemLogica = new MenuItems_Service(); //maak object aan
             MI_lijst = menuItemLogica.make_list(); //vul lijst
 
             //ListView kolommen en items
@@ -201,7 +201,7 @@ namespace UI
         {
             if (btnFunctie == "ToevMedw")
             {
-                Werknemers werknemerLogica = new Werknemers(); 
+                Werknemers_Service werknemerLogica = new Werknemers_Service(); 
 
                 lblError.ForeColor = Color.Red;
                 string naam = txtNaam.Text;
@@ -222,7 +222,7 @@ namespace UI
             }
             else if (btnFunctie == "WijzMedw")
             {
-                Werknemers werknemerLogica = new Werknemers();
+                Werknemers_Service werknemerLogica = new Werknemers_Service();
 
                 int id = int.Parse(lblId.Text);
                 string naam = txtNaam.Text;
@@ -239,7 +239,7 @@ namespace UI
             }
             else if (btnFunctie == "ToevMenu")
             {
-                MenuItems menuLogica = new MenuItems();
+                MenuItems_Service menuLogica = new MenuItems_Service();
 
                 string menukaart = cmbMenukaart.Text;
                 string subcategorie = cmbSubcategorie.Text;
@@ -258,7 +258,7 @@ namespace UI
             }
             else if (btnFunctie == "WijzMenu")
             {
-                MenuItems menuLogica = new MenuItems();
+                MenuItems_Service menuLogica = new MenuItems_Service();
 
                 int id = int.Parse(lblId.Text);
                 string menukaart = cmbMenukaart.Text;
@@ -466,7 +466,7 @@ namespace UI
         
         private void btnVerhoog_Click(object sender, EventArgs e)
         {
-            MenuItems menuitems = new MenuItems();
+            MenuItems_Service menuitems = new MenuItems_Service();
             foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
             {
                 int id = int.Parse(checkedItem.SubItems[0].Text);
@@ -478,7 +478,7 @@ namespace UI
 
         private void btnVerlaag_Click(object sender, EventArgs e)
         {
-            MenuItems menuitems = new MenuItems();
+            MenuItems_Service menuitems = new MenuItems_Service();
             foreach (ListViewItem checkedItem in listViewVoorraad.CheckedItems)
             {
                 int id = int.Parse(checkedItem.SubItems[0].Text);
@@ -525,7 +525,7 @@ namespace UI
                 {
                     foreach (ListViewItem checkedItem in listViewMedewerkers.CheckedItems)
                     {
-                        Werknemers werknemers = new Werknemers();
+                        Werknemers_Service werknemers = new Werknemers_Service();
 
                         int id = int.Parse(checkedItem.SubItems[0].Text);
 
@@ -574,7 +574,7 @@ namespace UI
                 {
                     foreach (ListViewItem checkedItem in listViewMenu.CheckedItems)
                     {
-                        MenuItems menuLogica = new MenuItems();
+                        MenuItems_Service menuLogica = new MenuItems_Service();
 
                         int id = int.Parse(checkedItem.SubItems[0].Text);
 

@@ -17,15 +17,15 @@ namespace UI
     {
         private string tafelnr;
 
-        private Model.Werknemer modelWerknemerOut = new Model.Werknemer();
+        private Model.Werknemer huidigeGebruiker = new Model.Werknemer();
         
-        public Main_Form(Model.Werknemer modelWerknemer)
+        public Main_Form(Model.Werknemer huidigGebruiker_in)
         {
-            modelWerknemerOut = modelWerknemer;
+            huidigeGebruiker = huidigGebruiker_in;
 
             InitializeComponent();
-            lbl_naam.Text = modelWerknemerOut.Naam;
-            lbl_functie.Text = Enum.GetName(typeof(Functie), modelWerknemerOut.Functie);
+            lbl_naam.Text = huidigeGebruiker.Naam;
+            lbl_functie.Text = Enum.GetName(typeof(Functie), huidigeGebruiker.Functie);
             Size = new Size(768, 1024);
         }
 
@@ -37,7 +37,7 @@ namespace UI
         private void btn_Tafel_Click(object sender, EventArgs e)
         {
             this.Hide();
-            OverzichtRestaurant_Form overzichtform = new OverzichtRestaurant_Form(modelWerknemerOut);
+            OverzichtRestaurant_Form overzichtform = new OverzichtRestaurant_Form(huidigeGebruiker);
             overzichtform.Show();
         }
 

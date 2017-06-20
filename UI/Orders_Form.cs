@@ -7,10 +7,10 @@ namespace UI
     public partial class Orders_Form : Main_Form
     {
 
-        private bool status_actueel = true;
-        private bool is_drinken = true;
+        private string status_actueel = "";
+        private string is_drinken = "";
 
-        public Orders_Form(Model.Werknemer werknemer, Model.Functie functie) : base(werknemer)
+        public Orders_Form(Model.Werknemer huidigeGebruiker_in, Model.Functie functie) : base(huidigeGebruiker_in)
         {
             InitializeComponent();
 
@@ -21,11 +21,11 @@ namespace UI
             // Functie check, dit wordt later gebruikt voor lijsten filteren
             if (functie == Model.Functie.Bar)
             {
-                is_drinken = true;
+                is_drinken = "";
             }
             if (functie == Model.Functie.Kok)
             {
-                is_drinken = false;
+                is_drinken = "";
             }
 
             // Datasource aanroepen
@@ -83,7 +83,7 @@ namespace UI
                 string item_naam = (Convert.ToString(data_items.Rows[(data_items.CurrentCell.RowIndex)].Cells[3].Value));
 
                 // Roep meld gereed aan en geef waardes door
-                Bestellingen bestellingen = new Bestellingen();
+                Bestellingen_Service bestellingen = new Bestellingen_Service();
                 bestellingen.meld_gereed(order_id, item_naam);
 
                 reload();
@@ -101,7 +101,7 @@ namespace UI
             if (btn_historie.Text == "Historie orders")
             {
                 btn_historie.Text = "Actuele orders";
-                status_actueel = false;
+                status_actueel = "";
                 lbl_historie.Text = "Order historie";
                 btn_gereed.Hide();
             }
@@ -110,7 +110,7 @@ namespace UI
             {
                 btn_historie.Text = "Historie orders";
                 lbl_historie.Text = "Orders";
-                status_actueel = true;
+                status_actueel = "";
                 btn_gereed.Show();
             }
 
@@ -129,23 +129,13 @@ namespace UI
 
         private void data_source()
         {
-            Bestellingen bestellingen = new Bestellingen();
+            Bestellingen_Service bestellingen = new Bestellingen_Service();
 
             // Bestellingen ophalen en in lijst zetten (in methode)
-            bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
+            data_items.DataSource = bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
 
             // Niet automatisch kolomen genereren
             data_items.AutoGenerateColumns = false;
-
-            // Check of we het bar of keuken form nodig hebben, en dit aan de databron binden
-            if (is_drinken)
-            {
-                data_items.DataSource = bestellingen.bar_lijst;
-            }
-            if (!is_drinken)
-            {
-                data_items.DataSource = bestellingen.keuken_lijst;
-            }
         }
     }
 }

@@ -6,7 +6,7 @@ using Model;
 
 namespace DAL
 {
-    public class DALWerknemer
+    public class Werknemer_DAO
     {
         //void GetId() { }
         //void getFunctie() { }
@@ -15,7 +15,7 @@ namespace DAL
         //public void GetAllWerknemers() { }
 
         protected SqlConnection dbConnection;
-        public DALWerknemer()
+        public Werknemer_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
             dbConnection = new SqlConnection(connString);

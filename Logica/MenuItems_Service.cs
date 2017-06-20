@@ -6,17 +6,17 @@ using DAL;
 
 namespace Logica
 {
-    public class MenuItems
+    public class MenuItems_Service
     {
         public List<MenuItem> make_list()
         {
-            DALMenuItem DALitem = new DALMenuItem();
+            MenuItem_DAO DALitem = new MenuItem_DAO();
             return DALitem.GetAll();
         }
 
         public void WijzigVoorraad(int id, int aantal, bool optellen)
         {
-            DALMenuItem DALItem = new DALMenuItem();
+            MenuItem_DAO DALItem = new MenuItem_DAO();
             DALItem.WijzigVoorraad(id, aantal, optellen);
         }
 
@@ -36,7 +36,7 @@ namespace Logica
                                 bool isFloat = float.TryParse(prijs, out floatPrijs);
                                 if (isFloat)
                                 {
-                                    DALMenuItem DALItem = new DALMenuItem();
+                                    MenuItem_DAO DALItem = new MenuItem_DAO();
 
                                     int id = DALItem.GetLastId() + 1;
                                     int category = (int)Enum.Parse(typeof(Categorie), menukaart);
@@ -75,7 +75,7 @@ namespace Logica
                                 bool isFloat = float.TryParse(prijs, out floatPrijs);
                                 if (isFloat)
                                 { 
-                                    DALMenuItem DALItem = new DALMenuItem();
+                                    MenuItem_DAO DALItem = new MenuItem_DAO();
 
                                     int category = (int)Enum.Parse(typeof(Categorie), menukaart);
                                     int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
@@ -99,14 +99,14 @@ namespace Logica
 
         public void VerwijderenMenu(int id)
         {
-            DALMenuItem DALItem = new DALMenuItem();
+            MenuItem_DAO DALItem = new MenuItem_DAO();
             DALItem.VerwijderenMenu2(id);
             DALItem.VerwijderenMenu(id);
         }
 
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
         {
-            DALMenuItem dalMenuItem = new DALMenuItem();
+            MenuItem_DAO dalMenuItem = new MenuItem_DAO();
             List<MenuItem> lijstMenuItems = new List<MenuItem>();
             foreach(MenuItem item in dalMenuItem.FilterByCategories(categorie, subcategorie))
             {
@@ -131,15 +131,15 @@ namespace Logica
             return totaal;
         }
 
-        public void StuurBestellingNaarDatabase(Bestelling bestelling)
+        public void StuurBestellingNaarDatabase(Model.Bestelling bestelling)
         {
-            DALBestelling dalBestelling = new DALBestelling();
+            DAL.Bestelling_DAO dalBestelling = new DAL.Bestelling_DAO();
             dalBestelling.ZetBestellingInDatabase(bestelling);
         }
 
         public int GetVoorraad(MenuItem item)
         {
-            DALMenuItem dalMenuItem = new DALMenuItem();
+            MenuItem_DAO dalMenuItem = new MenuItem_DAO();
 
             List<MenuItem> lijstMenuItems = dalMenuItem.GetAll();
 
@@ -156,7 +156,7 @@ namespace Logica
 
         public void BewerkVoorraad(MenuItem item, int aantalBesteld)
         {
-            DALMenuItem dalMenuItem = new DALMenuItem();
+            MenuItem_DAO dalMenuItem = new MenuItem_DAO();
             dalMenuItem.BewerkVoorraad(item, aantalBesteld);
         }
     }

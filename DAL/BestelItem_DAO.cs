@@ -5,11 +5,11 @@ using Model;
 
 namespace DAL
 {
-    public class DALBestelItem
+    public class BestelItem_DAO
     {
         protected SqlConnection dbConnection;
 
-        public DALBestelItem()
+        public BestelItem_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
 
@@ -100,7 +100,7 @@ namespace DAL
 
         private BestelItem Readitem(SqlDataReader reader)
         {
-            DALMenuItem get_menu_item = new DALMenuItem();
+            MenuItem_DAO get_menu_item = new MenuItem_DAO();
 
             int id = (int)reader["order_id"];
             MenuItem menu_item = get_menu_item.GetForID((int)reader["item_id"]);            // Haal item id op uit database, geef deze aan DALMenuItem.GetForID en krijg return

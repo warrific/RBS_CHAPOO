@@ -5,7 +5,7 @@ using Model;
 
 namespace DAL
 {
-    public class DALTafel
+    public class Tafel_DAO
     {
        // void GetId() { }
        // void GetStatus() { }
@@ -14,7 +14,7 @@ namespace DAL
 
         protected SqlConnection dbConnection;
 
-        public DALTafel()
+        public Tafel_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
 

@@ -6,14 +6,14 @@ using Model;
 
 namespace DAL
 {
-    public class DALBestelling
+    public class Bestelling_DAO
     {
         // List
         public List<Bestelling> bestellingen = new List<Bestelling>();
 
         protected SqlConnection dbConnection;
 
-        public DALBestelling()
+        public Bestelling_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
 
@@ -25,6 +25,27 @@ namespace DAL
             // Connectie opzetten
             dbConnection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Bestelling", dbConnection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            // Items inlezen
+            while (reader.Read())
+            {
+                Bestelling item = Readitem(reader);
+                bestellingen.Add(item);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return bestellingen;
+        }
+
+        public List<Bestelling> GetAllWithStatus(string filterOpStatus)
+        {
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling @filterStatus", dbConnection);
+            command.Parameters.AddWithValue("@filterStatus", filterOpStatus);
             SqlDataReader reader = command.ExecuteReader();
 
             // Items inlezen
@@ -82,9 +103,9 @@ namespace DAL
             // Haalt alles op dat nodig is voor de bestelling, ook alle onderligende tabellen. Dit gebeurt aan de hand van de ID's (GetForID)
 
             // Aanroepen wat nodig is
-            DALBestelItem getitems = new DALBestelItem();
-            DALTafel gettafel = new DALTafel();
-            DALWerknemer getwerknemer = new DALWerknemer();
+            BestelItem_DAO getitems = new BestelItem_DAO();
+            Tafel_DAO gettafel = new Tafel_DAO();
+            Werknemer_DAO getwerknemer = new Werknemer_DAO();
             List<BestelItem> items_list = new List<BestelItem>();
 
             int order_id = (int)reader["order_id"];

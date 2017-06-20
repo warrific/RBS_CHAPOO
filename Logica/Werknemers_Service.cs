@@ -6,11 +6,11 @@ using System.Text.RegularExpressions;
 
 namespace Logica
 {
-    public class Werknemers
+    public class Werknemers_Service
     {
         public List<Model.Werknemer> make_list()
         {
-            DALWerknemer DALWerknemer = new DALWerknemer();
+            Werknemer_DAO DALWerknemer = new Werknemer_DAO();
             return DALWerknemer.GetAll();
         }
         
@@ -22,7 +22,7 @@ namespace Logica
                 {
                     if (code.ToString().Length == 4)
                     {
-                        DALWerknemer DALWerknemer = new DALWerknemer();
+                        Werknemer_DAO DALWerknemer = new Werknemer_DAO();
                         List<int> codes = new List<int>();
 
                         codes = DALWerknemer.GetCodes();
@@ -51,7 +51,7 @@ namespace Logica
             {
                 if (Enum.IsDefined(typeof(Functie), functie))
                 {
-                    DALWerknemer DALWerknemer = new DALWerknemer();
+                    Werknemer_DAO DALWerknemer = new Werknemer_DAO();
                     DALWerknemer.WijzigenWerknemer(id, naam, functie);
                     return "";
                 }
@@ -61,7 +61,7 @@ namespace Logica
         }
         public void VerwijderenWerknemer(int id)
         {
-            DALWerknemer DALWerknemer = new DALWerknemer();
+            Werknemer_DAO DALWerknemer = new Werknemer_DAO();
             DALWerknemer.VerwijderenWerknemer(id);
         }
     }

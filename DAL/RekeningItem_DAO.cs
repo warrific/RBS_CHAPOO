@@ -5,11 +5,11 @@ using Model;
 
 namespace DAL
 {
-    public class DALRekeningItem
+    public class RekeningItem_DAO
     {
         protected SqlConnection dbConnection;
 
-        public DALRekeningItem()
+        public RekeningItem_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
 

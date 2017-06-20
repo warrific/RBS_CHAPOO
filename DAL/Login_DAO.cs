@@ -5,11 +5,11 @@ using Model;
 
 namespace DAL
 {
-    public class DALLogin
+    public class Login_DAO
     {
         protected SqlConnection dbConnection;    
         
-        public DALLogin()
+        public Login_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
             dbConnection = new SqlConnection(connString);

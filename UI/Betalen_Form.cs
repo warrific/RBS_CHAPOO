@@ -12,16 +12,16 @@ namespace UI
     {
         // Fields beschikbaar binnen betalenform. 
         private List<Button> Betaalwijze = new List<Button>(); //Nieuwe lijst van buttons aanmaken.
-        private Rekeningen logica; //Hier zit alle logica funtionaliteiten in
+        private Rekeningen_Service logica; //Hier zit alle logica funtionaliteiten in
         private double totaalPrijs;
         private double fooi;
         private double subtotaal;
         private double btwBedrag;
 
 
-        public Betalen_Form(Model.Werknemer modelWerknemer, int tafelNr) : base(modelWerknemer) // Betalen Form krijgt een werknemer mee en een tafelnummer de medewerker word vefvolgens naar de Base constructor gestuurd
+        public Betalen_Form(Model.Werknemer huidigeGebruiker_in, int tafelNr) : base(huidigeGebruiker_in) // Betalen Form krijgt een werknemer mee en een tafelnummer de medewerker word vefvolgens naar de Base constructor gestuurd
         {
-            logica = new Rekeningen(tafelNr); // Hier maak je een nieuwe instantie van de class Rekeningen. Met in de constructor een tafelnummer.
+            logica = new Rekeningen_Service(tafelNr); // Hier maak je een nieuwe instantie van de class Rekeningen. Met in de constructor een tafelnummer.
             
             InitializeComponent(); //Laadt alle grafische user elementen
             Betaalwijze.Add(Betaalwijze_contant_btn); //We voegen een button toe aan de button list betaalwijze
@@ -37,8 +37,8 @@ namespace UI
             }
 
             btn_Tafel.Text = tafelNr.ToString(); //Vullen van de Labels en button in de main Form
-            lbl_naam.Text = modelWerknemer.Naam;
-            lbl_functie.Text = Enum.GetName(typeof (Functie), modelWerknemer.Functie);
+            lbl_naam.Text = huidigeGebruiker_in.Naam;
+            lbl_functie.Text = Enum.GetName(typeof (Functie), huidigeGebruiker_in.Functie);
 
             btwBedrag = logica.GetBtw(); //We roepen de GetBtw methode en deze stoppen we in de variabele btwBedrag.
             subtotaal = logica.GetSubtotaalPrijs();
@@ -47,7 +47,7 @@ namespace UI
             Totaal_out_lbl.Text = string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:C}",totaalPrijs);
             Tafel_out_lbl.Text = tafelNr.ToString();
             Datum_out_lbl.Text = DateTime.Now.ToString();
-            medewerker_out_lbl.Text = modelWerknemer.Naam;
+            medewerker_out_lbl.Text = huidigeGebruiker_in.Naam;
         }
 
         private void Betaalwijze_click(object sender, EventArgs e)
@@ -98,7 +98,7 @@ namespace UI
 
         public void btn_afrekenen_Click(object sender, EventArgs e)
         {
-            Bestellingen bestelling = new Bestellingen();
+            Bestellingen_Service bestelling = new Bestellingen_Service();
             bestelling.RekenBestellingAf(new Bestelling(logica.OrderId, totaalPrijs, Betaalwijze_out_lbl.Text, Opmerking_txtbox.Text, fooi));
             this.Close();
         }

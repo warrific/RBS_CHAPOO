@@ -8,26 +8,24 @@ using Model;
 
 namespace Logica
 {
-    public class Werknemer
+    public class Werknemer_Service
     {
-        private Model.Werknemer modelWerknemer;
-
         public List<Model.Werknemer> GetAll()
         {
-            DALWerknemer dalwerknemer = new DALWerknemer();
+            Werknemer_DAO dalwerknemer = new Werknemer_DAO();
             return dalwerknemer.GetAll();
         }
 
         public Model.Werknemer GetWerknemer(int code)
         {
-            DALWerknemer dalitem = new DALWerknemer();
+            Werknemer_DAO dalitem = new Werknemer_DAO();
 
             return dalitem.GetWerknemer(code);
         }
 
         public Model.Werknemer GetWerknemerByName(string name)
         {
-            DALWerknemer dalWerknemer = new DALWerknemer();
+            Werknemer_DAO dalWerknemer = new Werknemer_DAO();
             List<Model.Werknemer> lijstWerknemers = dalWerknemer.GetAll();
 
             foreach(Model.Werknemer werknemer in lijstWerknemers)
@@ -49,10 +47,10 @@ namespace Logica
          
         }
 
-        public  Logica.Werknemer BedieningKiestTafel (string persoonid)
+        public  Logica.Werknemer_Service BedieningKiestTafel (string persoonid)
         {
                 
-            Logica.Werknemer id = new Logica.Werknemer();
+            Logica.Werknemer_Service id = new Logica.Werknemer_Service();
 
             Status_tafel status_tafel = new Status_tafel();
             if(status_tafel == Status_tafel.Vrij)

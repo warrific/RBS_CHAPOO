@@ -5,16 +5,16 @@ using System.Windows.Forms;
 
 namespace Logica
 {
-    public class Rekeningen
+    public class Rekeningen_Service
     {
         private List<RekeningItem> rekening;
         public int OrderId { get; private set; }
 
-        public Rekeningen(int tafelNr)
+        public Rekeningen_Service(int tafelNr)
         {
-            Bestellingen bestelling = new Bestellingen();
+            Bestellingen_Service bestelling = new Bestellingen_Service();
             OrderId = bestelling.GetOrderId(tafelNr);
-            DALRekeningItem dal = new DALRekeningItem();
+            RekeningItem_DAO dal = new RekeningItem_DAO();
             rekening = dal.GetRekening(OrderId);
         }
         public List<RekeningItem> getRekening()

@@ -8,12 +8,12 @@ using Model;
 
 namespace Logica
 {
-    public class RestaurantOverzicht
+    public class RestaurantOverzicht_Service
     {
         public List<Bestelling_weergave> bar_lijst;
         public List<Bestelling_weergave> keuken_lijst ;
 
-        public List<RestaurantOverzicht> overzicht_lijst = new List<RestaurantOverzicht>();
+        public List<RestaurantOverzicht_Service> overzicht_lijst = new List<RestaurantOverzicht_Service>();
 
         //overzicht_lijst = bar_lijst.Zip(keuken_lijst, (bar, keuken) =>
         //                              new { bar.id, bar.tafel_nummer, bar.aantal, bar.order, bar.opmerking, bar.bediening, bar.status, keuken.id, keuken.tafel_nummer, keuken.aantal, keuken.order, keuken.opmerking, keuken.bediening, keuken.status })

@@ -3,11 +3,11 @@ using System.Configuration;
 
 namespace DAL
 {
-    public class DALMenuKaart
+    public class MenuKaart_DAO
     {
         protected SqlConnection dbConnection;
 
-        public DALMenuKaart()
+        public MenuKaart_DAO()
         {
             string connString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
 

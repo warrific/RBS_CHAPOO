@@ -15,17 +15,17 @@ namespace UI
 {
     public partial class Bediening_Form : Main_Form
     {
-        Model.Werknemer modelWerknemerOut = new Model.Werknemer();
+        Model.Werknemer huidigeGebruiker = new Model.Werknemer();
         List<BestelItem> lijstBestelItem;
         Model.Tafel tafel;
 
-        public Bediening_Form(Model.Werknemer modelWerknemer, int tafelnr_in): base(modelWerknemer)
+        public Bediening_Form(Model.Werknemer huidigeGebruiker_in, int tafelnr_in): base(huidigeGebruiker_in)
         {
             InitializeComponent();
-            modelWerknemerOut = modelWerknemer;
+            huidigeGebruiker = huidigeGebruiker_in;
             setTafelNR(tafelnr_in);
 
-            Logica.Werknemer logWerknemer = new Logica.Werknemer();
+            Logica.Werknemer_Service logWerknemer = new Logica.Werknemer_Service();
 
             tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
             lijstBestelItem = new List<BestelItem>();
@@ -36,7 +36,7 @@ namespace UI
         {
             listView_Bestelling.Items.Clear();
 
-            MenuItems logMenuItems = new MenuItems();
+            MenuItems_Service logMenuItems = new MenuItems_Service();
 
             foreach (BestelItem item in lijstBestelItem)
             {
@@ -148,7 +148,7 @@ namespace UI
             Categorie categorie = ((ButtonSelectie)sender).hoofdOptie;
             SubCategorie subcategorie = ((ButtonSelectie)sender).subOptie;
 
-            Logica.MenuItems LogMenuItem = new MenuItems();
+            Logica.MenuItems_Service LogMenuItem = new MenuItems_Service();
 
             List<Model.MenuItem> lijstMenuItems = LogMenuItem.HaalFilterdeLijstOp(categorie, subcategorie);
 
@@ -197,7 +197,7 @@ namespace UI
 
             if (bestaat == false)
             {
-                Logica.Bestellingen logBestellingen = new Bestellingen();
+                Logica.Bestellingen_Service logBestellingen = new Bestellingen_Service();
                 BestelItem bestelItem = new BestelItem(logBestellingen.GetCountOrderId() + 1, menuItem, 1, "", Status.Open);
                 lijstBestelItem.Add(bestelItem);
             }
@@ -234,8 +234,8 @@ namespace UI
             if (lijstBestelItem.Count == 0)
                 return;
 
-            Logica.MenuItems logMenuItems = new MenuItems();
-            Logica.Bestellingen logBestelingen = new Bestellingen();
+            Logica.MenuItems_Service logMenuItems = new MenuItems_Service();
+            Logica.Bestellingen_Service logBestelingen = new Bestellingen_Service();
 
             foreach(BestelItem item in lijstBestelItem)
             {
@@ -254,7 +254,7 @@ namespace UI
                 return;
             }
 
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , modelWerknemerOut, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
+            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , huidigeGebruiker, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
 
             logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
@@ -270,7 +270,7 @@ namespace UI
         // opent betalen form
         private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
-            Betalen_Form betalen_form = new Betalen_Form(modelWerknemerOut, tafel.Id);
+            Betalen_Form betalen_form = new Betalen_Form(huidigeGebruiker, tafel.Id);
             betalen_form.Show();
         }
 
@@ -292,9 +292,9 @@ namespace UI
             Btn_VerwijderItemUitDB.Enabled = true;
             Btn_VerwijderItemUitDB.Visible = true;
 
-            Logica.Bestellingen logBestelingen = new Bestellingen();
-            Logica.Bestelitems logBestelItems = new Bestelitems();
-            MenuItems logMenuItems = new MenuItems();
+            Logica.Bestellingen_Service logBestelingen = new Bestellingen_Service();
+            Logica.Bestelitems_Service logBestelItems = new Bestelitems_Service();
+            MenuItems_Service logMenuItems = new MenuItems_Service();
 
             if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel) == false)
                 return;
@@ -359,9 +359,9 @@ namespace UI
         private void Btn_VerwijderItemUitDB_Click(object sender, EventArgs e)
         {
             listView_Bestelling.Items.Clear();
-            Bestelitems logBestelItems = new Bestelitems();
-            Bestellingen logBestelingen = new Bestellingen();
-            MenuItems logMenuItems = new MenuItems();
+            Bestelitems_Service logBestelItems = new Bestelitems_Service();
+            Bestellingen_Service logBestelingen = new Bestellingen_Service();
+            MenuItems_Service logMenuItems = new MenuItems_Service();
             foreach (ListViewItem item in listView_Bestelling.SelectedItems)
             {
                 BestelItem bestelItem = (BestelItem)item.Tag;

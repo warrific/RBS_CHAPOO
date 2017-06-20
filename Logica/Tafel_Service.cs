@@ -4,14 +4,14 @@ using Model;
 
 namespace Logica
 {
-    public class Tafel
+    public class Tafel_Service
     {
 
         // Haalt de benodigde gegevens uit de Database
  
         public List<Model.Tafel> GetAll()
         {
-                DALTafel daltafel = new DALTafel();
+                Tafel_DAO daltafel = new Tafel_DAO();
                 return daltafel.GetAll();
         }
 
@@ -19,7 +19,7 @@ namespace Logica
    
         public bool CheckTafelNr(int tafelnr)
         {
-            DALTafel daltafel = new DALTafel();
+            Tafel_DAO daltafel = new Tafel_DAO();
 
             if ( tafelnr == daltafel.GetID(tafelnr))
             {
@@ -97,7 +97,7 @@ namespace Logica
                                
         public void print_all()
         {
-            DALTafel DALitem = new DALTafel();
+            Tafel_DAO DALitem = new Tafel_DAO();
             foreach (Model.Tafel item in DALitem.GetAll())
             {
                 //Console.WriteLine("{0} {1} {2} {3}", item.naam, item.prijs, item.voorraad, item.shortname);
