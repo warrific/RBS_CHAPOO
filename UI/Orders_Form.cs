@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using Logica;
+using Model;
+using System.Collections.Generic;
 
 namespace UI
 {
@@ -129,13 +131,59 @@ namespace UI
 
         private void data_source()
         {
-            Bestellingen_Service bestellingen = new Bestellingen_Service();
-
             // Bestellingen ophalen en in lijst zetten (in methode)
-            data_items.DataSource = bestellingen.make_listbestelling_weergave(status_actueel, is_drinken);
+            data_items.DataSource = make_listbestelling_weergave();
 
             // Niet automatisch kolomen genereren
             data_items.AutoGenerateColumns = false;
+        }
+
+        // TODO: Een lijst van maken
+        public List<Bestelling_weergave> make_listbestelling_weergave()
+        {
+            Bestellingen_Service bestellingen = new Bestellingen_Service();
+            List<Bestelling> bestellingenLijst = new List<Bestelling>();
+            List<Bestelling_weergave> bestellingenLijstWeergave = new List<Bestelling_weergave>();
+
+            // Volledige lijst opvragen
+            bestellingenLijst = bestellingen.make_listbestelling(status_actueel);
+
+            // Initialiseren
+            int id = 0;
+            int tafel_nummer = 0;
+            int aantal = 0;
+            string order = "";
+            string opmerking = "";
+            string bediening = "";
+            Status status;
+            string order_date = "";
+            int i = 0;
+
+            foreach (Bestelling list_item in bestellingenLijst)
+            {
+                // Loop voor de bestel items die in de bestelling staan
+                for (int m = 0; m < list_item.Bestel_items.Count; m++)
+                {
+                    // Voor overzicht even los en niet in new Bestelling_weergave()
+                    id = bestellingenLijst[i].Id;
+                    tafel_nummer = list_item.Tafel.Id;
+                    bediening = list_item.Werknemer.Naam;
+                    aantal = list_item.Bestel_items[m].Aantal;
+                    order = list_item.Bestel_items[m].MenuItem.Naam;
+                    opmerking = list_item.Bestel_items[m].Opmerking;
+                    status = list_item.Bestel_items[m].Status_item;
+                    if (list_item.Opname != "")
+                    {
+                        order_date = list_item.Opname.Substring(9, 6);
+                    }
+
+                    bestellingenLijstWeergave.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status, order_date));
+                }
+
+                i++;
+            }
+
+            return bestellingenLijstWeergave;
         }
     }
 }

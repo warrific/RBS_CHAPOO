@@ -8,74 +8,13 @@ namespace Logica
 {
     public class Bestellingen_Service
     {
-        List<Model.Bestelling> bestellingen_lijst = new List<Model.Bestelling>();
-
-        public List<Bestelling_weergave> make_liststatus_weergave(List<Bestelling_weergave> bar_lijst, List<Bestelling_weergave> keuken_lijst)
-        {
-            
-       // sorteer de bar_lijst en tafel_lijst naar tafelnr(van 1 naar 10)
-            List<Bestelling_weergave> bar_sortedbyTafelNr = new List<Bestelling_weergave>();
-            List<Bestelling_weergave> keuken_sortedbyTafelNr = new List<Bestelling_weergave>();
-            var bar_sortedByTafelNr = bar_lijst.OrderBy(i => i.Tafel_nummer).ToList();
-            var keuken_sortedByTafelNr = keuken_lijst.OrderBy(i => i.Tafel_nummer).ToList();
-
-            return bar_sortedByTafelNr;
-        }
-
-
-        // TODO: Een lijst van maken
-        public List<Bestelling_weergave> make_listbestelling_weergave(string filterOpStatus, string filterOpCategorie)
-        {
-            List<Bestelling_weergave> orderLijst = new List<Bestelling_weergave>();
-
-            // Initialiseren
-            int id = 0;
-            int tafel_nummer = 0;
-            int aantal = 0;
-            string order = "";
-            string opmerking = "";
-            string bediening = "";
-            Status status;
-            string order_date = "";
-
-            DAL.Bestelling_DAO DALitem = new DAL.Bestelling_DAO();
-
-            int i = 0;
-            foreach (Model.Bestelling list_item in make_listbestelling(filterOpStatus))
-            {
-                // Loop voor de bestel items die in de bestelling staan
-                for (int m = 0; m < list_item.Bestel_items.Count; m++)
-                {
-                    // Voor overzicht even los en niet in new Bestelling_weergave()
-                    id = bestellingen_lijst[i].Id;
-                    tafel_nummer = list_item.Tafel.Id;
-                    bediening = list_item.Werknemer.Naam;
-                    aantal = list_item.Bestel_items[m].Aantal;
-                    order = list_item.Bestel_items[m].MenuItem.Naam;
-                    opmerking = list_item.Bestel_items[m].Opmerking;
-                    status = list_item.Bestel_items[m].Status_item;
-                    if (list_item.Opname != "")
-                    {
-                        order_date = list_item.Opname.Substring(9, 6);
-                    }
-
-                    orderLijst.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status, order_date));
-                }
-
-                i++;
-            }
-
-            return orderLijst;
-        }
-
-        
-
-        public List<Model.Bestelling> make_listbestelling(string filterOpStatus)
+        public List<Bestelling> make_listbestelling(string filterOpStatus)
         {
             // Roept DALitem.GetAll aan
-            DAL.Bestelling_DAO DALitem = new DAL.Bestelling_DAO();
+            Bestelling_DAO DALitem = new Bestelling_DAO();
+            List<Bestelling> bestellingen_lijst = new List<Bestelling>();
 
-            if(bestellingen_lijst.Count != DALitem.GetCount())
+            if (bestellingen_lijst.Count != DALitem.GetCount())
             {
                 bestellingen_lijst = DALitem.GetAllWithStatus(filterOpStatus);
                 return bestellingen_lijst;
@@ -112,12 +51,12 @@ namespace Logica
 
         public void StuurBestelItemNaarDatabase(BestelItem item)
         {
-            DAL.Bestelling_DAO dalBestelling = new DAL.Bestelling_DAO();
+            DAL.Bestelling_DAO dalBestelling = new Bestelling_DAO();
             dalBestelling.ZetBestelItemsInDatabase(item);
         }
-        public bool ControleerOfTafelAlBestellingHeeft(Model.Tafel tafel)
+        public bool ControleerOfTafelAlBestellingHeeft(Tafel tafel)
         {
-            DAL.Bestelling_DAO dalBestelling = new DAL.Bestelling_DAO();
+            Bestelling_DAO dalBestelling = new Bestelling_DAO();
             int aantal = dalBestelling.ControleerOfTafelAlBestellingHeeft(tafel);
 
             if( aantal == 1)
@@ -127,13 +66,13 @@ namespace Logica
             return false;
         }
 
-        public int GetBestellingIdByTafelNummer(Model.Tafel tafel)
+        public int GetBestellingIdByTafelNummer(Tafel tafel)
         {
-            DAL.Bestelling_DAO dalBestelling = new DAL.Bestelling_DAO();
+            Bestelling_DAO dalBestelling = new Bestelling_DAO();
 
-            List<Model.Bestelling> lijstBestellingen = dalBestelling.GetAll();
+            List<Bestelling> lijstBestellingen = dalBestelling.GetAll();
 
-            foreach(Model.Bestelling bestelling in lijstBestellingen)
+            foreach(Bestelling bestelling in lijstBestellingen)
             {
                 if(bestelling.Tafel.Id == tafel.Id)
                 {
@@ -143,9 +82,9 @@ namespace Logica
             return 0;
         }
 
-        public void RekenBestellingAf(Model.Bestelling bestelling)
+        public void RekenBestellingAf(Bestelling bestelling)
         {
-            DAL.Bestelling_DAO dal = new DAL.Bestelling_DAO();
+            Bestelling_DAO dal = new Bestelling_DAO();
             dal.RekenAf(bestelling);
         }
     }
