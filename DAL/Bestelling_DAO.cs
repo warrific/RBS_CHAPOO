@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Model;
+using System.Data;
 
 namespace DAL
 {
@@ -40,12 +41,22 @@ namespace DAL
             return bestellingen;
         }
 
-        public List<Bestelling> GetAllWithStatus(string filterOpStatus)
+        public List<Bestelling> GetAllWithStatus(bool status_actueel)
         {
+            /*
+            if (dbConnection.State != ConnectionState.Open)
+            {
+                dbConnection.Close();
+                dbConnection.Open();
+            }
+            */
+
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling @filterStatus", dbConnection);
-            command.Parameters.AddWithValue("@filterStatus", filterOpStatus);
+            SqlCommand command;
+
+            command = new SqlCommand("SELECT * FROM Bestelling WHERE NOT status = 3", dbConnection);                            // fix plz
+               
             SqlDataReader reader = command.ExecuteReader();
 
             // Items inlezen
@@ -76,29 +87,7 @@ namespace DAL
             return count;
         }
 
-        public Bestelling GetForID(int bestelId)
-        {
-            // Connectie opzetten
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE order_id = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", bestelId);
-            SqlDataReader reader = command.ExecuteReader();
-
-            Bestelling item = null;
-
-            if (reader.Read())
-            {
-                item = Readitem(reader);
-            }
-
-            reader.Close();
-            dbConnection.Close();
-
-            return item;
-        }
-
-        private Bestelling Readitem(SqlDataReader reader)
+        protected Bestelling Readitem(SqlDataReader reader)
         {
             // Haalt alles op dat nodig is voor de bestelling, ook alle onderligende tabellen. Dit gebeurt aan de hand van de ID's (GetForID)
 
