@@ -149,7 +149,7 @@ namespace DAL
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("UPDATE Menukaart SET subcategorie = @Subcategorie WHERE menu_id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("UPDATE Menukaart SET subcategorie = @Subcategorie WHERE item = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
             command.Parameters.AddWithValue("@Subcategorie", subcategorie);
 
@@ -176,7 +176,7 @@ namespace DAL
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("DELETE FROM Menukaart WHERE menu_id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("DELETE FROM Menukaart WHERE item = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
 
             SqlDataReader reader = command.ExecuteReader();
