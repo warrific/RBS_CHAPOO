@@ -123,9 +123,9 @@ namespace DAL
             command.Parameters.AddWithValue("@Naam", naam);
             command.Parameters.AddWithValue("@Functie", functie);
             command.Parameters.AddWithValue("@Code", code);
-            SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+            command.ExecuteNonQuery();
+
             dbConnection.Close();
         }
 
@@ -137,9 +137,9 @@ namespace DAL
             command.Parameters.AddWithValue("@Id", id);
             command.Parameters.AddWithValue("@Naam", naam);
             command.Parameters.AddWithValue("@Functie", functie);
-            SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+            command.ExecuteNonQuery();
+
             dbConnection.Close();
         }
 
@@ -149,9 +149,9 @@ namespace DAL
 
             SqlCommand command = new SqlCommand("DELETE FROM Medewerker WHERE persoon_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
-            SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+            command.ExecuteNonQuery();
+
             dbConnection.Close();
         }
 

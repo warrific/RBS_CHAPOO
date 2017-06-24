@@ -27,9 +27,11 @@ namespace Logica
             int category = (int)Enum.Parse(typeof(Categorie), menukaart);
             int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
 
-            DALItem.ToevoegenMenu(category, naam, korteNaam, prijs);
+            DALItem.ToevoegenMenuitem(category, naam, korteNaam, prijs);
+
             int id = DALItem.GetIdForName(naam);
-            DALItem.ToevoegenMenu2(id, sub);
+
+            DALItem.ToevoegenSubcategorie(id, sub);
         }
 
         public void WijzigenMenu(int id, string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
@@ -41,15 +43,14 @@ namespace Logica
             int category = (int)Enum.Parse(typeof(Categorie), menukaart);
             int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
                                 
-            DALItem.WijzigenMenu(id, category, naam, korteNaam, prijs);
-            DALItem.WijzigenMenu2(id, sub);
+            DALItem.WijzigenMenuitem(id, category, naam, korteNaam, prijs, sub);
         }
 
         public void VerwijderenMenu(int id)
         {
             MenuItem_DAO DALItem = new MenuItem_DAO();
-            DALItem.VerwijderenMenu2(id);
-            DALItem.VerwijderenMenu(id);
+
+            DALItem.VerwijderenMenuitem(id);
         }
 
         public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)

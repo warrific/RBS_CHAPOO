@@ -22,7 +22,7 @@ namespace UI
         const int MAXCODELENGTH = 4;
         bool naamKort = false;
 
-        public Eigenaar_Form(Model.Werknemer modelWerknemer) : base(modelWerknemer)
+        public Eigenaar_Form(Werknemer modelWerknemer) : base(modelWerknemer)
         {
             InitializeComponent();
 
