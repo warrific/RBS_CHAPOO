@@ -13,6 +13,7 @@ namespace Logica
         public List<Model.Werknemer> make_list()
         {
             Werknemer_DAO DALWerknemer = new Werknemer_DAO();
+
             return DALWerknemer.GetAll();
         }
 
@@ -44,12 +45,10 @@ namespace Logica
             modelWerknemer = GetWerknemer(int.Parse(password));
             
             return modelWerknemer == null;
-         
         }
 
         public  Logica.Werknemer_Service BedieningKiestTafel (string persoonid)
         {
-                
             Logica.Werknemer_Service id = new Logica.Werknemer_Service();
 
             Status_tafel status_tafel = new Status_tafel();
@@ -103,8 +102,7 @@ namespace Logica
         {
             Werknemer_DAO DALWerknemer = new Werknemer_DAO();
             
-            int id = DALWerknemer.GetLastId() + 1;
-            DALWerknemer.ToevoegenWerknemer(id, naam, functie, code);
+            DALWerknemer.ToevoegenWerknemer(naam, functie, code);
         }
 
         public void WijzigenWerknemer(int id, string naam, string functie)
