@@ -166,7 +166,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                int code = ((int)reader["code"]);
+                int code = (int)reader["code"];
                 codes.Add(code);
             }
 

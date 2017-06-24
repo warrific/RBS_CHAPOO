@@ -228,15 +228,9 @@ namespace DAL
             dbConnection.Open();
             SqlCommand command = new SqlCommand("SELECT [item_id] FROM Menuitem WHERE naam = @Naam", dbConnection);
             command.Parameters.AddWithValue("@Naam", item_naam);
-            SqlDataReader reader = command.ExecuteReader();
 
-            // Item id ophalen
-            while (reader.Read())
-            {
-                item_id = (int)reader["item_id"];
-            }
+            item_id = (int)command.ExecuteScalar();
 
-            reader.Close();
             dbConnection.Close();
 
             return item_id;
