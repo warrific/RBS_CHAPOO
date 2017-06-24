@@ -96,12 +96,11 @@ namespace DAL
             dbConnection.Close();
         }
 
-        public void ToevoegenMenu(int id, int menukaart, string naam, string korteNaam, string prijs)
+        public void ToevoegenMenu(int menukaart, string naam, string korteNaam, string prijs)
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("INSERT INTO Menuitem VALUES (@Id, @Naam, 0, @Prijs, @Kaart, @Shortname)", dbConnection);
-            command.Parameters.AddWithValue("@Id", id);
+            SqlCommand command = new SqlCommand("INSERT INTO Menuitem VALUES (@Naam, 0, @Prijs, @Kaart, @Shortname)", dbConnection);
             command.Parameters.AddWithValue("@Naam", naam);
             command.Parameters.AddWithValue("@Kaart", menukaart);
             command.Parameters.AddWithValue("@Prijs", prijs);
@@ -118,7 +117,7 @@ namespace DAL
         {
             dbConnection.Open();
             
-            SqlCommand command = new SqlCommand("INSERT INTO Menukaart VALUES (@Id, @Id, @Subcategorie)", dbConnection);
+            SqlCommand command = new SqlCommand("INSERT INTO Menukaart VALUES (@Id, @Subcategorie)", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
             command.Parameters.AddWithValue("@Subcategorie", subcategorie);
 
@@ -262,8 +261,8 @@ namespace DAL
 
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT [item_id] FROM Menuitem WHERE naam = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", item_naam);
+            SqlCommand command = new SqlCommand("SELECT [item_id] FROM Menuitem WHERE naam = @Naam", dbConnection);
+            command.Parameters.AddWithValue("@Naam", item_naam);
             SqlDataReader reader = command.ExecuteReader();
 
             // Item id ophalen
