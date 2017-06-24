@@ -315,7 +315,7 @@ namespace UI
 
             if (logica_tafel.CheckTafelNr(tafelnummer))
             {
-                    this.Hide();
+                    this.Close();
                     new Bediening_Form(huidigeGebruiker, tafelnummer).Show();
             }  
         }

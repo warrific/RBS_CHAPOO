@@ -39,29 +39,25 @@ namespace UI
                 switch (huidigeGebruiker.Functie)
                 {
                     case Functie.Eigenaar:
-                        this.Hide();
                         new Eigenaar_Form(huidigeGebruiker).Show();
                         break;
                     case Functie.Bediening:
-                        this.Hide();
                         new OverzichtRestaurant_Form(huidigeGebruiker).Show();
                         break;
                     case Functie.Bar:
-                        this.Hide();
                         new Orders_Form(huidigeGebruiker, Functie.Bar).Show();
                         break;
                     case Functie.Kok:
-                        this.Hide();
                         new Orders_Form(huidigeGebruiker, Functie.Kok).Show();
                         break;
                     case Functie.Sommelier:
-                        this.Hide();
                         new Orders_Form(huidigeGebruiker, Functie.Sommelier).Show();
                         break;
 
                     default:
                         break;
                 }
+                this.Hide();
             }
         }
 

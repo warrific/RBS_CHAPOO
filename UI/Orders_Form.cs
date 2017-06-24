@@ -9,8 +9,8 @@ namespace UI
     public partial class Orders_Form : Main_Form
     {
 
-        private string status_actueel = "";
-        private string is_drinken = "";
+        private bool status_actueel = true;
+        private bool is_drinken = true;
 
         public Orders_Form(Model.Werknemer huidigeGebruiker_in, Model.Functie functie) : base(huidigeGebruiker_in)
         {
@@ -21,13 +21,9 @@ namespace UI
             btn_Tafel.Hide();
 
             // Functie check, dit wordt later gebruikt voor lijsten filteren
-            if (functie == Model.Functie.Bar)
-            {
-                is_drinken = "";
-            }
             if (functie == Model.Functie.Kok)
             {
-                is_drinken = "";
+                is_drinken = false;
             }
 
             // Datasource aanroepen
@@ -100,19 +96,19 @@ namespace UI
         private void btn_historie_Click(object sender, EventArgs e)
         {
             // Order geschiedenis inzien, text van knop wijzigen, filter wijzigen en btn gereed verbergen.
-            if (btn_historie.Text == "Historie orders")
+            if (status_actueel)
             {
                 btn_historie.Text = "Actuele orders";
-                status_actueel = "";
+                status_actueel = false;
                 lbl_historie.Text = "Order historie";
                 btn_gereed.Hide();
             }
             // Terug naar orginele status
-            else if (btn_historie.Text == "Actuele orders")
+            else
             {
                 btn_historie.Text = "Historie orders";
                 lbl_historie.Text = "Orders";
-                status_actueel = "";
+                status_actueel = true;
                 btn_gereed.Show();
             }
 
@@ -131,59 +127,13 @@ namespace UI
 
         private void data_source()
         {
-            // Bestellingen ophalen en in lijst zetten (in methode)
-            data_items.DataSource = make_listbestelling_weergave();
+            Bestellingen_Service bestellingen = new Bestellingen_Service();
 
             // Niet automatisch kolomen genereren
             data_items.AutoGenerateColumns = false;
-        }
-
-        // TODO: Een lijst van maken
-        public List<Bestelling_weergave> make_listbestelling_weergave()
-        {
-            Bestellingen_Service bestellingen = new Bestellingen_Service();
-            List<Bestelling> bestellingenLijst = new List<Bestelling>();
-            List<Bestelling_weergave> bestellingenLijstWeergave = new List<Bestelling_weergave>();
-
-            // Volledige lijst opvragen
-            bestellingenLijst = bestellingen.make_listbestelling(status_actueel);
-
-            // Initialiseren
-            int id = 0;
-            int tafel_nummer = 0;
-            int aantal = 0;
-            string order = "";
-            string opmerking = "";
-            string bediening = "";
-            Status status;
-            string order_date = "";
-            int i = 0;
-
-            foreach (Bestelling list_item in bestellingenLijst)
-            {
-                // Loop voor de bestel items die in de bestelling staan
-                for (int m = 0; m < list_item.Bestel_items.Count; m++)
-                {
-                    // Voor overzicht even los en niet in new Bestelling_weergave()
-                    id = bestellingenLijst[i].Id;
-                    tafel_nummer = list_item.Tafel.Id;
-                    bediening = list_item.Werknemer.Naam;
-                    aantal = list_item.Bestel_items[m].Aantal;
-                    order = list_item.Bestel_items[m].MenuItem.Naam;
-                    opmerking = list_item.Bestel_items[m].Opmerking;
-                    status = list_item.Bestel_items[m].Status_item;
-                    if (list_item.Opname != "")
-                    {
-                        order_date = list_item.Opname.Substring(9, 6);
-                    }
-
-                    bestellingenLijstWeergave.Add(new Bestelling_weergave(id, tafel_nummer, aantal, order, opmerking, bediening, status, order_date));
-                }
-
-                i++;
-            }
-
-            return bestellingenLijstWeergave;
+            
+            // Bestellingen ophalen en in lijst zetten (in methode)
+            data_items.DataSource = bestellingen.make_listbestelling(status_actueel, is_drinken);
         }
     }
 }

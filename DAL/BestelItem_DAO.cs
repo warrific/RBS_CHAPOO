@@ -70,8 +70,7 @@ namespace DAL
             SqlCommand command = new SqlCommand("SELECT * FROM Bestelling_item WHERE order_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", orderid);
             SqlDataReader reader = command.ExecuteReader();
-
-            // Klanten inlezen
+            
             while (reader.Read())
             {
                 Model.BestelItem item = Readitem(reader);
@@ -83,7 +82,56 @@ namespace DAL
 
             return items;
         }
+
         
+        public List<Bestelling_weergave> GetAllWeergave(int cat1, int cat2, int status)
+        {
+            // List
+            List<Bestelling_weergave> items = new List<Bestelling_weergave>();
+            
+            // Connectie opzetten
+            dbConnection.Open();
+            SqlCommand command;
+
+            command = new SqlCommand(
+                    "SELECT b.order_id, b.item_id, o.tafel_id, b.aantal, m.naam, b.opmerking, p.naam AS persoon, b.status, o.datum, m.category " +
+                    "FROM Bestelling_item AS b " +
+                    "INNER JOIN Menuitem AS m ON b.item_id = m.item_id " +
+                    "INNER JOIN Bestelling AS o ON b.order_id = o.order_id " +
+                    "INNER JOIN Medewerker AS p ON o.persoon_id = p.persoon_id " +
+                    "WHERE b.status = @status AND m.category = @cat1 OR b.status = @status AND m.category = @cat2", dbConnection);
+
+            command.Parameters.AddWithValue("@status", status);
+            command.Parameters.AddWithValue("@cat1", cat1);
+            command.Parameters.AddWithValue("@cat2", cat2);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Bestelling_weergave item = ReaditemWeergave(reader);
+                items.Add(item);
+            }
+
+            reader.Close();
+            dbConnection.Close();
+
+            return items;
+        }
+        
+        private Bestelling_weergave ReaditemWeergave(SqlDataReader reader)
+        {
+            int id = (int)reader["order_id"];
+            int tafelnummer = (int)reader["tafel_id"];
+            int aantal = (int)reader["aantal"];
+            string order = (string)reader["naam"];
+            string opmerking = (string)reader["opmerking"];
+            string bediening = (string)reader["persoon"];
+            Status status_item = (Status)(int)reader["status"];
+            string order_date = ((string)reader["datum"]).Substring(9, 6);
+
+            return new Bestelling_weergave(id, tafelnummer, aantal, order, opmerking, bediening, status_item, order_date);
+        }
+
         public void MeldGereed(int order_id, int item_id)
         {
             // Connectie opzetten
