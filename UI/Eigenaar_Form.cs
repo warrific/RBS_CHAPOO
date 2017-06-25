@@ -319,7 +319,7 @@ namespace UI
 
             if (!Enum.IsDefined(typeof(Categorie), menukaart))
                 lblError.Text =  "Menukaart niet ingevuld";
-            else if (!Enum.IsDefined(typeof(SubCategorie), subcategorie))
+            else if (!Enum.IsDefined(typeof(MenuKaart), subcategorie))
                 lblError.Text = "Subcategorie niet ingevuld";
             else if (naam == "")
                 lblError.Text = "Naam niet ingevuld";

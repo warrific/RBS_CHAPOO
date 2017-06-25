@@ -10,6 +10,7 @@ namespace Logica
     {
         public List<Bestelling_weergave> make_listbestelling(bool status_actueel, bool is_drinken)
         {
+            // Check welke waardes we nodig hebben
             int status = 1;
             int cat1 = 1;
             int cat2 = 2;

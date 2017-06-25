@@ -25,7 +25,7 @@ namespace Logica
             MenuItem_DAO DALItem = new MenuItem_DAO();
             
             int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-            int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+            int sub = (int)Enum.Parse(typeof(MenuKaart), subcategorie);
 
             DALItem.ToevoegenMenuitem(category, naam, korteNaam, prijs);
 
@@ -41,7 +41,7 @@ namespace Logica
             MenuItem_DAO DALItem = new MenuItem_DAO();
 
             int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-            int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+            int sub = (int)Enum.Parse(typeof(MenuKaart), subcategorie);
                                 
             DALItem.WijzigenMenuitem(id, category, naam, korteNaam, prijs, sub);
         }
