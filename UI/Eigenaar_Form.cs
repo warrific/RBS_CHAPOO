@@ -51,7 +51,7 @@ namespace UI
             if (naamKort)
                 listViewVoorraad.Columns.Add("Verkorte naam", 320);
             else
-                listViewVoorraad.Columns.Add("Naam", 350);
+            listViewVoorraad.Columns.Add("Naam", 350);
             listViewVoorraad.Columns.Add("Voorraad", 100);
 
             for (int i = 0; i < MI_lijst.Count; i++) //Vult listview met items
@@ -130,8 +130,8 @@ namespace UI
                     li.SubItems.Add(MI_lijst[i].Naam.ToString());
                     li.SubItems.Add(MI_lijst[i].Shortname.ToString());
                 }
-                li.SubItems.Add(MI_lijst[i].Subcategorie.ToString());
-                li.SubItems.Add(MI_lijst[i].Categorie.ToString());
+                li.SubItems.Add(MI_lijst[i].categorie.ToString());
+                li.SubItems.Add(MI_lijst[i].menuKaart.ToString());
                 li.SubItems.Add(MI_lijst[i].Prijs.ToString("€0.00"));
 
                 listViewMenu.Items.Add(li);
@@ -207,7 +207,7 @@ namespace UI
                 int id = int.Parse(checkedItem.SubItems[0].Text);
                 string naam = checkedItem.SubItems[1].Text.Trim();
                 string functie = checkedItem.SubItems[2].Text;
-
+                
                 InitControl(lblTitel, TITELX, TITELY, "Medewerker Wijzigen", FNTSIZE, 250);
 
                 InitControl(lblNaam, LBLX, SPACING * 1, "Naam", FNTSIZE, WIDTH);
@@ -224,7 +224,7 @@ namespace UI
                 InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 60);
                 btnBevestig.Click += btnBevestig_Click;
                 btnFunctie = "WijzMedw";
-
+                
                 PopupFormStandardControls();
                 PopupFormExtraControls(lblFunctie, cmbFunctie);
 
@@ -234,7 +234,7 @@ namespace UI
                 MessageBox.Show("Te veel items aangevinkt!");
             else
                 MessageBox.Show("Geen item aangevinkt!");
-
+            
         }
 
         private void ToevMenukaartUI()
@@ -493,7 +493,7 @@ namespace UI
         }
 
         ///---FORM BUTTON EVENTS---///
-
+        
         private void btnVerhoog_Click(object sender, EventArgs e)
         {
             MenuItems_Service menuitems = new MenuItems_Service();

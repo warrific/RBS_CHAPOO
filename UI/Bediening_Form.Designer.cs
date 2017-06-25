@@ -217,7 +217,7 @@
             // textBox_Commentaar
             // 
             this.textBox_Commentaar.Enabled = false;
-            this.textBox_Commentaar.Location = new System.Drawing.Point(530, 392);
+            this.textBox_Commentaar.Location = new System.Drawing.Point(530, 388);
             this.textBox_Commentaar.Name = "textBox_Commentaar";
             this.textBox_Commentaar.Size = new System.Drawing.Size(209, 253);
             this.textBox_Commentaar.TabIndex = 19;
@@ -239,7 +239,6 @@
             // Bediening_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(752, 873);
             this.Controls.Add(this.lbl_VoorraadOp);
             this.Controls.Add(this.btn_CommentaarSent);

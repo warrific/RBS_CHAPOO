@@ -10,6 +10,7 @@ namespace Logica
     {
         public List<Bestelling_weergave> make_listbestelling(bool status_actueel, bool is_drinken)
         {
+            // Check welke waardes we nodig hebben
             int status = 1;
             int cat1 = 1;
             int cat2 = 2;
@@ -57,17 +58,22 @@ namespace Logica
             return dalBestelling.GetCount();
         }
 
-        public void StuurBestelItemNaarDatabase(BestelItem item)
+        public void StuurBestelItemNaarDatabase(List<BestelItem> lijstBestelItem, Tafel tafel)
         {
             DAL.Bestelling_DAO dalBestelling = new Bestelling_DAO();
-            dalBestelling.ZetBestelItemsInDatabase(item);
+            int orderId = dalBestelling.GetIdOfUncompletedOrder(tafel.Id);
+
+            foreach (BestelItem item in lijstBestelItem)
+            {
+                dalBestelling.ZetBestelItemsInDatabase(item, orderId);
+            }
         }
         public bool ControleerOfTafelAlBestellingHeeft(Tafel tafel)
         {
             Bestelling_DAO dalBestelling = new Bestelling_DAO();
             int aantal = dalBestelling.ControleerOfTafelAlBestellingHeeft(tafel);
 
-            if( aantal == 1)
+            if( aantal >= 1)
             {
                 return true;
             }

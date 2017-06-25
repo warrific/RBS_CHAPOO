@@ -144,7 +144,7 @@ namespace UI
         {
             tafelnummer = 1;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
            if (lbl_tafel1.Text == "Vrij")
            {
@@ -187,7 +187,7 @@ namespace UI
         {
             tafelnummer = 2;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel2.Text == "Vrij")
             {
@@ -200,7 +200,7 @@ namespace UI
         {
             tafelnummer = 3;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel3.Text == "Vrij")
             {
@@ -213,7 +213,7 @@ namespace UI
         {
             tafelnummer = 4;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel4.Text == "Vrij")
             {
@@ -226,7 +226,7 @@ namespace UI
         {
             tafelnummer = 5;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel5.Text == "Vrij")
             {
@@ -239,7 +239,7 @@ namespace UI
         {
             tafelnummer = 6;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel6.Text == "Vrij")
             {
@@ -251,7 +251,7 @@ namespace UI
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
             tafelnummer = 7;
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel7.Text == "Vrij")
             {
@@ -264,7 +264,7 @@ namespace UI
         {
             tafelnummer = 8;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel8.Text == "Vrij")
             {
@@ -277,7 +277,7 @@ namespace UI
         {
             tafelnummer = 9;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel9.Text == "Vrij")
             {
@@ -290,7 +290,7 @@ namespace UI
         {
             tafelnummer = 10;
 
-            setTafelNR(tafelnummer);
+            SetTafelNummer(tafelnummer);
 
             if (lbl_tafel10.Text == "Vrij")
             {

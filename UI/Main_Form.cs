@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
-using Logica;
 
 namespace UI
 {
@@ -17,9 +10,9 @@ namespace UI
     {
         private string tafelnr;
 
-        private Model.Werknemer huidigeGebruiker = new Model.Werknemer();
+        private Werknemer huidigeGebruiker = new Werknemer();
         
-        public Main_Form(Model.Werknemer huidigGebruiker_in)
+        public Main_Form(Werknemer huidigGebruiker_in)
         {
             huidigeGebruiker = huidigGebruiker_in;
 
@@ -48,7 +41,7 @@ namespace UI
             login.Show();
         }
 
-        public void setTafelNR(int tafelnummer)
+        public void SetTafelNummer(int tafelnummer)
         {
             tafelnr = tafelnummer.ToString();
             btn_Tafel.Text = tafelnr;

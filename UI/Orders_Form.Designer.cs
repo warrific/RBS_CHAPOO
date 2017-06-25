@@ -54,7 +54,7 @@
             // 
             this.btn_herlaad.BackColor = System.Drawing.SystemColors.Control;
             this.btn_herlaad.Location = new System.Drawing.Point(29, 96);
-            this.btn_herlaad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_herlaad.Margin = new System.Windows.Forms.Padding(4);
             this.btn_herlaad.Name = "btn_herlaad";
             this.btn_herlaad.Size = new System.Drawing.Size(160, 62);
             this.btn_herlaad.TabIndex = 10;
@@ -66,7 +66,7 @@
             // 
             this.btn_gereed.BackColor = System.Drawing.SystemColors.Control;
             this.btn_gereed.Location = new System.Drawing.Point(803, 96);
-            this.btn_gereed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_gereed.Margin = new System.Windows.Forms.Padding(4);
             this.btn_gereed.Name = "btn_gereed";
             this.btn_gereed.Size = new System.Drawing.Size(160, 62);
             this.btn_gereed.TabIndex = 11;
@@ -77,7 +77,7 @@
             // btn_historie
             // 
             this.btn_historie.Location = new System.Drawing.Point(29, 998);
-            this.btn_historie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_historie.Margin = new System.Windows.Forms.Padding(4);
             this.btn_historie.Name = "btn_historie";
             this.btn_historie.Size = new System.Drawing.Size(160, 62);
             this.btn_historie.TabIndex = 12;
@@ -99,13 +99,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1003, 1101);
+            this.ClientSize = new System.Drawing.Size(1007, 1101);
             this.Controls.Add(this.lbl_historie);
             this.Controls.Add(this.btn_historie);
             this.Controls.Add(this.btn_gereed);
             this.Controls.Add(this.btn_herlaad);
             this.Controls.Add(this.data_items);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Orders_Form";
             this.Text = "Orders";
             this.Controls.SetChildIndex(this.data_items, 0);
