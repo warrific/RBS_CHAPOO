@@ -113,7 +113,7 @@ namespace UI
                 listViewMenu.Columns.Add("Naam", 190);
                 listViewMenu.Columns.Add("Verkorte naam", 0);
             }
-            listViewMenu.Columns.Add("Subcategorie", 100);
+            listViewMenu.Columns.Add("Categorie", 100);
             listViewMenu.Columns.Add("Menukaart", 120);
             listViewMenu.Columns.Add("Prijs", 70);
 
@@ -153,12 +153,12 @@ namespace UI
         TextBox txtCode = new TextBox();
         // Menukaart controls
         Label lblMenukaart = new Label();
-        Label lblSubcategorie = new Label();
+        Label lblCategorie = new Label();
         Label lblKorteNaam = new Label();
         Label lblPrijs = new Label();
 
         ComboBox cmbMenukaart = new ComboBox();
-        ComboBox cmbSubcategorie = new ComboBox();
+        ComboBox cmbCategorie = new ComboBox();
         TextBox txtKorteNaam = new TextBox();
         TextBox txtPrijs = new TextBox();
         // Algemeen
@@ -242,7 +242,7 @@ namespace UI
             InitControl(lblTitel, TITELX + 10, TITELY, "Aan menu toevoegen", FNTSIZE, 250);
 
             InitControl(lblMenukaart, LBLX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
-            InitControl(lblSubcategorie, LBLX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
+            InitControl(lblCategorie, LBLX, SPACING * 2, "Categorie", FNTSIZE, WIDTH);
             InitControl(lblNaam, LBLX, SPACING * 3, "Naam", FNTSIZE, WIDTH);
             InitControl(lblKorteNaam, LBLX, SPACING * 4, "Verkorte Naam", FNTSIZE, WIDTH);
             InitControl(lblPrijs, LBLX, SPACING * 5, "Prijs (in euro's)", FNTSIZE, WIDTH);
@@ -250,14 +250,14 @@ namespace UI
 
             InitControl(cmbMenukaart, TBX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
             cmbMenukaart.DropDownStyle = ComboBoxStyle.DropDownList;
-            InitControl(cmbSubcategorie, TBX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
-            cmbSubcategorie.DropDownStyle = ComboBoxStyle.DropDownList;
+            InitControl(cmbCategorie, TBX, SPACING * 2, "Categorie", FNTSIZE, WIDTH);
+            cmbCategorie.DropDownStyle = ComboBoxStyle.DropDownList;
             InitControl(txtNaam, TBX, SPACING * 3, "", FNTSIZE, WIDTH);
             InitControl(txtKorteNaam, TBX, SPACING * 4, "", FNTSIZE, WIDTH);
             InitControl(txtPrijs, TBX, SPACING * 5, "", FNTSIZE, WIDTH);
 
             VulCmbMenukaart();
-            VulCmbSubcategorie();
+            VulCmbCategorie();
 
             InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);
             btnBevestig.Click += btnBevestig_Click;
@@ -265,7 +265,7 @@ namespace UI
 
             PopupFormStandardControls();
             PopupFormExtraControls(lblMenukaart, cmbMenukaart);
-            PopupFormExtraControls(lblSubcategorie, cmbSubcategorie);
+            PopupFormExtraControls(lblCategorie, cmbCategorie);
             PopupFormExtraControls(lblKorteNaam, txtKorteNaam);
             PopupFormExtraControls(lblPrijs, txtPrijs);
 
@@ -290,7 +290,7 @@ namespace UI
                     naam = checkedItem.SubItems[1].Text.Trim();
                     korteNaam = checkedItem.SubItems[2].Text.Trim();
                 }
-                string subcategorie = checkedItem.SubItems[3].Text;
+                string categorie = checkedItem.SubItems[3].Text;
                 string menukaart = checkedItem.SubItems[4].Text;
                 string prijs = checkedItem.SubItems[5].Text.Replace("€", string.Empty).Replace(",", ".");
 
@@ -298,7 +298,7 @@ namespace UI
 
                 InitControl(lblId, LBLX, SPACING * 4, id.ToString(), FNTSIZE, WIDTH);
                 InitControl(lblMenukaart, LBLX, SPACING * 1, "Menukaart", FNTSIZE, WIDTH);
-                InitControl(lblSubcategorie, LBLX, SPACING * 2, "Subcategorie", FNTSIZE, WIDTH);
+                InitControl(lblCategorie, LBLX, SPACING * 2, "Categorie", FNTSIZE, WIDTH);
                 InitControl(lblNaam, LBLX, SPACING * 3, "Naam", FNTSIZE, WIDTH);
                 InitControl(lblKorteNaam, LBLX, SPACING * 4, "Verkorte Naam", FNTSIZE, WIDTH);
                 InitControl(lblPrijs, LBLX, SPACING * 5, "Prijs (in euro's)", FNTSIZE, WIDTH);
@@ -306,14 +306,14 @@ namespace UI
 
                 InitControl(cmbMenukaart, TBX, SPACING * 1, menukaart, FNTSIZE, WIDTH);
                 cmbMenukaart.DropDownStyle = ComboBoxStyle.DropDown;
-                InitControl(cmbSubcategorie, TBX, SPACING * 2, subcategorie, FNTSIZE, WIDTH);
-                cmbSubcategorie.DropDownStyle = ComboBoxStyle.DropDown;
+                InitControl(cmbCategorie, TBX, SPACING * 2, categorie, FNTSIZE, WIDTH);
+                cmbCategorie.DropDownStyle = ComboBoxStyle.DropDown;
                 InitControl(txtNaam, TBX, SPACING * 3, naam, FNTSIZE, WIDTH);
                 InitControl(txtKorteNaam, TBX, SPACING * 4, korteNaam, FNTSIZE, WIDTH);
                 InitControl(txtPrijs, TBX, SPACING * 5, prijs, FNTSIZE, WIDTH);
 
                 VulCmbMenukaart();
-                VulCmbSubcategorie();
+                VulCmbCategorie();
 
                 InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);
                 btnBevestig.Click += btnBevestig_Click;
@@ -321,7 +321,7 @@ namespace UI
 
                 PopupFormStandardControls();
                 PopupFormExtraControls(lblMenukaart, cmbMenukaart);
-                PopupFormExtraControls(lblSubcategorie, cmbSubcategorie);
+                PopupFormExtraControls(lblCategorie, cmbCategorie);
                 PopupFormExtraControls(lblKorteNaam, txtKorteNaam);
                 PopupFormExtraControls(lblPrijs, txtPrijs);
 
@@ -345,16 +345,16 @@ namespace UI
         {
             cmbMenukaart.Items.Clear();
 
-            foreach (MenuKaart menuKaart in Enum.GetValues(typeof(MenuKaart)))
-                cmbMenukaart.Items.Add(menuKaart);
+            foreach (MenuKaart menukaart in Enum.GetValues(typeof(MenuKaart)))
+                cmbMenukaart.Items.Add(menukaart);
         }
 
-        private void VulCmbSubcategorie()
+        private void VulCmbCategorie()
         {
-            cmbSubcategorie.Items.Clear();
+            cmbCategorie.Items.Clear();
 
             foreach (Categorie sub in Enum.GetValues(typeof(Categorie)))
-                cmbSubcategorie.Items.Add(sub);
+                cmbCategorie.Items.Add(sub);
         }
 
         private void btnBevestig_Click(object sender, EventArgs e)
@@ -403,17 +403,17 @@ namespace UI
                 MenuItems_Service menuLogica = new MenuItems_Service();
 
                 string menukaart = cmbMenukaart.Text;
-                string subcategorie = cmbSubcategorie.Text;
+                string categorie = cmbCategorie.Text;
                 string naam = txtNaam.Text;
                 string korteNaam = txtKorteNaam.Text;
                 string prijs = txtPrijs.Text.Replace(",", ".");
 
                 lblError.ForeColor = Color.Red;
-                ControleerMenuData(naam, menukaart, subcategorie, korteNaam, prijs);
+                ControleerMenuData(naam, menukaart, categorie, korteNaam, prijs);
 
                 if (lblError.Text == "")
                 {
-                    menuLogica.ToevoegenMenu(menukaart, subcategorie, naam, korteNaam, prijs);
+                    menuLogica.ToevoegenMenu(menukaart, categorie, naam, korteNaam, prijs);
                     RefreshMenu();
                     popupForm.Close();
                 }
@@ -424,17 +424,17 @@ namespace UI
 
                 int id = int.Parse(lblId.Text);
                 string menukaart = cmbMenukaart.Text;
-                string subcategorie = cmbSubcategorie.Text;
+                string categorie = cmbCategorie.Text;
                 string naam = txtNaam.Text;
                 string korteNaam = txtKorteNaam.Text;
                 string prijs = txtPrijs.Text;
 
                 lblError.ForeColor = Color.Red;
-                ControleerMenuData(naam, menukaart, subcategorie, korteNaam, prijs);
+                ControleerMenuData(naam, menukaart, categorie, korteNaam, prijs);
 
                 if (lblError.Text == "")
                 {
-                    menuLogica.WijzigenMenu(id, menukaart, subcategorie, naam, korteNaam, prijs);
+                    menuLogica.WijzigenMenu(id, menukaart, categorie, naam, korteNaam, prijs);
                     RefreshMenu();
                     popupForm.Close();
                 }
@@ -472,14 +472,14 @@ namespace UI
             }
         }
 
-        private void ControleerMenuData(string naam, string menukaart, string subcategorie, string korteNaam, string prijs)
+        private void ControleerMenuData(string naam, string menukaart, string categorie, string korteNaam, string prijs)
         {
             float floatPrijs;
 
             if (!Enum.IsDefined(typeof(MenuKaart), menukaart))
                 lblError.Text = "Menukaart niet ingevuld";
-            else if (!Enum.IsDefined(typeof(Categorie), subcategorie))
-                lblError.Text = "Subcategorie niet ingevuld";
+            else if (!Enum.IsDefined(typeof(Categorie), categorie))
+                lblError.Text = "Categorie niet ingevuld";
             else if (naam == "")
                 lblError.Text = "Naam niet ingevuld";
             else if (korteNaam == "")
