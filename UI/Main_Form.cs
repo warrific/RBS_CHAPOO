@@ -36,16 +36,16 @@ namespace UI
 
         private void btn_Tafel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             OverzichtRestaurant_Form overzichtform = new OverzichtRestaurant_Form(huidigeGebruiker);
             overzichtform.Show();
         }
 
         private void btn_LogUit_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login_Form loginform = new Login_Form();
-            loginform.Show();
+            this.Close();
+            Login_Form login = new Login_Form();
+            login.Show();
         }
 
         public void SetTafelNummer(int tafelnummer)

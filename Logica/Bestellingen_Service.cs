@@ -8,21 +8,29 @@ namespace Logica
 {
     public class Bestellingen_Service
     {
-        public List<Bestelling> make_listbestelling(string filterOpStatus)
+        public List<Bestelling_weergave> make_listbestelling(bool status_actueel, bool is_drinken)
         {
-            // Roept DALitem.GetAll aan
-            Bestelling_DAO DALitem = new Bestelling_DAO();
-            List<Bestelling> bestellingen_lijst = new List<Bestelling>();
+            int status = 1;
+            int cat1 = 1;
+            int cat2 = 2;
 
-            if (bestellingen_lijst.Count != DALitem.GetCount())
+            if (!status_actueel)
             {
-                bestellingen_lijst = DALitem.GetAllWithStatus(filterOpStatus);
-                return bestellingen_lijst;
+                status = 2;
             }
-            else
+
+            if (is_drinken)
             {
-                return bestellingen_lijst;
+                cat1 = 3;
+                cat2 = 4;
             }
+
+            // Roept DALitem.GetAll aan
+            BestelItem_DAO DALitem = new BestelItem_DAO();
+            List<Bestelling_weergave> bestellingen_lijst = new List<Bestelling_weergave>();
+
+            bestellingen_lijst = DALitem.GetAllWeergave(cat1, cat2, status);
+            return bestellingen_lijst;
         }
 
         public void meld_gereed(int order_id, string item_naam)

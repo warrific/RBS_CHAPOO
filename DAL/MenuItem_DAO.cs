@@ -63,21 +63,6 @@ namespace DAL
             return item;
         }
 
-        public int GetLastId()
-        {
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("SELECT MAX(item_id) FROM Menuitem", dbConnection);
-
-            int id = 0;
-
-            id = (int)command.ExecuteScalar();
-
-            dbConnection.Close();
-
-            return id;
-        }
-
         public void WijzigVoorraad(int itemId, int aantal, bool optellen)
         {
 
@@ -90,45 +75,42 @@ namespace DAL
                 command = new SqlCommand("UPDATE Menuitem SET voorraad -= @Aantal WHERE item_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", itemId);
             command.Parameters.AddWithValue("@Aantal", aantal);
-            SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+            command.ExecuteNonQuery();
+
             dbConnection.Close();
         }
 
-        public void ToevoegenMenu(int id, int menukaart, string naam, string korteNaam, string prijs)
+        public void ToevoegenMenuitem(int menukaart, string naam, string korteNaam, string prijs)
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("INSERT INTO Menuitem VALUES (@Id, @Naam, 0, @Prijs, @Kaart, @Shortname)", dbConnection);
-            command.Parameters.AddWithValue("@Id", id);
+            SqlCommand command = new SqlCommand("INSERT INTO Menuitem VALUES (@Naam, 0, @Prijs, @Kaart, @Shortname)", dbConnection);
             command.Parameters.AddWithValue("@Naam", naam);
             command.Parameters.AddWithValue("@Kaart", menukaart);
             command.Parameters.AddWithValue("@Prijs", prijs);
             command.Parameters.AddWithValue("@Menukaart", menukaart);
             command.Parameters.AddWithValue("@Shortname", korteNaam);
 
-            SqlDataReader reader = command.ExecuteReader();
+            command.ExecuteNonQuery();
 
-            reader.Close();
             dbConnection.Close();
         }
 
-        public void ToevoegenMenu2(int id, int subcategorie)
+        public void ToevoegenSubcategorie(int id, int subcategorie)
         {
             dbConnection.Open();
             
-            SqlCommand command = new SqlCommand("INSERT INTO Menukaart VALUES (@Id, @Id, @Subcategorie)", dbConnection);
+            SqlCommand command = new SqlCommand("INSERT INTO Menukaart VALUES (@Id, @Subcategorie)", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
             command.Parameters.AddWithValue("@Subcategorie", subcategorie);
 
-            SqlDataReader reader = command.ExecuteReader();
+            command.ExecuteNonQuery();
 
-            reader.Close();
             dbConnection.Close();
         }
 
-        public void WijzigenMenu(int id, int menukaart, string naam, string korteNaam, string prijs)
+        public void WijzigenMenuitem(int id, int menukaart, string naam, string korteNaam, string prijs, int subcategorie)
         {
             dbConnection.Open();
 
@@ -140,49 +122,31 @@ namespace DAL
             command.Parameters.AddWithValue("@Menukaart", menukaart);
             command.Parameters.AddWithValue("@Shortname", korteNaam);
 
-            SqlDataReader reader = command.ExecuteReader();
+            command.ExecuteNonQuery();
 
-            reader.Close();
-            dbConnection.Close();
-        }
-
-        public void WijzigenMenu2(int id, int subcategorie)
-        {
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("UPDATE Menukaart SET subcategorie = @Subcategorie WHERE menu_id = @Id", dbConnection);
+            command = new SqlCommand("UPDATE Menukaart SET subcategorie = @Subcategorie WHERE item = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
             command.Parameters.AddWithValue("@Subcategorie", subcategorie);
 
-            SqlDataReader reader = command.ExecuteReader();
+            command.ExecuteNonQuery();
 
-            reader.Close();
             dbConnection.Close();
         }
 
-        public void VerwijderenMenu(int id)
+        public void VerwijderenMenuitem(int id)
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("DELETE FROM Menuitem WHERE item_id = @Id", dbConnection);
+            SqlCommand command = new SqlCommand("DELETE FROM Menukaart WHERE item = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
 
-            SqlDataReader reader = command.ExecuteReader();
+            command.ExecuteNonQuery();
 
-            reader.Close();
-            dbConnection.Close();
-        }
-
-        public void VerwijderenMenu2(int id)
-        {
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("DELETE FROM Menukaart WHERE menu_id = @Id", dbConnection);
+            command = new SqlCommand("DELETE FROM Menuitem WHERE item_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
 
-            SqlDataReader reader = command.ExecuteReader();
+            command.ExecuteNonQuery();
 
-            reader.Close();
             dbConnection.Close();
         }
 
@@ -262,17 +226,11 @@ namespace DAL
 
             // Connectie opzetten
             dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT [item_id] FROM Menuitem WHERE naam = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", item_naam);
-            SqlDataReader reader = command.ExecuteReader();
+            SqlCommand command = new SqlCommand("SELECT [item_id] FROM Menuitem WHERE naam = @Naam", dbConnection);
+            command.Parameters.AddWithValue("@Naam", item_naam);
 
-            // Item id ophalen
-            while (reader.Read())
-            {
-                item_id = (int)reader["item_id"];
-            }
+            item_id = (int)command.ExecuteScalar();
 
-            reader.Close();
             dbConnection.Close();
 
             return item_id;

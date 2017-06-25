@@ -99,33 +99,17 @@ namespace DAL
             return werknemer;
         }
 
-        public int GetLastId()
+        public void ToevoegenWerknemer(string naam, string functie, int code)
         {
             dbConnection.Open();
 
-            SqlCommand command = new SqlCommand("SELECT MAX(persoon_id) FROM Medewerker", dbConnection);
-
-            int id = 0;
-
-            id = (int)command.ExecuteScalar();
-
-            dbConnection.Close();
-
-            return id;
-        }
-
-        public void ToevoegenWerknemer(int id, string naam, string functie, int code)
-        {
-            dbConnection.Open();
-
-            SqlCommand command = new SqlCommand("INSERT INTO Medewerker VALUES (@Id, @Naam, @Functie, @Code)", dbConnection);
-            command.Parameters.AddWithValue("@Id", id);
+            SqlCommand command = new SqlCommand("INSERT INTO Medewerker VALUES (@Naam, @Functie, @Code)", dbConnection);
             command.Parameters.AddWithValue("@Naam", naam);
             command.Parameters.AddWithValue("@Functie", functie);
             command.Parameters.AddWithValue("@Code", code);
-            SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+            command.ExecuteNonQuery();
+
             dbConnection.Close();
         }
 
@@ -137,9 +121,9 @@ namespace DAL
             command.Parameters.AddWithValue("@Id", id);
             command.Parameters.AddWithValue("@Naam", naam);
             command.Parameters.AddWithValue("@Functie", functie);
-            SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+            command.ExecuteNonQuery();
+
             dbConnection.Close();
         }
 
@@ -149,9 +133,9 @@ namespace DAL
 
             SqlCommand command = new SqlCommand("DELETE FROM Medewerker WHERE persoon_id = @Id", dbConnection);
             command.Parameters.AddWithValue("@Id", id);
-            SqlDataReader reader = command.ExecuteReader();
 
-            reader.Close();
+            command.ExecuteNonQuery();
+
             dbConnection.Close();
         }
 
@@ -166,7 +150,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                int code = ((int)reader["code"]);
+                int code = (int)reader["code"];
                 codes.Add(code);
             }
 

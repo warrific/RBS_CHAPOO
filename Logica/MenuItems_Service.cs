@@ -20,88 +20,37 @@ namespace Logica
             DALItem.WijzigVoorraad(id, aantal, optellen);
         }
 
-        public string ToevoegenMenu(string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
+        public void ToevoegenMenu(string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
         {
-            if (Enum.IsDefined(typeof(MenuKaart), menukaart))
-            {
-                if (Enum.IsDefined(typeof(Categorie), subcategorie))
-                {
-                    if (naam != "")
-                    {
-                        if (korteNaam != "")
-                        {
-                            if (prijs != "")
-                            {
-                                float floatPrijs;
-                                bool isFloat = float.TryParse(prijs, out floatPrijs);
-                                if (isFloat)
-                                {
-                                    MenuItem_DAO DALItem = new MenuItem_DAO();
+            MenuItem_DAO DALItem = new MenuItem_DAO();
+            
+            int category = (int)Enum.Parse(typeof(Categorie), menukaart);
+            int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
 
-                                    int id = DALItem.GetLastId() + 1;
-                                    int category = (int)Enum.Parse(typeof(MenuKaart), menukaart);
-                                    int sub = (int)Enum.Parse(typeof(Categorie), subcategorie);
+            DALItem.ToevoegenMenuitem(category, naam, korteNaam, prijs);
 
-                                    DALItem.ToevoegenMenu(id, category, naam, korteNaam, prijs);
-                                    DALItem.ToevoegenMenu2(id, sub);
-                                    return "";
-                                }
-                                else return "Prijs ongeldig";
-                            }
-                            else return "prijs niet ingevuld";
-                        }
-                        else return "Korte naam niett ingevuld";
-                    }
-                    else return "Naam niet ingevuld";
-                }
-                else return "Subcategorie niet ingevuld";
-            }
-            else return "Menukaart niet ingevuld";
+            int id = DALItem.GetIdForName(naam);
+
+            DALItem.ToevoegenSubcategorie(id, sub);
         }
 
-        public string WijzigenMenu(int id, string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
+        public void WijzigenMenu(int id, string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
         {
-            if (Enum.IsDefined(typeof(MenuKaart), menukaart))
-            {
-                if (Enum.IsDefined(typeof(Categorie), subcategorie))
-                {
-                    if (naam != "")
-                    {
-                        if (korteNaam != "")
-                        {
-                            if (prijs != "")
-                            {
-                                float floatPrijs;
-                                bool isFloat = float.TryParse(prijs, out floatPrijs);
-                                if (isFloat)
-                                { 
-                                    MenuItem_DAO DALItem = new MenuItem_DAO();
+            float floatPrijs;
+            bool isFloat = float.TryParse(prijs, out floatPrijs);
+            MenuItem_DAO DALItem = new MenuItem_DAO();
 
-                                    int category = (int)Enum.Parse(typeof(MenuKaart), menukaart);
-                                    int sub = (int)Enum.Parse(typeof(Categorie), subcategorie);
+            int category = (int)Enum.Parse(typeof(Categorie), menukaart);
+            int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
                                 
-                                    DALItem.WijzigenMenu(id, category, naam, korteNaam, prijs);
-                                    DALItem.WijzigenMenu2(id, sub);
-                                    return "";
-                                }
-                                else return "Prijs ongeldig";
-                            }
-                            else return "prijs niet ingevuld";
-                        }
-                        else return "Korte naam niett ingevuld";
-                    }
-                    else return "Naam niet ingevuld";
-                }
-                else return "Subcategorie niet ingevuld";
-            }
-            else return "Menukaart niet ingevuld";
+            DALItem.WijzigenMenuitem(id, category, naam, korteNaam, prijs, sub);
         }
 
         public void VerwijderenMenu(int id)
         {
             MenuItem_DAO DALItem = new MenuItem_DAO();
-            DALItem.VerwijderenMenu2(id);
-            DALItem.VerwijderenMenu(id);
+
+            DALItem.VerwijderenMenuitem(id);
         }
 
         public List<MenuItem> HaalFilterdeLijstOp(MenuKaart categorie, Categorie subcategorie)
