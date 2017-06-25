@@ -11,11 +11,11 @@ namespace Model
         public int Id { get; private set; }
         public int Tafel_nummer { get; private set; }
         public int Aantal { get; private set; }
-        public string Order { get; private set; }               //menuitem
-        public string Opmerking { get; private set; }           //item
-        public string Bediening { get; private set; }           //werkenmer
-        public Status Status_item { get; private set; }         //item
-        public string order_date { get; private set; }          //bestelling
+        public string Order { get; private set; }
+        public string Opmerking { get; private set; }
+        public string Bediening { get; private set; }
+        public Status Status_item { get; private set; }
+        public string order_date { get; private set; }
 
 
     public Bestelling_weergave(int id_in, int tafel_nummer_in, int aantal_in, string order_in, string opmerking_in, string bediening_in, Status status_item_in, string order_date_in)

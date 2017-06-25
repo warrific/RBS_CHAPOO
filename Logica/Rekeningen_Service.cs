@@ -17,6 +17,7 @@ namespace Logica
             RekeningItem_DAO dal = new RekeningItem_DAO();
             rekening = dal.GetRekening(OrderId);
         }
+
         public List<RekeningItem> getRekening()
         {
             return rekening;

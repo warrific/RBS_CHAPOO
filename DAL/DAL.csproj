@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="BestelItem_DAO.cs" />
     <Compile Include="Bestelling_DAO.cs" />
-    <Compile Include="Login_DAO.cs" />
     <Compile Include="MenuKaart_DAO.cs" />
     <Compile Include="MenuItem_DAO.cs" />
     <Compile Include="RekeningItem_DAO.cs" />

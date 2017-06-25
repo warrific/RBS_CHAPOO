@@ -41,37 +41,6 @@ namespace DAL
             return bestellingen;
         }
 
-        public List<Bestelling> GetAllWithStatus(bool status_actueel)
-        {
-            /*
-            if (dbConnection.State != ConnectionState.Open)
-            {
-                dbConnection.Close();
-                dbConnection.Open();
-            }
-            */
-
-            // Connectie opzetten
-            dbConnection.Open();
-            SqlCommand command;
-
-            command = new SqlCommand("SELECT * FROM Bestelling WHERE NOT status = 3", dbConnection);                            // fix plz
-               
-            SqlDataReader reader = command.ExecuteReader();
-
-            // Items inlezen
-            while (reader.Read())
-            {
-                Bestelling item = Readitem(reader);
-                bestellingen.Add(item);
-            }
-
-            reader.Close();
-            dbConnection.Close();
-
-            return bestellingen;
-        }
-
         public int GetCount()
         {
             int count = 0;
