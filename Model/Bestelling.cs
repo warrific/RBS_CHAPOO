@@ -44,6 +44,18 @@ namespace Model
             Opname = opname_in;
         }
 
+        public Bestelling(List<BestelItem> bestel_items_in, Tafel tafel_in, Status status_order_in, Werknemer werknemer_in, double totaalprijs_in, string betaalmethode_in, double fooi_in, string opname_in)
+        {
+            Bestel_items = bestel_items_in;
+            Tafel = tafel_in;
+            Status_order = status_order_in;
+            Werknemer = werknemer_in;
+            Totaalprijs = totaalprijs_in;
+            Betaalmethode = betaalmethode_in;
+            Fooi = fooi_in;
+            Opname = opname_in;
+        }
+
         // Dit kan volgensmij ook in de property zelf?
         // TO DO: DIT MOET IN LOGICA
         public int BerekenTotaalPrijs()

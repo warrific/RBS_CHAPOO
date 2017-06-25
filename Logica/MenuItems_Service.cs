@@ -24,8 +24,8 @@ namespace Logica
         {
             MenuItem_DAO DALItem = new MenuItem_DAO();
             
-            int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-            int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+            int category = (int)Enum.Parse(typeof(MenuKaart), menukaart);
+            int sub = (int)Enum.Parse(typeof(Categorie), subcategorie);
 
             DALItem.ToevoegenMenuitem(category, naam, korteNaam, prijs);
 
@@ -40,8 +40,8 @@ namespace Logica
             bool isFloat = float.TryParse(prijs, out floatPrijs);
             MenuItem_DAO DALItem = new MenuItem_DAO();
 
-            int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-            int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+            int category = (int)Enum.Parse(typeof(MenuKaart), menukaart);
+            int sub = (int)Enum.Parse(typeof(Categorie), subcategorie);
                                 
             DALItem.WijzigenMenuitem(id, category, naam, korteNaam, prijs, sub);
         }

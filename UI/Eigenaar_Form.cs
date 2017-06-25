@@ -317,9 +317,9 @@ namespace UI
         {
             float floatPrijs;
 
-            if (!Enum.IsDefined(typeof(Categorie), menukaart))
+            if (!Enum.IsDefined(typeof(MenuKaart), menukaart))
                 lblError.Text =  "Menukaart niet ingevuld";
-            else if (!Enum.IsDefined(typeof(SubCategorie), subcategorie))
+            else if (!Enum.IsDefined(typeof(Categorie), subcategorie))
                 lblError.Text = "Subcategorie niet ingevuld";
             else if (naam == "")
                 lblError.Text = "Naam niet ingevuld";

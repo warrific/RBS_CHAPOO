@@ -139,16 +139,34 @@ namespace DAL
             return item.Id;
         }
 
+        public int GetIdOfUncompletedOrder(int tafelNr)
+        {
+            dbConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling WHERE tafel_id = @Id AND NOT status = 3", dbConnection);
+            command.Parameters.AddWithValue("@Id", tafelNr);
+            SqlDataReader reader = command.ExecuteReader();
+
+            Bestelling item = null;
+
+            if (reader.Read())
+            {
+                item = Readitem(reader);
+            }
+            reader.Close();
+            dbConnection.Close();
+
+            return item.Id;
+        }
+
         public void ZetBestellingInDatabase(Bestelling bestelling)
         {
             dbConnection.Open();
 
-            string dbString =   "INSERT INTO Bestelling (order_id, tafel_id, persoon_id, totaal_prijs, betaal_methode, fooi, status, datum) " +
-                                "VALUES (@orderid, @tafelid, @persoonid, @totaal, @betaal, @fooi, @status, @datum)";
+            string dbString =   "INSERT INTO Bestelling (tafel_id, persoon_id, totaal_prijs, betaal_methode, fooi, status, datum) " +
+                                "VALUES (@tafelid, @persoonid, @totaal, @betaal, @fooi, @status, @datum)";
 
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
-            command.Parameters.AddWithValue("@orderid", bestelling.Id);
             command.Parameters.AddWithValue("@tafelid", bestelling.Tafel.Id);
             command.Parameters.AddWithValue("@persoonid", bestelling.Werknemer.Id);
             command.Parameters.AddWithValue("@totaal", bestelling.Totaalprijs);
@@ -162,11 +180,8 @@ namespace DAL
             dbConnection.Close();
         }
 
-        public void ZetBestelItemsInDatabase(BestelItem item)
+        public void ZetBestelItemsInDatabase(BestelItem item, int orderId)
         {
-            int count = GetCount();
-
-
             dbConnection.Open();
 
             string dbString = "INSERT INTO Bestelling_item (order_id, item_id, aantal, opmerking, status) " +
@@ -174,7 +189,7 @@ namespace DAL
 
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 
-            command.Parameters.AddWithValue("@orderid", count);
+            command.Parameters.AddWithValue("@orderid", orderId);
             command.Parameters.AddWithValue("@item_id", item.MenuItem.Id);
             command.Parameters.AddWithValue("@aantal", item.Aantal);
             command.Parameters.AddWithValue("@opmerking", item.Opmerking);

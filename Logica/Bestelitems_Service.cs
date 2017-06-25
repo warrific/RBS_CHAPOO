@@ -12,6 +12,39 @@ namespace Logica
             return DALItem.GetAllForID(order_id);
         }
 
+        public BestelItem CheckOfLijstAlMenuItemHeeft(List<BestelItem> lijstBestelItems, MenuItem menuItem)
+        {
+            foreach(BestelItem item in lijstBestelItems)
+            {
+                if(item.MenuItem.Id == menuItem.Id)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
+        public bool CheckAantal(BestelItem item, MenuItem menuItem)
+        {
+            if(menuItem.Voorraad <= item.Aantal)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void VerhoogAantal(List<BestelItem> lijstBestelItems, MenuItem menuItem)
+        {
+            foreach(BestelItem item in lijstBestelItems)
+            {
+                if(item.MenuItem.Id == menuItem.Id)
+                {
+                    item.Aantal++;
+                }
+            }
+        }
+
         public void VerwijderBestelItemUitDB(BestelItem item)
         {
             DAL.BestelItem_DAO dalBestelItem = new BestelItem_DAO();
@@ -19,7 +52,7 @@ namespace Logica
         }
 
 
-        public void VerlaagAantal(ref List<BestelItem> lijstBestelItem, MenuItem menuItem)
+        public void VerlaagAantal(List<BestelItem> lijstBestelItem, MenuItem menuItem)
         {
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {

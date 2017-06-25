@@ -14,11 +14,11 @@ namespace UI
 {
     public partial class Bediening_Form : Main_Form
     {
-        Model.Werknemer werknemer;
+        Werknemer werknemer;
+        Tafel tafel;
         List<BestelItem> lijstBestelItem;
-        Model.Tafel tafel;
 
-        public Bediening_Form(Model.Werknemer werknemer, int tafelNummer): base(werknemer)
+        public Bediening_Form(Werknemer werknemer, int tafelNummer): base(werknemer)
         {
             InitializeComponent();
 
@@ -27,7 +27,7 @@ namespace UI
 
             // vul de gedeclareerde velden
             this.werknemer = werknemer;
-            tafel = new Model.Tafel(tafelNummer, Status_tafel.Bezet);
+            tafel = new Tafel(tafelNummer, Status_tafel.Bezet);
             lijstBestelItem = new List<BestelItem>();
         }
 
@@ -187,32 +187,28 @@ namespace UI
 
             Model.MenuItem menuItem = ((ButtonMenuItem)sender).menuItem;
 
-            bool bestaat = false;
-
             // controleerd of er al van een specifieke menu item bestelt is
             // true = verhoog aantal
             // false = nieuwe bestelitem toevoegen 
-            for (int i = 0; i < lijstBestelItem.Count; i++)
+
+            Logica.BestelItems_Service logBestelItems = new BestelItems_Service();
+
+            BestelItem bestelItem = logBestelItems.CheckOfLijstAlMenuItemHeeft(lijstBestelItem, menuItem);
+
+            if(bestelItem != null)
             {
-                if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
+                if(logBestelItems.CheckAantal(bestelItem, menuItem))
                 {
-                    bestaat = true;
-
-                    // genereer waarschuwing + break als er geen voorraad meer is
-                    if (menuItem.Voorraad <= lijstBestelItem[i].Aantal)
-                    {
-                        lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.Shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
-                        break;
-                    }
-                    
-                    lijstBestelItem[i].Aantal++;
+                    lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.Shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
                 }
-            }
-
-            if (bestaat == false)
+                else
+                {
+                    logBestelItems.VerhoogAantal(lijstBestelItem, menuItem);
+                }
+            } else
             {
-                BestelItem bestelItem = new BestelItem(0, menuItem, 1, "", Status.Open);
-                lijstBestelItem.Add(bestelItem);
+                BestelItem nieuweBestelItem = new BestelItem(menuItem, 1, "", Status.Open);
+                lijstBestelItem.Add(nieuweBestelItem);
             }
 
             UpdateListView();
@@ -220,16 +216,16 @@ namespace UI
 
         
 
-    // verlaagd het aantal van een menu item in de lijst
-    // 0 = verwijder uit lijst
-    private void VerlaagMenuItem(object sender, EventArgs e)
+        // verlaagd het aantal van een menu item in de lijst
+         // 0 = verwijder uit lijst
+        private void VerlaagMenuItem(object sender, EventArgs e)
         {
             lbl_VoorraadOp.Text = "";
 
-            Model.MenuItem menuItem = ((ButtonMenuItemVerlaag)sender).menuItem;
+            Model.MenuItem menuItem = ((ButtonMenuItem)sender).menuItem;
 
             BestelItems_Service serviceBestelItems = new BestelItems_Service();
-            serviceBestelItems.VerlaagAantal(ref lijstBestelItem, menuItem);
+            serviceBestelItems.VerlaagAantal(lijstBestelItem, menuItem);
 
             UpdateListView();
         }
@@ -240,27 +236,22 @@ namespace UI
             if (lijstBestelItem.Count == 0)
                 return;
 
-            Logica.MenuItems_Service logMenuItems = new MenuItems_Service();
+            MenuItems_Service logMenuItems = new MenuItems_Service();
             logMenuItems.BewerkVoorraad(lijstBestelItem);
 
-            Logica.Bestellingen_Service logBestellingen = new Bestellingen_Service();
-
+            Bestellingen_Service logBestellingen = new Bestellingen_Service();
             if (logBestellingen.ControleerOfTafelAlBestellingHeeft(tafel))
             {
-                logBestellingen.StuurBestelItemNaarDatabase(lijstBestelItem);
-
-                lijstBestelItem.Clear();
-                UpdateListView();
-                return;
+                logBestellingen.StuurBestelItemNaarDatabase(lijstBestelItem, tafel);
             }
             else
             {
 
-                Model.Bestelling bestelling = new Bestelling(logBestellingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open, werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
+                Model.Bestelling bestelling = new Bestelling(lijstBestelItem, tafel, Status.Open, werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
 
                 logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
-                logBestellingen.StuurBestelItemNaarDatabase(lijstBestelItem);
+                logBestellingen.StuurBestelItemNaarDatabase(lijstBestelItem, tafel);
             }
 
             lijstBestelItem.Clear();
@@ -281,43 +272,10 @@ namespace UI
             UpdateListView();
         }
 
-        // toont de totale bestelling van een tafel
-        private void ToonTotaleBestelling(object sender, EventArgs e)
-        {
-            listView_Bestelling.Items.Clear();
-
-            pnl_optiesbestelling.Controls.Clear();
-            flowLP_MenuItems.Controls.Clear();
-
-            pnl_optiesbestelling.Controls.Add(Btn_VerwijderItemUitDB);
-            Btn_VerwijderItemUitDB.Enabled = true;
-            Btn_VerwijderItemUitDB.Visible = true;
-
-            Logica.Bestellingen_Service logBestelingen = new Bestellingen_Service();
-            Logica.BestelItems_Service logBestelItems = new BestelItems_Service();
-            MenuItems_Service logMenuItems = new MenuItems_Service();
-
-            if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel) == false)
-                return;
-
-            int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
-            List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
-
-            foreach(BestelItem item in lijstBestelItems)
-            {
-                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
-                lvi.SubItems.Add(item.Aantal.ToString());
-                lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
-                lvi.SubItems.Add(item.Opmerking);
-                lvi.Tag = item;
-                listView_Bestelling.Items.Add(lvi);
-            }
-        }
-
         // toont opmerking textbox en button
         private void Btn_commentaar_Click(object sender, EventArgs e)
         {
-            if(textBox_Commentaar.Enabled)
+            if (textBox_Commentaar.Enabled)
             {
                 textBox_Commentaar.Enabled = false;
                 textBox_Commentaar.Visible = false;
@@ -336,18 +294,18 @@ namespace UI
         // voegt opmerking aan bestelitem
         private void Btn_CommentaarSent_Click(object sender, EventArgs e)
         {
-            if(listView_Bestelling.SelectedItems.Count == 0)
+            if (listView_Bestelling.SelectedItems.Count == 0)
             {
                 return;
             }
 
-            foreach(ListViewItem item in listView_Bestelling.SelectedItems)
+            foreach (ListViewItem item in listView_Bestelling.SelectedItems)
             {
                 BestelItem BestelItemId = (BestelItem)item.Tag;
 
                 foreach (BestelItem bestelItem in lijstBestelItem)
                 {
-                    if(bestelItem.MenuItem.Id.ToString() == BestelItemId.MenuItem.Id.ToString())
+                    if (bestelItem.MenuItem.Id == BestelItemId.MenuItem.Id)
                     {
                         bestelItem.Opmerking = textBox_Commentaar.Text;
                     }
@@ -357,11 +315,41 @@ namespace UI
             UpdateListView();
         }
 
+        // toont de totale bestelling van een tafel
+        private void ToonTotaleBestelling(object sender, EventArgs e)
+        {
+            listView_Bestelling.Items.Clear();
+            pnl_optiesbestelling.Controls.Clear();
+            flowLP_MenuItems.Controls.Clear();
+
+            pnl_optiesbestelling.Controls.Add(Btn_VerwijderItemUitDB);
+            Btn_VerwijderItemUitDB.Enabled = true;
+            Btn_VerwijderItemUitDB.Visible = true;
+
+            Bestellingen_Service logBestelingen = new Bestellingen_Service();
+            BestelItems_Service logBestelItems = new BestelItems_Service();
+            MenuItems_Service logMenuItems = new MenuItems_Service();
+
+            if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel) == false)
+                return;
+
+            int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
+            List<BestelItem> totaleLijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
+
+            foreach(BestelItem item in totaleLijstBestelItems)
+            {
+                ListViewItem lvi = new ListViewItem(item.MenuItem.Shortname);
+                lvi.SubItems.Add(item.Aantal.ToString());
+                lvi.SubItems.Add(logMenuItems.BerekenTotaalBestelItem(item).ToString());
+                lvi.SubItems.Add(item.Opmerking);
+                lvi.Tag = item;
+                listView_Bestelling.Items.Add(lvi);
+            }
+        }
+
         // verwijderd een bestelitem van de database
         private void Btn_VerwijderItemUitDB_Click(object sender, EventArgs e)
         {
-            listView_Bestelling.Items.Clear();
-
             BestelItems_Service logBestelItems = new BestelItems_Service();
             Bestellingen_Service logBestellingen = new Bestellingen_Service();
             MenuItems_Service logMenuItems = new MenuItems_Service();
@@ -374,6 +362,8 @@ namespace UI
 
             int bestellingId = logBestellingen.GetBestellingIdByTafelNummer(tafel);
             List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
+
+            listView_Bestelling.Items.Clear();
 
             foreach (BestelItem item in lijstBestelItems)
             {
