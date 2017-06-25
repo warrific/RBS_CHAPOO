@@ -345,15 +345,15 @@ namespace UI
         {
             cmbMenukaart.Items.Clear();
 
-            foreach (Categorie categorie in Enum.GetValues(typeof(Categorie)))
-                cmbMenukaart.Items.Add(categorie);
+            foreach (MenuKaart menuKaart in Enum.GetValues(typeof(MenuKaart)))
+                cmbMenukaart.Items.Add(menuKaart);
         }
 
         private void VulCmbSubcategorie()
         {
             cmbSubcategorie.Items.Clear();
 
-            foreach (SubCategorie sub in Enum.GetValues(typeof(SubCategorie)))
+            foreach (Categorie sub in Enum.GetValues(typeof(Categorie)))
                 cmbSubcategorie.Items.Add(sub);
         }
 
@@ -478,7 +478,7 @@ namespace UI
 
             if (!Enum.IsDefined(typeof(Categorie), menukaart))
                 lblError.Text = "Menukaart niet ingevuld";
-            else if (!Enum.IsDefined(typeof(SubCategorie), subcategorie))
+            else if (!Enum.IsDefined(typeof(Categorie), subcategorie))
                 lblError.Text = "Subcategorie niet ingevuld";
             else if (naam == "")
                 lblError.Text = "Naam niet ingevuld";
