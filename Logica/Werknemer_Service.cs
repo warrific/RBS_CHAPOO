@@ -10,21 +10,21 @@ namespace Logica
 {
     public class Werknemer_Service
     {
-        public List<Model.Werknemer> make_list()
+        public List<Werknemer> make_list()
         {
             Werknemer_DAO DALWerknemer = new Werknemer_DAO();
 
             return DALWerknemer.GetAll();
         }
 
-        public Model.Werknemer GetWerknemer(int code)
+        public Werknemer GetWerknemer(int code)
         {
             Werknemer_DAO dalitem = new Werknemer_DAO();
 
             return dalitem.GetWerknemer(code);
         }
 
-        public bool WachtwoordOngeldig(string password, out Model.Werknemer modelWerknemer)
+        public bool WachtwoordOngeldig(string password, out Werknemer modelWerknemer)
         {
             modelWerknemer = GetWerknemer(int.Parse(password));
             

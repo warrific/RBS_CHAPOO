@@ -21,7 +21,7 @@ namespace DAL
             dbConnection = new SqlConnection(connString);
         }
 
-        public List<Model.Werknemer> GetAll()
+        public List<Werknemer> GetAll()
         {
             dbConnection.Open();
             SqlCommand command =
@@ -41,7 +41,7 @@ namespace DAL
             return werknemers;
         }
 
-        public Model.Werknemer GetWerknemer(int code)
+        public Werknemer GetWerknemer(int code)
         {
             dbConnection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Medewerker WHERE code = @code", dbConnection);

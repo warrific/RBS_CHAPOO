@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using Logica;
 using Model;
-using System.Collections.Generic;
 
 namespace UI
 {
@@ -12,7 +11,7 @@ namespace UI
         private bool status_actueel = true;
         private bool is_drinken = true;
 
-        public Orders_Form(Model.Werknemer huidigeGebruiker_in, Model.Functie functie) : base(huidigeGebruiker_in)
+        public Orders_Form(Werknemer huidigeGebruiker_in, Functie functie) : base(huidigeGebruiker_in)
         {
             InitializeComponent();
 
@@ -21,7 +20,7 @@ namespace UI
             btn_Tafel.Hide();
 
             // Functie check, dit wordt later gebruikt voor lijsten filteren
-            if (functie == Model.Functie.Kok)
+            if (functie == Functie.Kok)
             {
                 is_drinken = false;
             }
