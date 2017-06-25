@@ -48,7 +48,7 @@ namespace UI
             loginform.Show();
         }
 
-        public void setTafelNR(int tafelnummer)
+        public void SetTafelNummer(int tafelnummer)
         {
             tafelnr = tafelnummer.ToString();
             btn_Tafel.Text = tafelnr;

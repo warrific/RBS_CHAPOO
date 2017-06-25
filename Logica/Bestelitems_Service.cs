@@ -4,7 +4,7 @@ using DAL;
 
 namespace Logica
 {
-    public class Bestelitems_Service
+    public class BestelItems_Service
     {
         public List<BestelItem> GetBestellingItems(int order_id)
         {
@@ -16,6 +16,23 @@ namespace Logica
         {
             DAL.BestelItem_DAO dalBestelItem = new BestelItem_DAO();
             dalBestelItem.VerwijderBestelItemUitDatabase(item);
+        }
+
+
+        public void VerlaagAantal(ref List<BestelItem> lijstBestelItem, MenuItem menuItem)
+        {
+            for (int i = 0; i < lijstBestelItem.Count; i++)
+            {
+                if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
+                {
+                    lijstBestelItem[i].Aantal--;
+
+                    if (lijstBestelItem[i].Aantal == 0)
+                    {
+                        lijstBestelItem.RemoveAt(i);
+                    }
+                }
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,23 +14,24 @@ namespace UI
 {
     public partial class Bediening_Form : Main_Form
     {
-        Model.Werknemer huidigeGebruiker = new Model.Werknemer();
+        Model.Werknemer werknemer;
         List<BestelItem> lijstBestelItem;
         Model.Tafel tafel;
 
-        public Bediening_Form(Model.Werknemer huidigeGebruiker_in, int tafelnr_in): base(huidigeGebruiker_in)
+        public Bediening_Form(Model.Werknemer werknemer, int tafelNummer): base(werknemer)
         {
             InitializeComponent();
-            huidigeGebruiker = huidigeGebruiker_in;
-            setTafelNR(tafelnr_in);
 
-            Logica.Werknemer_Service logWerknemer = new Logica.Werknemer_Service();
+            // bewerk tafel nummer in tafel button boven in applicatie
+            SetTafelNummer(tafelNummer);
 
-            tafel = new Model.Tafel(tafelnr_in, Status_tafel.Bezet);
+            // vul de gedeclareerde velden
+            this.werknemer = werknemer;
+            tafel = new Model.Tafel(tafelNummer, Status_tafel.Bezet);
             lijstBestelItem = new List<BestelItem>();
         }
 
-        // update de listview met de items in de lijst bestel items
+        // Update de listview met de bestel items in de lijstBestelItems
         private void UpdateListView()
         {
             listView_Bestelling.Items.Clear();
@@ -52,19 +52,21 @@ namespace UI
         // genereerd categorie buttons voor drankjes
         private void Btn_dranken_Click(object sender, EventArgs e)
         {
+            // clear de panel en flow layout panel van buttons
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
 
+            // button van van de totaal bestelling button ontzichbaar maken
             Btn_VerwijderItemUitDB.Enabled = false;
             Btn_VerwijderItemUitDB.Visible = false;
 
-            ButtonSelectie btn_nonalcoholisch = new ButtonSelectie(Categorie.Drank, SubCategorie.Nonalcoholisch);
+            ButtonSelectie btn_nonalcoholisch = new ButtonSelectie(MenuKaart.Drank, Categorie.Nonalcoholisch);
             pnl_optiesbestelling.Controls.Add(btn_nonalcoholisch);
             btn_nonalcoholisch.Text = "Non-Alcoholisch";
             btn_nonalcoholisch.Location = new Point(220, 0);
             btn_nonalcoholisch.Click += new EventHandler(GenereerMenuItemButtons);
 
-            ButtonSelectie btn_alcoholisch = new ButtonSelectie(Categorie.Alcohol, SubCategorie.Alcoholisch);
+            ButtonSelectie btn_alcoholisch = new ButtonSelectie(MenuKaart.Alcohol, Categorie.Alcoholisch);
             pnl_optiesbestelling.Controls.Add(btn_alcoholisch);
             btn_alcoholisch.Text = "Alcoholisch";
             btn_alcoholisch.Location = new Point(345, 0);
@@ -77,31 +79,33 @@ namespace UI
         // genereerd categorie buttons voor diner
         private void Btn_diner_Click(object sender, EventArgs e)
         {
+            // clear de panel en flow layout panel van buttons
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
 
+            // button van van de totaal bestelling button ontzichbaar maken
             Btn_VerwijderItemUitDB.Enabled = false;
             Btn_VerwijderItemUitDB.Visible = false;
 
-            ButtonSelectie btn_DinerVoor = new ButtonSelectie(Categorie.Diner, SubCategorie.Voorgerecht);
+            ButtonSelectie btn_DinerVoor = new ButtonSelectie(MenuKaart.Diner, Categorie.Voorgerecht);
             pnl_optiesbestelling.Controls.Add(btn_DinerVoor);
             btn_DinerVoor.Text = "Voorgerecht";
             btn_DinerVoor.Location = new Point(10, 0);
             btn_DinerVoor.Click += new EventHandler(GenereerMenuItemButtons);
 
-            ButtonSelectie btn_DinerTussen = new ButtonSelectie(Categorie.Diner, SubCategorie.Tussengerecht);
+            ButtonSelectie btn_DinerTussen = new ButtonSelectie(MenuKaart.Diner, Categorie.Tussengerecht);
             pnl_optiesbestelling.Controls.Add(btn_DinerTussen);
             btn_DinerTussen.Text = "Tussengerecht";
             btn_DinerTussen.Location = new Point(135, 0);
             btn_DinerTussen.Click += new EventHandler(GenereerMenuItemButtons);
 
-            ButtonSelectie btn_DinerHoofd = new ButtonSelectie(Categorie.Diner, SubCategorie.HoofdGerecht);
+            ButtonSelectie btn_DinerHoofd = new ButtonSelectie(MenuKaart.Diner, Categorie.HoofdGerecht);
             pnl_optiesbestelling.Controls.Add(btn_DinerHoofd);
             btn_DinerHoofd.Text = "Hoofdgerecht";
             btn_DinerHoofd.Location = new Point(260, 0);
             btn_DinerHoofd.Click += new EventHandler(GenereerMenuItemButtons);
 
-            ButtonSelectie btn_DinerNa = new ButtonSelectie(Categorie.Diner, SubCategorie.Nagerecht);
+            ButtonSelectie btn_DinerNa = new ButtonSelectie(MenuKaart.Diner, Categorie.Nagerecht);
             pnl_optiesbestelling.Controls.Add(btn_DinerNa);
             btn_DinerNa.Text = "Nagerecht";
             btn_DinerNa.Location = new Point(385, 0);
@@ -114,28 +118,29 @@ namespace UI
         // genereerd categorie buttons voor lunch
         private void Btn_lunch_Click(object sender, EventArgs e)
         {
+            // clear de panel en flow layout panel van buttons
             pnl_optiesbestelling.Controls.Clear();
             flowLP_MenuItems.Controls.Clear();
 
+            // button van van de totaal bestelling button ontzichbaar maken
             Btn_VerwijderItemUitDB.Enabled = false;
             Btn_VerwijderItemUitDB.Visible = false;
 
-            ButtonSelectie btn_LunchVoor = new ButtonSelectie(Categorie.Lunch, SubCategorie.Voorgerecht);
+            ButtonSelectie btn_LunchVoor = new ButtonSelectie(MenuKaart.Lunch, Categorie.Voorgerecht);
             pnl_optiesbestelling.Controls.Add(btn_LunchVoor);
             btn_LunchVoor.Text = "Voorgerecht";
             btn_LunchVoor.Location = new Point(10, 0);
             btn_LunchVoor.Click += new EventHandler(GenereerMenuItemButtons);
             
-            ButtonSelectie btn_LunchHoofd = new ButtonSelectie(Categorie.Lunch, SubCategorie.HoofdGerecht);
+            ButtonSelectie btn_LunchHoofd = new ButtonSelectie(MenuKaart.Lunch, Categorie.HoofdGerecht);
             pnl_optiesbestelling.Controls.Add(btn_LunchHoofd);
             btn_LunchHoofd.Text = "Hoofdgerecht";
             btn_LunchHoofd.Location = new Point(135, 0);
             btn_LunchHoofd.Click += new EventHandler(GenereerMenuItemButtons);
 
-            ButtonSelectie btn_LunchNa = new ButtonSelectie(Categorie.Lunch, SubCategorie.Nagerecht);
+            ButtonSelectie btn_LunchNa = new ButtonSelectie(MenuKaart.Lunch, Categorie.Nagerecht);
             pnl_optiesbestelling.Controls.Add(btn_LunchNa);
             btn_LunchNa.Text = "Nagerecht";
-            btn_lunch.Tag = 90;
             btn_LunchNa.Location = new Point(260, 0); 
             btn_LunchNa.Click += new EventHandler(GenereerMenuItemButtons);
 
@@ -145,24 +150,31 @@ namespace UI
         // genereerd menu buttons voor het selecteren en verhogen van menu item + button voor verlagen
         private void GenereerMenuItemButtons(object sender, EventArgs e)
         {
-            Categorie categorie = ((ButtonSelectie)sender).hoofdOptie;
-            SubCategorie subcategorie = ((ButtonSelectie)sender).subOptie;
+            // haal de informatie van de sender er uit
+            MenuKaart menuKaart = ((ButtonSelectie)sender).hoofdOptie;
+            Categorie categorie = ((ButtonSelectie)sender).subOptie;
 
             Logica.MenuItems_Service LogMenuItem = new MenuItems_Service();
 
-            List<Model.MenuItem> lijstMenuItems = LogMenuItem.HaalFilterdeLijstOp(categorie, subcategorie);
+            // haal de informatie uit DB met de filters die uit de button is gehaald
+            List<Model.MenuItem> lijstMenuItems = LogMenuItem.HaalFilterdeLijstOp(menuKaart, categorie);
 
             flowLP_MenuItems.Controls.Clear();
 
+            // maak buttons van de informatie uit DB en stop het in een flow layout panel
             foreach(Model.MenuItem item in lijstMenuItems)
             {
-                ButtonMenuItem button = new ButtonMenuItem(item);
-                flowLP_MenuItems.Controls.Add(button);
-                button.Location = new Point(50, 0);
-                button.Click += new EventHandler(VoegMenuItemToe);
+                ButtonMenuItem buttonVerhoog = new ButtonMenuItem(item);
+                flowLP_MenuItems.Controls.Add(buttonVerhoog);
+                buttonVerhoog.Location = new Point(50, 0);
+                buttonVerhoog.Click += new EventHandler(VoegMenuItemToe);
 
-                ButtonMenuItemVerlaag buttonVerlaag = new ButtonMenuItemVerlaag(item);
+                ButtonMenuItem buttonVerlaag = new ButtonMenuItem(item);
                 flowLP_MenuItems.Controls.Add(buttonVerlaag);
+                buttonVerlaag.Size = new Size(40, 40);
+                buttonVerlaag.Text = "-1";
+                buttonVerlaag.BackColor = Color.DarkRed;
+                buttonVerlaag.ForeColor = Color.White;
                 buttonVerlaag.Click += new EventHandler(VerlaagMenuItem);
 
             }
@@ -171,19 +183,22 @@ namespace UI
         // Voegt menu items toe in een ViewList of verhoogd aantal van een menu item in de viewlist
         private void VoegMenuItemToe(object sender, EventArgs e)
         {
+            lbl_VoorraadOp.Text = "";
+
             Model.MenuItem menuItem = ((ButtonMenuItem)sender).menuItem;
 
             bool bestaat = false;
 
-            lbl_VoorraadOp.Text = "";
-
+            // controleerd of er al van een specifieke menu item bestelt is
+            // true = verhoog aantal
+            // false = nieuwe bestelitem toevoegen 
             for (int i = 0; i < lijstBestelItem.Count; i++)
             {
                 if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
                 {
                     bestaat = true;
 
-                    // genereer waarschuwing + break
+                    // genereer waarschuwing + break als er geen voorraad meer is
                     if (menuItem.Voorraad <= lijstBestelItem[i].Aantal)
                     {
                         lbl_VoorraadOp.Text = "Kan geen extra '" + menuItem.Shortname.Trim(' ') + "' toevoegen\n(menu item is op)";
@@ -191,76 +206,61 @@ namespace UI
                     }
                     
                     lijstBestelItem[i].Aantal++;
-                    
                 }
             }
 
             if (bestaat == false)
             {
-                Logica.Bestellingen_Service logBestellingen = new Bestellingen_Service();
-                BestelItem bestelItem = new BestelItem(logBestellingen.GetCountOrderId() + 1, menuItem, 1, "", Status.Open);
+                BestelItem bestelItem = new BestelItem(0, menuItem, 1, "", Status.Open);
                 lijstBestelItem.Add(bestelItem);
             }
 
             UpdateListView();
         }
 
-        // verlaagd het aantal van een menu item
-        private void VerlaagMenuItem(object sender, EventArgs e)
-        {
-            Model.MenuItem menuItem = ((ButtonMenuItemVerlaag)sender).menuItem;
+        
 
+    // verlaagd het aantal van een menu item in de lijst
+    // 0 = verwijder uit lijst
+    private void VerlaagMenuItem(object sender, EventArgs e)
+        {
             lbl_VoorraadOp.Text = "";
 
-            for (int i = 0; i < lijstBestelItem.Count; i++)
-            {
-                if (lijstBestelItem[i].MenuItem.Shortname == menuItem.Shortname)
-                {
-                    lijstBestelItem[i].Aantal--;
+            Model.MenuItem menuItem = ((ButtonMenuItemVerlaag)sender).menuItem;
 
-                    if (lijstBestelItem[i].Aantal == 0)
-                    {
-                        lijstBestelItem.RemoveAt(i);
-                    }
-                }
-            }
+            BestelItems_Service serviceBestelItems = new BestelItems_Service();
+            serviceBestelItems.VerlaagAantal(ref lijstBestelItem, menuItem);
 
             UpdateListView();
         }
 
-        // verzend bestelling naar db
+        // verzend bestelling naar DB
         private void Btn_Verstuur_Click(object sender, EventArgs e)
         {
             if (lijstBestelItem.Count == 0)
                 return;
 
             Logica.MenuItems_Service logMenuItems = new MenuItems_Service();
-            Logica.Bestellingen_Service logBestelingen = new Bestellingen_Service();
+            logMenuItems.BewerkVoorraad(lijstBestelItem);
 
-            foreach(BestelItem item in lijstBestelItem)
-            {
-                logMenuItems.BewerkVoorraad(item.MenuItem, item.Aantal);
-            }
+            Logica.Bestellingen_Service logBestellingen = new Bestellingen_Service();
 
-            if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel))
+            if (logBestellingen.ControleerOfTafelAlBestellingHeeft(tafel))
             {
-                foreach (BestelItem item in lijstBestelItem)
-                {
-                    logBestelingen.StuurBestelItemNaarDatabase(item);
-                }
+                logBestellingen.StuurBestelItemNaarDatabase(lijstBestelItem);
 
                 lijstBestelItem.Clear();
                 UpdateListView();
                 return;
             }
-
-            Model.Bestelling bestelling = new Bestelling(logBestelingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open , huidigeGebruiker, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
-
-            logMenuItems.StuurBestellingNaarDatabase(bestelling);
-
-            foreach (BestelItem item in lijstBestelItem)
+            else
             {
-                logBestelingen.StuurBestelItemNaarDatabase(item);
+
+                Model.Bestelling bestelling = new Bestelling(logBestellingen.GetCountOrderId() + 1, lijstBestelItem, tafel, Status.Open, werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
+
+                logMenuItems.StuurBestellingNaarDatabase(bestelling);
+
+                logBestellingen.StuurBestelItemNaarDatabase(lijstBestelItem);
             }
 
             lijstBestelItem.Clear();
@@ -270,7 +270,7 @@ namespace UI
         // opent betalen form
         private void Btn_afrekenen_Click(object sender, EventArgs e)
         {
-            Betalen_Form betalen_form = new Betalen_Form(huidigeGebruiker, tafel.Id);
+            Betalen_Form betalen_form = new Betalen_Form(werknemer, tafel.Id);
             betalen_form.Show();
         }
 
@@ -281,6 +281,7 @@ namespace UI
             UpdateListView();
         }
 
+        // toont de totale bestelling van een tafel
         private void ToonTotaleBestelling(object sender, EventArgs e)
         {
             listView_Bestelling.Items.Clear();
@@ -293,7 +294,7 @@ namespace UI
             Btn_VerwijderItemUitDB.Visible = true;
 
             Logica.Bestellingen_Service logBestelingen = new Bestellingen_Service();
-            Logica.Bestelitems_Service logBestelItems = new Bestelitems_Service();
+            Logica.BestelItems_Service logBestelItems = new BestelItems_Service();
             MenuItems_Service logMenuItems = new MenuItems_Service();
 
             if (logBestelingen.ControleerOfTafelAlBestellingHeeft(tafel) == false)
@@ -313,7 +314,7 @@ namespace UI
             }
         }
 
-        // toont opmerking textbox en butoon
+        // toont opmerking textbox en button
         private void Btn_commentaar_Click(object sender, EventArgs e)
         {
             if(textBox_Commentaar.Enabled)
@@ -356,19 +357,22 @@ namespace UI
             UpdateListView();
         }
 
+        // verwijderd een bestelitem van de database
         private void Btn_VerwijderItemUitDB_Click(object sender, EventArgs e)
         {
             listView_Bestelling.Items.Clear();
-            Bestelitems_Service logBestelItems = new Bestelitems_Service();
-            Bestellingen_Service logBestelingen = new Bestellingen_Service();
+
+            BestelItems_Service logBestelItems = new BestelItems_Service();
+            Bestellingen_Service logBestellingen = new Bestellingen_Service();
             MenuItems_Service logMenuItems = new MenuItems_Service();
+
             foreach (ListViewItem item in listView_Bestelling.SelectedItems)
             {
                 BestelItem bestelItem = (BestelItem)item.Tag;
                 logBestelItems.VerwijderBestelItemUitDB(bestelItem);
             }
 
-            int bestellingId = logBestelingen.GetBestellingIdByTafelNummer(tafel);
+            int bestellingId = logBestellingen.GetBestellingIdByTafelNummer(tafel);
             List<BestelItem> lijstBestelItems = logBestelItems.GetBestellingItems(bestellingId);
 
             foreach (BestelItem item in lijstBestelItems)

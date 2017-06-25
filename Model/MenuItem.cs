@@ -27,19 +27,19 @@ namespace Model
                 }
             }
         }
-        public Categorie Categorie { get; private set; }
-        public SubCategorie Subcategorie { get; private set; }
+        public MenuKaart menuKaart { get; private set; }
+        public Categorie categorie { get; private set; }
         public string Shortname { get; private set; }
 
-        public MenuItem(int id_in, string naam_in, double prijs_in, int voorraad_in, string shortname_in, Categorie categorie_in, SubCategorie subcategorie_in)
+        public MenuItem(int id_in, string naam_in, double prijs_in, int voorraad_in, string shortname_in, MenuKaart categorie_in, Categorie subcategorie_in)
         {
             Id = id_in;
             Naam = naam_in;
             Prijs = prijs_in;
             Voorraad = voorraad_in;
-            Categorie = categorie_in;
+            menuKaart = categorie_in;
             Shortname = shortname_in;
-            Subcategorie = subcategorie_in;
+            categorie = subcategorie_in;
         }
     }
 }

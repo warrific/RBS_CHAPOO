@@ -22,9 +22,9 @@ namespace Logica
 
         public string ToevoegenMenu(string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
         {
-            if (Enum.IsDefined(typeof(Categorie), menukaart))
+            if (Enum.IsDefined(typeof(MenuKaart), menukaart))
             {
-                if (Enum.IsDefined(typeof(SubCategorie), subcategorie))
+                if (Enum.IsDefined(typeof(Categorie), subcategorie))
                 {
                     if (naam != "")
                     {
@@ -39,8 +39,8 @@ namespace Logica
                                     MenuItem_DAO DALItem = new MenuItem_DAO();
 
                                     int id = DALItem.GetLastId() + 1;
-                                    int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-                                    int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+                                    int category = (int)Enum.Parse(typeof(MenuKaart), menukaart);
+                                    int sub = (int)Enum.Parse(typeof(Categorie), subcategorie);
 
                                     DALItem.ToevoegenMenu(id, category, naam, korteNaam, prijs);
                                     DALItem.ToevoegenMenu2(id, sub);
@@ -61,9 +61,9 @@ namespace Logica
 
         public string WijzigenMenu(int id, string menukaart, string subcategorie, string naam, string korteNaam, string prijs)
         {
-            if (Enum.IsDefined(typeof(Categorie), menukaart))
+            if (Enum.IsDefined(typeof(MenuKaart), menukaart))
             {
-                if (Enum.IsDefined(typeof(SubCategorie), subcategorie))
+                if (Enum.IsDefined(typeof(Categorie), subcategorie))
                 {
                     if (naam != "")
                     {
@@ -77,8 +77,8 @@ namespace Logica
                                 { 
                                     MenuItem_DAO DALItem = new MenuItem_DAO();
 
-                                    int category = (int)Enum.Parse(typeof(Categorie), menukaart);
-                                    int sub = (int)Enum.Parse(typeof(SubCategorie), subcategorie);
+                                    int category = (int)Enum.Parse(typeof(MenuKaart), menukaart);
+                                    int sub = (int)Enum.Parse(typeof(Categorie), subcategorie);
                                 
                                     DALItem.WijzigenMenu(id, category, naam, korteNaam, prijs);
                                     DALItem.WijzigenMenu2(id, sub);
@@ -104,7 +104,7 @@ namespace Logica
             DALItem.VerwijderenMenu(id);
         }
 
-        public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
+        public List<MenuItem> HaalFilterdeLijstOp(MenuKaart categorie, Categorie subcategorie)
         {
             MenuItem_DAO dalMenuItem = new MenuItem_DAO();
             List<MenuItem> lijstMenuItems = new List<MenuItem>();
@@ -154,10 +154,14 @@ namespace Logica
             return voorraad;
         }
 
-        public void BewerkVoorraad(MenuItem item, int aantalBesteld)
+        public void BewerkVoorraad(List<BestelItem> lijstBestelItems)
         {
             MenuItem_DAO dalMenuItem = new MenuItem_DAO();
-            dalMenuItem.BewerkVoorraad(item, aantalBesteld);
+
+            foreach (BestelItem item in lijstBestelItems)
+            {
+                dalMenuItem.BewerkVoorraad(item.MenuItem, item.Aantal);
+            }
         }
     }
 }
