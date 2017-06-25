@@ -39,27 +39,6 @@ namespace DAL
             return items;
         }
 
-        public BestelItem GetForID(int orderid)
-        {
-            // Connectie opzetten
-            dbConnection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Bestelling_item WHERE order_id = @Id", dbConnection);
-            command.Parameters.AddWithValue("@Id", orderid);
-            SqlDataReader reader = command.ExecuteReader();
-
-            BestelItem item = null;
-
-            if (reader.Read())
-            {
-                item = Readitem(reader);
-            }
-
-            reader.Close();
-            dbConnection.Close();
-
-            return item;
-        }
-
         public List<BestelItem> GetAllForID(int orderid)
         {
             // List

@@ -86,23 +86,6 @@ namespace Logica
             dalBestelling.ZetBestellingInDatabase(bestelling);
         }
 
-        public int GetVoorraad(MenuItem item)
-        {
-            MenuItem_DAO dalMenuItem = new MenuItem_DAO();
-
-            List<MenuItem> lijstMenuItems = dalMenuItem.GetAll();
-
-            int voorraad = 0;
-
-            foreach(MenuItem dbItem in lijstMenuItems)
-            {
-                if (item == dbItem)
-                    dbItem.Voorraad = voorraad;
-            }
-
-            return voorraad;
-        }
-
         public void BewerkVoorraad(MenuItem item, int aantalBesteld)
         {
             MenuItem_DAO dalMenuItem = new MenuItem_DAO();

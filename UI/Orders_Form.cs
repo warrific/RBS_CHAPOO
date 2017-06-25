@@ -132,7 +132,7 @@ namespace UI
             // Niet automatisch kolomen genereren
             data_items.AutoGenerateColumns = false;
             
-            // Bestellingen ophalen en in lijst zetten (in methode)
+            // Bestellingen ophalen en in lijst zetten (in DAL)
             data_items.DataSource = bestellingen.make_listbestelling(status_actueel, is_drinken);
         }
     }

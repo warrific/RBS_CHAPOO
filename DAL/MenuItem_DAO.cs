@@ -171,11 +171,6 @@ namespace DAL
         {
             dbConnection.Open();
 
-            //string SB = "SELECT * " + 
-            //            "FROM Menuitem " + 
-            //            "JOIN Menukaart ON MenuItem.item_id = Menukaart.item " +
-            //            "WHERE category = @dcategory AND subcategorie = @dsubcategory";
-
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * ");
             sb.Append("FROM Menuitem ");
