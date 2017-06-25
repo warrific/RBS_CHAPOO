@@ -160,7 +160,7 @@ namespace DAL
 
             string dbString =   "SELECT COUNT(status) " +
                                 "FROM Bestelling " +
-                                "WHERE tafel_id = @tafelid AND status = 1";
+                                "WHERE tafel_id = @tafelid AND NOT status = 3";
 
             SqlCommand command = new SqlCommand(dbString, dbConnection);
 

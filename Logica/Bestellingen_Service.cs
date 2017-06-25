@@ -57,10 +57,13 @@ namespace Logica
             return dalBestelling.GetCount();
         }
 
-        public void StuurBestelItemNaarDatabase(BestelItem item)
+        public void StuurBestelItemNaarDatabase(List<BestelItem> lijstBestelItem)
         {
             DAL.Bestelling_DAO dalBestelling = new Bestelling_DAO();
-            dalBestelling.ZetBestelItemsInDatabase(item);
+            foreach (BestelItem item in lijstBestelItem)
+            {
+                dalBestelling.ZetBestelItemsInDatabase(item);
+            }
         }
         public bool ControleerOfTafelAlBestellingHeeft(Tafel tafel)
         {

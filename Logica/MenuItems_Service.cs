@@ -53,7 +53,7 @@ namespace Logica
             DALItem.VerwijderenMenuitem(id);
         }
 
-        public List<MenuItem> HaalFilterdeLijstOp(Categorie categorie, SubCategorie subcategorie)
+        public List<MenuItem> HaalFilterdeLijstOp(MenuKaart categorie, Categorie subcategorie)
         {
             MenuItem_DAO dalMenuItem = new MenuItem_DAO();
             List<MenuItem> lijstMenuItems = new List<MenuItem>();
@@ -86,10 +86,31 @@ namespace Logica
             dalBestelling.ZetBestellingInDatabase(bestelling);
         }
 
-        public void BewerkVoorraad(MenuItem item, int aantalBesteld)
+        public int GetVoorraad(MenuItem item)
         {
             MenuItem_DAO dalMenuItem = new MenuItem_DAO();
-            dalMenuItem.BewerkVoorraad(item, aantalBesteld);
+
+            List<MenuItem> lijstMenuItems = dalMenuItem.GetAll();
+
+            int voorraad = 0;
+
+            foreach(MenuItem dbItem in lijstMenuItems)
+            {
+                if (item == dbItem)
+                    dbItem.Voorraad = voorraad;
+            }
+
+            return voorraad;
+        }
+
+        public void BewerkVoorraad(List<BestelItem> lijstBestelItems)
+        {
+            MenuItem_DAO dalMenuItem = new MenuItem_DAO();
+
+            foreach (BestelItem item in lijstBestelItems)
+            {
+                dalMenuItem.BewerkVoorraad(item.MenuItem, item.Aantal);
+            }
         }
     }
 }

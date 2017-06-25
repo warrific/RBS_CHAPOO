@@ -159,15 +159,15 @@ namespace DAL
             int voorraad = (int)reader["voorraad"];
             double prijs = (float)(double)reader["prijs"];
             string shortname = (string)reader["shortname"];
-            Categorie categorie = (Categorie)(int)reader["category"];
-            SubCategorie subcategorie = (SubCategorie)getkaart.GetTypeForID(id);
+            MenuKaart categorie = (MenuKaart)(int)reader["category"];
+            Categorie subcategorie = (Categorie)getkaart.GetTypeForID(id);
 
             return new MenuItem(id, naam, prijs, voorraad, shortname, categorie, subcategorie);
         }
 
 
         // filtert de DB Menu items en stuurt een lijst terug met alle gefilterde menu items
-        public List<MenuItem> FilterByCategories(Categorie categorie, SubCategorie subCategorie)
+        public List<MenuItem> FilterByCategories(MenuKaart categorie, Categorie subCategorie)
         {
             dbConnection.Open();
 
@@ -205,7 +205,7 @@ namespace DAL
                 int category = reader.GetInt32(4);
                 string shortname = reader.GetString(5);
                 int subcategory = reader.GetInt32(8);
-                MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, shortname, (Categorie)category, (SubCategorie)subcategory);
+                MenuItem menuItem = new MenuItem(id, naam, prijs, voorraad, shortname, (MenuKaart)category, (Categorie)subcategory);
 
                 lijstMenuItem.Add(menuItem);
             }

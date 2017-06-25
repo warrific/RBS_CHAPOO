@@ -132,8 +132,8 @@ namespace UI
                     li.SubItems.Add(MI_lijst[i].Naam.ToString());
                     li.SubItems.Add(MI_lijst[i].Shortname.ToString());
                 }
-                li.SubItems.Add(MI_lijst[i].Subcategorie.ToString());
-                li.SubItems.Add(MI_lijst[i].Categorie.ToString());
+                li.SubItems.Add(MI_lijst[i].categorie.ToString());
+                li.SubItems.Add(MI_lijst[i].menuKaart.ToString());
                 li.SubItems.Add(MI_lijst[i].Prijs.ToString("€0.00"));
 
                 listViewMenu.Items.Add(li);
@@ -431,11 +431,11 @@ namespace UI
             InitControl(txtPrijs, TBX, SPACING * 5, "", FNTSIZE, WIDTH);
 
             cmbMenukaart.Items.Clear();
-            foreach (Categorie categorie in Enum.GetValues(typeof(Categorie)))
+            foreach (MenuKaart categorie in Enum.GetValues(typeof(MenuKaart)))
                 cmbMenukaart.Items.Add(categorie);
 
             cmbSubcategorie.Items.Clear();
-            foreach (SubCategorie subcategorie in Enum.GetValues(typeof(SubCategorie)))
+            foreach (Categorie subcategorie in Enum.GetValues(typeof(Categorie)))
                 cmbSubcategorie.Items.Add(subcategorie);
 
             InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);
@@ -492,11 +492,11 @@ namespace UI
                 InitControl(txtPrijs, TBX, SPACING * 5, prijs, FNTSIZE, WIDTH);
 
                 cmbMenukaart.Items.Clear();
-                foreach (Categorie categorie in Enum.GetValues(typeof(Categorie)))
+                foreach (MenuKaart categorie in Enum.GetValues(typeof(MenuKaart)))
                     cmbMenukaart.Items.Add(categorie);
 
                 cmbSubcategorie.Items.Clear();
-                foreach (SubCategorie sub in Enum.GetValues(typeof(SubCategorie)))
+                foreach (Categorie sub in Enum.GetValues(typeof(Categorie)))
                     cmbSubcategorie.Items.Add(sub);
 
                 InitControl(btnBevestig, 120, 300, "Bevestig", FNTSIZE, 150, 40);

@@ -6,16 +6,16 @@ namespace UI
 {
     public partial class ButtonSelectie : Button
     {
-        public Categorie hoofdOptie
+        public MenuKaart hoofdOptie
         {
             get; private set;
         }
-        public SubCategorie subOptie
+        public Categorie subOptie
         {
             get; private set;
         }
 
-        public ButtonSelectie(Categorie hoofdOptie, SubCategorie subOptie)
+        public ButtonSelectie(MenuKaart hoofdOptie, Categorie subOptie)
         {
             this.hoofdOptie = hoofdOptie;
             this.subOptie = subOptie;

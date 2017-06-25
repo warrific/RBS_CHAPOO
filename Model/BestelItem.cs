@@ -4,7 +4,19 @@
     {
         private int aantalOpslag;
 
-        public int Id { get; private set; }
+        public int Id {
+            get
+            {
+                return Id;
+            }
+            set
+            {
+                if(Id == 0)
+                {
+                    Id = value;
+                }
+            }
+        }
         public MenuItem MenuItem { get; private set; }
         public int Aantal
         {

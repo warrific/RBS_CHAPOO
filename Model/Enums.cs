@@ -1,13 +1,13 @@
 ﻿namespace Model
 {
     // De categorieen in MenuItem
-    public enum Categorie
+    public enum MenuKaart
     {
         Diner = 1, Lunch, Drank, Alcohol
     }
 
     // De subcategorien in database tabel MenuKaart
-    public enum SubCategorie
+    public enum Categorie
     {
         Voorgerecht = 1, HoofdGerecht, Nagerecht, Tussengerecht, Nonalcoholisch, Alcoholisch
     }
