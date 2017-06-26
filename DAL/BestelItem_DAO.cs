@@ -63,8 +63,25 @@ namespace DAL
         }
 
         
-        public List<Bestelling_weergave> GetAllWeergave(int cat1, int cat2, int status)
+        public List<Bestelling_weergave> GetAllWeergave(bool status_actueel, bool is_drinken)
         {
+            // Check welke waardes we nodig hebben
+            int status = 1;
+            int cat1 = 1;
+            int cat2 = 2;
+
+            if (!status_actueel)
+            {
+                status = 2;
+            }
+
+            if (is_drinken)
+            {
+                cat1 = 3;
+                cat2 = 4;
+            }
+
+
             // List
             List<Bestelling_weergave> items = new List<Bestelling_weergave>();
             
