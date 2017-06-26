@@ -154,7 +154,7 @@ namespace UI
             MenuKaart menuKaart = ((ButtonSelectie)sender).hoofdOptie;
             Categorie categorie = ((ButtonSelectie)sender).subOptie;
 
-            Logica.MenuItems_Service LogMenuItem = new MenuItems_Service();
+            MenuItems_Service LogMenuItem = new MenuItems_Service();
 
             // haal de informatie uit DB met de filters die uit de button is gehaald
             List<Model.MenuItem> lijstMenuItems = LogMenuItem.HaalFilterdeLijstOp(menuKaart, categorie);
@@ -191,7 +191,7 @@ namespace UI
             // true = verhoog aantal
             // false = nieuwe bestelitem toevoegen 
 
-            Logica.BestelItems_Service logBestelItems = new BestelItems_Service();
+            BestelItems_Service logBestelItems = new BestelItems_Service();
 
             BestelItem bestelItem = logBestelItems.CheckOfLijstAlMenuItemHeeft(lijstBestelItem, menuItem);
 
@@ -247,7 +247,7 @@ namespace UI
             else
             {
 
-                Model.Bestelling bestelling = new Bestelling(lijstBestelItem, tafel, Status.Open, werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
+                Bestelling bestelling = new Bestelling(lijstBestelItem, tafel, Status.Open, werknemer, logMenuItems.BerekenTotaalBestelling(lijstBestelItem), "", 0, DateTime.Now.ToString());
 
                 logMenuItems.StuurBestellingNaarDatabase(bestelling);
 
