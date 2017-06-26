@@ -41,9 +41,9 @@ namespace UI
         private void RefreshVoorraad()
         {
             listViewVoorraad.Clear();
-            List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); //maak list aan
-            MenuItems_Service menuItemLogica = new MenuItems_Service(); //maak object aan
-            MI_lijst = menuItemLogica.make_list(); //vul lijst
+            List<Model.MenuItem> MI_lijst = new List<Model.MenuItem>(); // maak list aan
+            MenuItems_Service menuItemLogica = new MenuItems_Service(); // maak object aan
+            MI_lijst = menuItemLogica.make_list(); // vul lijst
 
             // ListView kolommen en items
             listViewVoorraad.View = View.Details;
@@ -54,7 +54,8 @@ namespace UI
             listViewVoorraad.Columns.Add("Naam", 350);
             listViewVoorraad.Columns.Add("Voorraad", 100);
 
-            for (int i = 0; i < MI_lijst.Count; i++) //Vult listview met items
+            // Vult listview met items
+            for (int i = 0; i < MI_lijst.Count; i++) 
             {
                 ListViewItem li = new ListViewItem(MI_lijst[i].Id.ToString());
                 if (naamKort)
@@ -555,11 +556,11 @@ namespace UI
                 {
                     foreach (ListViewItem checkedItem in listViewMedewerkers.CheckedItems)
                     {
-                        Werknemer_Service werknemers = new Werknemer_Service();
+                        Werknemer_Service werknemerLogica = new Werknemer_Service();
 
                         int id = int.Parse(checkedItem.SubItems[0].Text);
 
-                        werknemers.VerwijderenWerknemer(id);
+                        werknemerLogica.VerwijderenWerknemer(id);
 
                         RefreshMedewerkers();
                     }
