@@ -10,27 +10,13 @@ namespace Logica
     {
         public List<Bestelling_weergave> make_listbestelling(bool status_actueel, bool is_drinken)
         {
-            // Check welke waardes we nodig hebben
-            int status = 1;
-            int cat1 = 1;
-            int cat2 = 2;
-
-            if (!status_actueel)
-            {
-                status = 2;
-            }
-
-            if (is_drinken)
-            {
-                cat1 = 3;
-                cat2 = 4;
-            }
+            
 
             // Roept DALitem.GetAll aan
             BestelItem_DAO DALitem = new BestelItem_DAO();
             List<Bestelling_weergave> bestellingen_lijst = new List<Bestelling_weergave>();
 
-            bestellingen_lijst = DALitem.GetAllWeergave(cat1, cat2, status);
+            bestellingen_lijst = DALitem.GetAllWeergave(status_actueel, is_drinken);
             return bestellingen_lijst;
         }
 
